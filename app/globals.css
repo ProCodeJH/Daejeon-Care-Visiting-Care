@@ -97,6 +97,34 @@
   }
 }
 
+/* @starting-style — 진입 페이드 (modern browsers, no JS) */
+@supports (transition-behavior: allow-discrete) {
+  body {
+    animation: pageEnter 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  @keyframes pageEnter {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}
+
+/* View Transitions API — 페이지 전환 부드러움 */
+@view-transition {
+  navigation: auto;
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.35s;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
+  }
+}
+
 @layer utilities {
   /* gradient text — 절제된 정체성 색 (Hero h1 등 강조 시) */
   .gradient-identity {

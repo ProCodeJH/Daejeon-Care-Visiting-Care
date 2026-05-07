@@ -72,8 +72,8 @@ export default function ContactPage() {
           <div className="bg-[#f8f8f8] p-7 md:p-8">
             <h3 className="text-xl font-bold text-ink-primary mb-5">온라인 문의</h3>
             {submitted ? (
-              <div className="bg-brand-50 p-8 text-center">
-                <p className="text-3xl mb-3">✓</p>
+              <div role="status" aria-live="polite" className="bg-brand-50 p-8 text-center">
+                <p className="text-3xl mb-3" aria-hidden="true">✓</p>
                 <p className="font-bold text-brand-400 mb-2">문의가 접수되었습니다</p>
                 <p className="text-sm text-ink-secondary">빠른 시일 내에 연락드리겠습니다.</p>
               </div>

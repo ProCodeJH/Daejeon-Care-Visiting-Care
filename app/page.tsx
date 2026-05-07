@@ -1,6 +1,7 @@
 'use client';
 
 import { HeroCarousel } from '@/components/HeroCarousel';
+import { Reveal } from '@/components/Reveal';
 
 /**
  * 두손누리 home 1:1 layout (Playwright 측정 기반):
@@ -79,14 +80,15 @@ export default function Home() {
               { title: '방문요양', desc: '일상 생활 지원 / 정서 지원' },
               { title: '방문목욕', desc: '존엄을 지키는 목욕 케어' },
               { title: '방문간호', desc: '의료 케어가 일상 안으로' },
-            ].map((s) => (
-              <div
+            ].map((s, i) => (
+              <Reveal
                 key={s.title}
+                delay={i * 0.08}
                 className="bg-gray-50 hover:bg-brand-50 transition-colors p-8 text-center border-t-2 border-brand-400"
               >
                 <h3 className="text-xl font-bold text-ink-primary mb-2">{s.title}</h3>
                 <p className="text-sm text-ink-muted">{s.desc}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -165,14 +167,15 @@ export default function Home() {
           </div>
           <div className="grid md:grid-cols-3 gap-5">
             {REVIEWS.map((r, i) => (
-              <div
+              <Reveal
                 key={i}
+                delay={i * 0.08}
                 className="bg-white p-7 border border-gray-100 hover:border-brand-400 hover:shadow-md transition-all"
               >
                 <div className="text-brand-400 text-3xl font-serif leading-none mb-3">"</div>
                 <p className="text-ink-secondary leading-relaxed mb-5 text-[15px]">{r.text}</p>
                 <p className="text-sm font-semibold text-brand-400">- {r.author} -</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -189,19 +192,20 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {BLOGS.map((b, i) => (
-              <a
-                key={i}
-                href="/story"
-                className="group block bg-gray-50 hover:bg-brand-50 transition-colors overflow-hidden"
-              >
-                <div className="aspect-[4/3] bg-gradient-to-br from-brand-200 to-brand-400" />
-                <div className="p-4">
-                  <p className="text-xs text-brand-400 font-medium mb-1.5">{b.tag}</p>
-                  <p className="text-sm font-semibold text-ink-primary leading-snug group-hover:text-brand-400 transition-colors line-clamp-2">
-                    {b.title}
-                  </p>
-                </div>
-              </a>
+              <Reveal key={i} delay={i * 0.06}>
+                <a
+                  href="/story"
+                  className="group block bg-gray-50 hover:bg-brand-50 transition-colors overflow-hidden"
+                >
+                  <div className="aspect-[4/3] bg-gradient-to-br from-brand-200 to-brand-400" />
+                  <div className="p-4">
+                    <p className="text-xs text-brand-400 font-medium mb-1.5">{b.tag}</p>
+                    <p className="text-sm font-semibold text-ink-primary leading-snug group-hover:text-brand-400 transition-colors line-clamp-2">
+                      {b.title}
+                    </p>
+                  </div>
+                </a>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -218,20 +222,19 @@ export default function Home() {
           </div>
           <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
             {FAQS.map((f, i) => (
-              <details
-                key={i}
-                className="group bg-white p-5 border border-gray-100 hover:border-brand-400 transition-colors cursor-pointer"
-              >
-                <summary className="font-semibold text-ink-primary flex items-start gap-3 list-none">
-                  <span className="text-brand-400 font-bold shrink-0">Q.</span>
-                  <span className="flex-1">{f.q}</span>
-                  <span className="text-brand-400 group-open:rotate-180 transition-transform">▾</span>
-                </summary>
-                <div className="mt-3 pl-6 text-sm text-ink-secondary leading-relaxed">
-                  <span className="text-brand-400 font-bold mr-2">A.</span>
-                  {f.a}
-                </div>
-              </details>
+              <Reveal key={i} delay={i * 0.05}>
+                <details className="group bg-white p-5 border border-gray-100 hover:border-brand-400 transition-colors cursor-pointer">
+                  <summary className="font-semibold text-ink-primary flex items-start gap-3 list-none">
+                    <span className="text-brand-400 font-bold shrink-0">Q.</span>
+                    <span className="flex-1">{f.q}</span>
+                    <span className="text-brand-400 group-open:rotate-180 transition-transform">▾</span>
+                  </summary>
+                  <div className="mt-3 pl-6 text-sm text-ink-secondary leading-relaxed">
+                    <span className="text-brand-400 font-bold mr-2">A.</span>
+                    {f.a}
+                  </div>
+                </details>
+              </Reveal>
             ))}
           </div>
           <div className="text-center mt-8">

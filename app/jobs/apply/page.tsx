@@ -36,7 +36,7 @@ export default function JobApplyPage() {
         <div className="max-w-[800px] mx-auto px-5">
           <div className="bg-white p-7 md:p-10">
             {submitted ? (
-              <div className="text-center py-12">
+              <div role="status" aria-live="polite" className="text-center py-12">
                 <p className="text-5xl mb-5">✓</p>
                 <h3 className="text-2xl font-bold text-brand-400 mb-3">지원이 접수되었습니다</h3>
                 <p className="text-ink-secondary mb-6">

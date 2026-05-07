@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { Menu, X, ChevronDown, Phone } from 'lucide-react';
 import { Logo } from './Logo';
 import { CONTACT } from '@/lib/contact';
@@ -61,6 +62,9 @@ const NAV = [
 export function Header() {
   const [open, setOpen] = useState(false);
   const [hovered, setHovered] = useState<string | null>(null);
+  const pathname = usePathname();
+  const isActive = (href: string) =>
+    pathname === href || (href !== '/' && pathname.startsWith(href));
 
   return (
     <>
@@ -95,10 +99,18 @@ export function Header() {
             >
               <Link
                 href={item.href}
-                className="text-ink-primary hover:text-brand-400 font-semibold text-[15px] flex items-center gap-1 transition-colors"
+                aria-current={isActive(item.href) ? 'page' : undefined}
+                className={`font-semibold text-[15px] flex items-center gap-1 transition-colors ${
+                  isActive(item.href)
+                    ? 'text-brand-600'
+                    : 'text-ink-primary hover:text-brand-400'
+                }`}
               >
                 {item.label}
                 {item.children && <ChevronDown size={14} />}
+                {isActive(item.href) && (
+                  <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-brand-600" />
+                )}
               </Link>
               {/* Dropdown */}
               {item.children && hovered === item.label && (
@@ -146,8 +158,11 @@ export function Header() {
               <div key={item.label} className="border-b border-gray-50 py-3">
                 <Link
                   href={item.href}
+                  aria-current={isActive(item.href) ? 'page' : undefined}
                   onClick={() => setOpen(false)}
-                  className="font-semibold text-ink-primary"
+                  className={`font-semibold ${
+                    isActive(item.href) ? 'text-brand-600' : 'text-ink-primary'
+                  }`}
                 >
                   {item.label}
                 </Link>

@@ -30,6 +30,28 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ko">
+      <head>
+        {/* DNS prefetch + preconnect — 외부 자산 빠른 로딩 */}
+        <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+        <link rel="dns-prefetch" href="https://cdn.imweb.me" />
+        <link rel="dns-prefetch" href="https://www.youtube.com" />
+        <link rel="dns-prefetch" href="https://i.ytimg.com" />
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
+        {/* speculation rules — 메인 nav 페이지 prerender */}
+        <script
+          type="speculationrules"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              prerender: [
+                {
+                  source: 'list',
+                  urls: ['/about', '/service', '/contact', '/insurance', '/faq'],
+                },
+              ],
+            }),
+          }}
+        />
+      </head>
       <body>
         {/* a11y: skip-to-content */}
         <a
