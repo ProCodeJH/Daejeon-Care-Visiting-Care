@@ -187,7 +187,7 @@ export default function JobApplyPage() {
                 </button>
 
                 <p className="text-center text-sm text-ink-muted">
-                  또는 전화 문의: <a href="tel:042-000-0000" className="text-brand-400 font-bold">042-XXX-XXXX</a>
+                  또는 전화 문의: <a href="tel:042-369-0326" className="text-brand-400 font-bold">042-369-0326</a>
                 </p>
               </form>
             )}

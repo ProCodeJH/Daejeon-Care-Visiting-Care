@@ -80,7 +80,7 @@ export function HeroBookingModule() {
           상담 신청하기
         </button>
         <a
-          href="tel:042-000-0000"
+          href="tel:042-369-0326"
           className="flex items-center justify-center gap-2 bg-surface-paper hover:bg-surface-vellum text-ink-primary px-6 py-3.5 rounded-full font-semibold transition-colors"
         >
           <Phone size={16} /> 전화로

@@ -48,11 +48,11 @@ export default function JobsPage() {
             }
           />
           <a
-            href="tel:042-000-0000"
+            href="tel:042-369-0326"
             className="inline-block mt-8 bg-brand-400 hover:bg-brand-500 text-white px-8 py-4 font-bold text-lg transition-colors"
             style={{ borderRadius: '2px' }}
           >
-            ☎️ 042-XXX-XXXX 문의
+            ☎️ 042-369-0326 문의
           </a>
         </div>
       </section>

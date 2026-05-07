@@ -35,7 +35,7 @@ export default function MapPage() {
                 </div>
                 <div className="flex items-start gap-3">
                   <Phone size={18} className="text-brand-400 mt-1 shrink-0" />
-                  <span>TEL. 042-XXX-XXXX · FAX. 042-XXX-XXXX</span>
+                  <span>TEL. 042-369-0326 · FAX. 042-369-0326</span>
                 </div>
                 <div className="flex items-start gap-3">
                   <Clock size={18} className="text-brand-400 mt-1 shrink-0" />

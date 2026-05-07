@@ -33,8 +33,8 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <p className="font-semibold text-ink-primary mb-0.5">전화 상담</p>
-                  <p className="text-lg font-bold text-brand-400">042-XXX-XXXX</p>
-                  <p className="text-xs text-ink-muted">FAX. 042-XXX-XXXX</p>
+                  <p className="text-lg font-bold text-brand-400">042-369-0326</p>
+                  <p className="text-xs text-ink-muted">FAX. 042-369-0326</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">

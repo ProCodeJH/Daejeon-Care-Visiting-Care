@@ -67,12 +67,18 @@ export function HeroCarousel() {
             무료 상담 신청
           </a>
           <a
-            href="tel:042-000-0000"
-            className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/40 text-white px-6 md:px-8 py-3 md:py-3.5 font-semibold text-sm md:text-base transition-colors"
+            href="tel:042-369-0326"
+            className="flex items-center gap-2 bg-[#E63946] hover:bg-[#C12A37] text-white px-6 md:px-8 py-3 md:py-3.5 font-bold text-sm md:text-base transition-colors"
             style={{ borderRadius: '2px' }}
           >
-            전화 상담
+            ☎ 042-369-0326
           </a>
+        </div>
+
+        {/* 24시간 상담 강조 — Hero 좌상단 */}
+        <div className="absolute top-6 left-5 md:left-8 z-20 hidden md:flex items-center gap-2 bg-white/95 backdrop-blur-sm px-4 py-2" style={{ borderRadius: '2px' }}>
+          <span className="inline-flex w-5 h-5 rounded-full bg-[#E63946] grid place-items-center text-white text-[10px]">♥</span>
+          <span className="text-sm font-bold text-[#1B6F4A]">24시간 상담 가능</span>
         </div>
       </div>
 

@@ -1,5 +1,8 @@
+import { CONTACT } from '@/lib/contact';
+import { Phone } from 'lucide-react';
+
 /**
- * 페이지 하단 통일 CTA — "언제든 문의 주세요" 패턴.
+ * 페이지 하단 통일 CTA — 24시간 상담 + 대표번호 강조.
  */
 export function CTASection({
   title = '언제든 문의 주세요.',
@@ -13,24 +16,29 @@ export function CTASection({
   return (
     <section className={`${bg} py-16 md:py-20`}>
       <div className="max-w-[1200px] mx-auto px-5 text-center">
+        <p className="inline-flex items-center gap-2 text-[#E63946] font-bold text-sm tracking-wider mb-4">
+          <span className="w-6 h-6 rounded-full bg-[#E63946] grid place-items-center text-white text-xs">♥</span>
+          {CONTACT.available}
+        </p>
         <h2 className="text-2xl md:text-4xl font-bold text-ink-primary mb-3 leading-snug">
           {title}
         </h2>
         <p className="text-base md:text-xl text-ink-secondary mb-8">{sub}</p>
         <div className="flex justify-center gap-3 flex-wrap">
           <a
-            href="/contact"
-            className="bg-brand-400 hover:bg-brand-500 text-white px-8 py-3.5 font-semibold transition-colors"
+            href={CONTACT.phoneTel}
+            className="flex items-center gap-2 bg-[#E63946] hover:bg-[#C12A37] text-white px-8 py-3.5 font-bold transition-colors text-base md:text-lg"
             style={{ borderRadius: '2px' }}
           >
-            무료 상담 신청
+            <Phone size={18} />
+            {CONTACT.phone}
           </a>
           <a
-            href="tel:042-000-0000"
-            className="bg-white border border-brand-400 hover:bg-brand-50 text-brand-400 px-8 py-3.5 font-semibold transition-colors"
+            href="/contact"
+            className="bg-white border-2 border-[#1B6F4A] hover:bg-[#1B6F4A] hover:text-white text-[#1B6F4A] px-8 py-3 font-semibold transition-colors"
             style={{ borderRadius: '2px' }}
           >
-            전화 상담
+            온라인 문의
           </a>
         </div>
       </div>

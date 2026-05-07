@@ -1,45 +1,83 @@
+import { Logo } from './Logo';
+import { CONTACT } from '@/lib/contact';
+import { Phone, Clock, Mail } from 'lucide-react';
+
 /**
- * 두손누리 Footer 1:1 — 주소 / TEL / 사업자정보 한 줄 layout.
- * 자현 정보는 placeholder (실제 정보로 swap).
+ * 대전케어 방문요양센터 Footer.
+ * 자현 정체성 (로고 + 24시간 + 대표번호 042-369-0326).
  */
 export function Footer() {
   return (
-    <footer className="bg-white border-t border-gray-100">
-      <div className="max-w-[1200px] mx-auto px-5 py-10">
-        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+    <footer className="bg-white border-t-2 border-[#1B6F4A]/20">
+      {/* 24시간 상담 강조 띠 */}
+      <div className="bg-gradient-to-r from-[#1B6F4A] to-[#15573A] text-white">
+        <div className="max-w-[1200px] mx-auto px-5 py-6 flex flex-col md:flex-row items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <span className="inline-flex w-9 h-9 rounded-full bg-[#E63946] grid place-items-center text-lg">♥</span>
+            <p className="text-lg md:text-xl font-bold">{CONTACT.hours}</p>
+          </div>
+          <a
+            href={CONTACT.phoneTel}
+            className="flex items-center gap-2 bg-[#E63946] hover:bg-[#C12A37] text-white px-7 py-3 font-bold transition-colors text-lg"
+            style={{ borderRadius: '2px' }}
+          >
+            <Phone size={20} />
+            대표번호 {CONTACT.phone}
+          </a>
+        </div>
+      </div>
+
+      <div className="max-w-[1200px] mx-auto px-5 py-12">
+        <div className="grid md:grid-cols-3 gap-8">
           {/* Brand */}
           <div>
-            <p className="font-bold text-lg text-ink-primary mb-1">대전케어 방문요양센터</p>
-            <p className="text-sm text-ink-muted leading-relaxed">
-              대전광역시 [구] [동] [도로명주소], [건물명] [층호]
+            <Logo size={56} withText />
+            <p className="text-sm text-ink-muted leading-relaxed mt-5">
+              어르신과 가족을 향한 따뜻한 마음으로,
               <br />
-              TEL. <span className="font-medium text-ink-secondary">042-XXX-XXXX</span>
-              {' · '}
-              FAX. <span className="font-medium text-ink-secondary">042-XXX-XXXX</span>
-              <br />
-              개인정보책임관리자: [대표자명]
-              {' · '}
-              이메일:{' '}
-              <span className="font-medium text-ink-secondary">contact@daejeoncare.co.kr</span>
+              부모님의 손발이 되어드립니다.
             </p>
           </div>
 
+          {/* 연락처 */}
+          <div>
+            <p className="font-bold text-ink-primary mb-3">연락처</p>
+            <ul className="space-y-2 text-sm text-ink-secondary">
+              <li className="flex items-start gap-2">
+                <Phone size={14} className="text-[#1B6F4A] mt-1 shrink-0" />
+                <span>대표번호 <strong>{CONTACT.phone}</strong></span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Clock size={14} className="text-[#1B6F4A] mt-1 shrink-0" />
+                <span>{CONTACT.available}</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Mail size={14} className="text-[#1B6F4A] mt-1 shrink-0" />
+                <span>{CONTACT.email}</span>
+              </li>
+            </ul>
+          </div>
+
           {/* 사업자 정보 */}
-          <div className="text-sm text-ink-muted text-left md:text-right space-y-1">
-            <p>사업자등록번호: [번호]</p>
-            <p>장기요양기관 지정번호: [번호]</p>
-            <p>대표자: [대표자명]</p>
+          <div>
+            <p className="font-bold text-ink-primary mb-3">기관 정보</p>
+            <ul className="space-y-2 text-sm text-ink-secondary">
+              <li>주소: {CONTACT.address}</li>
+              <li>대표자: {CONTACT.representative}</li>
+              <li>사업자등록번호: {CONTACT.bizNumber}</li>
+              <li>장기요양기관 지정번호: {CONTACT.careNumber}</li>
+            </ul>
           </div>
         </div>
 
-        <div className="border-t border-gray-100 mt-8 pt-5 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+        <div className="border-t border-gray-100 mt-10 pt-5 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
           <p className="text-xs text-ink-muted">
             COPYRIGHT © 대전케어 방문요양센터 ALL RIGHTS RESERVED.
           </p>
           <div className="flex items-center gap-4 text-xs text-ink-muted">
-            <a href="/privacy" className="hover:text-brand-400">개인정보처리방침</a>
-            <a href="/terms" className="hover:text-brand-400">이용약관</a>
-            <a href="/sitemap" className="hover:text-brand-400">사이트맵</a>
+            <a href="/privacy" className="hover:text-[#1B6F4A]">개인정보처리방침</a>
+            <a href="/terms" className="hover:text-[#1B6F4A]">이용약관</a>
+            <a href="/sitemap" className="hover:text-[#1B6F4A]">사이트맵</a>
           </div>
         </div>
       </div>

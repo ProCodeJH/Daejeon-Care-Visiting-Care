@@ -142,7 +142,7 @@ export default function Home() {
               무료 상담 신청
             </a>
             <a
-              href="tel:042-000-0000"
+              href="tel:042-369-0326"
               className="bg-white border border-brand-400 hover:bg-brand-50 text-brand-400 px-8 py-3.5 font-semibold transition-colors"
               style={{ borderRadius: '2px' }}
             >

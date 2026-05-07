@@ -2,7 +2,9 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, Phone } from 'lucide-react';
+import { Logo } from './Logo';
+import { CONTACT } from '@/lib/contact';
 
 /**
  * 두손누리 Header 1:1 — 6 nav + dropdown sub-nav.
@@ -61,18 +63,26 @@ export function Header() {
   const [hovered, setHovered] = useState<string | null>(null);
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-brand-400">
-      <div className="max-w-[1200px] mx-auto px-5 flex items-center justify-between h-[80px] md:h-[112px]">
-        {/* 로고 */}
-        <Link href="/" className="flex items-center gap-2">
-          <div className="w-10 h-10 rounded-full bg-brand-400 grid place-items-center text-white font-bold text-lg">
-            대
-          </div>
-          <div className="leading-tight">
-            <p className="font-bold text-base md:text-lg text-ink-primary">대전케어</p>
-            <p className="text-xs text-ink-muted">방문요양센터</p>
-          </div>
-        </Link>
+    <>
+      {/* 24시간 상담 띠 */}
+      <div className="bg-[#1B6F4A] text-white text-xs md:text-sm">
+        <div className="max-w-[1200px] mx-auto px-5 py-2 flex items-center justify-between">
+          <p className="flex items-center gap-2">
+            <span className="inline-flex w-5 h-5 rounded-full bg-[#E63946] grid place-items-center text-[10px]">♥</span>
+            <span className="font-medium">{CONTACT.available}</span>
+          </p>
+          <a href={CONTACT.phoneTel} className="font-bold hover:text-[#FFD166] transition-colors">
+            대표번호 {CONTACT.phone}
+          </a>
+        </div>
+      </div>
+
+      <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
+        <div className="max-w-[1200px] mx-auto px-5 flex items-center justify-between h-[80px] md:h-[100px]">
+          {/* 로고 */}
+          <Link href="/" className="flex items-center hover:opacity-90 transition-opacity">
+            <Logo size={48} withText />
+          </Link>
 
         {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center gap-10">
@@ -108,14 +118,15 @@ export function Header() {
           ))}
         </nav>
 
-        {/* CTA */}
-        <Link
-          href="/contact"
-          className="hidden lg:inline-block bg-brand-400 hover:bg-brand-500 text-white px-5 py-2 text-sm font-semibold transition-colors"
+        {/* CTA — 24시간 직통 */}
+        <a
+          href={CONTACT.phoneTel}
+          className="hidden lg:flex items-center gap-2 bg-[#E63946] hover:bg-[#C12A37] text-white px-5 py-2.5 text-sm font-bold transition-colors"
           style={{ borderRadius: '2px' }}
         >
-          무료 상담
-        </Link>
+          <Phone size={16} />
+          {CONTACT.phone}
+        </a>
 
         {/* Mobile menu */}
         <button
@@ -156,17 +167,18 @@ export function Header() {
                 )}
               </div>
             ))}
-            <Link
-              href="/contact"
+            <a
+              href={CONTACT.phoneTel}
               onClick={() => setOpen(false)}
-              className="mt-4 bg-brand-400 text-white text-center py-3 font-semibold"
+              className="mt-4 bg-[#E63946] text-white text-center py-4 font-bold flex items-center justify-center gap-2"
               style={{ borderRadius: '2px' }}
             >
-              무료 상담
-            </Link>
+              <Phone size={16} /> {CONTACT.phone} · 24시간 상담
+            </a>
           </div>
         </nav>
       )}
-    </header>
+      </header>
+    </>
   );
 }
