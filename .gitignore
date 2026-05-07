@@ -62,3 +62,5 @@ playwright-report/
 *.png
 !public/**/*.png
 !components/**/*.png
+
+.vercel
