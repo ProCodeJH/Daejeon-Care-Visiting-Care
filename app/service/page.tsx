@@ -1,0 +1,109 @@
+import { PageHero } from '@/components/PageHero';
+import { SectionBlock } from '@/components/SectionBlock';
+import { CTASection } from '@/components/CTASection';
+
+const SUB_SERVICES = [
+  {
+    icon: '🤝',
+    title: '신체활동 지원',
+    items: ['세면 도움', '구강 관리', '머리 감기기', '몸단장', '옷 갈아입히기', '목욕 도움', '식사 도움', '체위 변경', '이동 도움', '신체기능 유지/증진', '화장실 이용'],
+  },
+  {
+    icon: '🏠',
+    title: '일상생활 지원',
+    items: ['취사', '청소 및 주변정돈', '세탁'],
+  },
+  {
+    icon: '🚶',
+    title: '개인활동 지원',
+    items: ['외출 시 동행', '일상업무 대행 (약국/병원 약 타오기 등)'],
+  },
+  {
+    icon: '💬',
+    title: '정서 지원',
+    items: ['말벗', '격려 및 위로', '생활상담'],
+  },
+];
+
+export default function ServicePage() {
+  return (
+    <>
+      <PageHero
+        title="서비스 소개"
+        sub="어르신의 편안한 노후를 위해 최선을 다하겠습니다"
+        crumbs={[{ label: '센터소개', href: '/about' }, { label: '서비스 소개' }]}
+      />
+
+      {/* 방문요양 정의 */}
+      <section className="bg-white py-20">
+        <div className="max-w-[1000px] mx-auto px-5">
+          <SectionBlock
+            eyebrow="VISIT CARE"
+            title="방문요양이란?"
+            sub={
+              <>
+                요양보호사가 대상의 집을 방문하여 신체활동, 일상생활 및 가사활동을 지원하고
+                <br className="hidden md:inline" />
+                정서적으로 안정을 제공하는 서비스입니다. 하루 3~4시간 동안 진행됩니다.
+              </>
+            }
+          />
+        </div>
+      </section>
+
+      {/* 대상자 */}
+      <section className="bg-[#f8f8f8] py-16">
+        <div className="max-w-[900px] mx-auto px-5">
+          <div className="bg-white p-8 md:p-10 border-l-4 border-brand-400">
+            <p className="text-brand-400 font-semibold tracking-[0.2em] text-sm mb-3">| ELIGIBILITY</p>
+            <h3 className="text-xl md:text-2xl font-bold text-ink-primary mb-4">
+              방문요양 대상자
+            </h3>
+            <p className="text-ink-secondary md:text-lg leading-relaxed">
+              노인장기요양보호법에 따라{' '}
+              <strong className="text-ink-primary">65세 이상의 노인</strong> 및{' '}
+              <strong className="text-ink-primary">65세 미만으로 노인성 질병</strong>을 가진 자가
+              장기요양인정 신청을 하여 국민건강보험공단으로부터{' '}
+              <span className="text-brand-400 font-semibold">'장기요양인정서'</span>를 발급 받으신 분
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 세부 서비스 4개 */}
+      <section className="bg-white py-20">
+        <div className="max-w-[1200px] mx-auto px-5">
+          <SectionBlock
+            eyebrow="DETAIL"
+            title="세부 서비스"
+            sub="어르신 일상의 모든 영역을 함께합니다"
+            className="mb-12"
+          />
+          <div className="grid md:grid-cols-2 gap-5">
+            {SUB_SERVICES.map((s, i) => (
+              <div
+                key={i}
+                className="bg-[#f8f8f8] p-7 hover:bg-brand-50 transition-colors"
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="text-3xl">{s.icon}</span>
+                  <h3 className="text-xl font-bold text-ink-primary">{s.title}</h3>
+                </div>
+                <ul className="space-y-2 text-ink-secondary">
+                  {s.items.map((item, j) => (
+                    <li key={j} className="flex items-start gap-2 text-sm md:text-base">
+                      <span className="text-brand-400 mt-1.5">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <CTASection />
+    </>
+  );
+}
