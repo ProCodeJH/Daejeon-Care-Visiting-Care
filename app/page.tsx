@@ -2,6 +2,8 @@
 
 import { HeroCarousel } from '@/components/HeroCarousel';
 import { Reveal } from '@/components/Reveal';
+import { TiltCard } from '@/components/TiltCard';
+import { MagneticButton } from '@/components/MagneticButton';
 
 /**
  * 두손누리 home 1:1 layout (Playwright 측정 기반):
@@ -81,13 +83,14 @@ export default function Home() {
               { title: '방문목욕', desc: '존엄을 지키는 목욕 케어' },
               { title: '방문간호', desc: '의료 케어가 일상 안으로' },
             ].map((s, i) => (
-              <Reveal
-                key={s.title}
-                delay={i * 0.08}
-                className="bg-gray-50 hover:bg-brand-50 transition-colors p-8 text-center border-t-2 border-brand-400"
-              >
-                <h3 className="text-xl font-bold text-ink-primary mb-2">{s.title}</h3>
-                <p className="text-sm text-ink-muted">{s.desc}</p>
+              <Reveal key={s.title} delay={i * 0.08}>
+                <TiltCard
+                  intensity={1.5}
+                  className="glass hover:bg-brand-50/80 transition-colors p-8 text-center border-t-2 border-brand-400"
+                >
+                  <h3 className="text-xl font-bold text-ink-primary mb-2">{s.title}</h3>
+                  <p className="text-sm text-ink-muted">{s.desc}</p>
+                </TiltCard>
               </Reveal>
             ))}
           </div>
@@ -135,21 +138,21 @@ export default function Home() {
           <p className="text-lg md:text-xl text-ink-secondary mb-8">
             부모님의 손발이 되어드리겠습니다
           </p>
-          <div className="flex justify-center gap-3">
-            <a
+          <div className="flex justify-center gap-3 flex-wrap">
+            <MagneticButton
               href="/contact"
-              className="bg-brand-400 hover:bg-brand-500 text-white px-8 py-3.5 font-semibold transition-colors"
-              style={{ borderRadius: '2px' }}
+              className="block bg-brand-600 hover:bg-brand-700 text-white px-8 py-3.5 font-semibold transition-colors"
+              ariaLabel="무료 상담 신청"
             >
-              무료 상담 신청
-            </a>
-            <a
+              <span style={{ borderRadius: '2px' }}>무료 상담 신청</span>
+            </MagneticButton>
+            <MagneticButton
               href="tel:042-369-0326"
-              className="bg-white border border-brand-400 hover:bg-brand-50 text-brand-400 px-8 py-3.5 font-semibold transition-colors"
-              style={{ borderRadius: '2px' }}
+              className="block bg-[#E63946] hover:bg-[#C12A37] text-white px-8 py-3.5 font-bold transition-colors"
+              ariaLabel="전화 상담 042-369-0326"
             >
-              전화 상담
-            </a>
+              ☎ 042-369-0326
+            </MagneticButton>
           </div>
         </div>
       </section>

@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { Menu, X, ChevronDown, Phone } from 'lucide-react';
 import { Logo } from './Logo';
@@ -62,9 +62,18 @@ const NAV = [
 export function Header() {
   const [open, setOpen] = useState(false);
   const [hovered, setHovered] = useState<string | null>(null);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const isActive = (href: string) =>
     pathname === href || (href !== '/' && pathname.startsWith(href));
+
+  // scroll-driven glass — Header backdrop-blur scroll 시 진해짐
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   return (
     <>
@@ -81,8 +90,18 @@ export function Header() {
         </div>
       </div>
 
-      <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
-        <div className="max-w-[1200px] mx-auto px-5 flex items-center justify-between h-[80px] md:h-[100px]">
+      <header
+        className={`sticky top-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? 'bg-white/85 backdrop-blur-xl border-b border-gray-200 shadow-sm'
+            : 'bg-white/95 backdrop-blur-md border-b border-gray-100'
+        }`}
+      >
+        <div
+          className={`max-w-[1200px] mx-auto px-5 flex items-center justify-between transition-all duration-300 ${
+            scrolled ? 'h-[64px] md:h-[80px]' : 'h-[80px] md:h-[100px]'
+          }`}
+        >
           {/* 로고 */}
           <Link href="/" className="flex items-center hover:opacity-90 transition-opacity">
             <Logo size={48} withText />
