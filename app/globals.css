@@ -125,6 +125,45 @@
   }
 }
 
+@layer components {
+  /* Hero h1 mask-image dissolve — 텍스트가 좌→우로 부드럽게 등장 */
+  .hero-title-mask {
+    mask-image: linear-gradient(110deg, #000 0%, #000 60%, transparent 95%);
+    -webkit-mask-image: linear-gradient(110deg, #000 0%, #000 60%, transparent 95%);
+    mask-size: 200% 100%;
+    -webkit-mask-size: 200% 100%;
+    mask-position: 100% 0%;
+    -webkit-mask-position: 100% 0%;
+    animation: heroMaskReveal 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  @keyframes heroMaskReveal {
+    from { mask-position: 100% 0%; -webkit-mask-position: 100% 0%; }
+    to { mask-position: 0% 0%; -webkit-mask-position: 0% 0%; }
+  }
+
+  /* Hero CTA — variable font wght hover transition (subtle) */
+  .hero-cta {
+    font-variation-settings: 'wght' 600;
+    transition: font-variation-settings 350ms ease, transform 280ms cubic-bezier(0.22, 1, 0.36, 1), background-color 200ms;
+  }
+  .hero-cta:hover {
+    font-variation-settings: 'wght' 800;
+    transform: translateY(-1px);
+  }
+
+  /* prefers-reduced-motion — mask 즉시 보이기 */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-title-mask {
+      animation: none;
+      mask-position: 0% 0%;
+      -webkit-mask-position: 0% 0%;
+    }
+    .hero-cta:hover {
+      transform: none;
+    }
+  }
+}
+
 @layer utilities {
   /* gradient text — 절제된 정체성 색 (Hero h1 등 강조 시) */
   .gradient-identity {
