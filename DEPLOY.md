@@ -1,0 +1,114 @@
+# 배포 가이드 — 대전케어 방문요양센터
+
+자현이 5분에 끝낼 수 있는 단계별 가이드. Vercel + 대전케어방문요양.kr 도메인.
+
+---
+
+## 🚀 Step 1 — Vercel 배포 (5분)
+
+### 권장: GitHub 자동 연결 (운영 best)
+
+1. **https://vercel.com/new** 접속 (자현 `procodejh` 계정 로그인 상태)
+2. **"Import Git Repository"** → `ProCodeJH/Daejeon-Care-Visiting-Care` 선택
+3. Project Name: `daejeon-care` (또는 자유) → **Deploy** 클릭
+4. ~2분 후 `https://daejeon-care.vercel.app` 같은 URL 발급
+5. **이후 commit push 하면 자동 배포** (GitHub Actions 불필요)
+
+**왜 이 방법이 최선?**
+- ✅ 매 commit 자동 build + deploy (운영 무신경)
+- ✅ PR preview deployment 자동 발급
+- ✅ 1-click rollback (실수 시 즉시 복구)
+- ✅ 무료 (월 100GB bandwidth + 100 deployments)
+
+### 대안: CLI 직접 배포
+
+```bash
+cd web-v3
+npx vercel deploy --prod
+# 첫 실행 = project 생성 / 이후 = 즉시 prod 배포
+```
+
+---
+
+## 🌐 Step 2 — 대전케어방문요양.kr 도메인 (15분)
+
+### 도메인 구매 (자현이 직접)
+
+**한글 .kr 도메인 추천 사업자**:
+- **가비아** (https://www.gabia.com) — 가장 대중적, 연 ~22,000원
+- **후이즈** (https://whois.co.kr) — 안정적
+- **카페24** (https://hosting.cafe24.com) — 호스팅 함께 시 할인
+
+검색: `대전케어방문요양.kr` → 결제 (연 단위).
+
+### Vercel에 도메인 추가
+
+1. Vercel dashboard → Project `daejeon-care` → **Settings** → **Domains**
+2. **Add Domain** → `대전케어방문요양.kr` 입력 → Add
+3. Vercel이 안내하는 DNS 레코드 2개 복사:
+   ```
+   A    @    76.76.21.21
+   CNAME www  cname.vercel-dns.com
+   ```
+
+### 도메인 사업자 DNS 설정
+
+(가비아 기준)
+1. 가비아 → My가비아 → 도메인 → 대전케어방문요양.kr → **DNS 정보** → **DNS 관리**
+2. 위에서 복사한 레코드 2개 등록
+3. ~10분~1시간 propagation 대기
+4. Vercel dashboard에서 자동 verify → SSL 자동 발급 (Let's Encrypt)
+
+**완료** → `https://대전케어방문요양.kr` 작동.
+
+---
+
+## 🔄 운영 (이후)
+
+### 콘텐츠 수정 후 배포
+
+```bash
+cd web-v3
+# 1. 텍스트/이미지 swap (lib/contact.ts, app/page.tsx 등)
+# 2. 로컬 확인
+npm run dev   # http://localhost:3012
+
+# 3. commit + push
+git add .
+git commit -m "update: 콘텐츠 수정"
+git push   # → Vercel 자동 배포 (~2분)
+```
+
+### 자현 편집 위치 (10곳)
+
+| 편집 대상 | 파일 |
+|---|---|
+| 대표번호 / 24시간 / 이메일 / 주소 | `lib/contact.ts` |
+| Hero 카피 / BG 이미지 | `components/HeroCarousel.tsx` SLIDES |
+| 후기 / 블로그 / FAQ | `app/page.tsx` REVIEWS / BLOGS / FAQS |
+| 6 nav 메뉴 + sub-nav | `components/Header.tsx` NAV |
+| 회사 정보 (사업자번호 등) | `components/Footer.tsx` + `lib/contact.ts` |
+| YouTube 영상 ID | `app/page.tsx` VIDEO_ID |
+| 본인부담금 한도액 (연도별 갱신) | `app/insurance/cost/page.tsx` MONTHLY_LIMITS |
+| 등급 정보 | `app/insurance/grade/page.tsx` GRADES |
+| 채용 정보 | `app/jobs/page.tsx` BENEFITS / REQUIREMENTS |
+| 공지사항 / 게시글 | `app/notice/page.tsx` NOTICES / `app/story/page.tsx` POSTS |
+
+---
+
+## 🛠 추가 작업 가능
+
+- [ ] Sanity CMS 연결 (자현이 GUI로 콘텐츠 편집, 개발자 없이)
+- [ ] 카카오 지도 embed (`/map` 페이지 실제 위치)
+- [ ] 카카오 채널톡 위젯 (24시간 상담 강화)
+- [ ] Google Search Console 등록 (SEO 노출 추적)
+- [ ] 네이버 웹마스터 등록 (네이버 검색 노출)
+- [ ] 카카오 비즈니스 등록 (지도 검색 노출)
+
+각 항목 자현 명령 시 진행.
+
+---
+
+## 📞 문제 시
+
+배포 실패 / DNS 미작동 / 빌드 에러 등 → 자현이 명령 주면 즉시 fix.
