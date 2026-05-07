@@ -5,16 +5,40 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { SmoothScroll } from '@/components/SmoothScroll';
 import { ScrollProgress } from '@/components/ScrollProgress';
+import { WebVitals } from '@/components/WebVitals';
+
+const SITE = 'https://대전케어방문요양.kr';
 
 export const metadata: Metadata = {
-  title: '대전케어 방문요양센터 — 24시간 상담 042-369-0326',
+  metadataBase: new URL(SITE),
+  title: {
+    default: '대전케어 방문요양센터 — 24시간 상담 042-369-0326',
+    template: '%s | 대전케어 방문요양센터',
+  },
   description:
-    '대전 5구 통합 방문요양센터. 어르신 댁으로 직접 찾아가는 케어 — 방문요양·방문목욕·방문간호. 24시간 상담 가능.',
-  keywords: ['대전 방문요양', '방문요양센터', '재가복지', '장기요양', '대전케어', '요양보호사', '대전 노인 케어'],
+    '대전 5구 통합 방문요양센터. 어르신 댁으로 직접 찾아가는 케어 — 방문요양·방문목욕·방문간호. 24시간 상담 가능 042-369-0326.',
+  keywords: [
+    '대전 방문요양',
+    '대전케어',
+    '방문요양센터',
+    '재가복지',
+    '장기요양',
+    '요양보호사',
+    '대전 노인 케어',
+    '대전 방문목욕',
+    '대전 방문간호',
+    '장기요양등급',
+    '본인부담금 계산기',
+  ],
   authors: [{ name: '대전케어 방문요양센터' }],
+  applicationName: '대전케어 방문요양센터',
+  creator: '대전케어 방문요양센터',
+  publisher: '대전케어 방문요양센터',
+  formatDetection: { telephone: true, address: true, email: true },
   openGraph: {
     title: '대전케어 방문요양센터',
     description: '대전 5구 통합 방문요양 — 24시간 상담 가능 042-369-0326',
+    url: SITE,
     locale: 'ko_KR',
     type: 'website',
     siteName: '대전케어 방문요양센터',
@@ -24,7 +48,33 @@ export const metadata: Metadata = {
     title: '대전케어 방문요양센터',
     description: '24시간 상담 가능 — 042-369-0326',
   },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-snippet': -1,
+      'max-image-preview': 'large',
+      'max-video-preview': -1,
+    },
+  },
+  verification: {
+    // 자현이 Search Console / 네이버 웹마스터 코드 등록 시 채움
+    // google: 'XXXXXXXXXX',
+    // other: { 'naver-site-verification': 'XXXXXXXXXX' },
+  },
+  alternates: {
+    canonical: SITE,
+  },
+  category: 'health',
+};
+
+export const viewport = {
+  themeColor: '#1B6F4A', // 자현 정체성 그린
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
@@ -62,6 +112,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         </a>
         <SmoothScroll />
         <ScrollProgress />
+        <WebVitals />
         <Header />
         <main id="main-content">{children}</main>
         <Footer />
