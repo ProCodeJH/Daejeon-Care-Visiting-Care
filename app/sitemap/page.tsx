@@ -165,10 +165,17 @@ export default function SitemapPage() {
               </Link>
             ))}
           </div>
+          {/* Wave 458: <Link> → <a target="_blank"> — /sitemap.xml은 metadata route (page.tsx 없음).
+           * SPA client-side routing 동작 미정의. raw <a>로 새 탭 (현재 페이지 보존) + WCAG G201 새 창 경고. */}
           <p className="text-center text-xs text-ink-muted mt-6">
-            <Link href="/sitemap.xml" className="hover:text-brand-600 underline-offset-4 hover:underline">
-              XML sitemap (검색엔진용) →
-            </Link>
+            <a
+              href="/sitemap.xml"
+              target="_blank"
+              rel="noopener"
+              className="hover:text-brand-600 underline-offset-4 hover:underline"
+            >
+              XML sitemap (검색엔진용) →<span className="sr-only">(새 창에서 열림)</span>
+            </a>
           </p>
         </div>
       </section>
