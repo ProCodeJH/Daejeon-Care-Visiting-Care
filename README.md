@@ -1,6 +1,6 @@
 # 대전케어 방문요양센터
 
-대전 5구 통합 방문요양센터 운영 사이트. **두손누리 디자인을 1:1 React로 재현 + 50+ Wave 자율 폴리시 + Vercel 자동 배포 + 한국 법적 compliance + 정체성 6-way pulse paradigm**.
+대전 5구 통합 방문요양센터 운영 사이트. **두손누리 디자인을 1:1 React로 재현 + 75+ Wave 자율 폴리시 + production hardening (print/PWA shortcuts/error 3-layer/high-contrast a11y) + Voice Assistant 음성 안내 (Speakable schema) + Web Share API (KakaoTalk 단톡 공유) + JSON-LD 7종 + 정체성 6-way pulse paradigm + Vercel 자동 배포 + 한국 법적 compliance**.
 
 > **Production**: https://대전케어방문요양.kr  
 > **대표번호**: 042-369-0326 (24시간 상담 가능)  
@@ -186,6 +186,29 @@ git add . && git commit -m "update: 새 FAQ" && git push
 ## 📝 라이선스
 
 자현 (ProCodeJH) 운영. 외부 사용 시 문의.
+
+---
+
+## 🆕 Wave 54-76 확장 sub-chain (2026-05-08 자율)
+
+**Cross-page paradigm 9 페이지 saturation** (Wave 54-63): /about · /service · /process · /insurance · /jobs · /info · /faq · /centers · /map 모두 "다음 단계 추천" 섹션 — 사용자 흐름 + SEO internal linking.
+
+**Production hardening** (Wave 64-68):
+- /jobs/apply post-conversion retention (submitted 상태에만 About + Story 추천)
+- Print stylesheet (가족 출력 → 어르신과 상의)
+- PWA manifest production-grade (long-press shortcuts: 비용 / 지점 / 문의)
+- Error 3-layer (404 + error.tsx + global-error.tsx)
+- High contrast a11y (저시력 어르신 — `prefers-contrast: more` + `forced-colors: active`)
+
+**Voice + Share + Schema** (Wave 70-76):
+- Speakable JSON-LD (Google Voice Assistant / Naver Clova / Siri 음성 읽기) — h1 + `[data-speakable]`
+- Web Share API (모바일 네이티브 share sheet → KakaoTalk 단톡)
+- 단일 h1 paradigm fix (story/notice detail SEO+a11y)
+- Article JSON-LD (BlogPosting 6 + NewsArticle 5)
+- Speculation rules 12 페이지 prerender
+- /insurance/cost 결과 ShareButton (가족 단톡에 본인부담금 즉시 공유)
+
+**JSON-LD 7종**: MedicalBusiness · WebSite · BreadcrumbList · FAQPage · HowTo · Speakable · Article.
 
 ---
 
