@@ -22,8 +22,10 @@ export function SectionBlock({
   const al = align === 'center' ? 'text-center' : 'text-left';
   return (
     <div className={`${al} ${className}`}>
+      {/* Wave 371: WCAG 3.1.2 Language of Parts (Level AA) — eyebrow는 모든 페이지에서 영어 라벨.
+          한국어 screen reader가 영어 발음 규칙으로 읽도록 lang="en" 명시. */}
       {eyebrow && (
-        <p className="text-brand-400 font-semibold tracking-[0.2em] text-sm mb-3">
+        <p lang="en" className="text-brand-400 font-semibold tracking-[0.2em] text-sm mb-3">
           | {eyebrow}
         </p>
       )}
