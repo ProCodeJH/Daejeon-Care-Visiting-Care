@@ -66,7 +66,7 @@ export default function NoticePage() {
               {filtered.map((n) => (
                 <tr
                   key={n.id}
-                  className="border-b border-gray-100 hover:bg-brand-50 transition-colors cursor-pointer"
+                  className="border-b border-gray-100 hover:bg-brand-50 transition-colors"
                 >
                   <td className="py-4 text-center text-sm text-ink-muted">
                     {n.pinned ? (

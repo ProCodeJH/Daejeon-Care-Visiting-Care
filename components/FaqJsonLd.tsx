@@ -21,7 +21,7 @@ export function FaqJsonLd({ faqs }: { faqs: Faq[] }) {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonld) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonld).replace(/</g, '\\u003c') }}
     />
   );
 }
