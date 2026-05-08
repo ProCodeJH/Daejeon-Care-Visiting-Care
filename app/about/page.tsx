@@ -119,7 +119,7 @@ export default function AboutPage() {
             </div>
             <div className="text-center">
               <p className="text-4xl md:text-5xl font-extrabold text-[#1B6F4A] mb-2 tabular-nums">
-                <StatsCounter value={90} suffix="+명" />
+                <StatsCounter value={CONTACT.managerCount} suffix="+명" />
               </p>
               <p className="text-sm text-ink-muted font-medium">자격 매니저</p>
             </div>

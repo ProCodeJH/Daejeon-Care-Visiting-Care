@@ -76,7 +76,7 @@ export default function Home() {
           </Reveal>
           <Reveal delay={0.2} className="text-center">
             <p className="text-3xl md:text-4xl font-extrabold text-[#1B6F4A] mb-1 tabular-nums">
-              <StatsCounter value={90} suffix="+명" />
+              <StatsCounter value={CONTACT.managerCount} suffix="+명" />
             </p>
             <p className="text-xs md:text-sm text-ink-muted font-medium">자격 매니저</p>
           </Reveal>
