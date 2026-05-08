@@ -72,10 +72,11 @@ export default function CentersPage() {
                     </div>
                   </div>
 
-                  <p className="text-sm text-ink-secondary mb-4 flex items-start gap-2">
+                  {/* Wave 381: <address> semantic — 각 center가 <article>이므로 이 안의 address는 그 center의 contact info (HTML5 정확) */}
+                  <address className="not-italic text-sm text-ink-secondary mb-4 flex items-start gap-2">
                     <MapPin size={14} className="text-brand-600 mt-0.5 shrink-0" />
                     <span>{c.address}</span>
-                  </p>
+                  </address>
 
                   <ul className="text-sm text-ink-secondary space-y-1.5 mb-5 border-t border-gray-100 pt-4">
                     {c.features.map((f, j) => (
