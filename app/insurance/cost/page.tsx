@@ -164,7 +164,8 @@ export default function CostPage() {
               <strong className="text-brand-600">{RATES[rateKey].label}</strong>
             </p>
 
-            <div className="grid md:grid-cols-3 gap-5">
+            {/* Wave 299: <output> semantic — form result identification (screen reader 정확 announce). */}
+            <output className="grid md:grid-cols-3 gap-5" aria-label="본인부담금 계산 결과">
               <div className="bg-white p-6 tabular-nums">
                 <p className="text-xs text-ink-muted mb-2">월 한도액</p>
                 <p className="text-2xl font-bold text-ink-primary">
@@ -183,7 +184,7 @@ export default function CostPage() {
                   <AnimatedNumber value={result.userPay} suffix="원" />
                 </p>
               </div>
-            </div>
+            </output>
 
             <p className="text-xs text-ink-muted mt-5">
               * 위 금액은 2026년 기준 표준 산정액 (참고용). 실제 본인부담액은 이용 시간·서비스 종류·소득 수준에 따라 달라질 수 있습니다.
