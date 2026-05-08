@@ -12,13 +12,22 @@ const SECURITY_HEADERS = [
   { key: 'X-Content-Type-Options', value: 'nosniff' },
   // referrer 정보 최소화 (사용자 privacy + 외부 사이트로 path/query 전달 X)
   { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
-  // 불필요 브라우저 기능 권한 차단 (senior care 사이트 = 카메라/마이크/지오 X)
+  // 불필요 브라우저 기능 권한 차단 (senior care 사이트 = 모든 sensor/device API 비필요).
+  // Wave 309: 13개 추가 directives saturation. web-share만 self (Wave 72 ShareButton 사용).
   {
     key: 'Permissions-Policy',
-    value: 'camera=(), microphone=(), geolocation=(), interest-cohort=(), browsing-topics=()',
+    value:
+      'camera=(), microphone=(), geolocation=(), interest-cohort=(), browsing-topics=(), ' +
+      'payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=(), ' +
+      'picture-in-picture=(), display-capture=(), xr-spatial-tracking=(), ' +
+      'clipboard-read=(), clipboard-write=(self), screen-wake-lock=(), ' +
+      'bluetooth=(), serial=(), hid=(), idle-detection=(), autoplay=(), web-share=(self)',
   },
   // DNS prefetch 활성 (속도)
   { key: 'X-DNS-Prefetch-Control', value: 'on' },
+  // Wave 309: COOP — cross-origin window 분리 (Spectre/Meltdown 방어 강화).
+  // same-origin = window.opener cross-origin 접근 차단 = security ↑.
+  { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
 ];
 
 const nextConfig: NextConfig = {
