@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
+import Link from 'next/link';
 import { X } from 'lucide-react';
 
 /**
@@ -61,9 +62,10 @@ export function PrivacyDialog() {
         </ul>
         <p className="text-xs text-ink-muted mb-4">
           전체 처리방침은{' '}
-          <a href="/privacy" className="text-brand-600 underline">
+          {/* Wave 455: <a> → <Link> — SPA routing + prefetch */}
+          <Link href="/privacy" className="text-brand-600 underline">
             개인정보처리방침
-          </a>
+          </Link>
           에서 확인하실 수 있습니다.
         </p>
         {/* Wave 446: autoFocus — modal open 시 first focus를 confirm 버튼으로.

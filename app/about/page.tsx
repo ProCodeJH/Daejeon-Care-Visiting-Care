@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { PageHero } from '@/components/PageHero';
 import { CONTACT } from '@/lib/contact';
 
@@ -156,7 +157,8 @@ export default function AboutPage() {
           </dl>
           {/* Wave 366: <small> = footnote/disclaimer semantic */}
           <small className="block text-center text-xs text-ink-muted mt-6">
-            ※ 정확한 등록번호는 <a href="/contact" className="text-brand-600 hover:underline">상담 문의</a>로 확인 가능합니다.
+            {/* Wave 455: <a> → <Link> — SPA routing + prefetch */}
+            ※ 정확한 등록번호는 <Link href="/contact" className="text-brand-600 hover:underline">상담 문의</Link>로 확인 가능합니다.
           </small>
         </div>
       </section>

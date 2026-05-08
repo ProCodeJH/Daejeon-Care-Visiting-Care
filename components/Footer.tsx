@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Logo } from './Logo';
 import { CONTACT, SNS } from '@/lib/contact';
 import { Phone, Clock, Mail, Instagram, Youtube, Facebook, MessageCircle, MapPin } from 'lucide-react';
@@ -149,9 +150,10 @@ export function Footer() {
           </small>
           {/* Wave 364: <nav> = navigation landmark for 법적 정보 + 사이트맵 (3 cross-page links 그룹) */}
           <nav aria-label="법적 정보 및 사이트맵" className="flex items-center gap-4 text-xs text-ink-muted">
-            <a href="/privacy" className="hover:text-[#1B6F4A]">개인정보처리방침</a>
-            <a href="/terms" className="hover:text-[#1B6F4A]">이용약관</a>
-            <a href="/sitemap" className="hover:text-[#1B6F4A]">사이트맵</a>
+            {/* Wave 455: <a> → <Link> — Lenis smooth scroll + View Transitions + prefetch 활성 */}
+            <Link href="/privacy" className="hover:text-[#1B6F4A]">개인정보처리방침</Link>
+            <Link href="/terms" className="hover:text-[#1B6F4A]">이용약관</Link>
+            <Link href="/sitemap" className="hover:text-[#1B6F4A]">사이트맵</Link>
           </nav>
         </div>
       </div>

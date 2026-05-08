@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { SplitText } from './SplitText';
 import { BreadcrumbJsonLd } from './BreadcrumbJsonLd';
 
@@ -47,12 +48,13 @@ export function PageHero({
           <nav className="text-xs md:text-sm opacity-80 mb-3" aria-label="breadcrumb">
             {/* Wave 303: <ol>+<li> W3C ARIA Authoring Practices breadcrumb pattern. */}
             <ol className="list-none p-0 m-0 flex items-center justify-center gap-2 flex-wrap">
-              <li><a href="/" className="hover:opacity-100">홈</a></li>
+              {/* Wave 455: <a> → <Link> — Lenis smooth scroll + prefetch */}
+              <li><Link href="/" className="hover:opacity-100">홈</Link></li>
               {crumbs.map((c, i) => (
                 <li key={i} className="flex items-center gap-2">
                   <span aria-hidden="true" className="opacity-60">›</span>
                   {c.href ? (
-                    <a href={c.href} className="hover:opacity-100">{c.label}</a>
+                    <Link href={c.href} className="hover:opacity-100">{c.label}</Link>
                   ) : (
                     <span className="font-medium" aria-current="page">{c.label}</span>
                   )}
