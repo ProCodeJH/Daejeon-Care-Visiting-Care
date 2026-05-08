@@ -100,14 +100,15 @@ export default function JobsPage() {
             title="지원 자격"
             className="mb-12"
           />
-          <div className="grid md:grid-cols-2 gap-4">
-            {REQUIREMENTS.map((r, i) => (
-              <div key={i} className="bg-[#f8f8f8] p-6 border-l-4 border-brand-400">
-                <h3 className="font-bold text-ink-primary mb-2 text-lg">{r.title}</h3>
-                <p className="text-ink-secondary">{r.desc}</p>
+          {/* Wave 356: <dl> description list — 자격/경력/근무지/근무시간 key-value 그룹 (HTML 5.2+ div 그룹핑 허용) */}
+          <dl className="grid md:grid-cols-2 gap-4 m-0">
+            {REQUIREMENTS.map((r) => (
+              <div key={r.title} className="bg-[#f8f8f8] p-6 border-l-4 border-brand-400">
+                <dt className="font-bold text-ink-primary mb-2 text-lg">{r.title}</dt>
+                <dd className="text-ink-secondary m-0">{r.desc}</dd>
               </div>
             ))}
-          </div>
+          </dl>
         </div>
       </section>
 

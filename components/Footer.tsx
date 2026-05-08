@@ -85,15 +85,28 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* 사업자 정보 — HTML5 <address> semantic (site-wide contact info, Footer 자손) */}
+          {/* 사업자 정보 — HTML5 <address> semantic (site-wide contact info, Footer 자손).
+              Wave 356: <dl> description list로 키-값 구조 표현 (주소/대표자/사업자등록번호/지정번호) */}
           <address className="not-italic">
             <p className="font-bold text-ink-primary mb-3">기관 정보</p>
-            <ul className="space-y-2 text-sm text-ink-secondary">
-              <li>주소: {CONTACT.address}</li>
-              <li>대표자: {CONTACT.representative}</li>
-              <li>사업자등록번호: {CONTACT.bizNumber}</li>
-              <li>장기요양기관 지정번호: {CONTACT.careNumber}</li>
-            </ul>
+            <dl className="space-y-2 text-sm text-ink-secondary m-0">
+              <div className="flex gap-1.5">
+                <dt className="shrink-0">주소:</dt>
+                <dd className="m-0">{CONTACT.address}</dd>
+              </div>
+              <div className="flex gap-1.5">
+                <dt className="shrink-0">대표자:</dt>
+                <dd className="m-0">{CONTACT.representative}</dd>
+              </div>
+              <div className="flex gap-1.5">
+                <dt className="shrink-0">사업자등록번호:</dt>
+                <dd className="m-0">{CONTACT.bizNumber}</dd>
+              </div>
+              <div className="flex gap-1.5">
+                <dt className="shrink-0">장기요양기관 지정번호:</dt>
+                <dd className="m-0">{CONTACT.careNumber}</dd>
+              </div>
+            </dl>
           </address>
         </div>
 
