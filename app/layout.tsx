@@ -6,6 +6,8 @@ import { Footer } from '@/components/Footer';
 import { SmoothScroll } from '@/components/SmoothScroll';
 import { ScrollProgress } from '@/components/ScrollProgress';
 import { WebVitals } from '@/components/WebVitals';
+import { StructuredData } from '@/components/StructuredData';
+import { FloatingCallButton } from '@/components/FloatingCallButton';
 
 const SITE = 'https://대전케어방문요양.kr';
 
@@ -109,11 +111,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         >
           본문으로 건너뛰기
         </a>
+        <StructuredData />
         <SmoothScroll />
         <ScrollProgress />
         <WebVitals />
         <Header />
         <main id="main-content">{children}</main>
+        <FloatingCallButton />
         <Footer />
       </body>
     </html>
