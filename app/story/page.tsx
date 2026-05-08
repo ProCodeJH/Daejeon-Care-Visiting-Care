@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { PageHero } from '@/components/PageHero';
 import { CTASection } from '@/components/CTASection';
 import { STORIES as POSTS } from '@/content/stories';
@@ -9,6 +9,25 @@ const CATEGORIES = ['전체', '대전케어 이야기', '대전케어 일상', '
 
 export default function StoryPage() {
   const [activeCat, setActiveCat] = useState('전체');
+
+  // Wave 395: URL deep-link (Wave 369 패턴 saturation pass) — 카테고리 공유
+  useEffect(() => {
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlCat = urlParams.get('cat');
+      if (urlCat && CATEGORIES.includes(urlCat)) setActiveCat(urlCat);
+    } catch {}
+  }, []);
+
+  useEffect(() => {
+    try {
+      const newUrl =
+        activeCat === '전체'
+          ? window.location.pathname
+          : `${window.location.pathname}?cat=${encodeURIComponent(activeCat)}`;
+      window.history.replaceState(null, '', newUrl);
+    } catch {}
+  }, [activeCat]);
 
   const filtered = activeCat === '전체' ? POSTS : POSTS.filter((p) => p.cat === activeCat);
 
@@ -47,6 +66,12 @@ export default function StoryPage() {
       {/* 게시글 그리드 */}
       <section className="bg-white py-16">
         <div className="max-w-[1200px] mx-auto px-5">
+          {/* Wave 395: WCAG 4.1.3 aria-live status (Wave 367 패턴 saturation pass) */}
+          <div aria-live="polite" aria-atomic="true" className="sr-only">
+            {activeCat === '전체'
+              ? `전체 ${POSTS.length}건의 이야기`
+              : `${activeCat} 카테고리 ${filtered.length}건의 이야기`}
+          </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {filtered.map((p) => (
               <a
