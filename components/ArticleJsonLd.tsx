@@ -44,7 +44,8 @@ export function ArticleJsonLd({
       '@id': ORG_ID,
       logo: {
         '@type': 'ImageObject',
-        url: `${SITE}/icon`,
+        // Wave 474: Wave 444 saturation 누락 catch — generateImageMetadata 후 /icon 무효, /icon/large (512×512) 정확
+        url: `${SITE}/icon/large`,
       },
     },
     mainEntityOfPage: {
