@@ -23,6 +23,7 @@ export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
   const [restored, setRestored] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
 
   // 복원 + Wave 380 banner 트리거
   useEffect(() => {
@@ -77,6 +78,14 @@ export default function ContactPage() {
     try {
       localStorage.removeItem(STORAGE_KEY);
     } catch {}
+    // Wave 425: 성공 메시지 viewport 상단 스크롤 (UX feedback)
+    setTimeout(() => {
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      sectionRef.current?.scrollIntoView({
+        behavior: reduced ? 'auto' : 'smooth',
+        block: 'start',
+      });
+    }, 50);
   };
 
   return (
@@ -87,8 +96,8 @@ export default function ContactPage() {
         crumbs={[{ label: '고객센터', href: '/contact' }, { label: '문의 / 상담' }]}
       />
 
-      {/* 문의 폼 + 정보 */}
-      <section className="bg-white py-16">
+      {/* 문의 폼 + 정보. Wave 425: ref for scroll-to-top after submit success */}
+      <section ref={sectionRef} className="bg-white py-16">
         <div className="max-w-[1200px] mx-auto px-5 grid md:grid-cols-2 gap-10">
           {/* 왼쪽: 정보 */}
           <div>

@@ -29,6 +29,7 @@ export default function JobApplyPage() {
   const [submitted, setSubmitted] = useState(false);
   const [restored, setRestored] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
 
   // 복원 (mount): localStorage → form fields. 복원 성공 시 banner 표시 (Wave 380).
   useEffect(() => {
@@ -109,6 +110,14 @@ export default function JobApplyPage() {
     try {
       localStorage.removeItem(STORAGE_KEY);
     } catch {}
+    // Wave 425: 성공 메시지가 viewport 상단에 보이도록 스크롤 (senior care UX feedback)
+    setTimeout(() => {
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      sectionRef.current?.scrollIntoView({
+        behavior: reduced ? 'auto' : 'smooth',
+        block: 'start',
+      });
+    }, 50);
   };
 
   return (
@@ -133,8 +142,8 @@ export default function JobApplyPage() {
         </div>
       </section>
 
-      {/* 지원 폼 */}
-      <section className="bg-[#f8f8f8] py-12 pb-20">
+      {/* 지원 폼. Wave 425: ref for scroll-to-top after submit success */}
+      <section ref={sectionRef} className="bg-[#f8f8f8] py-12 pb-20">
         <div className="max-w-[800px] mx-auto px-5">
           {/* Wave 391: <noscript> fallback — 폼 autosave + submit JS 의존, phone CTA 안내 */}
           <noscript>
