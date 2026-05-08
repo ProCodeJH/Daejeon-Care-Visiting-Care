@@ -22,13 +22,12 @@ export default function PrivacyPage() {
 
       <article className="bg-white py-16">
         <div className="max-w-[800px] mx-auto px-5 prose prose-lg">
-          {/* Wave 394: <time> semantic 시행일 + 최종 수정 (Wave 393 패턴) */}
+          {/* Wave 394: <time> semantic 시행일 + 최종 수정 (Wave 393 패턴)
+           * Wave 457: 최종 수정 하드코딩 — build time 자동 갱신 시 매 deploy 마다 "수정"으로 오인 (사용자 신뢰 위반).
+           * privacy policy 실제 변경 시점은 법적 의미 가짐 — 자현 정책 변경 시 명시 update. */}
           <p className="text-sm text-ink-muted mb-10">
             시행일: <time dateTime="2026-05-08">2026년 5월 8일</time>
-            {' · '}최종 수정:{' '}
-            <time dateTime={new Date().toISOString().split('T')[0]}>
-              {new Date().toLocaleDateString('ko-KR')}
-            </time>
+            {' · '}최종 수정: <time dateTime="2026-05-08">2026년 5월 8일</time>
           </p>
 
           <Section title="1. 개인정보의 처리 목적">
