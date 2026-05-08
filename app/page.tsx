@@ -271,7 +271,8 @@ export default function Home() {
                 <div className="flex items-center justify-between text-xs">
                   <div>
                     <span className="font-semibold text-brand-400">- {r.author}</span>
-                    <time dateTime={r.date.replace('.', '-')} className="text-ink-muted text-[11px] mt-0.5 block">{r.date}</time>
+                    {/* Wave 476: replaceAll — 자현이 미래 day 추가 시 (YYYY.MM.DD) 정확 ISO 변환 (replace는 first only) */}
+                    <time dateTime={r.date.replaceAll('.', '-')} className="text-ink-muted text-[11px] mt-0.5 block">{r.date}</time>
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="bg-brand-50 text-brand-600 px-2 py-0.5 font-medium" style={{ borderRadius: '2px' }}>
