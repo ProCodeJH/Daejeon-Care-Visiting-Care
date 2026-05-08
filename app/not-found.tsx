@@ -22,7 +22,8 @@ export default function NotFound() {
       <div className="text-center max-w-xl">
         {/* Wave 392: lang="en" 영어 발음 정확 (TTS) */}
         <p lang="en" className="text-sm font-bold tracking-[0.3em] mb-4 opacity-80">404 NOT FOUND</p>
-        <h1 className="text-4xl md:text-6xl font-extrabold mb-5 leading-tight" style={{ textWrap: 'balance' as const }}>
+        {/* Wave 434: inline textWrap 제거 — globals.css h1-h6 { text-wrap: balance } single source */}
+        <h1 className="text-4xl md:text-6xl font-extrabold mb-5 leading-tight">
           페이지를
           <br />
           찾을 수 없습니다

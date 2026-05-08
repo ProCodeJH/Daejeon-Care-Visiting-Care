@@ -17,6 +17,14 @@ export default function GlobalError({
 }) {
   return (
     <html lang="ko">
+      {/* Wave 434: <head> 필수 — global-error는 layout.tsx 크래시 last-resort. metadata API 미동작.
+       * charset 누락 시 한글 mojibake (??), viewport 누락 시 모바일 zoom 버그, title 빈 탭. */}
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <meta name="theme-color" content="#1B6F4A" />
+        <title>잠시 문제가 발생했습니다 · {CONTACT.name}</title>
+      </head>
       <body
         style={{
           margin: 0,

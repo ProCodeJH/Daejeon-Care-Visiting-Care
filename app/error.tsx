@@ -34,10 +34,8 @@ export default function Error({
       {/* Wave 392: role="alert" 즉시 announce + lang="en" 영어 발음 정확 */}
       <div role="alert" className="text-center max-w-xl">
         <p lang="en" className="text-sm font-bold tracking-[0.3em] mb-4 opacity-80">SOMETHING WENT WRONG</p>
-        <h1
-          className="text-4xl md:text-6xl font-extrabold mb-5 leading-tight"
-          style={{ textWrap: 'balance' as const }}
-        >
+        {/* Wave 434: inline textWrap 제거 — globals.css h1-h6 { text-wrap: balance } single source */}
+        <h1 className="text-4xl md:text-6xl font-extrabold mb-5 leading-tight">
           잠시 문제가
           <br />
           발생했습니다
