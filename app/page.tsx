@@ -4,6 +4,7 @@ import { HeroCarousel } from '@/components/HeroCarousel';
 import { Reveal } from '@/components/Reveal';
 import { TiltCard } from '@/components/TiltCard';
 import { MagneticButton } from '@/components/MagneticButton';
+import { StatsCounter } from '@/components/StatsCounter';
 
 /**
  * 두손누리 home 1:1 layout (Playwright 측정 기반):
@@ -65,6 +66,36 @@ export default function Home() {
     <>
       {/* 1. Hero Carousel — 902px green/photo BG + 흰색 카피 */}
       <HeroCarousel />
+
+      {/* 1.5. Stats 신뢰 지표 (Hero 직후, 즉시 신뢰) */}
+      <section className="bg-white border-b border-gray-100">
+        <div className="max-w-[1200px] mx-auto px-5 py-10 grid grid-cols-2 md:grid-cols-4 gap-6">
+          <Reveal className="text-center">
+            <p className="text-3xl md:text-4xl font-extrabold text-[#1B6F4A] mb-1 tabular-nums">
+              <StatsCounter value={5} suffix="구" />
+            </p>
+            <p className="text-xs md:text-sm text-ink-muted font-medium">대전 5구 통합</p>
+          </Reveal>
+          <Reveal delay={0.1} className="text-center">
+            <p className="text-3xl md:text-4xl font-extrabold text-[#1B6F4A] mb-1 tabular-nums">
+              <StatsCounter value={24} suffix="시간" />
+            </p>
+            <p className="text-xs md:text-sm text-ink-muted font-medium">365일 상담 가능</p>
+          </Reveal>
+          <Reveal delay={0.2} className="text-center">
+            <p className="text-3xl md:text-4xl font-extrabold text-[#1B6F4A] mb-1 tabular-nums">
+              <StatsCounter value={90} suffix="+명" />
+            </p>
+            <p className="text-xs md:text-sm text-ink-muted font-medium">자격 매니저</p>
+          </Reveal>
+          <Reveal delay={0.3} className="text-center">
+            <p className="text-3xl md:text-4xl font-extrabold text-[#E63946] mb-1 tabular-nums">
+              042-369-0326
+            </p>
+            <p className="text-xs md:text-sm text-ink-muted font-medium">대표번호 · 무료 상담</p>
+          </Reveal>
+        </div>
+      </section>
 
       {/* 2. About — "집으로 찾아가는 또 다른 가족, 방문요양 서비스" (606px, white) */}
       <section className="bg-white py-20 md:py-28">

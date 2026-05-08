@@ -3,45 +3,7 @@
 import { useState } from 'react';
 import { PageHero } from '@/components/PageHero';
 import { CTASection } from '@/components/CTASection';
-
-const NOTICES = [
-  {
-    id: 1,
-    title: '대전케어 방문요양센터 모바일 및 홈페이지 오픈♥',
-    author: '관리자',
-    date: '2026-05-07',
-    views: 12,
-    pinned: true,
-  },
-  {
-    id: 2,
-    title: '2026년 장기요양 본인부담금 변경 안내',
-    author: '관리자',
-    date: '2026-04-20',
-    views: 47,
-  },
-  {
-    id: 3,
-    title: '여름철 어르신 건강 관리 안내문',
-    author: '관리자',
-    date: '2026-04-15',
-    views: 31,
-  },
-  {
-    id: 4,
-    title: '신규 요양보호사 채용 공고',
-    author: '관리자',
-    date: '2026-04-01',
-    views: 89,
-  },
-  {
-    id: 5,
-    title: '센터 운영 시간 변경 안내 (공휴일)',
-    author: '관리자',
-    date: '2026-03-25',
-    views: 22,
-  },
-];
+import { NOTICES } from '@/content/notices';
 
 export default function NoticePage() {
   const [search, setSearch] = useState('');

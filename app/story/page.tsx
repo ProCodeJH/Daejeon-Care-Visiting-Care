@@ -3,54 +3,9 @@
 import { useState } from 'react';
 import { PageHero } from '@/components/PageHero';
 import { CTASection } from '@/components/CTASection';
+import { STORIES as POSTS } from '@/content/stories';
 
 const CATEGORIES = ['전체', '대전케어 이야기', '대전케어 일상', '현장 이야기', '공지'];
-
-const POSTS = [
-  {
-    id: 1,
-    title: '방문요양 우수 요양보호사님, 표창장 수상 비결은?',
-    excerpt: '대전케어 요양보호사 선생님이 표창장을 수상하셨습니다. 평소 어르신들께 정성을 다하는 모습이...',
-    cat: '대전케어 이야기',
-    date: '2025-09-15',
-    isNotice: true,
-  },
-  {
-    id: 2,
-    title: '어르신 가정 환경 개선 프로젝트 – 자원봉사 현장 이야기',
-    excerpt: '거동이 불편하신 어르신들을 위한 가정 환경 개선 프로젝트. 자원봉사자분들이 함께해주셨습니다.',
-    cat: '대전케어 이야기',
-    date: '2025-09-08',
-  },
-  {
-    id: 3,
-    title: '대전케어 일상 40. 어르신의 웃음 속에서 피어난 따뜻한 모니터링',
-    excerpt: '매일 어르신을 찾아뵙는 요양보호사 선생님의 따뜻한 일상. 작은 모니터링이 큰 차이를 만듭니다.',
-    cat: '대전케어 일상',
-    date: '2025-08-18',
-  },
-  {
-    id: 4,
-    title: '요양보호사 선생님의 하루 — 새벽 첫 방문부터 저녁까지',
-    excerpt: '하루 3-4시간씩 어르신 댁을 방문하는 요양보호사의 진솔한 하루를 담았습니다.',
-    cat: '현장 이야기',
-    date: '2025-07-22',
-  },
-  {
-    id: 5,
-    title: '치매 어르신과 함께하는 인지활동 — 작은 변화의 기적',
-    excerpt: '치매 진행을 늦추는 인지활동 프로그램을 통해 만난 작은 변화들을 소개합니다.',
-    cat: '대전케어 일상',
-    date: '2025-07-05',
-  },
-  {
-    id: 6,
-    title: '여름철 어르신 건강 관리 — 폭염 대비 7가지 수칙',
-    excerpt: '폭염 속 어르신 건강을 지키는 실용적인 7가지 수칙을 정리했습니다.',
-    cat: '공지',
-    date: '2025-06-28',
-  },
-];
 
 export default function StoryPage() {
   const [activeCat, setActiveCat] = useState('전체');
@@ -96,6 +51,7 @@ export default function StoryPage() {
                 key={p.id}
                 href={`/story/${p.id}`}
                 className="group block bg-[#f8f8f8] hover:bg-brand-50 transition-colors overflow-hidden"
+                aria-label={p.title}
               >
                 {/* 썸네일 — 자현 swap 자리 */}
                 <div className="aspect-[4/3] bg-gradient-to-br from-brand-200 to-brand-400 relative">
