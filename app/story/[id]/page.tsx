@@ -7,6 +7,7 @@ import { PageHero } from '@/components/PageHero';
 import { CTASection } from '@/components/CTASection';
 import { ShareButton } from '@/components/ShareButton';
 import { ArticleJsonLd } from '@/components/ArticleJsonLd';
+import { CONTACT } from '@/lib/contact';
 
 export function generateStaticParams() {
   return STORIES.map((s) => ({ id: String(s.id) }));
@@ -86,7 +87,10 @@ export default async function StoryDetailPage({
           {/* 공유 (모바일 = 네이티브 share sheet · KakaoTalk 단톡 즉시 공유) */}
           <div className="mt-10 pt-6 border-t border-gray-100 flex items-center gap-3">
             <span className="text-xs text-ink-muted font-semibold tracking-[0.15em]">| SHARE</span>
-            <ShareButton title={s.title} text={s.excerpt} />
+            <ShareButton
+              title={s.title}
+              text={`${s.excerpt}\n— ${CONTACT.name} ${CONTACT.phone}`}
+            />
           </div>
 
           {/* 이전/다음 */}
