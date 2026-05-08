@@ -78,8 +78,10 @@ export const viewport = {
     { media: '(prefers-color-scheme: light)', color: '#1B6F4A' },
     { media: '(prefers-color-scheme: dark)', color: '#0F3726' },
   ],
-  // 사이트는 라이트 테마 only — 어르신 가독성 우선 (다크 모드 변환 X)
-  colorScheme: 'light',
+  // 사이트는 라이트 테마 only — 어르신 가독성 우선 (다크 모드 변환 X).
+  // Wave 293: 'light' (hint) → 'only light' (강제) — iOS dark mode 사용자 auto-invert 차단.
+  // 자현 ChatGPT 5장 hero 이미지 + 정체성 그린/코랄/노랑 정확 보존.
+  colorScheme: 'only light',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
