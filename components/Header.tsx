@@ -93,6 +93,18 @@ export function Header() {
     setOpen(false);
   }, [pathname]);
 
+  // Wave 436: body scroll lock — 모바일 메뉴 open 시 background scroll 차단.
+  // 어르신 메뉴 살피다 실수 scroll → 메뉴 사라지는 disorienting 회피. cleanup으로 unmount 시 복원.
+  useEffect(() => {
+    if (open) {
+      const prev = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = prev;
+      };
+    }
+  }, [open]);
+
   return (
     <>
       {/* 24시간 상담 띠 */}
@@ -152,6 +164,8 @@ export function Header() {
                   href={item.href}
                   aria-current={isActive(item.href) ? 'page' : undefined}
                   aria-expanded={item.children ? isOpen : undefined}
+                  // Wave 436: aria-haspopup="menu" — screen reader "has submenu" announce. ARIA APG nav pattern.
+                  aria-haspopup={item.children ? 'menu' : undefined}
                   className={`font-semibold text-[15px] flex items-center gap-1 transition-colors ${
                     isActive(item.href)
                       ? 'text-brand-600'
