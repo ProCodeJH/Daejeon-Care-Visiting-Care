@@ -185,7 +185,7 @@ export default function JobApplyPage() {
                       href="/about"
                       className="group bg-[#f8f8f8] hover:bg-brand-50 p-5 transition-colors block border-l-4 border-[#1B6F4A]"
                     >
-                      <p className="text-xs text-[#1B6F4A] font-bold tracking-[0.15em] mb-1.5">ABOUT</p>
+                      <p lang="en" className="text-xs text-[#1B6F4A] font-bold tracking-[0.15em] mb-1.5">ABOUT</p>
                       <h4 className="text-base font-bold text-ink-primary mb-1 group-hover:text-[#1B6F4A] transition-colors">
                         대전케어 소개 →
                       </h4>
@@ -197,7 +197,7 @@ export default function JobApplyPage() {
                       href="/story"
                       className="group bg-[#f8f8f8] hover:bg-brand-50 p-5 transition-colors block border-l-4 border-[#F5A623]"
                     >
-                      <p className="text-xs text-[#F5A623] font-bold tracking-[0.15em] mb-1.5">STORY</p>
+                      <p lang="en" className="text-xs text-[#F5A623] font-bold tracking-[0.15em] mb-1.5">STORY</p>
                       <h4 className="text-base font-bold text-ink-primary mb-1 group-hover:text-[#F5A623] transition-colors">
                         대전케어 이야기 →
                       </h4>
