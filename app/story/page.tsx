@@ -53,8 +53,11 @@ export default function StoryPage() {
                 className="group block bg-[#f8f8f8] hover:bg-brand-50 transition-colors overflow-hidden"
                 aria-label={p.title}
               >
-                {/* 썸네일 — 자현 swap 자리 */}
-                <div className="aspect-[4/3] bg-gradient-to-br from-brand-200 to-brand-400 relative">
+                {/* 썸네일 — 자현 thumbnail 입력 시 활성, 미입력 시 gradient (저작권 0) */}
+                <div
+                  className="aspect-[4/3] relative bg-gradient-to-br from-brand-200 to-brand-400 bg-cover bg-center"
+                  style={p.thumbnail ? { backgroundImage: `url('${p.thumbnail}')` } : undefined}
+                >
                   {p.isNotice && (
                     <span className="absolute top-3 left-3 bg-white text-brand-400 text-xs font-bold px-2 py-1" style={{ borderRadius: '2px' }}>
                       공지

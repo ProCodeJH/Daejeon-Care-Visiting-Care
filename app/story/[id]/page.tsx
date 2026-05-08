@@ -77,8 +77,17 @@ export default async function StoryDetailPage({
             <time dateTime={s.date} className="text-ink-muted">{s.date}</time>
           </div>
 
-          {/* 썸네일 자리 (저작권 0 gradient) */}
-          <div className="aspect-[16/8] bg-gradient-to-br from-brand-200 via-brand-400 to-[#1B6F4A] mb-10" style={{ borderRadius: '2px' }} />
+          {/* 썸네일 — 자현 이미지 입력 시 활성, 미입력 시 정체성 gradient (저작권 0) */}
+          {s.thumbnail ? (
+            <div
+              role="img"
+              aria-label={s.title}
+              className="aspect-[16/8] mb-10 bg-cover bg-center"
+              style={{ borderRadius: '2px', backgroundImage: `url('${s.thumbnail}')` }}
+            />
+          ) : (
+            <div className="aspect-[16/8] bg-gradient-to-br from-brand-200 via-brand-400 to-[#1B6F4A] mb-10" style={{ borderRadius: '2px' }} />
+          )}
 
           <div className="text-ink-secondary leading-loose md:text-lg whitespace-pre-line" style={{ wordBreak: 'keep-all' }}>
             {s.body}

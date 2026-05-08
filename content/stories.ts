@@ -1,6 +1,11 @@
 /**
  * 대전케어 이야기 (블로그) 데이터.
  * 자현이 새 글 추가 시 이 배열에 한 항목 추가 → SSG 자동.
+ *
+ * 🔧 자현 편집 가이드:
+ *   - 썸네일 (선택): `thumbnail: '/story/post-1.png'` 추가 → gradient placeholder 자동 대체
+ *   - 사이즈 권장: 1200×600 (16:8) WebP 또는 PNG
+ *   - 위치: public/story/post-N.png
  */
 export type Story = {
   id: number;
@@ -10,6 +15,8 @@ export type Story = {
   cat: string;
   date: string;
   isNotice?: boolean;
+  /** Optional 썸네일 (자현 이미지 path). 비어있으면 정체성 gradient placeholder. */
+  thumbnail?: string;
 };
 
 export const STORIES: Story[] = [
