@@ -14,17 +14,22 @@
  *   - JSON-LD MedicalBusiness (StructuredData.tsx)
  *   - Privacy/Terms 페이지 사업자 정보
  */
+// Wave 480: PHONE + EMAIL 단일 source — derived fields (phoneTel/phoneIntl/emailMailto) 자동 동기화.
+// 자현이 PHONE/EMAIL 1줄 변경 시 모든 derived 필드 자동 갱신 (paradigm 16 single source 강화).
+const PHONE = '042-369-0326';
+const EMAIL = 'contact@daejeoncare.kr';
+
 export const CONTACT = {
   name: '대전케어 방문요양센터',
-  phone: '042-369-0326',
-  phoneTel: 'tel:042-369-0326',
-  // International format (+82) — JSON-LD MedicalBusiness telephone 등 schema.org 표준용
-  phoneIntl: '+82-42-369-0326',
+  phone: PHONE,
+  phoneTel: `tel:${PHONE}` as const,
+  // International format (+82) — JSON-LD MedicalBusiness telephone 등 schema.org 표준용 (leading 0 제거)
+  phoneIntl: `+82-${PHONE.slice(1)}` as const,
   available: '24시간 상담 가능',
   hours: '24시간 365일 상담 가능',
-  email: 'contact@daejeoncare.kr',
+  email: EMAIL,
   // Wave 354: mailto: 링크용 (Footer + Contact 페이지 one-tap email 사용)
-  emailMailto: 'mailto:contact@daejeoncare.kr',
+  emailMailto: `mailto:${EMAIL}` as const,
   /** 자격 매니저 수 (marketing copy "{managerCount}+명" 용도). 자현 비즈니스 성장 시 업데이트. */
   managerCount: 90,
   // 🔧 자현 편집
