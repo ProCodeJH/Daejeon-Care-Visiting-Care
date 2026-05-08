@@ -1,6 +1,6 @@
 # 대전케어 방문요양센터
 
-대전 5구 통합 방문요양센터 운영 사이트. **두손누리 디자인을 1:1 React로 재현 + 75+ Wave 자율 폴리시 + production hardening (print/PWA shortcuts/error 3-layer/high-contrast a11y) + Voice Assistant 음성 안내 (Speakable schema) + Web Share API (KakaoTalk 단톡 공유) + JSON-LD 7종 + 정체성 6-way pulse paradigm + Vercel 자동 배포 + 한국 법적 compliance**.
+대전 5구 통합 방문요양센터 운영 사이트. **두손누리 디자인을 1:1 React로 재현 + 100+ Wave 자율 폴리시 + production hardening (print/PWA shortcuts/error 3-layer/high-contrast a11y) + Voice Assistant 음성 안내 (Speakable schema) + Web Share API (KakaoTalk 단톡 공유) + JSON-LD 7종 + 28 URLs canonical 일관성 + Silent Issue 광맥 19건 추출 (form htmlFor/aria/<time>/blockquote/JSON-LD escape) + 정체성 6-way pulse paradigm + Vercel 자동 배포 + 한국 법적 compliance**.
 
 > **Production**: https://대전케어방문요양.kr  
 > **대표번호**: 042-369-0326 (24시간 상담 가능)  
@@ -209,6 +209,38 @@ git add . && git commit -m "update: 새 FAQ" && git push
 - /insurance/cost 결과 ShareButton (가족 단톡에 본인부담금 즉시 공유)
 
 **JSON-LD 7종**: MedicalBusiness · WebSite · BreadcrumbList · FAQPage · HowTo · Speakable · Article.
+
+---
+
+## 🔍 Wave 81-99 Silent Issue 광맥 19건 (2026-05-08 audit-driven)
+
+자율 chain 19 wave 동안 노이즈 0건 — 매 wave 새 영역 silent issue 추출:
+
+| # | Wave | Issue | Fix |
+|---|---|---|---|
+| 1 | 81 | 인쇄 button missing | `window.print()` + `print:hidden` self-suppress |
+| 2 | 82 | 페이지 이동 시 계산값 손실 | sessionStorage persist |
+| 3 | 83 | 인지등급 부정확 | "인지지원등급" full name |
+| 4 | 84 | /contact form `htmlFor` 없음 | label-input id 페어링 |
+| 5 | 85 | /jobs/apply form `htmlFor` 없음 | label-input id 페어링 + autoComplete |
+| 6 | 86 | `rel="noopener"` 없음 | rel="noopener noreferrer" 명시 |
+| 7 | 86 | RESOURCES `#` placeholder | longtermcare/daejeon/bokjiro/nhis 정식 URL |
+| 8 | 87 | `<time dateTime>` semantic 없음 | notice/story list + home reviews |
+| 9 | 88 | SVG aria-hidden vs aria-label 혼동 | 조건부 spread paradigm (Logo) |
+| 10 | 89 | `<button>` type=submit 함정 | 모든 button type="button" 명시 |
+| 11 | 89 | accordion ARIA 없음 | aria-expanded + aria-controls + role=region |
+| 12 | 90 | 햄버거 disclosure pattern 부족 | aria-expanded + aria-controls + 동적 label |
+| 13 | 91 | nav landmark 구분 없음 | aria-label 4 nav (주메뉴/모바일/breadcrumb/SNS) |
+| 14 | 92 | asterisk * 스크린리더 노이즈 | aria-hidden + required 속성 의존 |
+| 15 | 92-93 | form name 속성 부재 | 모든 input/checkbox/radio name + value |
+| 16 | 93 | radio/checkbox group role 없음 | role=radiogroup / role=group + aria-label |
+| 17 | 94 | search semantic 없음 | `<form role="search">` + type="search" + name="q" |
+| 18 | 95 | testimonial semantic 없음 | `<blockquote>` + `<cite>` HTML5 표준 |
+| 19 | 96 | JSON-LD `</script>` XSS 위험 | `<` → `<` 이스케이프 |
+
+추가 SEO/canonical 일관성 (Wave 97-99): 28 URLs `alternates.canonical` + `openGraph.type='article'` + 5 client segment layout.tsx.
+
+**Audit-driven paradigm 검증**: 19 wave 노이즈 0건 + lazyweb research보다 자체 코드 audit가 senior care 한국 도메인 깊이로 더 효과적.
 
 ---
 
