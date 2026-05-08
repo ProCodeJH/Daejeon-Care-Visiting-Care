@@ -138,7 +138,8 @@ export default function ContactPage() {
                   >
                     {CONTACT.phone}
                   </a>
-                  <p className="text-xs text-ink-muted">FAX. {CONTACT.phone}</p>
+                  {/* Wave 493: FAX 영문 abbreviation lang="en" (paradigm 16 saturation) */}
+                  <p className="text-xs text-ink-muted"><span lang="en">FAX</span>. {CONTACT.phone}</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">

@@ -45,8 +45,9 @@ export default function MapPage() {
                 <div className="flex items-start gap-3">
                   <Phone size={18} className="text-brand-400 mt-1 shrink-0" />
                   {/* Wave 354: tel: 링크 — 본점 정보 one-tap dial */}
+                  {/* Wave 493: TEL/FAX 영문 abbreviation lang="en" + · aria-hidden (paradigm 16 saturation) */}
                   <span>
-                    TEL.{' '}
+                    <span lang="en">TEL</span>.{' '}
                     <a
                       href={CONTACT.phoneTel}
                       aria-label={`전화 걸기 본점 ${CONTACT.phone}`}
@@ -54,7 +55,7 @@ export default function MapPage() {
                     >
                       {CONTACT.phone}
                     </a>
-                    {' '}· FAX. {CONTACT.phone}
+                    {' '}<span aria-hidden="true">·</span>{' '}<span lang="en">FAX</span>. {CONTACT.phone}
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
