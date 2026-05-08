@@ -8,6 +8,12 @@ import type { Config } from 'tailwindcss';
  */
 export default {
   content: ['./app/**/*.{ts,tsx}', './components/**/*.{ts,tsx}'],
+  future: {
+    // Wave 289: hover: modifier에 자동 @media (hover: hover) wrap.
+    // mobile 터치 디바이스 hover ghost (탭 후 hover state 잔존) 회피.
+    // senior care 가족 모바일 use case 핵심 — Wave 208 mobile audit paradigm 확장.
+    hoverOnlyWhenSupported: true,
+  },
   theme: {
     extend: {
       colors: {
