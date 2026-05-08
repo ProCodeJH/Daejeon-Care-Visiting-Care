@@ -28,6 +28,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/jobs', priority: 0.85, freq: 'weekly' },
     { path: '/jobs/apply', priority: 0.8, freq: 'monthly' },
     { path: '/centers', priority: 0.85, freq: 'monthly' },
+    { path: '/privacy', priority: 0.3, freq: 'monthly' },
+    { path: '/terms', priority: 0.3, freq: 'monthly' },
     { path: '/notice', priority: 0.6, freq: 'weekly' },
     { path: '/contact', priority: 0.95, freq: 'monthly' },
     { path: '/qna', priority: 0.85, freq: 'monthly' },
