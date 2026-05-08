@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { motion, useInView, useMotionValue, useTransform, animate } from 'framer-motion';
+import { useInView, useMotionValue, animate } from 'framer-motion';
 
 /**
  * StatsCounter — whileInView + animate(0 → target).

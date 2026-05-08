@@ -59,8 +59,9 @@ export function TiltCard({
   );
 
   if (href) {
+    // Wave 389: 사이트 globally `*:focus-visible { outline: 2px solid #2563EB }` 사용 — 일관성
     return (
-      <a href={href} className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600">
+      <a href={href} className="block">
         {content}
       </a>
     );
