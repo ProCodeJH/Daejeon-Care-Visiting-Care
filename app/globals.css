@@ -335,6 +335,10 @@
     font-variation-settings: 'wght' 800;
     transform: translateY(-1px);
   }
+  /* Wave 385: :active press feedback — 모바일 tap 시각 응답 (어르신 button 동작 확인) */
+  .hero-cta:active {
+    transform: translateY(0) scale(0.98);
+  }
 
   /* prefers-reduced-motion — mask 즉시 보이기 */
   @media (prefers-reduced-motion: reduce) {
@@ -343,7 +347,8 @@
       mask-position: 0% 0%;
       -webkit-mask-position: 0% 0%;
     }
-    .hero-cta:hover {
+    .hero-cta:hover,
+    .hero-cta:active {
       transform: none;
     }
   }
