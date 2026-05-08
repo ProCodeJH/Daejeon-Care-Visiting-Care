@@ -4,10 +4,11 @@ import { SectionBlock } from '@/components/SectionBlock';
 import { CTASection } from '@/components/CTASection';
 import { Reveal } from '@/components/Reveal';
 import { HandHeart, Home, Footprints, MessageCircle, type LucideIcon } from 'lucide-react';
+import { CONTACT } from '@/lib/contact';
 
 export const metadata: Metadata = {
   title: '서비스 소개',
-  description: '대전케어 방문요양 서비스 — 신체활동 / 일상생활 / 개인활동 / 정서 지원 4종. 어르신 댁으로 직접 찾아가는 케어.',
+  description: `${CONTACT.brand} 방문요양 서비스 — 신체활동 / 일상생활 / 개인활동 / 정서 지원 4종. 어르신 댁으로 직접 찾아가는 케어.`,
   alternates: { canonical: '/service' },
 };
 

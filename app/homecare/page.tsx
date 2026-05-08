@@ -5,10 +5,11 @@ import type { Metadata } from 'next';
  * canonical → /service (duplicate content SEO 방지).
  */
 import ServicePage from '../service/page';
+import { CONTACT } from '@/lib/contact';
 
 export const metadata: Metadata = {
   title: '방문요양',
-  description: '대전케어 방문요양 — 신체활동 / 일상생활 / 개인활동 / 정서 지원 4종. 어르신 댁으로 직접 찾아가는 케어.',
+  description: `${CONTACT.brand} 방문요양 — 신체활동 / 일상생활 / 개인활동 / 정서 지원 4종. 어르신 댁으로 직접 찾아가는 케어.`,
   alternates: { canonical: '/service' },
 };
 

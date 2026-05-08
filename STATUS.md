@@ -1,6 +1,6 @@
 # STATUS — 대전케어 방문요양센터
 
-**Updated**: 2026-05-09 / Wave 546 / paradigm 18 chain 194-wave (광맥 #322 plain string description 7개 일괄 → CONTACT.name template literal — 11 wave 누적 광맥 polish mode)
+**Updated**: 2026-05-09 / Wave 547 / paradigm 18 chain 195-wave (광맥 #323 마무리 — 4 brand-only description (homecare/service/process/jobs) + insurance 1건 = 16 페이지 metadata 사이트 전체 brand single source 완성)
 
 > 1쪽 handoff. 자현 5분 결정 진입점.
 

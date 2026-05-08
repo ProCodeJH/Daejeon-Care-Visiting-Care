@@ -3,10 +3,11 @@ import { PageHero } from '@/components/PageHero';
 import { SectionBlock } from '@/components/SectionBlock';
 import { CTASection } from '@/components/CTASection';
 import { Reveal } from '@/components/Reveal';
+import { CONTACT } from '@/lib/contact';
 
 export const metadata: Metadata = {
   title: '노인장기요양보험',
-  description: '노인장기요양보험 안내 — 대상자 / 등급 / 본인부담금. 국민건강보험공단 정식 협력 기관 대전케어 방문요양센터.',
+  description: `노인장기요양보험 안내 — 대상자 / 등급 / 본인부담금. 국민건강보험공단 정식 협력 기관 ${CONTACT.name}.`,
   alternates: { canonical: '/insurance' },
 };
 
