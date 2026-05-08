@@ -103,7 +103,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           as="style"
         />
 
-        {/* speculation rules — 핵심 nav 8 페이지 prerender (즉시 응답) */}
+        {/* speculation rules — 핵심 nav + cross-page recommendation 12 페이지 prerender (즉시 응답) */}
         <script
           type="speculationrules"
           dangerouslySetInnerHTML={{
