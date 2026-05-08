@@ -93,12 +93,13 @@ export default function CostPage() {
               <label className="block text-sm font-bold text-ink-primary mb-3">
                 장기요양 등급
               </label>
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-3 gap-2" role="group" aria-label="장기요양 등급 선택">
                 {Object.keys(MONTHLY_LIMITS).map((g) => (
                   <button
                     key={g}
                     type="button"
                     onClick={() => setGrade(g)}
+                    aria-pressed={grade === g}
                     className={`py-3 text-sm font-semibold transition-colors ${
                       grade === g
                         ? 'bg-brand-400 text-white'
