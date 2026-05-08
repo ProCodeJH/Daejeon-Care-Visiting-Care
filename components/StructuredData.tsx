@@ -98,6 +98,21 @@ const WEBSITE_JSONLD = {
   publisher: { '@id': `${SITE}/#business` },
 };
 
+/**
+ * SpeakableSpecification — Google Voice Assistant / Naver Clova / Siri 음성 읽기 대상 지정.
+ * Senior care: 어르신 시각 어려움 + 가족 운전 중 정보 듣기 use case.
+ * cssSelector: h1 + [data-speakable] 마크된 요소만 읽음.
+ */
+const SPEAKABLE_JSONLD = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['h1', '[data-speakable]'],
+  },
+  inLanguage: 'ko',
+};
+
 export function StructuredData() {
   return (
     <>
@@ -108,6 +123,10 @@ export function StructuredData() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBSITE_JSONLD) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(SPEAKABLE_JSONLD) }}
       />
     </>
   );
