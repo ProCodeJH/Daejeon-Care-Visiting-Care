@@ -79,10 +79,10 @@ npm run dev   # http://localhost:3012
 | **연락처** (대표번호/24시간/이메일/주소) | `lib/contact.ts` `CONTACT` |
 | **SNS 6 채널** (카카오/네이버/인스타/유튜브 등) | `lib/contact.ts` `SNS` |
 | **공지사항** (id/title/body/date) | `content/notices.ts` |
-| **블로그 글** (id/title/body/cat) | `content/stories.ts` |
+| **블로그 글** (id/title/body/cat/**thumbnail**) | `content/stories.ts` (썸네일: `/story/post-N.png`, 1200×600) |
 | **FAQ** (cat/q/a) | `content/faqs.ts` |
 | **5구 지점** (slug/name/managers/features) | `content/centers.ts` |
-| **Hero 카피/이미지** | `components/HeroCarousel.tsx` SLIDES |
+| **Hero 카피/이미지** | `components/HeroCarousel.tsx` SLIDES (이미지: `/hero/hero-N.png`, **1920×1080** WebP/PNG, dark overlay 자동) |
 | **6 nav 메뉴** | `components/Header.tsx` NAV |
 | **회사 정보** (사업자번호/대표자명) | `components/Footer.tsx` |
 | **YouTube 영상 ID** | `app/page.tsx` VIDEO_ID |
