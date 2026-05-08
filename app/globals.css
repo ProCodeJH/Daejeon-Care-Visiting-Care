@@ -82,6 +82,41 @@
     transform: translateY(0);
   }
 
+  /* CSS @container queries — card grid component-level 반응형 (2026 web platform) */
+  .card-grid {
+    container-type: inline-size;
+  }
+  @container (max-width: 720px) {
+    .card-grid > * {
+      grid-column: span 2 / span 2;
+    }
+  }
+  @container (max-width: 480px) {
+    .card-grid > * {
+      grid-column: span 4 / span 4;
+    }
+  }
+
+  /* nav underline 인터랙션 (Header active 강화) */
+  .nav-underline {
+    position: relative;
+  }
+  .nav-underline::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background: #2563EB;
+    transition: width 280ms cubic-bezier(0.22, 1, 0.36, 1), left 280ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .nav-underline:hover::after,
+  .nav-underline[aria-current='page']::after {
+    width: 100%;
+    left: 0;
+  }
+
   /* scroll-snap proximity (senior care 부드러운 안내, mandatory X) */
   .snap-section {
     scroll-snap-align: start;

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { SplitText } from './SplitText';
 
 /**
  * Hero carousel — 저작권 회피 (Wave 10):
@@ -129,19 +130,16 @@ export function HeroCarousel() {
           {SLIDES[idx].eyebrow}
         </motion.p>
 
-        <motion.h1
+        <h1
           key={`title-${idx}`}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="text-3xl md:text-6xl font-bold mb-5 md:mb-8 leading-tight max-w-3xl drop-shadow-md hero-title-mask"
+          className="text-3xl md:text-6xl font-bold mb-5 md:mb-8 leading-tight max-w-3xl drop-shadow-md"
           style={{
             fontVariationSettings: '"wght" 800',
             textWrap: 'balance' as const,
           }}
         >
-          {SLIDES[idx].title}
-        </motion.h1>
+          <SplitText text={SLIDES[idx].title} charDelay={0.04} />
+        </h1>
 
         <motion.p
           key={`sub-${idx}`}
