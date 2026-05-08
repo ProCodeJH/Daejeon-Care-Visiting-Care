@@ -108,6 +108,7 @@ export default function JobApplyPage() {
                     </label>
                     <input
                       id="apply-name"
+                      name="name"
                       required
                       type="text"
                       autoComplete="name"
@@ -121,6 +122,7 @@ export default function JobApplyPage() {
                     </label>
                     <input
                       id="apply-birth"
+                      name="birth"
                       required
                       type="text"
                       autoComplete="bday"
@@ -137,6 +139,7 @@ export default function JobApplyPage() {
                   </label>
                   <input
                     id="apply-tel"
+                    name="tel"
                     required
                     type="tel"
                     inputMode="tel"
@@ -152,10 +155,10 @@ export default function JobApplyPage() {
                   <label className="block text-sm font-bold text-ink-primary mb-1.5">
                     자격증 종류 <span aria-hidden="true" className="text-brand-400">*</span>
                   </label>
-                  <div className="flex gap-4 text-sm">
+                  <div role="radiogroup" aria-label="자격증 종류" className="flex gap-4 text-sm">
                     {['요양보호사 1급', '요양보호사 2급', '간호조무사', '사회복지사', '기타'].map((c) => (
                       <label key={c} className="flex items-center gap-2 cursor-pointer">
-                        <input type="radio" name="cert" required className="accent-brand-400" />
+                        <input type="radio" name="cert" value={c} required className="accent-brand-400" />
                         <span>{c}</span>
                       </label>
                     ))}
@@ -168,6 +171,7 @@ export default function JobApplyPage() {
                   </label>
                   <select
                     id="apply-experience"
+                    name="experience"
                     required
                     className="w-full px-4 py-2.5 bg-[#f8f8f8] border border-gray-200 focus:border-brand-400 focus:outline-none text-sm"
                     style={{ borderRadius: '2px' }}
@@ -185,10 +189,10 @@ export default function JobApplyPage() {
                   <label className="block text-sm font-bold text-ink-primary mb-1.5">
                     희망 근무지 <span aria-hidden="true" className="text-brand-400">*</span>
                   </label>
-                  <div className="grid grid-cols-3 md:grid-cols-6 gap-2">
+                  <div role="group" aria-label="희망 근무지" className="grid grid-cols-3 md:grid-cols-6 gap-2">
                     {REGIONS.map((r) => (
                       <label key={r} className="flex items-center gap-2 text-sm cursor-pointer p-2 bg-[#f8f8f8] hover:bg-brand-50 transition-colors" style={{ borderRadius: '2px' }}>
-                        <input type="checkbox" className="accent-brand-400" />
+                        <input type="checkbox" name="region" value={r} className="accent-brand-400" />
                         <span>{r}</span>
                       </label>
                     ))}
@@ -199,10 +203,10 @@ export default function JobApplyPage() {
                   <label className="block text-sm font-bold text-ink-primary mb-1.5">
                     가능 시간대
                   </label>
-                  <div className="flex flex-wrap gap-2 text-sm">
+                  <div role="group" aria-label="가능 시간대" className="flex flex-wrap gap-2 text-sm">
                     {['오전', '오후', '저녁', '평일', '주말', '시간 자유'].map((t) => (
                       <label key={t} className="flex items-center gap-2 cursor-pointer px-3 py-1.5 bg-[#f8f8f8] hover:bg-brand-50 transition-colors" style={{ borderRadius: '2px' }}>
-                        <input type="checkbox" className="accent-brand-400" />
+                        <input type="checkbox" name="availability" value={t} className="accent-brand-400" />
                         <span>{t}</span>
                       </label>
                     ))}
@@ -215,6 +219,7 @@ export default function JobApplyPage() {
                   </label>
                   <textarea
                     id="apply-message"
+                    name="message"
                     rows={4}
                     placeholder="간단한 자기 소개나 어르신 케어에 대한 마음을 적어주세요"
                     className="w-full px-4 py-2.5 bg-[#f8f8f8] border border-gray-200 focus:border-brand-400 focus:outline-none text-sm resize-none"
@@ -223,7 +228,7 @@ export default function JobApplyPage() {
                 </div>
 
                 <label className="flex items-start gap-2 text-xs text-ink-muted">
-                  <input type="checkbox" required className="mt-0.5 accent-brand-400" />
+                  <input type="checkbox" name="privacy" required className="mt-0.5 accent-brand-400" />
                   <span>
                     개인정보 수집·이용에 동의합니다 (필수). 수집된 정보는 채용 절차 외 다른 목적으로 사용되지 않습니다.
                   </span>
