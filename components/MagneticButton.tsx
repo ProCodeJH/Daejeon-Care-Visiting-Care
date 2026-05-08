@@ -1,6 +1,7 @@
 'use client';
 
 import { motion, useMotionValue, useSpring, useReducedMotion } from 'framer-motion';
+import Link from 'next/link';
 import type { ReactNode } from 'react';
 
 /**
@@ -48,8 +49,8 @@ export function MagneticButton({
     y.set(0);
   }
 
-  const Tag: 'a' | 'button' = href ? 'a' : 'button';
-  const tagProps = href ? { href } : { onClick, type: 'button' as const };
+  // Wave 463: internal href는 <Link> (SPA routing), external href는 <a>, 무 href는 <button> (Wave 462 패턴)
+  const isInternal = href?.startsWith('/');
 
   return (
     <motion.div
@@ -58,9 +59,19 @@ export function MagneticButton({
       style={reducedMotion ? undefined : { x: sx, y: sy }}
       className="inline-block"
     >
-      <Tag {...tagProps} aria-label={ariaLabel} className={className}>
-        {children}
-      </Tag>
+      {isInternal ? (
+        <Link href={href!} aria-label={ariaLabel} className={className}>
+          {children}
+        </Link>
+      ) : href ? (
+        <a href={href} aria-label={ariaLabel} className={className}>
+          {children}
+        </a>
+      ) : (
+        <button type="button" onClick={onClick} aria-label={ariaLabel} className={className}>
+          {children}
+        </button>
+      )}
     </motion.div>
   );
 }
