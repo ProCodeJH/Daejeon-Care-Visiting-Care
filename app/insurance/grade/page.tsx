@@ -96,9 +96,10 @@ export default function GradePage() {
               </Reveal>
             ))}
           </div>
-          <p className="text-center text-xs text-ink-muted mt-8">
+          {/* Wave 357: <small> semantic — disclaimer/면책 (HTML5 small print) */}
+          <small className="block text-center text-xs text-ink-muted mt-8">
             * 점수는 국민건강보험공단의 장기요양인정 점수표 기준 (참고용)
-          </p>
+          </small>
         </div>
       </section>
 

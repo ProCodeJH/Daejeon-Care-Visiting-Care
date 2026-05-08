@@ -186,10 +186,11 @@ export default function CostPage() {
               </div>
             </output>
 
-            <p className="text-xs text-ink-muted mt-5">
+            {/* Wave 357: <small> semantic — 결과값 disclaimer/면책 (HTML5 small print) */}
+            <small className="block text-xs text-ink-muted mt-5">
               * 위 금액은 2026년 기준 표준 산정액 (참고용). 실제 본인부담액은 이용 시간·서비스 종류·소득 수준에 따라 달라질 수 있습니다.
               정확한 금액은 국민건강보험공단 또는 대전케어 상담을 통해 확인하세요.
-            </p>
+            </small>
 
             {/* 결과 공유/인쇄 — 가족 단톡 + 손에 들고 비교 use case (인쇄 시 자체 숨김) */}
             <div className="mt-6 pt-5 border-t border-brand-200 flex flex-wrap items-center gap-3 print:hidden">

@@ -134,9 +134,10 @@ export function Footer() {
         )}
 
         <div className="border-t border-gray-100 mt-10 pt-5 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-          <p className="text-xs text-ink-muted">
+          {/* Wave 357: <small> semantic — copyright는 canonical "small print" 영역 (HTML5 spec) */}
+          <small className="text-xs text-ink-muted block">
             COPYRIGHT © {new Date().getFullYear()} {CONTACT.name} ALL RIGHTS RESERVED.
-          </p>
+          </small>
           <div className="flex items-center gap-4 text-xs text-ink-muted">
             <a href="/privacy" className="hover:text-[#1B6F4A]">개인정보처리방침</a>
             <a href="/terms" className="hover:text-[#1B6F4A]">이용약관</a>
