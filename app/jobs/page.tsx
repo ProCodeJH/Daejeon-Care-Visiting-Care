@@ -3,6 +3,7 @@ import { PageHero } from '@/components/PageHero';
 import { SectionBlock } from '@/components/SectionBlock';
 import { CTASection } from '@/components/CTASection';
 import { Reveal } from '@/components/Reveal';
+import { JobPostingJsonLd } from '@/components/JobPostingJsonLd';
 import { Wallet, Clock, Home, BookOpen, Users, Heart, type LucideIcon } from 'lucide-react';
 import { CONTACT } from '@/lib/contact';
 
@@ -31,8 +32,24 @@ const REQUIREMENTS = [
 ];
 
 export default function JobsPage() {
+  // Wave 362: JobPosting JSON-LD — Google for Jobs / 한국 검색엔진 채용 노출.
+  // build time 기준 datePosted + 6 months validThrough (Vercel SSG 재빌드 시 자동 갱신).
+  const today = new Date();
+  const datePosted = today.toISOString().split('T')[0];
+  const validThrough = new Date(today.getTime() + 180 * 86400000).toISOString().split('T')[0];
+
   return (
     <>
+      <JobPostingJsonLd
+        title="요양보호사"
+        description="대전케어 방문요양센터에서 요양보호사를 모십니다. 안정적 수입 / 시간 자율 / 가까운 지역 / 교육 지원. 신입 환영, 경력자 우대. 어르신 댁으로 직접 찾아가는 방문요양 서비스."
+        datePosted={datePosted}
+        validThrough={validThrough}
+        employmentType="PART_TIME"
+        skills="요양보호사 1급 또는 2급 자격증 보유"
+        experienceRequirements="신입 환영 (경력자 우대)"
+        workHours="평일 또는 주말 협의, 하루 3-4시간 기본"
+      />
       <PageHero
         title="요양보호사 일자리"
         sub="대전케어와 함께 따뜻한 손길을 나눠주실 분을 찾습니다"
