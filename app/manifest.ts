@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next';
+import { CONTACT } from '@/lib/contact';
 
 /**
  * site.webmanifest — 모바일 홈 화면 추가 (PWA-lite).
@@ -7,10 +8,9 @@ import type { MetadataRoute } from 'next';
 export default function manifest(): MetadataRoute.Manifest {
   return {
     id: '/',
-    name: '대전케어 방문요양센터',
+    name: CONTACT.name,
     short_name: '대전케어',
-    description:
-      '대전 5구 통합 방문요양센터 · 24시간 상담 042-369-0326 · 어르신 댁으로 직접 찾아가는 케어',
+    description: `대전 5구 통합 방문요양센터 · 24시간 상담 ${CONTACT.phone} · 어르신 댁으로 직접 찾아가는 케어`,
     start_url: '/',
     scope: '/',
     display: 'standalone',
@@ -42,7 +42,7 @@ export default function manifest(): MetadataRoute.Manifest {
       {
         name: '직접 문의하기',
         short_name: '문의',
-        description: '24시간 상담 가능 · 042-369-0326',
+        description: `24시간 상담 가능 · ${CONTACT.phone}`,
         url: '/contact',
       },
     ],

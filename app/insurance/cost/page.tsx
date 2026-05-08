@@ -6,6 +6,7 @@ import { SectionBlock } from '@/components/SectionBlock';
 import { CTASection } from '@/components/CTASection';
 import { AnimatedNumber } from '@/components/AnimatedNumber';
 import { ShareButton } from '@/components/ShareButton';
+import { CONTACT } from '@/lib/contact';
 
 /**
  * 2026년 기준 장기요양 월 한도액 (참고용 — 정확한 금액은 공단 확인).
@@ -197,7 +198,7 @@ export default function CostPage() {
                 title="대전케어 본인부담금 계산 결과"
                 text={`장기요양 ${
                   grade === '인지' ? '인지지원등급' : `${grade}등급`
-                } (${RATES[rateKey].label}) — 월 본인부담 ${fmt(result.userPay)} · 공단 부담 ${fmt(result.govPay)}\n대전케어 방문요양센터 042-369-0326`}
+                } (${RATES[rateKey].label}) — 월 본인부담 ${fmt(result.userPay)} · 공단 부담 ${fmt(result.govPay)}\n${CONTACT.name} ${CONTACT.phone}`}
               />
               <button
                 type="button"
