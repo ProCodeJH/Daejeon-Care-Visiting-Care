@@ -6,6 +6,8 @@ import { TiltCard } from '@/components/TiltCard';
 import { MagneticButton } from '@/components/MagneticButton';
 import { StatsCounter } from '@/components/StatsCounter';
 import { FaqJsonLd } from '@/components/FaqJsonLd';
+import { FAQS as ALL_FAQS } from '@/content/faqs';
+import { STORIES } from '@/content/stories';
 
 /**
  * 두손누리 home 1:1 layout (Playwright 측정 기반):
@@ -40,36 +42,16 @@ const REVIEWS = [
   },
 ];
 
-const BLOGS = [
-  { title: '방문요양 우수 요양보호사님, 표창장 수상 비결은?', tag: '대전케어 이야기' },
-  { title: '어르신 가정 환경 개선 프로젝트 – 자원봉사 현장 이야기', tag: '대전케어 이야기' },
-  { title: '대전케어 일상 40. 어르신의 웃음 속에서 피어난 따뜻한 모니터링', tag: '대전케어 일상' },
-  { title: '요양보호사 선생님의 하루 — 새벽 첫 방문부터 저녁까지', tag: '현장 이야기' },
-];
+// Home Blog 섹션 = stories 최신 4개 (단일 source)
+const BLOGS = STORIES.slice(0, 4).map((s) => ({ id: s.id, title: s.title, tag: s.cat }));
 
-const FAQS = [
-  {
-    q: '담당 요양보호사 선생님을 바꾸고 싶을 때는 어떻게 해야 하나요?',
-    a: '센터에 연락 주시면 즉시 상담 후 새 매니저 배정해드립니다.',
-  },
-  {
-    q: '서비스를 이용할 시 자기부담금이 얼마나 나오나요?',
-    a: '장기요양 등급 및 본인 소득 수준에 따라 다릅니다. 본인부담금 계산기로 확인 가능합니다.',
-  },
-  {
-    q: '장기요양등급 신청은 어디서 하나요?',
-    a: '국민건강보험공단에 신청하시며, 대전케어가 신청 절차 전반을 도와드립니다.',
-  },
-  {
-    q: '주말에도 방문요양 서비스가 가능한가요?',
-    a: '네, 주말 및 공휴일에도 사전 협의된 일정에 따라 방문 가능합니다.',
-  },
-];
+// Home FAQ 섹션 = faqs 첫 4개 (전체 7개는 /faq 페이지)
+const FAQS = ALL_FAQS.slice(0, 4);
 
 export default function Home() {
   return (
     <>
-      <FaqJsonLd faqs={FAQS} />
+      <FaqJsonLd faqs={ALL_FAQS} />
       {/* 1. Hero Carousel — 902px green/photo BG + 흰색 카피 */}
       <HeroCarousel />
 
@@ -295,9 +277,9 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {BLOGS.map((b, i) => (
-              <Reveal key={i} delay={i * 0.06}>
+              <Reveal key={b.id} delay={i * 0.06}>
                 <a
-                  href="/story"
+                  href={`/story/${b.id}`}
                   className="group block bg-gray-50 hover:bg-brand-50 transition-colors overflow-hidden"
                 >
                   <div className="aspect-[4/3] bg-gradient-to-br from-brand-200 to-brand-400" />
