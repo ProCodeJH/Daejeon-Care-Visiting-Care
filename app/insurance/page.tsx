@@ -89,9 +89,10 @@ export default function InsurancePage() {
               </Reveal>
             ))}
           </div>
-          <p className="text-center text-xs text-ink-muted mt-6">
+          {/* Wave 405: <small> semantic disclaimer (Wave 357 패턴 saturation pass) */}
+          <small className="block text-center text-xs text-ink-muted mt-6">
             * 정확한 본인부담금은 국민건강보험공단 또는 대전케어 상담을 통해 확인하세요.
-          </p>
+          </small>
         </div>
       </section>
 
