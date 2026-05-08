@@ -116,13 +116,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                   ],
                 },
               ],
-              prefetch: [
-                {
-                  source: 'document',
-                  where: { href_matches: '/*' },
-                  eagerness: 'moderate',
-                },
-              ],
             }),
           }}
         />
