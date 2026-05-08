@@ -83,7 +83,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <head>
         {/* DNS prefetch + preconnect — 외부 자산 빠른 로딩 */}
         <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
-        <link rel="dns-prefetch" href="https://cdn.imweb.me" />
         <link rel="dns-prefetch" href="https://www.youtube.com" />
         <link rel="dns-prefetch" href="https://i.ytimg.com" />
         <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />

@@ -4,73 +4,107 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 /**
- * Hero carousel — Wave 4 polish:
- * - mask-image dissolve (h1 카피 등장)
- * - letterbox cinematic frames (top/bottom 0→24px scroll-driven, 절제)
- * - radial-gradient halo 배경 (절제, 어르신 부담 X)
- * - variable font wght hover (CTA 미세 인터랙션)
- * - prefers-reduced-motion 시 mask 즉시 표시
+ * Hero carousel — 저작권 회피 (Wave 10):
+ * 두손누리 imweb 이미지 제거 → 정체성 gradient + decorative SVG (CC0, 자체 작성).
+ * 자현이 daejeon-care 자체 사진 추가 시 SLIDES.bg에 자현 자산 path 입력 가능.
+ *
+ * Wave 4 motion 유지: mask-image dissolve / letterbox / radial halo / variable font hover.
  */
 const SLIDES = [
   {
-    bg: 'https://cdn.imweb.me/thumbnail/20211020/17463a6a562f7.jpg',
-    bgPos: '50% 100%',
+    // gradient mesh (정체성 그린 + 코랄, 저작권 0)
+    grad: 'radial-gradient(circle at 18% 24%, rgba(27,111,74,0.95) 0%, rgba(21,87,58,0.85) 35%, rgba(15,55,38,0.95) 100%), radial-gradient(circle at 78% 76%, rgba(230,57,70,0.45) 0%, transparent 50%)',
     eyebrow: '장기요양등급 신청이 어려우시면',
     title: '등급신청을 도와 드립니다',
     sub: '상담부터 신청까지 전문 상담사와 함께 하세요',
+    accent: '#1B6F4A',
   },
   {
-    bg: 'https://cdn.imweb.me/thumbnail/20211023/d6103abdaad49.jpg',
-    bgPos: '50% 50%',
+    grad: 'radial-gradient(circle at 25% 30%, rgba(15,55,38,0.95) 0%, rgba(27,111,74,0.85) 30%, rgba(21,87,58,0.95) 100%), radial-gradient(circle at 80% 60%, rgba(245,166,35,0.35) 0%, transparent 55%)',
     eyebrow: '부모님 마음에 맞는',
     title: '요양보호사님을 찾아드릴게요',
     sub: '대전케어만의 요양보호사 검증절차가 있습니다',
+    accent: '#F5A623',
+  },
+  {
+    grad: 'radial-gradient(circle at 70% 25%, rgba(27,111,74,0.85) 0%, rgba(15,55,38,0.95) 50%, rgba(21,87,58,0.95) 100%), radial-gradient(circle at 20% 75%, rgba(230,57,70,0.4) 0%, transparent 50%)',
+    eyebrow: '24시간 언제나',
+    title: '언제든 편하게 문의하세요',
+    sub: '대표번호 042-369-0326 · 부모님의 손발이 되어드리겠습니다',
+    accent: '#E63946',
   },
 ];
+
+/**
+ * Decorative SVG — 따뜻한 손/원/하트 모티브 (CC0, 직접 작성).
+ * Hero BG 위 subtle 표시. mix-blend-screen으로 부드러움.
+ */
+function HeroDecoration() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 1440 902"
+      preserveAspectRatio="xMidYMid slice"
+      className="absolute inset-0 w-full h-full pointer-events-none mix-blend-screen opacity-40"
+    >
+      <defs>
+        <radialGradient id="warmth" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#FFD166" stopOpacity="0.35" />
+          <stop offset="60%" stopColor="#F5A623" stopOpacity="0.1" />
+          <stop offset="100%" stopColor="transparent" />
+        </radialGradient>
+        <pattern id="dots" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+          <circle cx="30" cy="30" r="1" fill="rgba(255,255,255,0.18)" />
+        </pattern>
+      </defs>
+      <rect width="1440" height="902" fill="url(#dots)" />
+      <circle cx="240" cy="300" r="180" fill="url(#warmth)" />
+      <circle cx="1200" cy="650" r="280" fill="url(#warmth)" />
+      {/* 손바닥 cradle 곡선 (자현 로고 모티브) */}
+      <path
+        d="M 1080 720 Q 1080 820 1180 845 Q 1280 855 1340 850 Q 1410 840 1410 760 Q 1410 730 1390 730 Q 1390 800 1310 815 Q 1260 818 1220 815 Q 1100 810 1100 730 Q 1080 700 1080 720 Z"
+        fill="rgba(245, 166, 35, 0.18)"
+      />
+    </svg>
+  );
+}
 
 export function HeroCarousel() {
   const [idx, setIdx] = useState(0);
   const ref = useRef<HTMLElement>(null);
 
-  // scroll-driven letterbox (Hero scroll 시 위/아래 검은 띠 0→24px 절제)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
   const letterbox = useTransform(scrollYProgress, [0, 1], [0, 24]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0.4]);
+  const decorParallax = useTransform(scrollYProgress, [0, 1], [0, -80]);
 
   useEffect(() => {
-    const t = setInterval(() => setIdx((i) => (i + 1) % SLIDES.length), 5500);
+    const t = setInterval(() => setIdx((i) => (i + 1) % SLIDES.length), 6000);
     return () => clearInterval(t);
   }, []);
 
   return (
     <section ref={ref} className="relative w-full h-[600px] md:h-[902px] overflow-hidden bg-black">
-      {/* BG Slides */}
+      {/* gradient slides */}
       <motion.div style={{ opacity: heroOpacity }} className="absolute inset-0">
         {SLIDES.map((s, i) => (
           <div
             key={i}
             aria-hidden={idx !== i}
-            className="absolute inset-0 transition-opacity duration-[1200ms] ease-out"
+            className="absolute inset-0 transition-opacity duration-[1400ms] ease-out"
             style={{
-              backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.55)), url(${s.bg})`,
-              backgroundSize: 'cover',
-              backgroundPosition: s.bgPos,
+              background: s.grad,
               opacity: idx === i ? 1 : 0,
             }}
           />
         ))}
-        {/* radial halo — 절제된 빛 효과 (좌상 자현 정체성 그린, 우하 코랄, 매우 약함) */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 pointer-events-none mix-blend-screen"
-          style={{
-            background:
-              'radial-gradient(circle at 18% 22%, rgba(27,111,74,0.18) 0%, transparent 45%), radial-gradient(circle at 82% 78%, rgba(230,57,70,0.12) 0%, transparent 50%)',
-          }}
-        />
+        {/* decorative SVG with parallax */}
+        <motion.div style={{ y: decorParallax }} className="absolute inset-0">
+          <HeroDecoration />
+        </motion.div>
       </motion.div>
 
-      {/* Letterbox top (cinematic, scroll-driven) */}
+      {/* Letterbox top */}
       <motion.div
         aria-hidden="true"
         style={{ height: letterbox }}
@@ -95,10 +129,9 @@ export function HeroCarousel() {
           {SLIDES[idx].eyebrow}
         </motion.p>
 
-        {/* h1 with mask-image dissolve */}
         <motion.h1
           key={`title-${idx}`}
-          initial={{ opacity: 0, maskPosition: '0% 0%' }}
+          initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           className="text-3xl md:text-6xl font-bold mb-5 md:mb-8 leading-tight max-w-3xl drop-shadow-md hero-title-mask"
@@ -120,10 +153,10 @@ export function HeroCarousel() {
           {SLIDES[idx].sub}
         </motion.p>
 
-        <div className="flex gap-3 mt-8 md:mt-12">
+        <div className="flex gap-3 mt-8 md:mt-12 flex-wrap">
           <a
             href="/contact"
-            className="hero-cta bg-brand-600 hover:bg-brand-700 text-white px-6 md:px-8 py-3 md:py-3.5 font-semibold text-sm md:text-base transition-all"
+            className="hero-cta bg-white hover:bg-gray-50 text-[#1B6F4A] px-6 md:px-8 py-3 md:py-3.5 font-bold text-sm md:text-base transition-all"
             style={{ borderRadius: '2px' }}
           >
             무료 상담 신청
@@ -137,7 +170,7 @@ export function HeroCarousel() {
           </a>
         </div>
 
-        {/* 24시간 상담 강조 — Hero 좌상단 */}
+        {/* 24시간 상담 강조 */}
         <div
           className="absolute top-6 left-5 md:left-8 z-20 hidden md:flex items-center gap-2 bg-white/95 backdrop-blur-sm px-4 py-2"
           style={{ borderRadius: '2px' }}
