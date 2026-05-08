@@ -35,8 +35,8 @@ type Slide = {
 
 const SLIDES: Slide[] = [
   {
-    // gradient mesh (정체성 그린 + 코랄, 저작권 0)
     grad: 'radial-gradient(circle at 18% 24%, rgba(27,111,74,0.95) 0%, rgba(21,87,58,0.85) 35%, rgba(15,55,38,0.95) 100%), radial-gradient(circle at 78% 76%, rgba(230,57,70,0.45) 0%, transparent 50%)',
+    bg: '/hero/hero-1.png',
     eyebrow: '장기요양등급 신청이 어려우시면',
     title: '등급신청을 도와 드립니다',
     sub: '상담부터 신청까지 전문 상담사와 함께 하세요',
@@ -44,6 +44,7 @@ const SLIDES: Slide[] = [
   },
   {
     grad: 'radial-gradient(circle at 25% 30%, rgba(15,55,38,0.95) 0%, rgba(27,111,74,0.85) 30%, rgba(21,87,58,0.95) 100%), radial-gradient(circle at 80% 60%, rgba(245,166,35,0.35) 0%, transparent 55%)',
+    bg: '/hero/hero-2.png',
     eyebrow: '부모님 마음에 맞는',
     title: '요양보호사님을 찾아드릴게요',
     sub: '대전케어만의 요양보호사 검증절차가 있습니다',
@@ -51,10 +52,27 @@ const SLIDES: Slide[] = [
   },
   {
     grad: 'radial-gradient(circle at 70% 25%, rgba(27,111,74,0.85) 0%, rgba(15,55,38,0.95) 50%, rgba(21,87,58,0.95) 100%), radial-gradient(circle at 20% 75%, rgba(230,57,70,0.4) 0%, transparent 50%)',
+    bg: '/hero/hero-3.png',
     eyebrow: '24시간 언제나',
     title: '언제든 편하게 문의하세요',
     sub: `대표번호 ${CONTACT.phone} · 부모님의 손발이 되어드리겠습니다`,
     accent: '#E63946',
+  },
+  {
+    grad: 'radial-gradient(circle at 30% 70%, rgba(27,111,74,0.85) 0%, rgba(15,55,38,0.95) 50%, rgba(21,87,58,0.95) 100%), radial-gradient(circle at 80% 30%, rgba(245,166,35,0.4) 0%, transparent 50%)',
+    bg: '/hero/hero-4.png',
+    eyebrow: '어르신과 가족 모두',
+    title: '함께 상담드립니다',
+    sub: '등급 신청부터 본인부담금까지 가족 회의처럼 자세히',
+    accent: '#1B6F4A',
+  },
+  {
+    grad: 'radial-gradient(circle at 60% 40%, rgba(27,111,74,0.85) 0%, rgba(15,55,38,0.95) 50%, rgba(21,87,58,0.95) 100%), radial-gradient(circle at 25% 70%, rgba(230,57,70,0.4) 0%, transparent 50%)',
+    bg: '/hero/hero-5.png',
+    eyebrow: '신체활동부터 정서 지원까지',
+    title: '일상이 활기차도록',
+    sub: '운동·식사·말벗까지 어르신 댁에서 함께',
+    accent: '#F5A623',
   },
 ];
 
