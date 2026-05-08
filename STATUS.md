@@ -1,8 +1,25 @@
 # STATUS — 대전케어 방문요양센터
 
-**Updated**: 2026-05-08 / Wave 133+ / 자율 chain audit-driven 진행 중
+**Updated**: 2026-05-08 / Wave 145+ / 자율 chain audit-driven 진행 중
 
 > 1쪽 handoff. 자현 5분 결정 진입점.
+
+---
+
+## ⚠️ 즉시 확인 필요 (Wave 145 incident)
+
+**Vercel deploy rate limit 도달** (Hobby plan 100/day 추정):
+- 마지막 production deploy: **Wave 138 (231ce10)** ← 현재 production
+- Wave 139-145 commits 모두 GitHub에 push 됨 (총 7 commit)
+- Vercel은 Wave 139 이후 rebuild 0건 → **Hero 이미지 5장 (Wave 141) production 미반영**
+
+**자현 액션**:
+1. https://vercel.com/gujahyeons-projects/web-v3 dashboard 접속
+2. **Deployments** 탭에서 "Skipped/Limit" 메시지 확인
+3. **Manual redeploy** (latest commit `b7ea9c7` Wave 145) 실행 또는 **Pro plan upgrade** ($20/mo, 무제한 deploy)
+4. 또는 **다음날 자정 (UTC) 후 자동 reset** 대기
+
+자율 chain은 계속 진행 — limit reset 시 모든 누적 commit (Wave 139+) 한 번에 자동 적용됨.
 
 ---
 
