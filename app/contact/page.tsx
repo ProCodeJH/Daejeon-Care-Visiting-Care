@@ -92,10 +92,11 @@ export default function ContactPage() {
                 className="space-y-4"
               >
                 <div>
-                  <label className="block text-sm font-semibold text-ink-primary mb-1.5">
+                  <label htmlFor="contact-name" className="block text-sm font-semibold text-ink-primary mb-1.5">
                     이름 <span className="text-brand-400">*</span>
                   </label>
                   <input
+                    id="contact-name"
                     required
                     type="text"
                     autoComplete="name"
@@ -104,10 +105,11 @@ export default function ContactPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-ink-primary mb-1.5">
+                  <label htmlFor="contact-tel" className="block text-sm font-semibold text-ink-primary mb-1.5">
                     연락처 <span className="text-brand-400">*</span>
                   </label>
                   <input
+                    id="contact-tel"
                     required
                     type="tel"
                     inputMode="tel"
@@ -119,10 +121,11 @@ export default function ContactPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-ink-primary mb-1.5">
+                  <label htmlFor="contact-category" className="block text-sm font-semibold text-ink-primary mb-1.5">
                     문의 종류
                   </label>
                   <select
+                    id="contact-category"
                     className="w-full px-4 py-2.5 bg-white border border-gray-200 focus:border-brand-400 focus:outline-none text-sm"
                     style={{ borderRadius: '2px' }}
                   >
@@ -134,10 +137,11 @@ export default function ContactPage() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-ink-primary mb-1.5">
+                  <label htmlFor="contact-message" className="block text-sm font-semibold text-ink-primary mb-1.5">
                     문의 내용 <span className="text-brand-400">*</span>
                   </label>
                   <textarea
+                    id="contact-message"
                     required
                     rows={5}
                     style={{ borderRadius: '2px', fieldSizing: 'content' } as React.CSSProperties}
