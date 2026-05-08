@@ -2,6 +2,7 @@ import { PageHero } from '@/components/PageHero';
 import { SectionBlock } from '@/components/SectionBlock';
 import { CTASection } from '@/components/CTASection';
 import { StatsCounter } from '@/components/StatsCounter';
+import { Reveal } from '@/components/Reveal';
 
 const VALUES = [
   {
@@ -107,12 +108,13 @@ export default function AboutPage() {
           />
           <div className="grid md:grid-cols-2 gap-5">
             {VALUES.map((v, i) => (
-              <div
+              <Reveal
                 key={i}
-                className="bg-white p-7 border-l-4 border-brand-400 hover:shadow-md transition-shadow"
+                delay={i * 0.08}
+                className="bg-white p-7 border-l-4 border-brand-600 hover:shadow-md transition-shadow"
               >
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-brand-50 grid place-items-center text-brand-400 font-bold shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-brand-50 grid place-items-center text-brand-600 font-bold shrink-0">
                     {i + 1}
                   </div>
                   <div>
@@ -120,7 +122,7 @@ export default function AboutPage() {
                     <p className="text-ink-secondary leading-relaxed">{v.desc}</p>
                   </div>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>

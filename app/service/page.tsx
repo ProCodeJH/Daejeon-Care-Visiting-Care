@@ -1,6 +1,7 @@
 import { PageHero } from '@/components/PageHero';
 import { SectionBlock } from '@/components/SectionBlock';
 import { CTASection } from '@/components/CTASection';
+import { Reveal } from '@/components/Reveal';
 import { HandHeart, Home, Footprints, MessageCircle, type LucideIcon } from 'lucide-react';
 
 type SubService = {
@@ -88,8 +89,9 @@ export default function ServicePage() {
           />
           <div className="grid md:grid-cols-2 gap-5">
             {SUB_SERVICES.map((s, i) => (
-              <div
+              <Reveal
                 key={i}
+                delay={i * 0.08}
                 className="bg-[#f8f8f8] p-7 hover:bg-brand-50 transition-colors group"
               >
                 <div className="flex items-center gap-3 mb-4">
@@ -106,7 +108,7 @@ export default function ServicePage() {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>

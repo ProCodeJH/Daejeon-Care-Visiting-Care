@@ -1,6 +1,7 @@
 import { PageHero } from '@/components/PageHero';
 import { SectionBlock } from '@/components/SectionBlock';
 import { CTASection } from '@/components/CTASection';
+import { Reveal } from '@/components/Reveal';
 
 import { Brain, ShieldCheck, UtensilsCrossed, Pill, Palette, ClipboardList, type LucideIcon } from 'lucide-react';
 
@@ -42,11 +43,11 @@ export default function InfoPage() {
           />
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {TOPICS.map((t, i) => (
-              <a
-                key={i}
-                href={t.href}
-                className="group block bg-[#f8f8f8] hover:bg-brand-50 p-7 transition-colors"
-              >
+              <Reveal key={i} delay={i * 0.06}>
+                <a
+                  href={t.href}
+                  className="group block bg-[#f8f8f8] hover:bg-brand-50 p-7 transition-colors"
+                >
                 <div className="w-12 h-12 grid place-items-center bg-white group-hover:bg-brand-600 text-brand-600 group-hover:text-white transition-colors mb-4 shadow-sm" style={{ borderRadius: '2px' }}>
                   <t.Icon size={24} strokeWidth={1.8} />
                 </div>
@@ -54,8 +55,9 @@ export default function InfoPage() {
                   {t.title}
                 </h3>
                 <p className="text-sm text-ink-secondary leading-relaxed">{t.desc}</p>
-                <p className="text-xs text-brand-600 mt-4 font-semibold">자세히 보기 →</p>
-              </a>
+                  <p className="text-xs text-brand-600 mt-4 font-semibold">자세히 보기 →</p>
+                </a>
+              </Reveal>
             ))}
           </div>
         </div>

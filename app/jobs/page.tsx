@@ -1,6 +1,7 @@
 import { PageHero } from '@/components/PageHero';
 import { SectionBlock } from '@/components/SectionBlock';
 import { CTASection } from '@/components/CTASection';
+import { Reveal } from '@/components/Reveal';
 import { Wallet, Clock, Home, BookOpen, Users, Heart, type LucideIcon } from 'lucide-react';
 
 type Benefit = { Icon: LucideIcon; title: string; desc: string };
@@ -71,13 +72,13 @@ export default function JobsPage() {
           />
           <div className="grid md:grid-cols-3 gap-5">
             {BENEFITS.map((b, i) => (
-              <div key={i} className="bg-white p-7 hover:shadow-md transition-shadow group">
+              <Reveal key={i} delay={i * 0.06} className="bg-white p-7 hover:shadow-md transition-shadow group">
                 <div className="w-12 h-12 grid place-items-center bg-brand-50 text-brand-600 group-hover:bg-brand-600 group-hover:text-white transition-colors mb-4" style={{ borderRadius: '2px' }}>
                   <b.Icon size={24} strokeWidth={1.8} />
                 </div>
                 <h3 className="text-lg font-bold text-ink-primary mb-2">{b.title}</h3>
                 <p className="text-sm text-ink-secondary leading-relaxed">{b.desc}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
