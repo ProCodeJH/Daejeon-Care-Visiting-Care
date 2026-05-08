@@ -74,7 +74,9 @@ export default function NoticePage() {
                     </a>
                   </td>
                   <td className="py-4 text-center text-sm text-ink-muted hidden md:table-cell">{n.author}</td>
-                  <td className="py-4 text-center text-sm text-ink-muted hidden md:table-cell">{n.date}</td>
+                  <td className="py-4 text-center text-sm text-ink-muted hidden md:table-cell">
+                    <time dateTime={n.date}>{n.date}</time>
+                  </td>
                   <td className="py-4 text-center text-sm text-ink-muted hidden md:table-cell">{n.views}</td>
                 </tr>
               ))}

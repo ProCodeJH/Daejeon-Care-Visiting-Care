@@ -255,7 +255,7 @@ export default function Home() {
                 <div className="flex items-center justify-between text-xs">
                   <div>
                     <p className="font-semibold text-brand-400">- {r.author}</p>
-                    <p className="text-ink-muted text-[11px] mt-0.5">{r.date}</p>
+                    <time dateTime={r.date.replace('.', '-')} className="text-ink-muted text-[11px] mt-0.5 block">{r.date}</time>
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="bg-brand-50 text-brand-600 px-2 py-0.5 font-medium" style={{ borderRadius: '2px' }}>

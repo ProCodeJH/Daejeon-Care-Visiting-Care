@@ -69,7 +69,7 @@ export default function StoryPage() {
                   <p className="text-sm text-ink-secondary line-clamp-2 mb-3 leading-relaxed">
                     {p.excerpt}
                   </p>
-                  <p className="text-xs text-ink-muted">{p.date}</p>
+                  <time dateTime={p.date} className="text-xs text-ink-muted block">{p.date}</time>
                 </div>
               </a>
             ))}
