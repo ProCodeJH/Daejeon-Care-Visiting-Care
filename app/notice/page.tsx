@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, type ReactNode } from 'react';
+import { useState, useEffect, type ReactNode } from 'react';
 import { PageHero } from '@/components/PageHero';
 import { CTASection } from '@/components/CTASection';
 import { NOTICES } from '@/content/notices';
@@ -27,6 +27,28 @@ function highlightMatch(text: string, query: string): ReactNode {
 
 export default function NoticePage() {
   const [search, setSearch] = useState('');
+
+  // Wave 370: URL deep-link — 검색어 공유 시 받는 사람도 동일 필터 즉시 적용.
+  // 500ms debounce: keystroke마다 history API 호출 회피.
+  useEffect(() => {
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlQuery = urlParams.get('q');
+      if (urlQuery) setSearch(urlQuery);
+    } catch {}
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      try {
+        const newUrl = search
+          ? `${window.location.pathname}?q=${encodeURIComponent(search)}`
+          : window.location.pathname;
+        window.history.replaceState(null, '', newUrl);
+      } catch {}
+    }, 500);
+    return () => clearTimeout(timer);
+  }, [search]);
 
   const filtered = NOTICES.filter((n) =>
     search ? n.title.toLowerCase().includes(search.toLowerCase()) : true,
