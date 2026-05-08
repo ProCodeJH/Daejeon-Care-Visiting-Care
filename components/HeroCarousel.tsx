@@ -193,13 +193,13 @@ export function HeroCarousel() {
           {SLIDES[idx].eyebrow}
         </motion.p>
 
+        {/* Wave 435: textWrap 제거 — globals.css h1-h6 { text-wrap: balance } single source (Wave 434 saturation pass) */}
         <h1
           id="hero-title"
           key={`title-${idx}`}
           className="text-3xl md:text-6xl font-bold mb-5 md:mb-8 leading-tight max-w-3xl drop-shadow-md"
           style={{
             fontVariationSettings: '"wght" 800',
-            textWrap: 'balance' as const,
           }}
         >
           <SplitText text={SLIDES[idx].title} charDelay={0.04} />

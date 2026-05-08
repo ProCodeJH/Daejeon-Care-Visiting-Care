@@ -61,11 +61,11 @@ export function PageHero({
             </ol>
           </nav>
         )}
+        {/* Wave 435: textWrap 제거 — globals.css h1-h6 { text-wrap: balance } single source (Wave 434 saturation pass) */}
         <h1
           className="text-3xl md:text-5xl font-bold mb-3"
           style={{
             fontVariationSettings: '"wght" 800',
-            textWrap: 'balance' as const,
           }}
         >
           <SplitText text={title} charDelay={0.035} />
