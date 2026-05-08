@@ -23,24 +23,32 @@ export function StatsCounter({
 }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.6 });
-  const count = useMotionValue(0);
-  const rounded = useTransform(count, (n) => Math.round(n).toLocaleString('ko-KR'));
-  const [display, setDisplay] = useState('0');
+  const count = useMotionValue(value);
+  // SSG render = final value (SEO 우선). JS hydration 후 inView 시 0 → target animate.
+  const [display, setDisplay] = useState(value.toLocaleString('ko-KR'));
+  const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
-    if (!inView) return;
+    setHydrated(true);
+  }, []);
+
+  useEffect(() => {
+    if (!hydrated || !inView) return;
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduced) {
       setDisplay(value.toLocaleString('ko-KR'));
       return;
     }
+    // 0부터 시작 → target. SSR display final → JS hydration 후 잠시 0 → animate to target.
+    count.set(0);
+    setDisplay('0');
     const controls = animate(count, value, {
       duration,
       ease: [0.22, 1, 0.36, 1],
       onUpdate: (v) => setDisplay(Math.round(v).toLocaleString('ko-KR')),
     });
     return () => controls.stop();
-  }, [inView, value, duration, count]);
+  }, [hydrated, inView, value, duration, count]);
 
   return (
     <span ref={ref} aria-label={`${prefix}${value}${suffix}`} className={className}>
