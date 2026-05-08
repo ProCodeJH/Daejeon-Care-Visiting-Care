@@ -59,8 +59,9 @@ export function JobPostingJsonLd({
       '@type': 'Place',
       address: {
         '@type': 'PostalAddress',
-        addressLocality: '대전광역시',
-        addressRegion: '대전',
+        // Wave 473: Korea schema.org — region이 더 큰 단위 (광역시/도), locality가 작은 단위 (시/구)
+        addressRegion: '대전광역시',
+        addressLocality: '대전',
         addressCountry: 'KR',
       },
     },
