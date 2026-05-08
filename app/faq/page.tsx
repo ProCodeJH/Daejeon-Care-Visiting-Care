@@ -54,6 +54,12 @@ export default function FAQPage() {
       {/* FAQ 아코디언 */}
       <section className="bg-white py-16">
         <div className="max-w-[900px] mx-auto px-5">
+          {/* Wave 367: WCAG 4.1.3 Status Messages — 카테고리 필터 결과를 screen reader에 announce */}
+          <div aria-live="polite" aria-atomic="true" className="sr-only">
+            {activeCat === '전체'
+              ? `전체 ${FAQS.length}건의 질문`
+              : `${activeCat} 카테고리 ${filtered.length}건의 질문`}
+          </div>
           <div className="space-y-3">
             {filtered.map((f, i) => (
               <div

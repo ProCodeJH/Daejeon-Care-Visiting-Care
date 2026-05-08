@@ -78,6 +78,10 @@ export default function NoticePage() {
       {/* 게시판 */}
       <section className="bg-white py-10">
         <div className="max-w-[1000px] mx-auto px-5">
+          {/* Wave 367: WCAG 4.1.3 Status Messages — 검색 필터 결과 변화를 screen reader에 announce */}
+          <div aria-live="polite" aria-atomic="true" className="sr-only">
+            {search ? `검색 결과 ${filtered.length}건` : `전체 ${NOTICES.length}건`}
+          </div>
           <table className="w-full">
             <thead>
               <tr className="border-y-2 border-brand-400">
