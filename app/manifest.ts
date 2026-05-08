@@ -22,9 +22,12 @@ export default function manifest(): MetadataRoute.Manifest {
     orientation: 'portrait',
     categories: ['health', 'lifestyle', 'medical'],
     prefer_related_applications: false,
+    // Wave 430: PWA-standard 192/512 추가 — Android Chrome "Install app" 프롬프트 활성화 + splash screen 정상 출력.
     icons: [
-      { src: '/icon', sizes: '64x64', type: 'image/png' },
+      { src: '/icon/small', sizes: '64x64', type: 'image/png' },
       { src: '/apple-icon', sizes: '180x180', type: 'image/png' },
+      { src: '/icon/medium', sizes: '192x192', type: 'image/png', purpose: 'any' },
+      { src: '/icon/large', sizes: '512x512', type: 'image/png', purpose: 'any' },
     ],
     shortcuts: [
       {
