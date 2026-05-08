@@ -1,6 +1,6 @@
 # STATUS — 대전케어 방문요양센터
 
-**Updated**: 2026-05-09 / Wave 567 / paradigm 18 chain 215-wave (test setup 0 — 100% SSG + 자현 manual QA paradigm + type-check 159회 + build success = sufficient)
+**Updated**: 2026-05-09 / Wave 568 / paradigm 18 chain 216-wave (광맥 #326 documentation — `next lint` deprecated + ESLint config 누락. type-check + build sufficient, 자현 승인 시 codemod migration)
 
 > 1쪽 handoff. 자현 5분 결정 진입점.
 
@@ -76,6 +76,7 @@ WCAG 2.2.2 carousel pause / FAQ accordion grid trick / mobile+desktop dropdown a
 | `public/hero/hero-1.png` ~ hero-5 | MED | 정체성 유지 또는 자현 촬영 swap |
 | YouTube VIDEO_ID (app/page.tsx) | LOW | Wave 21 placeholder. 영상 시 ID swap |
 | WebP 변환 | LOW | hero PNG → WebP 변환 시 image-set CSS로 30% 다이어트 |
+| `npm run lint` deprecated (Next.js 16) | LOW | Wave 568 catch. `npx @next/codemod@canary next-lint-to-eslint-cli .` 시 eslint deps + flat config. type-check + build로 검증 충분 → 자현 승인 시 migration |
 
 ---
 
