@@ -1,6 +1,6 @@
 # 대전케어 방문요양센터
 
-대전 5구 통합 방문요양센터 운영 사이트. **두손누리 디자인을 1:1 React로 재현 + 28 Wave 자율 폴리시 + Vercel 자동 배포**.
+대전 5구 통합 방문요양센터 운영 사이트. **두손누리 디자인을 1:1 React로 재현 + 42 Wave 자율 폴리시 + Vercel 자동 배포 + 한국 법적 compliance**.
 
 > **Production**: https://대전케어방문요양.kr  
 > **대표번호**: 042-369-0326 (24시간 상담 가능)  
@@ -30,7 +30,7 @@ npm run dev   # http://localhost:3012
 - **Pretendard Variable** 한국어 가변 폰트
 - **lucide-react** 아이콘
 
-**빌드**: 35+/35+ static · 0 warning · **102kB shared / 148kB Home First Load**
+**빌드**: 50+ routes static · 0 warning · **102kB shared / 148kB Home First Load**
 
 ---
 
@@ -57,8 +57,13 @@ npm run dev   # http://localhost:3012
 - `/notice/[id]` × 5
 - `/story/[id]` × 6
 
+### 약관 + Sitemap
+- `/privacy` 개인정보처리방침 (한국 개인정보보호법 표준)
+- `/terms` 이용약관 (한국 senior care 표준 10조)
+- `/sitemap` HTML 사용자 친화 페이지
+
 ### Meta routes
-- `/sitemap.xml` 28+ URLs
+- `/sitemap.xml` 30+ URLs (자동 갱신)
 - `/robots.txt` Google/Naver/Daum 허용 + 26 AI bots 차단
 - `/icon` `/apple-icon` `/opengraph-image` Next.js native ImageResponse
 - `/manifest.webmanifest` PWA-lite
@@ -71,7 +76,8 @@ npm run dev   # http://localhost:3012
 
 | 편집 대상 | 파일 |
 |---|---|
-| **연락처** (대표번호/24시간/이메일/주소) | `lib/contact.ts` |
+| **연락처** (대표번호/24시간/이메일/주소) | `lib/contact.ts` `CONTACT` |
+| **SNS 6 채널** (카카오/네이버/인스타/유튜브 등) | `lib/contact.ts` `SNS` |
 | **공지사항** (id/title/body/date) | `content/notices.ts` |
 | **블로그 글** (id/title/body/cat) | `content/stories.ts` |
 | **FAQ** (cat/q/a) | `content/faqs.ts` |
@@ -82,6 +88,8 @@ npm run dev   # http://localhost:3012
 | **YouTube 영상 ID** | `app/page.tsx` VIDEO_ID |
 | **본인부담금 한도액** (연도별 갱신) | `app/insurance/cost/page.tsx` MONTHLY_LIMITS |
 | **등급 정보** | `app/insurance/grade/page.tsx` GRADES |
+| **개인정보처리방침** | `app/privacy/page.tsx` |
+| **이용약관** | `app/terms/page.tsx` |
 
 ---
 
