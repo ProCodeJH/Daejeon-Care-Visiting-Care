@@ -142,20 +142,22 @@ export default function AboutPage() {
             sub="법적으로 인정된 기관으로 안심하고 이용하실 수 있습니다"
             className="mb-10"
           />
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {/* Wave 366: <dl> description list — credential 키-값 (HTML 5.2+ div 그룹핑) */}
+          <dl className="grid grid-cols-2 md:grid-cols-4 gap-4 m-0">
             {TRUST_BADGES.map((b, i) => (
               <Reveal key={i} delay={i * 0.06} className="bg-[#f8f8f8] p-5 text-center hover:bg-brand-50 transition-colors group">
                 <div className="w-12 h-12 mx-auto mb-3 grid place-items-center bg-white text-[#1B6F4A] group-hover:bg-[#1B6F4A] group-hover:text-white transition-colors shadow-sm" style={{ borderRadius: '999px' }}>
                   <b.Icon size={22} strokeWidth={1.8} />
                 </div>
-                <p className="font-bold text-ink-primary text-sm mb-1">{b.title}</p>
-                <p className="text-xs text-ink-muted leading-relaxed">{b.desc}</p>
+                <dt className="font-bold text-ink-primary text-sm mb-1">{b.title}</dt>
+                <dd className="text-xs text-ink-muted leading-relaxed m-0">{b.desc}</dd>
               </Reveal>
             ))}
-          </div>
-          <p className="text-center text-xs text-ink-muted mt-6">
+          </dl>
+          {/* Wave 366: <small> = footnote/disclaimer semantic */}
+          <small className="block text-center text-xs text-ink-muted mt-6">
             ※ 정확한 등록번호는 <a href="/contact" className="text-brand-600 hover:underline">상담 문의</a>로 확인 가능합니다.
-          </p>
+          </small>
         </div>
       </section>
 
