@@ -31,7 +31,7 @@ const TRUST_BADGES = [
   {
     Icon: Award,
     title: '장기요양기관 지정',
-    desc: '지정번호 [자현이 입력]',
+    desc: `지정번호 ${CONTACT.careNumber}`,
   },
   {
     Icon: FileCheck,
