@@ -134,9 +134,15 @@ export function Footer() {
         )}
 
         <div className="border-t border-gray-100 mt-10 pt-5 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-          {/* Wave 357: <small> semantic — copyright는 canonical "small print" 영역 (HTML5 spec) */}
+          {/* Wave 357: <small> semantic — copyright는 canonical "small print" 영역 (HTML5 spec).
+              Wave 373: 최종 업데이트 표시 — SSG build time 자동 갱신, "활성 유지" 신뢰 시그널. */}
           <small className="text-xs text-ink-muted block">
             COPYRIGHT © {new Date().getFullYear()} {CONTACT.name} ALL RIGHTS RESERVED.
+            {' · '}
+            최종 업데이트{' '}
+            <time dateTime={new Date().toISOString().split('T')[0]}>
+              {new Date().toISOString().split('T')[0]}
+            </time>
           </small>
           {/* Wave 364: <nav> = navigation landmark for 법적 정보 + 사이트맵 (3 cross-page links 그룹) */}
           <nav aria-label="법적 정보 및 사이트맵" className="flex items-center gap-4 text-xs text-ink-muted">

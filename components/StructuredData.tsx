@@ -93,6 +93,10 @@ const BUSINESS_JSONLD = {
   },
 };
 
+// Wave 373: dateModified — schema.org freshness 신호 (Google ranking + 사이트 활성도 표현).
+// SSG build time 자동 갱신 (Vercel push 마다 fresh).
+const SITE_BUILD_DATE = new Date().toISOString().split('T')[0];
+
 const WEBSITE_JSONLD = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
@@ -100,6 +104,7 @@ const WEBSITE_JSONLD = {
   url: SITE,
   name: CONTACT.name,
   inLanguage: SITE_CONFIG.lang,
+  dateModified: SITE_BUILD_DATE,
   publisher: { '@id': `${SITE}/#business` },
 };
 
