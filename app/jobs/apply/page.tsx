@@ -36,9 +36,15 @@ export default function JobApplyPage() {
         <div className="max-w-[800px] mx-auto px-5">
           <div className="bg-white p-7 md:p-10">
             {submitted ? (
-              <div role="status" aria-live="polite" className="text-center py-12">
-                <p className="text-5xl mb-5">✓</p>
-                <h3 className="text-2xl font-bold text-brand-400 mb-3">지원이 접수되었습니다</h3>
+              <div
+                role="status"
+                aria-live="polite"
+                className="text-center py-12 form-success-enter bg-gradient-to-br from-brand-50 to-brand-100 border-l-4 border-[#1B6F4A] -mx-7 md:-mx-8 px-7 md:px-8"
+              >
+                <div className="w-16 h-16 mx-auto mb-5 rounded-full bg-[#1B6F4A] grid place-items-center text-white text-3xl">
+                  ✓
+                </div>
+                <h3 className="text-2xl font-bold text-[#1B6F4A] mb-3">지원이 접수되었습니다</h3>
                 <p className="text-ink-secondary mb-6">
                   담당자가 24시간 내에 연락드리겠습니다.
                   <br />
@@ -46,7 +52,7 @@ export default function JobApplyPage() {
                 </p>
                 <a
                   href="/"
-                  className="inline-block bg-brand-400 hover:bg-brand-500 text-white px-6 py-3 font-semibold transition-colors"
+                  className="inline-block bg-[#1B6F4A] hover:bg-[#15573A] text-white px-6 py-3 font-semibold transition-colors"
                   style={{ borderRadius: '2px' }}
                 >
                   홈으로 돌아가기
