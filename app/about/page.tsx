@@ -101,35 +101,35 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 신뢰 지표 4개 — StatsCounter (whileInView 카운트) */}
+      {/* 신뢰 지표 4개 — StatsCounter (whileInView 카운트). Wave 387: <dl> semantic saturation pass */}
       <section className="bg-white pb-20">
         <div className="max-w-[1200px] mx-auto px-5">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 border-y border-gray-100 py-10">
-            <div className="text-center">
-              <p className="text-4xl md:text-5xl font-extrabold text-[#1B6F4A] mb-2 tabular-nums">
+          <dl className="grid grid-cols-2 md:grid-cols-4 gap-6 border-y border-gray-100 py-10 m-0">
+            <div className="text-center flex flex-col-reverse gap-2">
+              <dt className="text-sm text-ink-muted font-medium">대전 5구 통합</dt>
+              <dd className="text-4xl md:text-5xl font-extrabold text-[#1B6F4A] tabular-nums m-0">
                 <StatsCounter value={5} suffix="구" />
-              </p>
-              <p className="text-sm text-ink-muted font-medium">대전 5구 통합</p>
+              </dd>
             </div>
-            <div className="text-center">
-              <p className="text-4xl md:text-5xl font-extrabold text-[#1B6F4A] mb-2 tabular-nums">
+            <div className="text-center flex flex-col-reverse gap-2">
+              <dt className="text-sm text-ink-muted font-medium">365일 상담 가능</dt>
+              <dd className="text-4xl md:text-5xl font-extrabold text-[#1B6F4A] tabular-nums m-0">
                 <StatsCounter value={24} suffix="시간" />
-              </p>
-              <p className="text-sm text-ink-muted font-medium">365일 상담 가능</p>
+              </dd>
             </div>
-            <div className="text-center">
-              <p className="text-4xl md:text-5xl font-extrabold text-[#1B6F4A] mb-2 tabular-nums">
+            <div className="text-center flex flex-col-reverse gap-2">
+              <dt className="text-sm text-ink-muted font-medium">자격 매니저</dt>
+              <dd className="text-4xl md:text-5xl font-extrabold text-[#1B6F4A] tabular-nums m-0">
                 <StatsCounter value={CONTACT.managerCount} suffix="+명" />
-              </p>
-              <p className="text-sm text-ink-muted font-medium">자격 매니저</p>
+              </dd>
             </div>
-            <div className="text-center">
-              <p className="text-4xl md:text-5xl font-extrabold text-[#1B6F4A] mb-2 tabular-nums">
+            <div className="text-center flex flex-col-reverse gap-2">
+              <dt className="text-sm text-ink-muted font-medium">무료 상담 + 등급 신청 동행</dt>
+              <dd className="text-4xl md:text-5xl font-extrabold text-[#1B6F4A] tabular-nums m-0">
                 <StatsCounter value={100} suffix="%" />
-              </p>
-              <p className="text-sm text-ink-muted font-medium">무료 상담 + 등급 신청 동행</p>
+              </dd>
             </div>
-          </div>
+          </dl>
         </div>
       </section>
 

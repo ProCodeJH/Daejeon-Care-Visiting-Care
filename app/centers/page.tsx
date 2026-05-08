@@ -24,28 +24,28 @@ export default function CentersPage() {
         crumbs={[{ label: '센터소개' }, { label: '5구 지점' }]}
       />
 
-      {/* 통합 stats */}
+      {/* 통합 stats. Wave 387: <dl> semantic saturation pass (home Wave 386 패턴) */}
       <section className="bg-white py-12 border-b border-gray-100">
-        <div className="max-w-[1200px] mx-auto px-5 grid grid-cols-3 gap-6 text-center">
-          <Reveal>
-            <p className="text-3xl md:text-4xl font-extrabold text-[#1B6F4A] mb-1 tabular-nums">
+        <dl className="max-w-[1200px] mx-auto px-5 grid grid-cols-3 gap-6 text-center m-0">
+          <Reveal as="div" className="flex flex-col-reverse gap-1">
+            <dt className="text-xs md:text-sm text-ink-muted font-medium">대전 5구 모두 운영</dt>
+            <dd className="text-3xl md:text-4xl font-extrabold text-[#1B6F4A] tabular-nums m-0">
               <StatsCounter value={CENTERS.length} suffix="구" />
-            </p>
-            <p className="text-xs md:text-sm text-ink-muted font-medium">대전 5구 모두 운영</p>
+            </dd>
           </Reveal>
-          <Reveal delay={0.1}>
-            <p className="text-3xl md:text-4xl font-extrabold text-[#1B6F4A] mb-1 tabular-nums">
+          <Reveal as="div" delay={0.1} className="flex flex-col-reverse gap-1">
+            <dt className="text-xs md:text-sm text-ink-muted font-medium">총 자격 매니저 수</dt>
+            <dd className="text-3xl md:text-4xl font-extrabold text-[#1B6F4A] tabular-nums m-0">
               <StatsCounter value={totalManagers} suffix="명" />
-            </p>
-            <p className="text-xs md:text-sm text-ink-muted font-medium">총 자격 매니저 수</p>
+            </dd>
           </Reveal>
-          <Reveal delay={0.2}>
-            <p className="text-3xl md:text-4xl font-extrabold text-[#E63946] mb-1 tabular-nums">
+          <Reveal as="div" delay={0.2} className="flex flex-col-reverse gap-1">
+            <dt className="text-xs md:text-sm text-ink-muted font-medium">365일 상담 가능</dt>
+            <dd className="text-3xl md:text-4xl font-extrabold text-[#E63946] tabular-nums m-0">
               <StatsCounter value={24} suffix="시간" />
-            </p>
-            <p className="text-xs md:text-sm text-ink-muted font-medium">365일 상담 가능</p>
+            </dd>
           </Reveal>
-        </div>
+        </dl>
       </section>
 
       {/* 지점 카드 grid */}
