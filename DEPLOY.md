@@ -88,7 +88,6 @@ git push   # → Vercel 자동 배포 (~2분)
 | 후기 / 블로그 / FAQ | `app/page.tsx` REVIEWS / BLOGS / FAQS |
 | 6 nav 메뉴 + sub-nav | `components/Header.tsx` NAV |
 | 회사 정보 (사업자번호 등) | `components/Footer.tsx` + `lib/contact.ts` |
-| YouTube 영상 ID | `app/page.tsx` VIDEO_ID |
 | 본인부담금 한도액 (연도별 갱신) | `app/insurance/cost/page.tsx` MONTHLY_LIMITS |
 | 등급 정보 | `app/insurance/grade/page.tsx` GRADES |
 | 채용 정보 | `app/jobs/page.tsx` BENEFITS / REQUIREMENTS |
@@ -106,6 +105,25 @@ git push   # → Vercel 자동 배포 (~2분)
 - [ ] 카카오 비즈니스 등록 (지도 검색 노출)
 
 각 항목 자현 명령 시 진행.
+
+---
+
+## 🚨 Vercel webhook 막혔을 때 (manual redeploy)
+
+**증상**: `git push` 후 Vercel dashboard에 새 deployment 안 뜸.
+
+**원인**: GitHub ↔ Vercel webhook 일시 단절 (계정/권한/Vercel 일시 장애).
+
+**해결 (1분)**:
+1. https://vercel.com/gujahyeons-projects/web-v3/deployments 접속
+2. 최신 commit 옆 ⋯ 클릭 → **"Redeploy"** → "Use existing build cache" 체크 → Redeploy
+3. ~2분 후 production 반영
+
+**영구 fix (10분)**:
+1. https://vercel.com/gujahyeons-projects/web-v3/settings/git
+2. **"Disconnect"** → **"Reconnect with GitHub"**
+3. ProCodeJH 계정 권한 재승인 → repository 선택 → 저장
+4. 이후 `git push` 자동 deploy 정상화
 
 ---
 
