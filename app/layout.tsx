@@ -70,6 +70,13 @@ export const metadata: Metadata = {
     canonical: SITE.url,
   },
   category: 'health',
+  // Wave 297: iOS Safari PWA 정확 (manifest standalone 무시 → meta 별도).
+  // 어르신 자녀 iOS 홈 화면 추가 시 fullscreen + 정체성 status bar.
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: '대전케어',
+  },
 };
 
 export const viewport = {
