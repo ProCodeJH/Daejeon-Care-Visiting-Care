@@ -55,13 +55,25 @@ export default function StoryPage() {
                 className="group block bg-[#f8f8f8] hover:bg-brand-50 transition-colors overflow-hidden"
                 aria-label={p.title}
               >
-                {/* 썸네일 — 자현 thumbnail 입력 시 활성, 미입력 시 gradient (저작권 0) */}
-                <div
-                  className="aspect-[4/3] relative bg-gradient-to-br from-brand-200 to-brand-400 bg-cover bg-center"
-                  style={p.thumbnail ? { backgroundImage: `url('${p.thumbnail}')` } : undefined}
-                >
+                {/* Wave 376: <img> SEO/lazy + gradient aria-hidden (Wave 358 패턴 saturation pass).
+                    링크 aria-label 이미 있으므로 alt="" (decorative) — WCAG 정확. */}
+                <div className="aspect-[4/3] relative overflow-hidden">
+                  {p.thumbnail ? (
+                    <img
+                      src={p.thumbnail}
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div
+                      aria-hidden="true"
+                      className="absolute inset-0 bg-gradient-to-br from-brand-200 to-brand-400"
+                    />
+                  )}
                   {p.isNotice && (
-                    <span className="absolute top-3 left-3 bg-white text-brand-400 text-xs font-bold px-2 py-1" style={{ borderRadius: '2px' }}>
+                    <span className="absolute top-3 left-3 bg-white text-brand-400 text-xs font-bold px-2 py-1 z-10" style={{ borderRadius: '2px' }}>
                       공지
                     </span>
                   )}

@@ -291,7 +291,8 @@ export default function Home() {
                   href={`/story/${b.id}`}
                   className="group block bg-gray-50 hover:bg-brand-50 transition-colors overflow-hidden"
                 >
-                  <div className="aspect-[4/3] bg-gradient-to-br from-brand-200 to-brand-400" />
+                  {/* Wave 376: gradient placeholder는 decorative — aria-hidden으로 screen reader 노이즈 회피 */}
+                  <div aria-hidden="true" className="aspect-[4/3] bg-gradient-to-br from-brand-200 to-brand-400" />
                   <div className="p-4">
                     <p className="text-xs text-brand-400 font-medium mb-1.5">{b.tag}</p>
                     <p className="text-sm font-semibold text-ink-primary leading-snug group-hover:text-brand-400 transition-colors line-clamp-2">
