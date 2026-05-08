@@ -299,11 +299,12 @@ export default function JobApplyPage() {
                   />
                 </div>
 
+                {/* Wave 420: <label> without htmlFor invalid — <p id> + aria-labelledby 정확 */}
                 <div>
-                  <label className="block text-sm font-bold text-ink-primary mb-1.5">
+                  <p id="cert-label" className="block text-sm font-bold text-ink-primary mb-1.5">
                     자격증 종류 <span aria-hidden="true" className="text-brand-400">*</span>
-                  </label>
-                  <div role="radiogroup" aria-label="자격증 종류" aria-required="true" className="flex gap-4 text-sm">
+                  </p>
+                  <div role="radiogroup" aria-labelledby="cert-label" aria-required="true" className="flex gap-4 text-sm">
                     {['요양보호사 1급', '요양보호사 2급', '간호조무사', '사회복지사', '기타'].map((c) => (
                       <label key={c} className="flex items-center gap-2 cursor-pointer">
                         <input type="radio" name="cert" value={c} required className="accent-brand-400" />
@@ -335,10 +336,10 @@ export default function JobApplyPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-bold text-ink-primary mb-1.5">
+                  <p id="region-label" className="block text-sm font-bold text-ink-primary mb-1.5">
                     희망 근무지 <span aria-hidden="true" className="text-brand-400">*</span>
-                  </label>
-                  <div role="group" aria-label="희망 근무지" aria-required="true" className="grid grid-cols-3 md:grid-cols-6 gap-2">
+                  </p>
+                  <div role="group" aria-labelledby="region-label" aria-required="true" className="grid grid-cols-3 md:grid-cols-6 gap-2">
                     {REGIONS.map((r) => (
                       <label key={r} className="flex items-center gap-2 text-sm cursor-pointer p-2 bg-[#f8f8f8] hover:bg-brand-50 transition-colors" style={{ borderRadius: '2px' }}>
                         <input type="checkbox" name="region" value={r} className="accent-brand-400" />
@@ -349,10 +350,10 @@ export default function JobApplyPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-bold text-ink-primary mb-1.5">
+                  <p id="availability-label" className="block text-sm font-bold text-ink-primary mb-1.5">
                     가능 시간대
-                  </label>
-                  <div role="group" aria-label="가능 시간대" className="flex flex-wrap gap-2 text-sm">
+                  </p>
+                  <div role="group" aria-labelledby="availability-label" className="flex flex-wrap gap-2 text-sm">
                     {['오전', '오후', '저녁', '평일', '주말', '시간 자유'].map((t) => (
                       <label key={t} className="flex items-center gap-2 cursor-pointer px-3 py-1.5 bg-[#f8f8f8] hover:bg-brand-50 transition-colors" style={{ borderRadius: '2px' }}>
                         <input type="checkbox" name="availability" value={t} className="accent-brand-400" />

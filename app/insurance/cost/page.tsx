@@ -125,10 +125,11 @@ export default function CostPage() {
           {/* 입력 */}
           <div className="grid md:grid-cols-2 gap-6 mb-10">
             <div>
-              <label className="block text-sm font-bold text-ink-primary mb-3">
+              {/* Wave 420: <label> without htmlFor invalid — <p id> + aria-labelledby */}
+              <p id="grade-label" className="block text-sm font-bold text-ink-primary mb-3">
                 장기요양 등급
-              </label>
-              <div className="grid grid-cols-3 gap-2" role="group" aria-label="장기요양 등급 선택">
+              </p>
+              <div className="grid grid-cols-3 gap-2" role="group" aria-labelledby="grade-label">
                 {Object.keys(MONTHLY_LIMITS).map((g) => (
                   <button
                     key={g}
