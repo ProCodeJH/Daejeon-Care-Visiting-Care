@@ -2,20 +2,23 @@
  * JSON-LD structured data — MedicalBusiness for Google rich results.
  * 자현 정체성 (대표번호 + 24시간 + 대전 5구) + 한글 도메인.
  */
+import { CONTACT } from '@/lib/contact';
+
 const SITE = 'https://대전케어방문요양.kr';
 
 const BUSINESS_JSONLD = {
   '@context': 'https://schema.org',
   '@type': 'MedicalBusiness',
   '@id': `${SITE}/#business`,
-  name: '대전케어 방문요양센터',
+  name: CONTACT.name,
   alternateName: '대전케어',
   description:
     '대전 5구 통합 방문요양센터. 어르신 댁으로 직접 찾아가는 케어 — 방문요양·방문목욕·방문간호. 24시간 상담 가능.',
   url: SITE,
   logo: `${SITE}/icon`,
   image: `${SITE}/opengraph-image`,
-  telephone: '+82-42-369-0326',
+  telephone: CONTACT.phoneIntl,
+  email: CONTACT.email,
   priceRange: '₩',
   inLanguage: 'ko',
   currenciesAccepted: 'KRW',
@@ -50,7 +53,8 @@ const BUSINESS_JSONLD = {
   },
   contactPoint: {
     '@type': 'ContactPoint',
-    telephone: '+82-42-369-0326',
+    telephone: CONTACT.phoneIntl,
+    email: CONTACT.email,
     contactType: 'customer service',
     availableLanguage: ['Korean'],
     hoursAvailable: '24시간',
@@ -93,7 +97,7 @@ const WEBSITE_JSONLD = {
   '@type': 'WebSite',
   '@id': `${SITE}/#website`,
   url: SITE,
-  name: '대전케어 방문요양센터',
+  name: CONTACT.name,
   inLanguage: 'ko',
   publisher: { '@id': `${SITE}/#business` },
 };

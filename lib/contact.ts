@@ -18,6 +18,8 @@ export const CONTACT = {
   name: '대전케어 방문요양센터',
   phone: '042-369-0326',
   phoneTel: 'tel:042-369-0326',
+  // International format (+82) — JSON-LD MedicalBusiness telephone 등 schema.org 표준용
+  phoneIntl: '+82-42-369-0326',
   available: '24시간 상담 가능',
   hours: '24시간 365일 상담 가능',
   email: 'contact@daejeoncare.kr',
