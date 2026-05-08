@@ -27,7 +27,7 @@ export default function FAQPage() {
       {/* 카테고리 + Search */}
       <section className="bg-white py-10 border-b border-gray-100">
         <div className="max-w-[900px] mx-auto px-5">
-          <div className="flex flex-wrap justify-center gap-2">
+          <div className="flex flex-wrap justify-center gap-2" role="group" aria-label="FAQ 카테고리 필터">
             {CATS.map((c) => (
               <button
                 key={c}
@@ -36,6 +36,7 @@ export default function FAQPage() {
                   setActiveCat(c);
                   setOpenIdx(null);
                 }}
+                aria-pressed={activeCat === c}
                 className={`px-5 py-2 text-sm font-medium transition-colors ${
                   activeCat === c
                     ? 'bg-brand-400 text-white'

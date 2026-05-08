@@ -23,11 +23,13 @@ export default function StoryPage() {
       {/* 카테고리 필터 */}
       <section className="bg-white py-10 border-b border-gray-100">
         <div className="max-w-[1200px] mx-auto px-5">
-          <div className="flex flex-wrap justify-center gap-2">
+          <div className="flex flex-wrap justify-center gap-2" role="group" aria-label="이야기 카테고리 필터">
             {CATEGORIES.map((c) => (
               <button
                 key={c}
+                type="button"
                 onClick={() => setActiveCat(c)}
+                aria-pressed={activeCat === c}
                 className={`px-5 py-2 text-sm font-medium transition-colors ${
                   activeCat === c
                     ? 'bg-brand-400 text-white'
