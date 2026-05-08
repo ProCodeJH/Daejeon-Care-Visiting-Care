@@ -14,14 +14,16 @@ export function Logo({
 }) {
   return (
     <div className={`flex items-center gap-3 ${className}`}>
-      {/* 로고 마크 */}
+      {/* 로고 마크 — 텍스트 동반 시 aria-hidden (스크린리더 중복 방지), 아이콘 only 시 aria-label */}
       <svg
         width={size}
         height={size}
         viewBox="0 0 100 100"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        aria-label="대전케어 로고"
+        {...(withText
+          ? { 'aria-hidden': true as const }
+          : { role: 'img', 'aria-label': '대전케어 방문요양센터 로고' })}
         className="shrink-0"
       >
         {/* 손바닥 (cradle 곡선) */}

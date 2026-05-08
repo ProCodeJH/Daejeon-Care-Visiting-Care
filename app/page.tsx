@@ -165,7 +165,7 @@ export default function Home() {
               </svg>
               <div className="relative z-10">
                 <div className="w-20 h-20 mx-auto rounded-full bg-white/15 backdrop-blur-sm grid place-items-center mb-5">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
+                  <svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="white">
                     <path d="M8 5v14l11-7z" />
                   </svg>
                 </div>
