@@ -32,7 +32,21 @@ const SECURITY_HEADERS = [
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  // Wave 433: X-Powered-By: Next.js 헤더 제거 — 공격자에게 server stack 정보 누출 X (security obscurity).
+  poweredByHeader: false,
+  // Wave 433: production console.* strip — dev/staging 보존, error/warn 예외 (운영 디버깅 가능).
+  compiler: {
+    removeConsole:
+      process.env.NODE_ENV === 'production' ? { exclude: ['error', 'warn'] } : false,
+  },
+  // Wave 433: barrel file tree-shake — lucide-react 250+ icons / framer-motion 다중 export 분할 import.
+  // Vercel 측정 ~30% First Load JS 감소 사례. zero-cost (build time only).
+  experimental: {
+    optimizePackageImports: ['framer-motion', 'lucide-react', 'lenis'],
+  },
   images: {
+    // Wave 433: AVIF 우선 (~20% smaller than WebP) → WebP fallback. next/image 미래 사용 대비.
+    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       { protocol: 'https', hostname: 'lh3.googleusercontent.com' },
       { protocol: 'https', hostname: 'images.unsplash.com' },
