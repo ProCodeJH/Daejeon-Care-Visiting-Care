@@ -187,9 +187,16 @@ export function Header() {
         </button>
       </div>
 
-      {/* Mobile Nav */}
-      {open && (
-        <nav id="mobile-nav" aria-label="모바일 메뉴" className="lg:hidden border-t border-gray-100 bg-white">
+      {/* Mobile Nav — Wave 350: 항상 마운트 + accordion-content (grid 0fr→1fr) + inert.
+          conditional render 대비 부드러운 slide-down + 닫힘 시 inert로 focus/a11y tree 차단. */}
+      <nav
+        id="mobile-nav"
+        aria-label="모바일 메뉴"
+        className="lg:hidden border-t border-gray-100 bg-white accordion-content"
+        data-open={open}
+        inert={!open}
+      >
+        <div>
           <div className="px-5 py-4 flex flex-col">
             {NAV.map((item) => (
               <div key={item.label} className="border-b border-gray-50 py-3">
@@ -228,8 +235,8 @@ export function Header() {
               <Phone size={16} /> {CONTACT.phone} · 24시간 상담
             </a>
           </div>
-        </nav>
-      )}
+        </div>
+      </nav>
       </header>
     </>
   );
