@@ -12,7 +12,28 @@ import { CONTACT } from '@/lib/contact';
  *
  * Wave 4 motion 유지: mask-image dissolve / letterbox / radial halo / variable font hover.
  */
-const SLIDES = [
+/**
+ * Hero SLIDES — gradient mesh (저작권 0 default).
+ *
+ * 🔧 자현 이미지 swap 가이드:
+ *   - 이미지 사이즈: 1920×1080 (16:9) WebP 또는 JPG, 200-400 KB 권장
+ *   - 위치: `public/hero-1.webp` 등 (Next.js static asset)
+ *   - 활성: 각 SLIDE에 `bg: '/hero-1.webp'` 추가 (optional)
+ *   - 자동 적용: dark overlay (rgba 0.45) + image cover + gradient fallback
+ *   - 저작권: Unsplash (next.config 화이트리스트) / Pexels / 자현 직접 촬영 (모델 동의 필수)
+ */
+type Slide = {
+  /** Gradient mesh fallback (이미지 없을 때 + 이미지 로드 실패 시 fallback) */
+  grad: string;
+  /** Optional 자현 이미지 path (예: '/hero-2.webp'). 비어있으면 grad만 사용. */
+  bg?: string;
+  eyebrow: string;
+  title: string;
+  sub: string;
+  accent: string;
+};
+
+const SLIDES: Slide[] = [
   {
     // gradient mesh (정체성 그린 + 코랄, 저작권 0)
     grad: 'radial-gradient(circle at 18% 24%, rgba(27,111,74,0.95) 0%, rgba(21,87,58,0.85) 35%, rgba(15,55,38,0.95) 100%), radial-gradient(circle at 78% 76%, rgba(230,57,70,0.45) 0%, transparent 50%)',
@@ -36,6 +57,12 @@ const SLIDES = [
     accent: '#E63946',
   },
 ];
+
+/** dark overlay rgba 0.45 + image cover + grad fallback (이미지 미리 로드 안 됐을 때 grad 보임) */
+const slideBg = (s: Slide) =>
+  s.bg
+    ? `linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('${s.bg}') center/cover no-repeat, ${s.grad}`
+    : s.grad;
 
 /**
  * Decorative SVG — 따뜻한 손/원/하트 모티브 (CC0, 직접 작성).
@@ -95,7 +122,7 @@ export function HeroCarousel() {
             aria-hidden={idx !== i}
             className="absolute inset-0 transition-opacity duration-[1400ms] ease-out"
             style={{
-              background: s.grad,
+              background: slideBg(s),
               opacity: idx === i ? 1 : 0,
             }}
           />
