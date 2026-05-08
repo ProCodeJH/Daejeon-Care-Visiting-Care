@@ -229,6 +229,32 @@
   }
 }
 
+/* Wave 352: Native <details> smooth open/close (Chrome 131+ / Oct 2024).
+ * interpolate-size: allow-keywords (Chrome 129+) enables block-size: auto transitions.
+ * ::details-content pseudo wraps everything inside <details> except <summary>.
+ * Fallback (older browsers): snap open/close — graceful degrade.
+ * 적용: app/page.tsx Home FAQ section (4 details) — JS 0, hydration 0. */
+@supports (interpolate-size: allow-keywords) {
+  :root {
+    interpolate-size: allow-keywords;
+  }
+  details::details-content {
+    block-size: 0;
+    overflow-y: clip;
+    transition:
+      block-size 350ms cubic-bezier(0.22, 1, 0.36, 1),
+      content-visibility 350ms allow-discrete;
+  }
+  details[open]::details-content {
+    block-size: auto;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    details::details-content {
+      transition: none;
+    }
+  }
+}
+
 /* Wave 285: native CSS scroll-driven animation paradigm (Chrome 115+ / Edge 115+).
  * JS framer-motion Reveal 대체 가능 utility — bundle JS ↓, scroll progress 정밀.
  * 사용: <div className="scroll-reveal-native">…</div> (Tailwind className 직접 인터페이스).
