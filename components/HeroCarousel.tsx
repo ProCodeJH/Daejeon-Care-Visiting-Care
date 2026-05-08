@@ -271,7 +271,7 @@ export function HeroCarousel() {
             type="button"
             onClick={() => setIdx(i)}
             aria-label={`슬라이드 ${i + 1} / ${SLIDES.length}`}
-            aria-current={idx === i ? 'step' : undefined}
+            aria-current={idx === i ? 'true' : undefined}
             className={`h-1.5 transition-all duration-500 ${
               idx === i ? 'w-10 bg-white' : 'w-5 bg-white/50 hover:bg-white/80'
             }`}
