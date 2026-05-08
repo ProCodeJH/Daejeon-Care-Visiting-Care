@@ -158,8 +158,8 @@ export default function CostPage() {
               정확한 금액은 국민건강보험공단 또는 대전케어 상담을 통해 확인하세요.
             </p>
 
-            {/* 결과 공유 — 가족 단톡에 즉시 전달 use case */}
-            <div className="mt-6 pt-5 border-t border-brand-200 flex flex-wrap items-center gap-3">
+            {/* 결과 공유/인쇄 — 가족 단톡 + 손에 들고 비교 use case (인쇄 시 자체 숨김) */}
+            <div className="mt-6 pt-5 border-t border-brand-200 flex flex-wrap items-center gap-3 print:hidden">
               <span className="text-xs text-ink-muted font-semibold tracking-[0.15em]">
                 | 가족과 공유
               </span>
@@ -167,6 +167,15 @@ export default function CostPage() {
                 title="대전케어 본인부담금 계산 결과"
                 text={`장기요양 ${grade}등급 (${RATES[rateKey].label}) — 월 본인부담 ${fmt(result.userPay)} · 공단 부담 ${fmt(result.govPay)}\n대전케어 방문요양센터 042-369-0326`}
               />
+              <button
+                type="button"
+                onClick={() => typeof window !== 'undefined' && window.print()}
+                className="inline-flex items-center gap-2 bg-white hover:bg-gray-50 text-ink-secondary border border-gray-200 hover:border-brand-400 px-4 py-2 text-sm font-semibold transition-colors"
+                style={{ borderRadius: '2px' }}
+                aria-label="본인부담금 계산 결과 인쇄"
+              >
+                🖨 인쇄
+              </button>
             </div>
           </div>
         </div>
