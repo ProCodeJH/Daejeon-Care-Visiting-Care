@@ -102,6 +102,19 @@ export default function CostPage() {
       {/* 계산기 */}
       <section className="bg-white py-16">
         <div className="max-w-[1000px] mx-auto px-5">
+          {/* Wave 390: <noscript> fallback — JS 비활성 사용자에게 phone CTA 안내 */}
+          <noscript>
+            <div className="bg-[#FFF8E1] border-l-4 border-[#F5A623] p-4 mb-6">
+              <p className="text-sm text-ink-primary">
+                JavaScript가 비활성화되어 자동 계산기를 사용할 수 없습니다.
+                본인부담금은{' '}
+                <a href={CONTACT.phoneTel} className="underline font-bold text-[#1B6F4A]">
+                  {CONTACT.phone}
+                </a>
+                으로 문의 주세요.
+              </p>
+            </div>
+          </noscript>
           <SectionBlock
             eyebrow="CALCULATOR"
             title="조건 선택"
