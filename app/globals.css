@@ -147,6 +147,17 @@
     }
   }
 
+  /* Insurance/cost 결과 변경 시 미세 flash (정체성 색 ring) */
+  @keyframes resultFlash {
+    0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.35); }
+    100% { box-shadow: 0 0 0 16px rgba(37, 99, 235, 0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    @keyframes resultFlash {
+      0%, 100% { box-shadow: none; }
+    }
+  }
+
   /* nav underline 인터랙션 (Header active 강화) */
   .nav-underline {
     position: relative;

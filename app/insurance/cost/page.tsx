@@ -118,8 +118,12 @@ export default function CostPage() {
             </div>
           </div>
 
-          {/* 결과 */}
-          <div className="bg-gradient-to-br from-brand-50 to-brand-100 p-8 md:p-10 border-2 border-brand-400">
+          {/* 결과 — 정체성 색 highlight + 변경 시 부드러운 transition */}
+          <div
+            key={`${grade}-${rateKey}`}
+            className="bg-gradient-to-br from-brand-50 to-brand-100 p-8 md:p-10 border-2 border-brand-600 transition-colors duration-500"
+            style={{ animation: 'resultFlash 0.5s ease-out' }}
+          >
             <p className="text-brand-400 font-semibold tracking-[0.15em] text-sm mb-3">
               | RESULT
             </p>
