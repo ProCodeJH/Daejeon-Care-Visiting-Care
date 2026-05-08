@@ -5,6 +5,7 @@ import { PageHero } from '@/components/PageHero';
 import { CTASection } from '@/components/CTASection';
 import { FaqJsonLd } from '@/components/FaqJsonLd';
 import { FAQS } from '@/content/faqs';
+import { CONTACT } from '@/lib/contact';
 
 const CATS = ['전체', '신청', '서비스', '비용'];
 
@@ -130,7 +131,7 @@ export default function FAQPage() {
                 직접 문의하기 →
               </h3>
               <p className="text-sm text-ink-secondary leading-relaxed">
-                전화 042-369-0326 또는 온라인 폼 (24시간).
+                전화 {CONTACT.phone} 또는 온라인 폼 (24시간).
               </p>
             </a>
           </div>

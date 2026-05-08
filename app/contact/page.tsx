@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { PageHero } from '@/components/PageHero';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
+import { CONTACT } from '@/lib/contact';
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
@@ -33,8 +34,8 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <p className="font-semibold text-ink-primary mb-0.5">전화 상담</p>
-                  <p className="text-lg font-bold text-brand-400">042-369-0326</p>
-                  <p className="text-xs text-ink-muted">FAX. 042-369-0326</p>
+                  <p className="text-lg font-bold text-brand-400">{CONTACT.phone}</p>
+                  <p className="text-xs text-ink-muted">FAX. {CONTACT.phone}</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">

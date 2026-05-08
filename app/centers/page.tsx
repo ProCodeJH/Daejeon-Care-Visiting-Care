@@ -114,7 +114,7 @@ export default function CentersPage() {
               짧은 이동 시간 = 약속 시간 정확 + 어르신 부담 감소.
             </p>
             <p className="text-sm text-ink-muted">
-              💡 5구 외 지역 (세종·청주·옥천 등) 거주 어르신도 상담 가능. 042-369-0326으로 문의 주세요.
+              💡 5구 외 지역 (세종·청주·옥천 등) 거주 어르신도 상담 가능. {CONTACT.phone}으로 문의 주세요.
             </p>
           </div>
         </div>

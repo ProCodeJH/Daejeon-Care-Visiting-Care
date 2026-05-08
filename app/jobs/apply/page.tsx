@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { PageHero } from '@/components/PageHero';
 import { SectionBlock } from '@/components/SectionBlock';
+import { CONTACT } from '@/lib/contact';
 
 const REGIONS = ['유성구', '대덕구', '서구', '중구', '동구', '대전 외'];
 
@@ -243,7 +244,7 @@ export default function JobApplyPage() {
                 </button>
 
                 <p className="text-center text-sm text-ink-muted">
-                  또는 전화 문의: <a href="tel:042-369-0326" className="text-brand-400 font-bold">042-369-0326</a>
+                  또는 전화 문의: <a href={CONTACT.phoneTel} className="text-brand-400 font-bold">{CONTACT.phone}</a>
                 </p>
               </form>
             )}

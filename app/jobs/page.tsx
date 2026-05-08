@@ -4,6 +4,7 @@ import { SectionBlock } from '@/components/SectionBlock';
 import { CTASection } from '@/components/CTASection';
 import { Reveal } from '@/components/Reveal';
 import { Wallet, Clock, Home, BookOpen, Users, Heart, type LucideIcon } from 'lucide-react';
+import { CONTACT } from '@/lib/contact';
 
 export const metadata: Metadata = {
   title: '요양보호사 일자리',
@@ -59,11 +60,11 @@ export default function JobsPage() {
             }
           />
           <a
-            href="tel:042-369-0326"
+            href={CONTACT.phoneTel}
             className="inline-block mt-8 bg-brand-400 hover:bg-brand-500 text-white px-8 py-4 font-bold text-lg transition-colors"
             style={{ borderRadius: '2px' }}
           >
-            ☎️ 042-369-0326 문의
+            ☎️ {CONTACT.phone} 문의
           </a>
         </div>
       </section>
