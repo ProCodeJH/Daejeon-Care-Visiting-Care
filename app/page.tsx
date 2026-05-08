@@ -226,7 +226,7 @@ export default function Home() {
               className="block bg-[#E63946] hover:bg-[#C12A37] text-white px-8 py-3.5 font-bold transition-colors"
               ariaLabel={`전화 상담 ${CONTACT.phone}`}
             >
-              ☎ {CONTACT.phone}
+              <span aria-hidden="true">☎</span> {CONTACT.phone}
             </MagneticButton>
           </div>
         </div>

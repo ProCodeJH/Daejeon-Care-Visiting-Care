@@ -96,7 +96,7 @@ export default async function NoticeDetailPage({
             <span className="text-ink-muted">조회 {n.views}</span>
             <span className="text-ink-muted">·</span>
             <span className="text-ink-muted text-xs">
-              📖 {Math.max(1, Math.ceil(n.body.length / 300))}분 읽기
+              <span aria-hidden="true">📖</span> {Math.max(1, Math.ceil(n.body.length / 300))}분 읽기
             </span>
           </div>
 

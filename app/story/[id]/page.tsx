@@ -90,7 +90,7 @@ export default async function StoryDetailPage({
             <time dateTime={s.date} className="text-ink-muted">{s.date}</time>
             <span className="text-ink-muted">·</span>
             <span className="text-ink-muted text-xs">
-              📖 {Math.max(1, Math.ceil(s.body.length / 300))}분 읽기
+              <span aria-hidden="true">📖</span> {Math.max(1, Math.ceil(s.body.length / 300))}분 읽기
             </span>
           </div>
 
