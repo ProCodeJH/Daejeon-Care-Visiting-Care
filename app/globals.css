@@ -203,6 +203,31 @@
   }
 }
 
+/* Wave 285: native CSS scroll-driven animation paradigm (Chrome 115+ / Edge 115+).
+ * JS framer-motion Reveal 대체 가능 utility — bundle JS ↓, scroll progress 정밀.
+ * 사용: <div className="scroll-reveal-native">…</div> (Tailwind className 직접 인터페이스).
+ * Fallback: @supports 미지원 브라우저는 정상 visible (degrade 안전).
+ * prefers-reduced-motion = animation: none 자동 존중. */
+@supports (animation-timeline: view()) {
+  .scroll-reveal-native {
+    animation: scrollReveal linear;
+    animation-timeline: view();
+    animation-range: entry 10% entry 40%;
+    animation-fill-mode: both;
+  }
+  @keyframes scrollReveal {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-reveal-native {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
 /* View Transitions API — 페이지 전환 부드러움 */
 @view-transition {
   navigation: auto;
