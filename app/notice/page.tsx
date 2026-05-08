@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, type ReactNode } from 'react';
+import Link from 'next/link';
 import { PageHero } from '@/components/PageHero';
 import { CTASection } from '@/components/CTASection';
 import { NOTICES } from '@/content/notices';
@@ -105,13 +106,15 @@ export default function NoticePage() {
             {search ? `검색 결과 ${filtered.length}건` : `전체 ${NOTICES.length}건`}
           </div>
           <table className="w-full">
+            {/* Wave 461: <caption> + scope="col" — SR table navigation a11y */}
+            <caption className="sr-only">공지사항 게시판 — {NOTICES.length}건</caption>
             <thead>
               <tr className="border-y-2 border-brand-400">
-                <th className="py-3 text-sm font-bold text-ink-primary w-16">No</th>
-                <th className="py-3 text-sm font-bold text-ink-primary text-left">제목</th>
-                <th className="py-3 text-sm font-bold text-ink-primary w-24 hidden md:table-cell">글쓴이</th>
-                <th className="py-3 text-sm font-bold text-ink-primary w-28 hidden md:table-cell">작성시간</th>
-                <th className="py-3 text-sm font-bold text-ink-primary w-20 hidden md:table-cell">조회수</th>
+                <th scope="col" className="py-3 text-sm font-bold text-ink-primary w-16">No</th>
+                <th scope="col" className="py-3 text-sm font-bold text-ink-primary text-left">제목</th>
+                <th scope="col" className="py-3 text-sm font-bold text-ink-primary w-24 hidden md:table-cell">글쓴이</th>
+                <th scope="col" className="py-3 text-sm font-bold text-ink-primary w-28 hidden md:table-cell">작성시간</th>
+                <th scope="col" className="py-3 text-sm font-bold text-ink-primary w-20 hidden md:table-cell">조회수</th>
               </tr>
             </thead>
             <tbody>
@@ -130,9 +133,10 @@ export default function NoticePage() {
                     )}
                   </td>
                   <td className="py-4 text-ink-primary">
-                    <a href={`/notice/${n.id}`} className="hover:text-brand-400 font-medium">
+                    {/* Wave 461: <a> → <Link> — Wave 455 saturation 누락 catch (template literal grep miss) */}
+                    <Link href={`/notice/${n.id}`} className="hover:text-brand-400 font-medium">
                       {highlightMatch(n.title, search)}
-                    </a>
+                    </Link>
                   </td>
                   <td className="py-4 text-center text-sm text-ink-muted hidden md:table-cell">{n.author}</td>
                   <td className="py-4 text-center text-sm text-ink-muted hidden md:table-cell">
