@@ -44,11 +44,21 @@ export const metadata: Metadata = {
     locale: SITE.locale,
     type: 'website',
     siteName: CONTACT.name,
+    // Wave 429: default OG image — 무 thumbnail 페이지 share preview 회복 (Twitter/X/KakaoTalk/Slack/LinkedIn)
+    images: [
+      {
+        url: '/hero/hero-1.png',
+        width: 1672,
+        height: 941,
+        alt: `${CONTACT.name} — 어르신 댁으로 직접 찾아가는 케어`,
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: CONTACT.name,
     description: `24시간 상담 가능 — ${CONTACT.phone}`,
+    images: ['/hero/hero-1.png'],
   },
   robots: {
     index: true,
