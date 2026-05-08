@@ -90,6 +90,39 @@ export default function InfoPage() {
         </div>
       </section>
 
+      {/* 다음 단계 추천 (cross-page navigation) */}
+      <section className="bg-white py-16">
+        <div className="max-w-[1000px] mx-auto px-5">
+          <SectionBlock eyebrow="EXPLORE" title="더 알아보기" sub="대전케어 이야기 + 서비스" className="mb-10" />
+          <div className="grid md:grid-cols-2 gap-5">
+            <a
+              href="/story"
+              className="group bg-[#f8f8f8] hover:bg-brand-50 p-7 transition-colors block border-l-4 border-[#F5A623]"
+            >
+              <p className="text-xs text-[#F5A623] font-bold tracking-[0.15em] mb-2">STORY</p>
+              <h3 className="text-lg font-bold text-ink-primary mb-2 group-hover:text-[#F5A623] transition-colors">
+                대전케어 이야기 →
+              </h3>
+              <p className="text-sm text-ink-secondary leading-relaxed">
+                현장에서 만난 따뜻한 순간 + 매니저 이야기.
+              </p>
+            </a>
+            <a
+              href="/service"
+              className="group bg-[#f8f8f8] hover:bg-brand-50 p-7 transition-colors block border-l-4 border-brand-600"
+            >
+              <p className="text-xs text-brand-600 font-bold tracking-[0.15em] mb-2">SERVICE</p>
+              <h3 className="text-lg font-bold text-ink-primary mb-2 group-hover:text-brand-600 transition-colors">
+                서비스 소개 →
+              </h3>
+              <p className="text-sm text-ink-secondary leading-relaxed">
+                방문요양 4 세부 서비스 (신체/일상/개인/정서).
+              </p>
+            </a>
+          </div>
+        </div>
+      </section>
+
       <CTASection />
     </>
   );
