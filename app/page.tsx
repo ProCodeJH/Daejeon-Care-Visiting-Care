@@ -27,18 +27,21 @@ const REVIEWS = [
     author: '보호자 김OO 님',
     tag: '방문요양',
     rating: 5,
+    date: '2026.04',
   },
   {
     text: '어머니께서 처음에는 낯설어 하셨는데 요양보호사 선생님이 정말 친근하게 다가가 주셔서 금방 적응하셨어요.',
     author: '보호자 박OO 님',
     tag: '정서 지원',
     rating: 5,
+    date: '2026.03',
   },
   {
     text: '서비스 이용 절차가 복잡할 줄 알았는데 센터에서 등급 신청부터 하나하나 친절하게 도와주셔서 감사했습니다.',
     author: '보호자 이OO 님',
     tag: '등급 신청',
     rating: 5,
+    date: '2026.02',
   },
 ];
 
@@ -248,9 +251,12 @@ export default function Home() {
                   />
                 </svg>
                 <p className="text-ink-secondary leading-relaxed mb-5 text-[15px]">{r.text}</p>
-                {/* 별점 + 태그 */}
+                {/* 별점 + 태그 + 작성일 */}
                 <div className="flex items-center justify-between text-xs">
-                  <p className="font-semibold text-brand-400">- {r.author}</p>
+                  <div>
+                    <p className="font-semibold text-brand-400">- {r.author}</p>
+                    <p className="text-ink-muted text-[11px] mt-0.5">{r.date}</p>
+                  </div>
                   <div className="flex items-center gap-2">
                     <span className="bg-brand-50 text-brand-600 px-2 py-0.5 font-medium" style={{ borderRadius: '2px' }}>
                       {r.tag}
