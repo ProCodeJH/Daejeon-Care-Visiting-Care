@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { PageHero } from '@/components/PageHero';
 import { SectionBlock } from '@/components/SectionBlock';
 import { CTASection } from '@/components/CTASection';
@@ -29,9 +29,33 @@ const RATES: Record<string, { label: string; rate: number; desc: string }> = {
 
 const fmt = (n: number) => n.toLocaleString('ko-KR') + '원';
 
+const STORAGE_KEY = 'daejeon-care:cost';
+
 export default function CostPage() {
   const [grade, setGrade] = useState('3');
   const [rateKey, setRateKey] = useState('general');
+
+  // sessionStorage 복원 — 페이지 이동 후 돌아오면 같은 선택 유지 (가족이 다른 페이지 보고 와도 결과 비교 가능)
+  useEffect(() => {
+    try {
+      const saved = sessionStorage.getItem(STORAGE_KEY);
+      if (!saved) return;
+      const { grade: g, rateKey: r } = JSON.parse(saved);
+      if (g && MONTHLY_LIMITS[g]) setGrade(g);
+      if (r && RATES[r]) setRateKey(r);
+    } catch {
+      // 무시 — sessionStorage 비활성/파싱 실패 시 default 유지
+    }
+  }, []);
+
+  // 변경 시 자동 저장
+  useEffect(() => {
+    try {
+      sessionStorage.setItem(STORAGE_KEY, JSON.stringify({ grade, rateKey }));
+    } catch {
+      // 무시
+    }
+  }, [grade, rateKey]);
 
   const result = useMemo(() => {
     const limit = MONTHLY_LIMITS[grade] || 0;
