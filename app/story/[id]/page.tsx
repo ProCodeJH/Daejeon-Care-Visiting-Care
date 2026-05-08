@@ -125,7 +125,7 @@ export default async function StoryDetailPage({
 
           {/* Wave 378: 음성 듣기 + 공유 — 어르신 시력 약자 음성 보조 (Web Speech API ko-KR) */}
           <div className="mt-10 pt-6 border-t border-gray-100 flex flex-wrap items-center gap-3">
-            <span lang="en" className="text-xs text-ink-muted font-semibold tracking-[0.15em]">| LISTEN & SHARE</span>
+            <span lang="en" className="text-xs text-ink-muted font-semibold tracking-[0.15em]"><span aria-hidden="true">|</span> LISTEN & SHARE</span>
             <SpeakButton text={`${s.title}. ${s.excerpt}. ${s.body}`} />
             <ShareButton
               title={s.title}

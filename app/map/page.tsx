@@ -35,7 +35,7 @@ export default function MapPage() {
           <div className="grid md:grid-cols-2 gap-5">
             {/* 본점 */}
             <div className="bg-[#f8f8f8] p-7">
-              <p lang="en" className="text-brand-400 font-semibold tracking-[0.15em] text-sm mb-2">| HEAD OFFICE</p>
+              <p lang="en" className="text-brand-400 font-semibold tracking-[0.15em] text-sm mb-2"><span aria-hidden="true">|</span> HEAD OFFICE</p>
               <h3 className="text-xl font-bold text-ink-primary mb-5">대전케어 본점</h3>
               <address className="space-y-3 text-ink-secondary not-italic">
                 <div className="flex items-start gap-3">
@@ -76,7 +76,7 @@ export default function MapPage() {
 
             {/* 교통편 */}
             <div className="bg-brand-50 p-7">
-              <p lang="en" className="text-brand-400 font-semibold tracking-[0.15em] text-sm mb-2">| TRANSPORT</p>
+              <p lang="en" className="text-brand-400 font-semibold tracking-[0.15em] text-sm mb-2"><span aria-hidden="true">|</span> TRANSPORT</p>
               <h3 className="text-xl font-bold text-ink-primary mb-5">교통편 안내</h3>
               <div className="space-y-4 text-ink-secondary">
                 <div>

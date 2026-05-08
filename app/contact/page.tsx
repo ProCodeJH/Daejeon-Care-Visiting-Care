@@ -117,7 +117,7 @@ export default function ContactPage() {
         <div className="max-w-[1200px] mx-auto px-5 grid md:grid-cols-2 gap-10">
           {/* 왼쪽: 정보 */}
           <div>
-            <p lang="en" className="text-brand-400 font-semibold tracking-[0.15em] text-sm mb-3">| CONTACT</p>
+            <p lang="en" className="text-brand-400 font-semibold tracking-[0.15em] text-sm mb-3"><span aria-hidden="true">|</span> CONTACT</p>
             <h2 className="text-2xl md:text-3xl font-bold text-ink-primary mb-6 leading-snug">
               부모님의 손발이 되어
               <br />

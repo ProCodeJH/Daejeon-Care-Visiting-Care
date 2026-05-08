@@ -110,7 +110,7 @@ export default async function NoticeDetailPage({
 
           {/* Wave 379: 음성 듣기 + 공유 (Wave 378 패턴 saturation pass) */}
           <div className="mt-10 pt-6 border-t border-gray-100 flex flex-wrap items-center gap-3">
-            <span lang="en" className="text-xs text-ink-muted font-semibold tracking-[0.15em]">| LISTEN & SHARE</span>
+            <span lang="en" className="text-xs text-ink-muted font-semibold tracking-[0.15em]"><span aria-hidden="true">|</span> LISTEN & SHARE</span>
             <SpeakButton text={`${n.title}. ${n.body}`} />
             <ShareButton
               title={n.title}

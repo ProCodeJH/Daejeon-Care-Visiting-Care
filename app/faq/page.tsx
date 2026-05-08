@@ -154,7 +154,7 @@ export default function FAQPage() {
       <aside aria-label="추천 페이지" className="bg-white py-16">
         <div className="max-w-[1000px] mx-auto px-5">
           <div className="text-center mb-10">
-            <p lang="en" className="text-brand-400 font-semibold tracking-[0.2em] text-sm mb-3">| EXPLORE</p>
+            <p lang="en" className="text-brand-400 font-semibold tracking-[0.2em] text-sm mb-3"><span aria-hidden="true">|</span> EXPLORE</p>
             <h2 className="text-2xl md:text-3xl font-bold text-ink-primary">더 알아보기</h2>
           </div>
           <div className="grid md:grid-cols-2 gap-5">

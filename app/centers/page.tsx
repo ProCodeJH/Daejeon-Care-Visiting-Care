@@ -108,7 +108,7 @@ export default function CentersPage() {
       <section className="bg-white py-16">
         <div className="max-w-[900px] mx-auto px-5">
           <div className="bg-brand-50 p-8 md:p-10 border-l-4 border-brand-600">
-            <p lang="en" className="text-brand-600 font-semibold tracking-[0.15em] text-sm mb-3">| MATCHING</p>
+            <p lang="en" className="text-brand-600 font-semibold tracking-[0.15em] text-sm mb-3"><span aria-hidden="true">|</span> MATCHING</p>
             <h3 className="text-xl md:text-2xl font-bold text-ink-primary mb-4">
               어르신 댁에서 가장 가까운 매니저 우선 매칭
             </h3>

@@ -70,7 +70,7 @@ export default function ServicePage() {
       <section className="bg-[#f8f8f8] py-16">
         <div className="max-w-[900px] mx-auto px-5">
           <div className="bg-white p-8 md:p-10 border-l-4 border-brand-400">
-            <p lang="en" className="text-brand-400 font-semibold tracking-[0.2em] text-sm mb-3">| ELIGIBILITY</p>
+            <p lang="en" className="text-brand-400 font-semibold tracking-[0.2em] text-sm mb-3"><span aria-hidden="true">|</span> ELIGIBILITY</p>
             <h3 className="text-xl md:text-2xl font-bold text-ink-primary mb-4">
               방문요양 대상자
             </h3>
