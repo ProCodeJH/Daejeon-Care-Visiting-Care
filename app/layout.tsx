@@ -44,21 +44,15 @@ export const metadata: Metadata = {
     locale: SITE.locale,
     type: 'website',
     siteName: CONTACT.name,
-    // Wave 429: default OG image — 무 thumbnail 페이지 share preview 회복 (Twitter/X/KakaoTalk/Slack/LinkedIn)
-    images: [
-      {
-        url: '/hero/hero-1.png',
-        width: 1672,
-        height: 941,
-        alt: `${CONTACT.name} — 어르신 댁으로 직접 찾아가는 케어`,
-      },
-    ],
+    // Wave 431: openGraph.images 제거 — app/opengraph-image.tsx (브랜디드 1200x630 카드)
+    // Next.js 15 auto-attachment 활용. 24시간 배지 + 전화번호 + 도메인 워터마크 carousel 사진보다 전환↑.
   },
   twitter: {
     card: 'summary_large_image',
     title: CONTACT.name,
     description: `24시간 상담 가능 — ${CONTACT.phone}`,
-    images: ['/hero/hero-1.png'],
+    // Wave 431: 브랜디드 OG 카드 재사용 — twitter-image.tsx 별도 생성 회피, single source of truth.
+    images: ['/opengraph-image'],
   },
   robots: {
     index: true,
