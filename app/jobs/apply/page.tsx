@@ -103,23 +103,27 @@ export default function JobApplyPage() {
               >
                 <div className="grid md:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-sm font-bold text-ink-primary mb-1.5">
+                    <label htmlFor="apply-name" className="block text-sm font-bold text-ink-primary mb-1.5">
                       성함 <span className="text-brand-400">*</span>
                     </label>
                     <input
+                      id="apply-name"
                       required
                       type="text"
+                      autoComplete="name"
                       className="w-full px-4 py-2.5 bg-[#f8f8f8] border border-gray-200 focus:border-brand-400 focus:outline-none text-sm"
                       style={{ borderRadius: '2px' }}
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-bold text-ink-primary mb-1.5">
+                    <label htmlFor="apply-birth" className="block text-sm font-bold text-ink-primary mb-1.5">
                       생년월일 <span className="text-brand-400">*</span>
                     </label>
                     <input
+                      id="apply-birth"
                       required
                       type="text"
+                      autoComplete="bday"
                       placeholder="예: 1965-03-15"
                       className="w-full px-4 py-2.5 bg-[#f8f8f8] border border-gray-200 focus:border-brand-400 focus:outline-none text-sm"
                       style={{ borderRadius: '2px' }}
@@ -128,10 +132,11 @@ export default function JobApplyPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-bold text-ink-primary mb-1.5">
+                  <label htmlFor="apply-tel" className="block text-sm font-bold text-ink-primary mb-1.5">
                     연락처 <span className="text-brand-400">*</span>
                   </label>
                   <input
+                    id="apply-tel"
                     required
                     type="tel"
                     inputMode="tel"
@@ -158,10 +163,11 @@ export default function JobApplyPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-bold text-ink-primary mb-1.5">
+                  <label htmlFor="apply-experience" className="block text-sm font-bold text-ink-primary mb-1.5">
                     경력 <span className="text-brand-400">*</span>
                   </label>
                   <select
+                    id="apply-experience"
                     required
                     className="w-full px-4 py-2.5 bg-[#f8f8f8] border border-gray-200 focus:border-brand-400 focus:outline-none text-sm"
                     style={{ borderRadius: '2px' }}
@@ -204,10 +210,11 @@ export default function JobApplyPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-bold text-ink-primary mb-1.5">
+                  <label htmlFor="apply-message" className="block text-sm font-bold text-ink-primary mb-1.5">
                     자기 소개 / 하고 싶은 말
                   </label>
                   <textarea
+                    id="apply-message"
                     rows={4}
                     placeholder="간단한 자기 소개나 어르신 케어에 대한 마음을 적어주세요"
                     className="w-full px-4 py-2.5 bg-[#f8f8f8] border border-gray-200 focus:border-brand-400 focus:outline-none text-sm resize-none"
