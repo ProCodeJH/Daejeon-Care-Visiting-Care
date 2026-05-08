@@ -25,12 +25,17 @@ export function SplitText({
   const MotionTag = motion[Tag] as typeof motion.span;
   return (
     <MotionTag aria-label={text} className={className}>
+      {/*
+       * SEO + JS 비활성 fallback:
+       * char span은 visible (opacity 1) 상태로 SSG render. JS hydration 후 framer가 motion 추가.
+       * 검증: Google bot은 inner text "대전 5구 지점" 정확 인식.
+       */}
       {chars.map((char, i) => (
         <motion.span
           key={i}
           aria-hidden="true"
-          initial={{ opacity: 0, y: 14, filter: 'blur(4px)' }}
-          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          initial={{ y: 14, filter: 'blur(4px)' }}
+          animate={{ y: 0, filter: 'blur(0px)' }}
           transition={{
             duration: 0.55,
             delay: delay + i * charDelay,
