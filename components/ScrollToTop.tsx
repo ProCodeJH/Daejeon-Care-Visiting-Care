@@ -28,7 +28,8 @@ export function ScrollToTop() {
         window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' });
       }}
       aria-label="페이지 맨 위로"
-      className="fixed bottom-5 left-5 z-50 w-11 h-11 grid place-items-center bg-white/90 hover:bg-white text-[#1B6F4A] hover:text-[#15573A] backdrop-blur-sm shadow-md border border-gray-100 transition-all hover:scale-110"
+      // Wave 439: motion-safe:hover:scale — prefers-reduced-motion 준수 (Wave 438 saturation pass)
+      className="fixed bottom-5 left-5 z-50 w-11 h-11 grid place-items-center bg-white/90 hover:bg-white text-[#1B6F4A] hover:text-[#15573A] backdrop-blur-sm shadow-md border border-gray-100 transition-all motion-safe:hover:scale-110"
       style={{ borderRadius: '999px' }}
     >
       <ArrowUp size={20} strokeWidth={2.2} />
