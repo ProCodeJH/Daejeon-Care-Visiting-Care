@@ -119,13 +119,14 @@ export function Footer() {
             className="mt-8 flex items-center gap-3 justify-center md:justify-start"
           >
             <span className="text-xs text-ink-muted">SNS:</span>
+            {/* Wave 412: aria-label "새 창" 컨텍스트 (WCAG G201 Wave 411 패턴 saturation) */}
             {SNS_ICONS.map((s) => (
               <a
                 key={s.label}
                 href={s.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={s.label}
+                aria-label={`${s.label} 외부 사이트 새 창에서 열기`}
                 className="w-9 h-9 grid place-items-center bg-gray-50 hover:bg-[#1B6F4A] text-ink-secondary hover:text-white transition-colors"
                 style={{ borderRadius: '999px' }}
               >
