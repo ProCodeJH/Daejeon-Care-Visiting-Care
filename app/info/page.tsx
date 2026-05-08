@@ -29,11 +29,15 @@ const TOPICS: Topic[] = [
   { title: '복지 서비스', desc: '국가/지자체 복지 서비스 신청 가이드', Icon: ClipboardList },
 ];
 
+// Wave 404: 정부 무료 자원 확장 — senior care 생태계 정직 안내
 const RESOURCES = [
   { title: '국민건강보험공단', sub: '장기요양보험 신청', href: 'https://www.nhis.or.kr' },
   { title: '노인장기요양보험', sub: '공식 안내 + 등급 신청', href: 'https://www.longtermcare.or.kr' },
   { title: '대전광역시청', sub: '대전시 어르신 복지', href: 'https://www.daejeon.go.kr' },
   { title: '복지로', sub: '국가 복지 서비스 통합', href: 'https://www.bokjiro.go.kr' },
+  { title: '보건복지부', sub: '노인 정책 + 복지 정보', href: 'https://www.mohw.go.kr' },
+  { title: '치매상담콜센터', sub: '☎ 1899-9988 (24시간 무료)', href: 'https://www.ansim.or.kr' },
+  { title: '노인보호전문기관', sub: '☎ 1577-1389 (학대 신고)', href: 'https://www.noinboho.or.kr' },
 ];
 
 export default function InfoPage() {
