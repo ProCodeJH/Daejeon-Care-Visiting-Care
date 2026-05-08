@@ -4,8 +4,11 @@ import { useState, useEffect } from 'react';
 import { PageHero } from '@/components/PageHero';
 import { CTASection } from '@/components/CTASection';
 import { STORIES as POSTS } from '@/content/stories';
+import { CONTACT } from '@/lib/contact';
 
-const CATEGORIES = ['전체', '대전케어 이야기', '대전케어 일상', '현장 이야기', '공지'];
+// Wave 534: CATEGORIES brand-prefixed → CONTACT.brand derived (paradigm 16 cascade audit).
+// Wave 533 stories.ts cat 변경 후 cascade 누락 catch — brand 변경 시 filter 정합성 보장.
+const CATEGORIES = ['전체', `${CONTACT.brand} 이야기`, `${CONTACT.brand} 일상`, '현장 이야기', '공지'];
 
 export default function StoryPage() {
   const [activeCat, setActiveCat] = useState('전체');
@@ -34,9 +37,9 @@ export default function StoryPage() {
   return (
     <>
       <PageHero
-        title="대전케어 이야기"
+        title={`${CONTACT.brand} 이야기`}
         sub="현장에서 만난 따뜻한 순간을 함께 나눕니다"
-        crumbs={[{ label: '노인정보', href: '/info' }, { label: '대전케어 이야기' }]}
+        crumbs={[{ label: '노인정보', href: '/info' }, { label: `${CONTACT.brand} 이야기` }]}
       />
 
       {/* 카테고리 필터 */}
