@@ -137,7 +137,7 @@ export default function JobsPage() {
                 대전케어 소개 →
               </h3>
               <p className="text-sm text-ink-secondary leading-relaxed">
-                인사말 + 4 가치 + 공식 등록 + 90+명 매니저.
+                인사말 + 4 가치 + 공식 등록 + {CONTACT.managerCount}+명 매니저.
               </p>
             </a>
           </div>

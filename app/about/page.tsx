@@ -36,7 +36,7 @@ const TRUST_BADGES = [
   {
     Icon: FileCheck,
     title: '요양보호사 자격 검증',
-    desc: '90+명 자격증 + 경력 검증 완료',
+    desc: `${CONTACT.managerCount}+명 자격증 + 경력 검증 완료`,
   },
 ];
 

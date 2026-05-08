@@ -23,6 +23,8 @@ export const CONTACT = {
   available: '24시간 상담 가능',
   hours: '24시간 365일 상담 가능',
   email: 'contact@daejeoncare.kr',
+  /** 자격 매니저 수 (marketing copy "{managerCount}+명" 용도). 자현 비즈니스 성장 시 업데이트. */
+  managerCount: 90,
   // 🔧 자현 편집
   address: '대전광역시 [구] [동] [도로명주소]',
   representative: '[대표자명]',
