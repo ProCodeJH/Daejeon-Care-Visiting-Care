@@ -5,6 +5,7 @@ import { CTASection } from '@/components/CTASection';
 import { Reveal } from '@/components/Reveal';
 
 import { Brain, ShieldCheck, UtensilsCrossed, Pill, Palette, ClipboardList, type LucideIcon } from 'lucide-react';
+import { CONTACT } from '@/lib/contact';
 
 export const metadata: Metadata = {
   title: '요양 정보',
@@ -12,15 +13,20 @@ export const metadata: Metadata = {
   alternates: { canonical: '/info' },
 };
 
-type Topic = { title: string; desc: string; Icon: LucideIcon; href: string };
+type Topic = { title: string; desc: string; Icon: LucideIcon };
 
+/**
+ * 노인 정보 6 topic 카드 — 자현이 콘텐츠 작성 시 /info/[slug] 페이지 추가 후
+ * `href` 필드 부활 (broken 404 link 방지로 현재 비활성).
+ * 어르신/가족이 자세한 정보 필요 시 042 상담 또는 외부 RESOURCES 자원 안내.
+ */
 const TOPICS: Topic[] = [
-  { title: '치매 어르신 케어', desc: '치매 진행을 늦추는 일상 케어 방법', Icon: Brain, href: '/info/dementia' },
-  { title: '낙상 예방', desc: '집안에서 어르신 낙상을 막는 7가지', Icon: ShieldCheck, href: '/info/fall' },
-  { title: '식사 관리', desc: '연령대별 식단 가이드 + 영양제 안내', Icon: UtensilsCrossed, href: '/info/meal' },
-  { title: '복용약 관리', desc: '여러 약을 안전하게 복용하는 법', Icon: Pill, href: '/info/medication' },
-  { title: '인지활동', desc: '두뇌 자극 활동으로 활기찬 일상', Icon: Palette, href: '/info/cognitive' },
-  { title: '복지 서비스', desc: '국가/지자체 복지 서비스 신청 가이드', Icon: ClipboardList, href: '/info/welfare' },
+  { title: '치매 어르신 케어', desc: '치매 진행을 늦추는 일상 케어 방법', Icon: Brain },
+  { title: '낙상 예방', desc: '집안에서 어르신 낙상을 막는 7가지', Icon: ShieldCheck },
+  { title: '식사 관리', desc: '연령대별 식단 가이드 + 영양제 안내', Icon: UtensilsCrossed },
+  { title: '복용약 관리', desc: '여러 약을 안전하게 복용하는 법', Icon: Pill },
+  { title: '인지활동', desc: '두뇌 자극 활동으로 활기찬 일상', Icon: Palette },
+  { title: '복지 서비스', desc: '국가/지자체 복지 서비스 신청 가이드', Icon: ClipboardList },
 ];
 
 const RESOURCES = [
@@ -51,19 +57,16 @@ export default function InfoPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {TOPICS.map((t, i) => (
               <Reveal key={i} delay={i * 0.06}>
-                <a
-                  href={t.href}
-                  className="group block bg-[#f8f8f8] hover:bg-brand-50 p-7 transition-colors"
-                >
-                <div className="w-12 h-12 grid place-items-center bg-white group-hover:bg-brand-600 text-brand-600 group-hover:text-white transition-colors mb-4 shadow-sm" style={{ borderRadius: '2px' }}>
-                  <t.Icon size={24} strokeWidth={1.8} />
-                </div>
-                <h3 className="text-lg font-bold text-ink-primary mb-2 group-hover:text-brand-600 transition-colors">
-                  {t.title}
-                </h3>
-                <p className="text-sm text-ink-secondary leading-relaxed">{t.desc}</p>
-                  <p className="text-xs text-brand-600 mt-4 font-semibold">자세히 보기 →</p>
-                </a>
+                <article className="bg-[#f8f8f8] p-7 h-full">
+                  <div className="w-12 h-12 grid place-items-center bg-white text-brand-600 mb-4 shadow-sm" style={{ borderRadius: '2px' }}>
+                    <t.Icon size={24} strokeWidth={1.8} />
+                  </div>
+                  <h3 className="text-lg font-bold text-ink-primary mb-2">{t.title}</h3>
+                  <p className="text-sm text-ink-secondary leading-relaxed mb-3">{t.desc}</p>
+                  <p className="text-xs text-ink-muted">
+                    📞 자세한 안내는 <a href={CONTACT.phoneTel} className="font-bold text-brand-600 hover:underline">상담 {CONTACT.phone}</a>
+                  </p>
+                </article>
               </Reveal>
             ))}
           </div>
