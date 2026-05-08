@@ -173,9 +173,22 @@ export default function Home() {
               <Reveal
                 key={i}
                 delay={i * 0.08}
-                className="bg-white p-7 border border-gray-100 hover:border-brand-400 hover:shadow-md transition-all"
+                className="bg-white p-7 border border-gray-100 hover:border-brand-400 hover:shadow-md transition-all relative"
               >
-                <div className="text-brand-400 text-3xl font-serif leading-none mb-3">"</div>
+                {/* Quote SVG (CC0, 직접 작성) */}
+                <svg
+                  aria-hidden="true"
+                  width="40"
+                  height="32"
+                  viewBox="0 0 40 32"
+                  fill="none"
+                  className="text-brand-400 mb-3 opacity-80"
+                >
+                  <path
+                    d="M9.5 0 C4.25 0 0 4.25 0 9.5 L0 22 C0 27.5 4.5 32 10 32 L11 32 C11.5 32 12 31.5 12 31 L12 22.5 C12 22 11.5 21.5 11 21.5 L8.5 21.5 C7 21.5 6 20.5 6 19 L6 18 C6 16.5 7 15.5 8.5 15.5 L11 15.5 C11.5 15.5 12 15 12 14.5 L12 1 C12 0.5 11.5 0 11 0 L9.5 0 Z M27.5 0 C22.25 0 18 4.25 18 9.5 L18 22 C18 27.5 22.5 32 28 32 L29 32 C29.5 32 30 31.5 30 31 L30 22.5 C30 22 29.5 21.5 29 21.5 L26.5 21.5 C25 21.5 24 20.5 24 19 L24 18 C24 16.5 25 15.5 26.5 15.5 L29 15.5 C29.5 15.5 30 15 30 14.5 L30 1 C30 0.5 29.5 0 29 0 L27.5 0 Z"
+                    fill="currentColor"
+                  />
+                </svg>
                 <p className="text-ink-secondary leading-relaxed mb-5 text-[15px]">{r.text}</p>
                 <p className="text-sm font-semibold text-brand-400">- {r.author} -</p>
               </Reveal>

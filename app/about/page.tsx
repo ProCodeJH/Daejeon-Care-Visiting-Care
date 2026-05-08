@@ -1,6 +1,7 @@
 import { PageHero } from '@/components/PageHero';
 import { SectionBlock } from '@/components/SectionBlock';
 import { CTASection } from '@/components/CTASection';
+import { StatsCounter } from '@/components/StatsCounter';
 
 const VALUES = [
   {
@@ -59,6 +60,38 @@ export default function AboutPage() {
               <strong className="text-ink-primary">한 분 한 분 정성을 다합니다.</strong>
             </p>
             <p>만나 뵙기를 기대하고 기다립니다. 감사합니다.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* 신뢰 지표 4개 — StatsCounter (whileInView 카운트) */}
+      <section className="bg-white pb-20">
+        <div className="max-w-[1200px] mx-auto px-5">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 border-y border-gray-100 py-10">
+            <div className="text-center">
+              <p className="text-4xl md:text-5xl font-extrabold text-[#1B6F4A] mb-2 tabular-nums">
+                <StatsCounter value={5} suffix="구" />
+              </p>
+              <p className="text-sm text-ink-muted font-medium">대전 5구 통합</p>
+            </div>
+            <div className="text-center">
+              <p className="text-4xl md:text-5xl font-extrabold text-[#1B6F4A] mb-2 tabular-nums">
+                <StatsCounter value={24} suffix="시간" />
+              </p>
+              <p className="text-sm text-ink-muted font-medium">365일 상담 가능</p>
+            </div>
+            <div className="text-center">
+              <p className="text-4xl md:text-5xl font-extrabold text-[#1B6F4A] mb-2 tabular-nums">
+                <StatsCounter value={90} suffix="+명" />
+              </p>
+              <p className="text-sm text-ink-muted font-medium">자격 매니저</p>
+            </div>
+            <div className="text-center">
+              <p className="text-4xl md:text-5xl font-extrabold text-[#1B6F4A] mb-2 tabular-nums">
+                <StatsCounter value={100} suffix="%" />
+              </p>
+              <p className="text-sm text-ink-muted font-medium">무료 상담 + 등급 신청 동행</p>
+            </div>
           </div>
         </div>
       </section>
