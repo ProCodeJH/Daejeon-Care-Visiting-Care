@@ -81,9 +81,14 @@ export default function SitemapPage() {
       {/* 메인 카테고리 */}
       <section className="bg-white py-16">
         <div className="max-w-[1200px] mx-auto px-5">
+          {/* Wave 382: 각 카테고리 = 독립 navigation landmark (WAI-ARIA APG, multiple nav OK with unique labels) */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {SECTIONS.map((s) => (
-              <div key={s.title} className={`bg-[#f8f8f8] p-6 border-t-4 ${s.color}`}>
+              <nav
+                key={s.title}
+                aria-label={s.title}
+                className={`bg-[#f8f8f8] p-6 border-t-4 ${s.color}`}
+              >
                 <h2 className="text-lg font-bold text-ink-primary mb-4">{s.title}</h2>
                 <ul className="space-y-2">
                   {s.pages.map((p) => (
@@ -98,7 +103,7 @@ export default function SitemapPage() {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </nav>
             ))}
           </div>
         </div>
@@ -106,8 +111,9 @@ export default function SitemapPage() {
 
       {/* 콘텐츠 detail (notices/stories) */}
       <section className="bg-[#f8f8f8] py-16">
+        {/* Wave 382: detail 콘텐츠 navigation도 nav landmark — 공지/이야기 별도 landmark */}
         <div className="max-w-[1200px] mx-auto px-5 grid md:grid-cols-2 gap-6">
-          <div className="bg-white p-6 border-t-4 border-[#1B6F4A]">
+          <nav aria-label={`공지사항 전체 ${NOTICES.length}건`} className="bg-white p-6 border-t-4 border-[#1B6F4A]">
             <h2 className="text-lg font-bold text-ink-primary mb-4">공지사항 ({NOTICES.length})</h2>
             <ul className="space-y-2">
               {NOTICES.map((n) => (
@@ -122,9 +128,9 @@ export default function SitemapPage() {
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
-          <div className="bg-white p-6 border-t-4 border-[#F5A623]">
+          <nav aria-label={`대전케어 이야기 전체 ${STORIES.length}건`} className="bg-white p-6 border-t-4 border-[#F5A623]">
             <h2 className="text-lg font-bold text-ink-primary mb-4">대전케어 이야기 ({STORIES.length})</h2>
             <ul className="space-y-2">
               {STORIES.map((s) => (
@@ -139,7 +145,7 @@ export default function SitemapPage() {
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
         </div>
       </section>
 
