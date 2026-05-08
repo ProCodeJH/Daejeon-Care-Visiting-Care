@@ -171,7 +171,7 @@ export default function ContactPage() {
                 aria-live="polite"
                 className="bg-gradient-to-br from-brand-50 to-brand-100 p-8 text-center border-l-4 border-[#1B6F4A] form-success-enter"
               >
-                <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-[#1B6F4A] grid place-items-center text-white text-2xl">
+                <div aria-hidden="true" className="w-14 h-14 mx-auto mb-4 rounded-full bg-[#1B6F4A] grid place-items-center text-white text-2xl">
                   ✓
                 </div>
                 <p className="font-bold text-[#1B6F4A] mb-2 text-lg">문의가 접수되었습니다</p>

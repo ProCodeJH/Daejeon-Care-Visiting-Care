@@ -83,7 +83,7 @@ export default function JobsPage() {
             className="inline-block mt-8 bg-brand-400 hover:bg-brand-500 text-white px-8 py-4 font-bold text-lg transition-colors"
             style={{ borderRadius: '2px' }}
           >
-            ☎️ {CONTACT.phone} 문의
+            <span aria-hidden="true">☎️</span> {CONTACT.phone} 문의
           </a>
         </div>
       </section>
