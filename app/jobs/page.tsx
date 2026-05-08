@@ -76,8 +76,10 @@ export default function JobsPage() {
               </>
             }
           />
+          {/* Wave 408: aria-label */}
           <a
             href={CONTACT.phoneTel}
+            aria-label={`전화 걸기 ${CONTACT.phone} (요양보호사 채용 문의)`}
             className="inline-block mt-8 bg-brand-400 hover:bg-brand-500 text-white px-8 py-4 font-bold text-lg transition-colors"
             style={{ borderRadius: '2px' }}
           >

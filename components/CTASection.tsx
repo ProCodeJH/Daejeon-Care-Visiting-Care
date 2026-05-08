@@ -25,8 +25,10 @@ export function CTASection({
         </h2>
         <p className="text-base md:text-xl text-ink-secondary mb-8">{sub}</p>
         <div className="flex justify-center gap-3 flex-wrap">
+          {/* Wave 408: aria-label — site-wide CTA, 모든 페이지 하단 영향 */}
           <a
             href={CONTACT.phoneTel}
+            aria-label={`전화 걸기 ${CONTACT.phone} (24시간 상담)`}
             className="flex items-center gap-2 bg-[#E63946] hover:bg-[#C12A37] text-white px-8 py-3.5 font-bold transition-colors text-base md:text-lg"
             style={{ borderRadius: '2px' }}
           >
