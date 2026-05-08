@@ -2,6 +2,7 @@ import { PageHero } from '@/components/PageHero';
 import { SectionBlock } from '@/components/SectionBlock';
 import { CTASection } from '@/components/CTASection';
 import { Reveal } from '@/components/Reveal';
+import { HowToJsonLd } from '@/components/HowToJsonLd';
 
 const STEPS = [
   {
@@ -46,6 +47,12 @@ const VERIFICATION = [
 export default function ProcessPage() {
   return (
     <>
+      <HowToJsonLd
+        name="대전케어 방문요양 서비스 이용 절차"
+        description="장기요양인정서 수령부터 방문요양 서비스 시작까지 6단계 절차"
+        totalTime="P14D"
+        steps={STEPS.map((s) => ({ name: s.title, text: s.desc }))}
+      />
       <PageHero
         title="서비스 이용 절차"
         sub="신청부터 서비스까지 한 단계씩 안내드립니다"

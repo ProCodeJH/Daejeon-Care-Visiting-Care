@@ -2,6 +2,7 @@ import { PageHero } from '@/components/PageHero';
 import { SectionBlock } from '@/components/SectionBlock';
 import { CTASection } from '@/components/CTASection';
 import { Reveal } from '@/components/Reveal';
+import { HowToJsonLd } from '@/components/HowToJsonLd';
 
 const GRADES = [
   {
@@ -53,6 +54,12 @@ const STEPS = [
 export default function GradePage() {
   return (
     <>
+      <HowToJsonLd
+        name="장기요양 등급 신청 방법"
+        description="국민건강보험공단에 장기요양 등급을 신청하고 결과를 받기까지 5단계 절차"
+        totalTime="P30D"
+        steps={STEPS.map((s) => ({ name: s.title, text: s.desc }))}
+      />
       <PageHero
         title="장기요양등급절차 및 심사"
         sub="등급 신청부터 결과 통보까지 안내드립니다"
