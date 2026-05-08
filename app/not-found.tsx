@@ -4,7 +4,7 @@ import { CONTACT } from '@/lib/contact';
 
 export const metadata = {
   title: '페이지를 찾을 수 없습니다',
-  description: `대전케어 방문요양센터 — 24시간 상담 ${CONTACT.phone}`,
+  description: `${CONTACT.name} — 24시간 상담 ${CONTACT.phone}`,
 };
 
 /**

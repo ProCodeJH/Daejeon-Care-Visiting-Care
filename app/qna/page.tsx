@@ -9,7 +9,7 @@ import { CONTACT } from '@/lib/contact';
 
 export const metadata: Metadata = {
   title: '문의 Q&A',
-  description: `대전케어 방문요양센터 문의 — 24시간 상담 ${CONTACT.phone}. 무료 상담 + 등급 신청 도움.`,
+  description: `${CONTACT.name} 문의 — 24시간 상담 ${CONTACT.phone}. 무료 상담 + 등급 신청 도움.`,
   alternates: { canonical: '/contact' },
 };
 
