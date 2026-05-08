@@ -54,7 +54,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <p className="font-semibold text-ink-primary mb-0.5">이메일</p>
-                  <p className="text-sm">contact@daejeoncare.co.kr</p>
+                  <p className="text-sm">{CONTACT.email}</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">

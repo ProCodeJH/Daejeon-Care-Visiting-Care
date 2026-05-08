@@ -52,7 +52,7 @@ export default function MapPage() {
                 </div>
                 <div className="flex items-start gap-3">
                   <Mail size={18} className="text-brand-400 mt-1 shrink-0" />
-                  <span>contact@daejeoncare.co.kr</span>
+                  <span>{CONTACT.email}</span>
                 </div>
               </div>
             </div>
