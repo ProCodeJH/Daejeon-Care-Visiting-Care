@@ -118,6 +118,39 @@ export default function ProcessPage() {
         </div>
       </section>
 
+      {/* 다음 단계 추천 (cross-page navigation) */}
+      <section className="bg-white py-16">
+        <div className="max-w-[1000px] mx-auto px-5">
+          <SectionBlock eyebrow="NEXT STEP" title="더 알아보기" sub="이용 절차 다음 단계" className="mb-10" />
+          <div className="grid md:grid-cols-2 gap-5">
+            <a
+              href="/insurance/cost"
+              className="group bg-[#f8f8f8] hover:bg-brand-50 p-7 transition-colors block border-l-4 border-[#1B6F4A]"
+            >
+              <p className="text-xs text-[#1B6F4A] font-bold tracking-[0.15em] mb-2">CALCULATOR</p>
+              <h3 className="text-lg font-bold text-ink-primary mb-2 group-hover:text-[#1B6F4A] transition-colors">
+                본인부담금 계산 →
+              </h3>
+              <p className="text-sm text-ink-secondary leading-relaxed">
+                등급별 월 본인부담액을 즉시 확인하세요.
+              </p>
+            </a>
+            <a
+              href="/centers"
+              className="group bg-[#f8f8f8] hover:bg-brand-50 p-7 transition-colors block border-l-4 border-brand-600"
+            >
+              <p className="text-xs text-brand-600 font-bold tracking-[0.15em] mb-2">LOCATIONS</p>
+              <h3 className="text-lg font-bold text-ink-primary mb-2 group-hover:text-brand-600 transition-colors">
+                대전 5구 지점 →
+              </h3>
+              <p className="text-sm text-ink-secondary leading-relaxed">
+                어르신 거주지 인근 가까운 지점을 확인하세요.
+              </p>
+            </a>
+          </div>
+        </div>
+      </section>
+
       <CTASection />
     </>
   );
