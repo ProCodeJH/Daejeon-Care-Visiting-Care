@@ -1,9 +1,12 @@
 'use client';
 
+import { CONTACT } from '@/lib/contact';
+
 /**
  * global-error.tsx — 루트 layout 자체 크래시 시 마지막 fallback.
  * 자체 <html> + <body> 포함 (layout 대체).
  * 인라인 스타일 only (CSS chunk 로드 안 될 가능성 대비).
+ * Wave 417: CONTACT import — single source paradigm (CSS chunk 실패 X JS module OK).
  */
 export default function GlobalError({
   error,
@@ -83,7 +86,8 @@ export default function GlobalError({
               다시 시도
             </button>
             <a
-              href="tel:042-369-0326"
+              href={CONTACT.phoneTel}
+              aria-label={`전화 걸기 ${CONTACT.phone}`}
               style={{
                 background: '#E63946',
                 color: '#fff',
@@ -95,7 +99,7 @@ export default function GlobalError({
                 display: 'inline-block',
               }}
             >
-              ☎ 042-369-0326
+              ☎ {CONTACT.phone}
             </a>
           </div>
           {error?.digest && (
