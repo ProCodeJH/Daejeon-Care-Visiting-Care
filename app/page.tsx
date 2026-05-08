@@ -107,6 +107,7 @@ export default function Home() {
             </p>
           </div>
 
+          {/* Wave 403: TiltCard href prop으로 dead-end → 클릭 가능 navigation. /service 상세 페이지로 */}
           <div className="grid md:grid-cols-3 gap-5 mt-12">
             {[
               { title: '방문요양', desc: '일상 생활 지원 / 정서 지원' },
@@ -115,6 +116,8 @@ export default function Home() {
             ].map((s, i) => (
               <Reveal key={s.title} delay={i * 0.08}>
                 <TiltCard
+                  href="/service"
+                  ariaLabel={`${s.title} 자세히 보기`}
                   intensity={1.5}
                   className="glass hover:bg-brand-50/80 transition-colors p-8 text-center border-t-2 border-brand-400"
                 >
