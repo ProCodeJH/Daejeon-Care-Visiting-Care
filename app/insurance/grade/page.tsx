@@ -1,6 +1,7 @@
 import { PageHero } from '@/components/PageHero';
 import { SectionBlock } from '@/components/SectionBlock';
 import { CTASection } from '@/components/CTASection';
+import { Reveal } from '@/components/Reveal';
 
 const GRADES = [
   {
@@ -71,14 +72,14 @@ export default function GradePage() {
             className="mb-12"
           />
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {GRADES.map((g) => (
-              <div key={g.grade} className={`${g.color} border-l-4 p-6 hover:shadow-md transition-shadow`}>
+            {GRADES.map((g, i) => (
+              <Reveal key={g.grade} delay={i * 0.06} className={`${g.color} border-l-4 p-6 hover:shadow-md transition-shadow`}>
                 <div className="flex items-baseline justify-between mb-3">
                   <h3 className="text-xl font-bold">{g.grade}</h3>
                   <p className="text-sm font-mono opacity-75">{g.score}</p>
                 </div>
                 <p className="text-sm leading-relaxed text-ink-secondary">{g.desc}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
           <p className="text-center text-xs text-ink-muted mt-8">
@@ -98,16 +99,18 @@ export default function GradePage() {
           />
           <div className="grid md:grid-cols-5 gap-3">
             {STEPS.map((s, i) => (
-              <div key={s.num} className="bg-white p-5 text-center relative">
-                <div className="w-12 h-12 bg-brand-400 grid place-items-center text-white font-bold mx-auto mb-3" style={{ borderRadius: '2px' }}>
-                  {s.num}
+              <Reveal key={s.num} delay={i * 0.08}>
+                <div className="bg-white p-5 text-center relative h-full">
+                  <div className="w-12 h-12 bg-brand-600 grid place-items-center text-white font-bold mx-auto mb-3" style={{ borderRadius: '2px' }}>
+                    {s.num}
+                  </div>
+                  <h3 className="font-bold text-ink-primary mb-2 text-sm">{s.title}</h3>
+                  <p className="text-xs text-ink-muted leading-relaxed">{s.desc}</p>
+                  {i < STEPS.length - 1 && (
+                    <span aria-hidden="true" className="hidden md:block absolute -right-2 top-8 text-brand-600 font-bold opacity-50">→</span>
+                  )}
                 </div>
-                <h3 className="font-bold text-ink-primary mb-2 text-sm">{s.title}</h3>
-                <p className="text-xs text-ink-muted leading-relaxed">{s.desc}</p>
-                {i < STEPS.length - 1 && (
-                  <span className="hidden md:block absolute -right-2 top-8 text-brand-400 font-bold">→</span>
-                )}
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>

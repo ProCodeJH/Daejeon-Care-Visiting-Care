@@ -1,6 +1,10 @@
+'use client';
+
+import { SplitText } from './SplitText';
+
 /**
- * Sub-page Hero — breadcrumb + title.
- * 두손누리 sub-page 패턴: 320px 높이 + green BG image + 흰색 카피.
+ * Sub-page Hero — breadcrumb + title (SplitText char stagger).
+ * 정체성 그라디언트 + decorative dots SVG (CC0).
  */
 type Crumb = { label: string; href?: string };
 
@@ -17,12 +21,10 @@ export function PageHero({
     <section
       className="relative w-full h-[280px] md:h-[320px] flex items-center justify-center text-white overflow-hidden"
       style={{
-        // 저작권 회피 (Wave 10): 두손누리 imweb 이미지 제거 → 정체성 gradient + decorative.
         background:
           'radial-gradient(circle at 20% 30%, #1B6F4A 0%, #15573A 45%, #0F3726 100%), radial-gradient(circle at 80% 70%, rgba(230,57,70,0.3) 0%, transparent 60%)',
       }}
     >
-      {/* decorative dots pattern (CC0) */}
       <svg
         aria-hidden="true"
         className="absolute inset-0 w-full h-full pointer-events-none opacity-30 mix-blend-screen"
@@ -32,24 +34,33 @@ export function PageHero({
         </pattern>
         <rect width="100%" height="100%" fill="url(#ph-dots)" />
       </svg>
-      <div className="text-center px-5">
+
+      <div className="text-center px-5 relative z-10">
         {crumbs.length > 0 && (
-          <nav className="text-xs md:text-sm opacity-80 mb-3 flex items-center justify-center gap-2">
+          <nav className="text-xs md:text-sm opacity-80 mb-3 flex items-center justify-center gap-2" aria-label="breadcrumb">
             <a href="/" className="hover:opacity-100">홈</a>
             {crumbs.map((c, i) => (
               <span key={i} className="flex items-center gap-2">
-                <span className="opacity-60">›</span>
+                <span aria-hidden="true" className="opacity-60">›</span>
                 {c.href ? (
                   <a href={c.href} className="hover:opacity-100">{c.label}</a>
                 ) : (
-                  <span className="font-medium">{c.label}</span>
+                  <span className="font-medium" aria-current="page">{c.label}</span>
                 )}
               </span>
             ))}
           </nav>
         )}
-        <h1 className="text-3xl md:text-5xl font-bold mb-3">{title}</h1>
-        {sub && <p className="text-base md:text-lg opacity-90">{sub}</p>}
+        <h1
+          className="text-3xl md:text-5xl font-bold mb-3"
+          style={{
+            fontVariationSettings: '"wght" 800',
+            textWrap: 'balance' as const,
+          }}
+        >
+          <SplitText text={title} charDelay={0.035} />
+        </h1>
+        {sub && <p className="text-base md:text-lg opacity-90 leading-relaxed">{sub}</p>}
       </div>
     </section>
   );
