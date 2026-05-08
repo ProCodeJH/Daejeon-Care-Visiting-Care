@@ -178,12 +178,12 @@ export function Header() {
         <button
           type="button"
           onClick={() => setOpen(!open)}
-          className="lg:hidden w-10 h-10 grid place-items-center"
+          className="lg:hidden w-12 h-12 grid place-items-center -mr-1"
           aria-label={open ? '메뉴 닫기' : '메뉴 열기'}
           aria-expanded={open}
           aria-controls="mobile-nav"
         >
-          {open ? <X size={22} /> : <Menu size={22} />}
+          {open ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
