@@ -57,8 +57,9 @@ export default function InsurancePage() {
             }
           />
           <div className="mt-12 bg-brand-50 p-7 md:p-10 border-l-4 border-brand-400">
+            {/* Wave 469: | aria-hidden (multi-line + Korean grep miss) */}
             <p className="text-brand-400 font-semibold tracking-[0.15em] text-sm mb-3">
-              | 재가복지서비스 (방문요양·방문목욕)
+              <span aria-hidden="true">|</span> 재가복지서비스 (방문요양·방문목욕)
             </p>
             <p className="text-lg md:text-xl text-ink-primary leading-relaxed font-medium">
               국민건강보험공단으로부터{' '}

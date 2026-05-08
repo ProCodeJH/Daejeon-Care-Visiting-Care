@@ -191,8 +191,9 @@ export default function CostPage() {
             className="bg-gradient-to-br from-brand-50 to-brand-100 p-8 md:p-10 border-2 border-brand-600 transition-colors duration-500"
             style={{ animation: 'resultFlash 0.5s ease-out' }}
           >
+            {/* Wave 469: | aria-hidden (Wave 467-468 saturation 누락 catch — multi-line JSX grep miss) */}
             <p lang="en" className="text-brand-400 font-semibold tracking-[0.15em] text-sm mb-3">
-              | RESULT
+              <span aria-hidden="true">|</span> RESULT
             </p>
             <h3 className="text-xl font-bold text-ink-primary mb-2">
               월 본인부담액 (예상)
@@ -234,8 +235,9 @@ export default function CostPage() {
             {/* Wave 379: 결과 음성 안내 + 공유/인쇄 (Wave 378 패턴 saturation pass).
                 어르신이 "월 본인부담 X원" 직접 듣고 가족 결정 즉시. 인쇄 시 자체 숨김. */}
             <div className="mt-6 pt-5 border-t border-brand-200 flex flex-wrap items-center gap-3 print:hidden">
+              {/* Wave 469: | aria-hidden (Korean label grep miss) */}
               <span className="text-xs text-ink-muted font-semibold tracking-[0.15em]">
-                | 음성 듣기 / 가족과 공유
+                <span aria-hidden="true">|</span> 음성 듣기 / 가족과 공유
               </span>
               <SpeakButton
                 text={`장기요양 ${

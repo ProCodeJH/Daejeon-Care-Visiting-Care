@@ -186,8 +186,9 @@ export default function JobApplyPage() {
 
                 {/* 연락 대기 동안 둘러보기 (post-conversion retention) */}
                 <div className="mt-10 pt-8 border-t border-gray-100">
+                  {/* Wave 469: | aria-hidden (multi-line + Korean grep miss) */}
                   <p className="text-center text-xs text-ink-muted tracking-[0.15em] mb-6 font-semibold">
-                    | 연락 대기 동안 대전케어 더 알아보기
+                    <span aria-hidden="true">|</span> 연락 대기 동안 대전케어 더 알아보기
                   </p>
                   <div className="grid md:grid-cols-2 gap-4">
                     <a
