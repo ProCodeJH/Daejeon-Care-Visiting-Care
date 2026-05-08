@@ -76,6 +76,20 @@ export function Header() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // a11y: ESC 키 + route change 시 모바일 메뉴 자동 닫기
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(false);
+    };
+    if (open) window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [open]);
+
+  // route change 감지 = 모바일 메뉴 자동 닫기
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
   return (
     <>
       {/* 24시간 상담 띠 */}
