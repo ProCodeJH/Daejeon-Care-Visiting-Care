@@ -16,11 +16,17 @@
  */
 // Wave 480: PHONE + EMAIL 단일 source — derived fields (phoneTel/phoneIntl/emailMailto) 자동 동기화.
 // 자현이 PHONE/EMAIL 1줄 변경 시 모든 derived 필드 자동 갱신 (paradigm 16 single source 강화).
+// Wave 533: BRAND/SERVICE 분리 — name + brand 동시 derived. 자현이 brand 변경 시 stories cat (대전케어 이야기/일상)
+// + notices title/body + 모든 metadata 자동 갱신.
 const PHONE = '042-369-0326';
 const EMAIL = 'contact@daejeoncare.kr';
+const BRAND = '대전케어';
+const SERVICE = '방문요양센터';
 
 export const CONTACT = {
-  name: '대전케어 방문요양센터',
+  name: `${BRAND} ${SERVICE}`,
+  brand: BRAND,
+  service: SERVICE,
   phone: PHONE,
   phoneTel: `tel:${PHONE}` as const,
   // International format (+82) — JSON-LD MedicalBusiness telephone 등 schema.org 표준용 (leading 0 제거)
