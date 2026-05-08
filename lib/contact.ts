@@ -14,3 +14,16 @@ export const CONTACT = {
   bizNumber: '[사업자등록번호]',
   careNumber: '[장기요양기관 지정번호]',
 } as const;
+
+/**
+ * SNS 채널 (자현 채널 활성 시 URL 입력).
+ * 빈 문자열 = Footer에 아이콘 숨김.
+ */
+export const SNS = {
+  kakaoChannel: '', // 예: 'https://pf.kakao.com/_xxxXxX'
+  naverBlog: '',    // 예: 'https://blog.naver.com/daejeoncare'
+  naverPlace: '',   // 예: 'https://map.naver.com/v5/entry/place/...'
+  instagram: '',    // 예: 'https://instagram.com/daejeoncare'
+  youtube: '',      // 예: 'https://youtube.com/@daejeoncare'
+  facebook: '',     // 예: 'https://facebook.com/daejeoncare'
+} as const;

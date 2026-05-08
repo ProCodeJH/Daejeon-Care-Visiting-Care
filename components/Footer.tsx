@@ -1,6 +1,18 @@
 import { Logo } from './Logo';
-import { CONTACT } from '@/lib/contact';
-import { Phone, Clock, Mail } from 'lucide-react';
+import { CONTACT, SNS } from '@/lib/contact';
+import { Phone, Clock, Mail, Instagram, Youtube, Facebook, MessageCircle, MapPin } from 'lucide-react';
+
+/**
+ * SNS 아이콘 (URL 입력된 채널만 표시).
+ */
+const SNS_ICONS = [
+  { url: SNS.kakaoChannel, Icon: MessageCircle, label: '카카오톡 채널' },
+  { url: SNS.naverPlace, Icon: MapPin, label: '네이버 플레이스' },
+  { url: SNS.naverBlog, Icon: MessageCircle, label: '네이버 블로그' },
+  { url: SNS.instagram, Icon: Instagram, label: '인스타그램' },
+  { url: SNS.youtube, Icon: Youtube, label: '유튜브' },
+  { url: SNS.facebook, Icon: Facebook, label: '페이스북' },
+].filter((s) => s.url);
 
 /**
  * 대전케어 방문요양센터 Footer.
@@ -69,6 +81,26 @@ export function Footer() {
             </ul>
           </div>
         </div>
+
+        {/* SNS 아이콘 (자현이 lib/contact.ts SNS URL 입력 시 자동 활성) */}
+        {SNS_ICONS.length > 0 && (
+          <div className="mt-8 flex items-center gap-3 justify-center md:justify-start">
+            <span className="text-xs text-ink-muted">SNS:</span>
+            {SNS_ICONS.map((s) => (
+              <a
+                key={s.label}
+                href={s.url}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={s.label}
+                className="w-9 h-9 grid place-items-center bg-gray-50 hover:bg-[#1B6F4A] text-ink-secondary hover:text-white transition-colors"
+                style={{ borderRadius: '999px' }}
+              >
+                <s.Icon size={16} strokeWidth={1.8} />
+              </a>
+            ))}
+          </div>
+        )}
 
         <div className="border-t border-gray-100 mt-10 pt-5 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
           <p className="text-xs text-ink-muted">
