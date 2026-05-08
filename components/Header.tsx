@@ -76,14 +76,17 @@ export function Header() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // a11y: ESC 키 + route change 시 모바일 메뉴 자동 닫기
+  // a11y: ESC 키 → 모바일 메뉴 + 데스크탑 dropdown 동시 닫기 (Wave 351)
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setOpen(false);
+      if (e.key === 'Escape') {
+        setOpen(false);
+        setHovered(null);
+      }
     };
-    if (open) window.addEventListener('keydown', onKey);
+    if (open || hovered) window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [open]);
+  }, [open, hovered]);
 
   // route change 감지 = 모바일 메뉴 자동 닫기
   useEffect(() => {
@@ -122,46 +125,64 @@ export function Header() {
             <Logo size={48} withText />
           </Link>
 
-        {/* Desktop Nav */}
+        {/* Desktop Nav — Wave 351: 키보드 a11y 강화.
+            hover + focus 둘 다 dropdown 열기 + 항상-마운트 + inert + opacity/transform smooth transition. */}
         <nav aria-label="주 메뉴" className="hidden lg:flex items-center gap-10">
-          {NAV.map((item) => (
-            <div
-              key={item.label}
-              className="relative py-9"
-              onMouseEnter={() => setHovered(item.label)}
-              onMouseLeave={() => setHovered(null)}
-            >
-              <Link
-                href={item.href}
-                aria-current={isActive(item.href) ? 'page' : undefined}
-                className={`font-semibold text-[15px] flex items-center gap-1 transition-colors ${
-                  isActive(item.href)
-                    ? 'text-brand-600'
-                    : 'text-ink-primary hover:text-brand-400'
-                }`}
+          {NAV.map((item) => {
+            const isOpen = hovered === item.label;
+            return (
+              <div
+                key={item.label}
+                className="relative py-9"
+                onMouseEnter={() => setHovered(item.label)}
+                onMouseLeave={() => setHovered(null)}
+                onFocus={() => setHovered(item.label)}
+                onBlur={(e) => {
+                  if (!e.currentTarget.contains(e.relatedTarget as Node | null)) {
+                    setHovered(null);
+                  }
+                }}
               >
-                {item.label}
-                {item.children && <ChevronDown size={14} />}
-                {isActive(item.href) && (
-                  <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-brand-600" />
+                <Link
+                  href={item.href}
+                  aria-current={isActive(item.href) ? 'page' : undefined}
+                  aria-expanded={item.children ? isOpen : undefined}
+                  className={`font-semibold text-[15px] flex items-center gap-1 transition-colors ${
+                    isActive(item.href)
+                      ? 'text-brand-600'
+                      : 'text-ink-primary hover:text-brand-400'
+                  }`}
+                >
+                  {item.label}
+                  {item.children && <ChevronDown size={14} />}
+                  {isActive(item.href) && (
+                    <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-brand-600" />
+                  )}
+                </Link>
+                {/* Dropdown — 항상 마운트, opacity/transform 트랜지션 + inert로 닫힘 시 focus/a11y 차단 */}
+                {item.children && (
+                  <div
+                    inert={!isOpen}
+                    className="absolute top-full left-1/2 bg-white shadow-lg border border-gray-100 rounded-md py-2 min-w-[200px] z-50 transition-all duration-200"
+                    style={{
+                      opacity: isOpen ? 1 : 0,
+                      transform: isOpen ? 'translate(-50%, 0)' : 'translate(-50%, -4px)',
+                    }}
+                  >
+                    {item.children.map((c) => (
+                      <Link
+                        key={c.href}
+                        href={c.href}
+                        className="block px-5 py-2.5 text-sm text-ink-secondary hover:bg-brand-50 hover:text-brand-400 whitespace-nowrap"
+                      >
+                        {c.label}
+                      </Link>
+                    ))}
+                  </div>
                 )}
-              </Link>
-              {/* Dropdown */}
-              {item.children && hovered === item.label && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 bg-white shadow-lg border border-gray-100 rounded-md py-2 min-w-[200px] z-50">
-                  {item.children.map((c) => (
-                    <Link
-                      key={c.href}
-                      href={c.href}
-                      className="block px-5 py-2.5 text-sm text-ink-secondary hover:bg-brand-50 hover:text-brand-400 whitespace-nowrap"
-                    >
-                      {c.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
+              </div>
+            );
+          })}
         </nav>
 
         {/* CTA — 24시간 직통 */}
