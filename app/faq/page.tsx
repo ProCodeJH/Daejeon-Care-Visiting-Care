@@ -81,18 +81,24 @@ export default function FAQPage() {
                     ▾
                   </span>
                 </button>
-                {openIdx === i && (
-                  <div
-                    id={`faq-answer-${i}`}
-                    role="region"
-                    className="px-5 md:px-6 pb-5 md:pb-6 pl-12 md:pl-14 -mt-2"
-                  >
-                    <div className="bg-brand-50 p-4 md:p-5 flex items-start gap-3">
-                      <span className="text-brand-400 font-bold shrink-0">A.</span>
-                      <p className="text-ink-secondary leading-relaxed">{f.a}</p>
+                {/* Wave 349: 항상 마운트 + grid-template-rows 0fr→1fr 부드러운 transition.
+                    inert로 닫힘 상태에서 focus + 스크린리더 차단 (React 19 native boolean). */}
+                <div
+                  id={`faq-answer-${i}`}
+                  role="region"
+                  className="accordion-content"
+                  data-open={openIdx === i}
+                  inert={openIdx !== i}
+                >
+                  <div>
+                    <div className="px-5 md:px-6 pb-5 md:pb-6 pl-12 md:pl-14 -mt-2">
+                      <div className="bg-brand-50 p-4 md:p-5 flex items-start gap-3">
+                        <span className="text-brand-400 font-bold shrink-0">A.</span>
+                        <p className="text-ink-secondary leading-relaxed">{f.a}</p>
+                      </div>
                     </div>
                   </div>
-                )}
+                </div>
               </div>
             ))}
           </div>

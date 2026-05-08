@@ -188,6 +188,25 @@
     }
   }
 
+  /* Wave 349: Accordion smooth height — grid-template-rows 0fr→1fr trick (Chrome 122+ / FF 117+ / Safari 17.4+).
+   * conditional render 대비 항상 마운트 + inert로 a11y/focus 제어 + transition. CLS 0. JS animation 0. */
+  .accordion-content {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 350ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .accordion-content[data-open='true'] {
+    grid-template-rows: 1fr;
+  }
+  .accordion-content > * {
+    overflow: hidden;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .accordion-content {
+      transition: none;
+    }
+  }
+
   /* prefers-reduced-motion 존중 */
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
