@@ -205,8 +205,9 @@ export default function CostPage() {
               <strong className="text-brand-600">{RATES[rateKey].label}</strong>
             </p>
 
-            {/* Wave 299: <output> semantic — form result identification (screen reader 정확 announce). */}
-            <output className="grid md:grid-cols-3 gap-5" aria-label="본인부담금 계산 결과">
+            {/* Wave 299: <output> semantic — form result identification (screen reader 정확 announce).
+             * Wave 496: aria-live="polite" 명시 — <output>은 implicit polite이지만 일부 SR (older NVDA/JAWS) 정확 인식. */}
+            <output className="grid md:grid-cols-3 gap-5" aria-label="본인부담금 계산 결과" aria-live="polite">
               <div className="bg-white p-6 tabular-nums">
                 <p className="text-xs text-ink-muted mb-2">월 한도액</p>
                 <p className="text-2xl font-bold text-ink-primary">
