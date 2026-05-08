@@ -1,6 +1,6 @@
 # 대전케어 방문요양센터
 
-대전 5구 통합 방문요양센터 운영 사이트. **두손누리 디자인을 1:1 React로 재현 + 100+ Wave 자율 폴리시 + production hardening (print/PWA shortcuts/error 3-layer/high-contrast a11y) + Voice Assistant 음성 안내 (Speakable schema) + Web Share API (KakaoTalk 단톡 공유) + JSON-LD 7종 + 28 URLs canonical 일관성 + Silent Issue 광맥 19건 추출 (form htmlFor/aria/<time>/blockquote/JSON-LD escape) + 정체성 6-way pulse paradigm + Vercel 자동 배포 + 한국 법적 compliance**.
+대전 5구 통합 방문요양센터 운영 사이트. **두손누리 디자인을 1:1 React로 재현 + 115+ Wave 자율 폴리시 + production hardening (print/PWA shortcuts/error 3-layer/high-contrast a11y) + Voice Assistant 음성 안내 (Speakable schema) + Web Share API (KakaoTalk 단톡 공유) + JSON-LD 7종 + 30 URLs canonical 일관성 + Silent Issue 광맥 24건 추출 + Single Source 4 layer (lib/contact.ts + lib/site.ts + content/* + 컴포넌트) + alias canonical / dead code purge / FAQ schema 정합 + 정체성 6-way pulse paradigm + Vercel 자동 배포 + 한국 법적 compliance**.
 
 > **Production**: https://대전케어방문요양.kr  
 > **대표번호**: 042-369-0326 (24시간 상담 가능)  
@@ -237,10 +237,30 @@ git add . && git commit -m "update: 새 FAQ" && git push
 | 17 | 94 | search semantic 없음 | `<form role="search">` + type="search" + name="q" |
 | 18 | 95 | testimonial semantic 없음 | `<blockquote>` + `<cite>` HTML5 표준 |
 | 19 | 96 | JSON-LD `</script>` XSS 위험 | `<` → `<` 이스케이프 |
+| 20 | 109 | alias canonical (homecare/qna duplicate content) | `alternates.canonical` 명시 |
+| 21 | 110 | /info 6 broken 404 link (dementia/fall 등) | `<a>` → `<article>` + 042 conversion |
+| 22 | 111 | dead component 4 (ManagerHighlight 등) | git history backup + delete |
+| 23 | 112 | FAQ schema vs visible mismatch | 홈 4개 통일 (Google guideline) |
+| 24 | 113 | SITE URL DRY 위반 (7 파일 hardcoded) | lib/site.ts 단일 source |
 
-추가 SEO/canonical 일관성 (Wave 97-99): 28 URLs `alternates.canonical` + `openGraph.type='article'` + 5 client segment layout.tsx.
+추가 SEO/canonical 일관성 (Wave 97-99): 30 URLs `alternates.canonical` + `openGraph.type='article'` + 5 client segment layout.tsx.
 
-**Audit-driven paradigm 검증**: 19 wave 노이즈 0건 + lazyweb research보다 자체 코드 audit가 senior care 한국 도메인 깊이로 더 효과적.
+**Audit-driven paradigm 검증**: 35 wave 노이즈 0건 (Wave 81-115) + lazyweb research보다 자체 코드 audit가 senior care 한국 도메인 깊이로 더 효과적.
+
+---
+
+## 🔁 Single Source 4 Layer (자현 운영 비용 ↓)
+
+자현이 한 곳만 수정하면 사이트 전체 자동 반영:
+
+| Layer | 파일 | 영향 위치 | 변경 시 비용 |
+|---|---|---|---|
+| **1. Contact** | `lib/contact.ts` | Header / Footer / JSON-LD / 13 페이지 metadata / 9 visible JSX | phone 변경 = ~25× 감소 |
+| **2. Site** | `lib/site.ts` | layout / sitemap / robots / 3 JSON-LD 컴포넌트 (`SITE.url/locale/lang`) | 도메인 변경 = 7× 감소 |
+| **3. Content** | `content/notices.ts` `stories.ts` `faqs.ts` `centers.ts` | 23 entries × 다수 페이지 | 추가/수정 1곳 |
+| **4. Component** | `Header / Footer / PageHero / CTASection` | 50+ 페이지 일관 paradigm | UI 변경 1곳 |
+
+자현 운영 시간 대폭 ↓ + drift 방지.
 
 ---
 
