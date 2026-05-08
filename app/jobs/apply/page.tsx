@@ -261,6 +261,7 @@ export default function JobApplyPage() {
                       id="apply-name"
                       name="name"
                       required
+                      aria-required="true"
                       type="text"
                       autoComplete="name"
                       maxLength={30}
@@ -276,6 +277,7 @@ export default function JobApplyPage() {
                       id="apply-birth"
                       name="birth"
                       required
+                      aria-required="true"
                       type="text"
                       autoComplete="bday"
                       enterKeyHint="next"
@@ -303,6 +305,7 @@ export default function JobApplyPage() {
                     id="apply-tel"
                     name="tel"
                     required
+                    aria-required="true"
                     type="tel"
                     maxLength={13}
                     inputMode="tel"
@@ -343,6 +346,7 @@ export default function JobApplyPage() {
                     id="apply-experience"
                     name="experience"
                     required
+                    aria-required="true"
                     autoComplete="off"
                     className="w-full px-4 py-2.5 bg-[#f8f8f8] border border-gray-200 focus:border-brand-400 focus:outline-none text-sm"
                     style={{ borderRadius: '2px' }}

@@ -220,6 +220,7 @@ export default function ContactPage() {
                     id="contact-name"
                     name="name"
                     required
+                    aria-required="true"
                     type="text"
                     autoComplete="name"
                     maxLength={30}
@@ -235,6 +236,7 @@ export default function ContactPage() {
                     id="contact-tel"
                     name="tel"
                     required
+                    aria-required="true"
                     type="tel"
                     inputMode="tel"
                     autoComplete="tel"
@@ -278,6 +280,7 @@ export default function ContactPage() {
                     id="contact-message"
                     name="message"
                     required
+                    aria-required="true"
                     rows={5}
                     maxLength={1000}
                     autoComplete="off"
