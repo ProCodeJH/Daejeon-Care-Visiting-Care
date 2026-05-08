@@ -5,6 +5,7 @@ import { PageHero } from '@/components/PageHero';
 import { SectionBlock } from '@/components/SectionBlock';
 import { CTASection } from '@/components/CTASection';
 import { AnimatedNumber } from '@/components/AnimatedNumber';
+import { ShareButton } from '@/components/ShareButton';
 
 /**
  * 2026년 기준 장기요양 월 한도액 (참고용 — 정확한 금액은 공단 확인).
@@ -156,6 +157,17 @@ export default function CostPage() {
               * 위 금액은 2026년 기준 표준 산정액 (참고용). 실제 본인부담액은 이용 시간·서비스 종류·소득 수준에 따라 달라질 수 있습니다.
               정확한 금액은 국민건강보험공단 또는 대전케어 상담을 통해 확인하세요.
             </p>
+
+            {/* 결과 공유 — 가족 단톡에 즉시 전달 use case */}
+            <div className="mt-6 pt-5 border-t border-brand-200 flex flex-wrap items-center gap-3">
+              <span className="text-xs text-ink-muted font-semibold tracking-[0.15em]">
+                | 가족과 공유
+              </span>
+              <ShareButton
+                title="대전케어 본인부담금 계산 결과"
+                text={`장기요양 ${grade}등급 (${RATES[rateKey].label}) — 월 본인부담 ${fmt(result.userPay)} · 공단 부담 ${fmt(result.govPay)}\n대전케어 방문요양센터 042-369-0326`}
+              />
+            </div>
           </div>
         </div>
       </section>
