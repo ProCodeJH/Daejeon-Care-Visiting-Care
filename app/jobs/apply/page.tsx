@@ -153,6 +153,7 @@ export default function JobApplyPage() {
                     inputMode="tel"
                     autoComplete="tel"
                     pattern="[0-9-]{9,13}"
+                    title="숫자와 하이픈만 입력 (예: 010-1234-5678)"
                     placeholder="010-0000-0000"
                     className="w-full px-4 py-2.5 bg-[#f8f8f8] border border-gray-200 focus:border-brand-400 focus:outline-none text-sm"
                     style={{ borderRadius: '2px' }}
