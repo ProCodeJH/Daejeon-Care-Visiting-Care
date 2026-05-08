@@ -44,7 +44,17 @@ export default function MapPage() {
                 </div>
                 <div className="flex items-start gap-3">
                   <Phone size={18} className="text-brand-400 mt-1 shrink-0" />
-                  <span>TEL. {CONTACT.phone} · FAX. {CONTACT.phone}</span>
+                  {/* Wave 354: tel: 링크 — 본점 정보 one-tap dial */}
+                  <span>
+                    TEL.{' '}
+                    <a
+                      href={CONTACT.phoneTel}
+                      className="font-medium hover:text-brand-400 hover:underline transition-colors"
+                    >
+                      {CONTACT.phone}
+                    </a>
+                    {' '}· FAX. {CONTACT.phone}
+                  </span>
                 </div>
                 <div className="flex items-start gap-3">
                   <Clock size={18} className="text-brand-400 mt-1 shrink-0" />
@@ -52,7 +62,13 @@ export default function MapPage() {
                 </div>
                 <div className="flex items-start gap-3">
                   <Mail size={18} className="text-brand-400 mt-1 shrink-0" />
-                  <span>{CONTACT.email}</span>
+                  {/* Wave 354: mailto: 링크 — 메일 클라이언트 자동 열림 */}
+                  <a
+                    href={CONTACT.emailMailto}
+                    className="hover:text-brand-400 hover:underline transition-colors"
+                  >
+                    {CONTACT.email}
+                  </a>
                 </div>
               </address>
             </div>

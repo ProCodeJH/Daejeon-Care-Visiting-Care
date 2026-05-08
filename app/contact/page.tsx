@@ -34,7 +34,14 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <p className="font-semibold text-ink-primary mb-0.5">전화 상담</p>
-                  <p className="text-lg font-bold text-brand-400">{CONTACT.phone}</p>
+                  {/* Wave 354: tel: 링크 — 모바일 one-tap dial */}
+                  <a
+                    href={CONTACT.phoneTel}
+                    className="text-lg font-bold text-brand-400 hover:underline"
+                    aria-label={`전화 걸기 ${CONTACT.phone}`}
+                  >
+                    {CONTACT.phone}
+                  </a>
                   <p className="text-xs text-ink-muted">FAX. {CONTACT.phone}</p>
                 </div>
               </div>
@@ -54,7 +61,13 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <p className="font-semibold text-ink-primary mb-0.5">이메일</p>
-                  <p className="text-sm">{CONTACT.email}</p>
+                  {/* Wave 354: mailto: 링크 — 클릭 시 메일 클라이언트 자동 열림 */}
+                  <a
+                    href={CONTACT.emailMailto}
+                    className="text-sm hover:text-brand-400 hover:underline transition-colors"
+                  >
+                    {CONTACT.email}
+                  </a>
                 </div>
               </div>
               <div className="flex items-start gap-4">

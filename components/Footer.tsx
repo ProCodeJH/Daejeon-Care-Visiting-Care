@@ -57,7 +57,16 @@ export function Footer() {
             <ul className="space-y-2 text-sm text-ink-secondary">
               <li className="flex items-start gap-2">
                 <Phone size={14} className="text-[#1B6F4A] mt-1 shrink-0" />
-                <span>대표번호 <strong>{CONTACT.phone}</strong></span>
+                {/* Wave 354: tel: 링크 — 모바일 one-tap dial */}
+                <span>
+                  대표번호{' '}
+                  <a
+                    href={CONTACT.phoneTel}
+                    className="font-bold hover:text-[#1B6F4A] hover:underline transition-colors"
+                  >
+                    {CONTACT.phone}
+                  </a>
+                </span>
               </li>
               <li className="flex items-start gap-2">
                 <Clock size={14} className="text-[#1B6F4A] mt-1 shrink-0" />
@@ -65,7 +74,13 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-2">
                 <Mail size={14} className="text-[#1B6F4A] mt-1 shrink-0" />
-                <span>{CONTACT.email}</span>
+                {/* Wave 354: mailto: 링크 — 메일 클라이언트 자동 열림 */}
+                <a
+                  href={CONTACT.emailMailto}
+                  className="hover:text-[#1B6F4A] hover:underline transition-colors"
+                >
+                  {CONTACT.email}
+                </a>
               </li>
             </ul>
           </div>
