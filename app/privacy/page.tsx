@@ -4,6 +4,7 @@ import { CONTACT } from '@/lib/contact';
 export const metadata = {
   title: '개인정보처리방침',
   description: '대전케어 방문요양센터 개인정보처리방침. 어르신과 가족의 개인정보를 안전하게 보호합니다.',
+  alternates: { canonical: '/privacy' },
 };
 
 /**

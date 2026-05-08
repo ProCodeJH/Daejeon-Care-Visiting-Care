@@ -1,9 +1,16 @@
+import type { Metadata } from 'next';
 import { PageHero } from '@/components/PageHero';
 import { SectionBlock } from '@/components/SectionBlock';
 import { CTASection } from '@/components/CTASection';
 import { Reveal } from '@/components/Reveal';
 
 import { Brain, ShieldCheck, UtensilsCrossed, Pill, Palette, ClipboardList, type LucideIcon } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: '요양 정보',
+  description: '어르신과 가족이 알아두면 좋은 정보 — 치매 케어 / 낙상 예방 / 식사 / 복용약 / 인지활동 / 복지 서비스 가이드.',
+  alternates: { canonical: '/info' },
+};
 
 type Topic = { title: string; desc: string; Icon: LucideIcon; href: string };
 

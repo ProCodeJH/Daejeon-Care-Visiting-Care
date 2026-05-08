@@ -1,7 +1,14 @@
+import type { Metadata } from 'next';
 import { PageHero } from '@/components/PageHero';
 import { SectionBlock } from '@/components/SectionBlock';
 import { CTASection } from '@/components/CTASection';
 import { MapPin, Phone, Clock, Mail } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: '찾아오시는 길',
+  description: '대전케어 방문요양센터 본점 위치 + 교통편 + 운영 시간. 대전 5구 어디서나 가까운 지점에서 매니저 매칭.',
+  alternates: { canonical: '/map' },
+};
 
 export default function MapPage() {
   return (

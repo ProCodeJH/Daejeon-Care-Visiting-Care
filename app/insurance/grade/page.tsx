@@ -1,8 +1,15 @@
+import type { Metadata } from 'next';
 import { PageHero } from '@/components/PageHero';
 import { SectionBlock } from '@/components/SectionBlock';
 import { CTASection } from '@/components/CTASection';
 import { Reveal } from '@/components/Reveal';
 import { HowToJsonLd } from '@/components/HowToJsonLd';
+
+export const metadata: Metadata = {
+  title: '장기요양등급 절차',
+  description: '장기요양 등급 신청 5단계 절차 + 6단계 등급 안내. 국민건강보험공단 신청부터 결과 통보까지 약 30일.',
+  alternates: { canonical: '/insurance/grade' },
+};
 
 const GRADES = [
   {

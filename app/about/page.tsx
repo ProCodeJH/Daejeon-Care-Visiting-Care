@@ -1,4 +1,11 @@
+import type { Metadata } from 'next';
 import { PageHero } from '@/components/PageHero';
+
+export const metadata: Metadata = {
+  title: '인사말',
+  description: '대전케어 방문요양센터 인사말 — 부모님의 손발이 되겠습니다. 대전 5구 통합, 24시간 상담 042-369-0326.',
+  alternates: { canonical: '/about' },
+};
 import { SectionBlock } from '@/components/SectionBlock';
 import { CTASection } from '@/components/CTASection';
 import { StatsCounter } from '@/components/StatsCounter';

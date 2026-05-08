@@ -1,8 +1,15 @@
+import type { Metadata } from 'next';
 import { PageHero } from '@/components/PageHero';
 import { SectionBlock } from '@/components/SectionBlock';
 import { CTASection } from '@/components/CTASection';
 import { Reveal } from '@/components/Reveal';
 import { Wallet, Clock, Home, BookOpen, Users, Heart, type LucideIcon } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: '요양보호사 일자리',
+  description: '대전케어 요양보호사 채용 — 안정 수입 / 시간 자율 / 가까운 지역 / 교육 지원. 신입 환영, 경력자 우대.',
+  alternates: { canonical: '/jobs' },
+};
 
 type Benefit = { Icon: LucideIcon; title: string; desc: string };
 

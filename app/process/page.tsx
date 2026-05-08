@@ -1,8 +1,15 @@
+import type { Metadata } from 'next';
 import { PageHero } from '@/components/PageHero';
 import { SectionBlock } from '@/components/SectionBlock';
 import { CTASection } from '@/components/CTASection';
 import { Reveal } from '@/components/Reveal';
 import { HowToJsonLd } from '@/components/HowToJsonLd';
+
+export const metadata: Metadata = {
+  title: '서비스 절차',
+  description: '대전케어 방문요양 6단계 절차 — 장기요양인정서 수령부터 방문요양 서비스 시작까지. 전문 매니저가 함께합니다.',
+  alternates: { canonical: '/process' },
+};
 
 const STEPS = [
   {
