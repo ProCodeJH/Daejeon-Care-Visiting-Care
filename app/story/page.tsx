@@ -87,6 +87,8 @@ export default function StoryPage() {
                     <img
                       src={p.thumbnail}
                       alt=""
+                      width={400}
+                      height={300}
                       loading="lazy"
                       decoding="async"
                       className="absolute inset-0 w-full h-full object-cover"

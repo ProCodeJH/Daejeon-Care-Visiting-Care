@@ -87,9 +87,12 @@ export default async function StoryDetailPage({
               미입력 시 aria-hidden gradient (decorative, 저작권 0). */}
           {s.thumbnail ? (
             <figure className="mb-10">
+              {/* Wave 416: width/height attrs — CLS 개선 (browser pre-layout) + Lighthouse SEO */}
               <img
                 src={s.thumbnail}
                 alt={s.title}
+                width={1200}
+                height={600}
                 loading="lazy"
                 decoding="async"
                 className="w-full aspect-[16/8] object-cover"
