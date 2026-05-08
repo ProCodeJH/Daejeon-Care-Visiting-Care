@@ -76,10 +76,10 @@ const SLIDES: Slide[] = [
   },
 ];
 
-/** dark overlay rgba 0.45 + image cover + grad fallback (이미지 미리 로드 안 됐을 때 grad 보임) */
+/** image cover + grad fallback (자현 명시: 원본 그대로, dark overlay X. 텍스트는 text-shadow로 가독성 보장). */
 const slideBg = (s: Slide) =>
   s.bg
-    ? `linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('${s.bg}') center/cover no-repeat, ${s.grad}`
+    ? `url('${s.bg}') center/cover no-repeat, ${s.grad}`
     : s.grad;
 
 /**
@@ -164,8 +164,11 @@ export function HeroCarousel() {
         className="absolute bottom-0 left-0 right-0 bg-black z-30 pointer-events-none"
       />
 
-      {/* Caption */}
-      <div className="relative z-10 h-full max-w-[1200px] mx-auto px-5 flex flex-col justify-center items-start text-white">
+      {/* Caption — text-shadow로 가독성 보장 (이미지 원본 그대로 노출) */}
+      <div
+        className="relative z-10 h-full max-w-[1200px] mx-auto px-5 flex flex-col justify-center items-start text-white"
+        style={{ textShadow: '0 2px 12px rgba(0,0,0,0.7), 0 1px 3px rgba(0,0,0,0.9)' }}
+      >
         <motion.p
           key={`eyebrow-${idx}`}
           initial={{ y: 8 }}
