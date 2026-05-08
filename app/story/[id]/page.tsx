@@ -77,16 +77,26 @@ export default async function StoryDetailPage({
             <time dateTime={s.date} className="text-ink-muted">{s.date}</time>
           </div>
 
-          {/* 썸네일 — 자현 이미지 입력 시 활성, 미입력 시 정체성 gradient (저작권 0) */}
+          {/* Wave 358: <figure>+<img>+<figcaption> semantic — 자현 이미지 입력 시 SEO/Image 인덱스 + a11y.
+              미입력 시 aria-hidden gradient (decorative, 저작권 0). */}
           {s.thumbnail ? (
-            <div
-              role="img"
-              aria-label={s.title}
-              className="aspect-[16/8] mb-10 bg-cover bg-center"
-              style={{ borderRadius: '2px', backgroundImage: `url('${s.thumbnail}')` }}
-            />
+            <figure className="mb-10">
+              <img
+                src={s.thumbnail}
+                alt={s.title}
+                loading="lazy"
+                decoding="async"
+                className="w-full aspect-[16/8] object-cover"
+                style={{ borderRadius: '2px' }}
+              />
+              <figcaption className="sr-only">{s.title}</figcaption>
+            </figure>
           ) : (
-            <div className="aspect-[16/8] bg-gradient-to-br from-brand-200 via-brand-400 to-[#1B6F4A] mb-10" style={{ borderRadius: '2px' }} />
+            <div
+              aria-hidden="true"
+              className="aspect-[16/8] bg-gradient-to-br from-brand-200 via-brand-400 to-[#1B6F4A] mb-10"
+              style={{ borderRadius: '2px' }}
+            />
           )}
 
           <div className="text-ink-secondary leading-loose md:text-lg whitespace-pre-line" style={{ wordBreak: 'keep-all' }}>
