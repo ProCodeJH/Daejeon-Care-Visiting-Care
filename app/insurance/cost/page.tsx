@@ -148,11 +148,12 @@ export default function CostPage() {
               </div>
             </div>
 
+            {/* Wave 419: name="rate" + role="radiogroup" + aria-labelledby — WCAG 1.3.1 + 4.1.2 그룹 semantic */}
             <div>
-              <label className="block text-sm font-bold text-ink-primary mb-3">
+              <p id="rate-label" className="block text-sm font-bold text-ink-primary mb-3">
                 본인부담률
-              </label>
-              <div className="space-y-2">
+              </p>
+              <div className="space-y-2" role="radiogroup" aria-labelledby="rate-label">
                 {Object.entries(RATES).map(([k, r]) => (
                   <label
                     key={k}
@@ -164,6 +165,8 @@ export default function CostPage() {
                   >
                     <input
                       type="radio"
+                      name="rate"
+                      value={k}
                       checked={rateKey === k}
                       onChange={() => setRateKey(k)}
                       className="accent-brand-400"
