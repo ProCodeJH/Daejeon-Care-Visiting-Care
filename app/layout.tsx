@@ -94,6 +94,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         {/* preconnect — Pretendard CDN (font LCP 개선) */}
         <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
 
+        {/* Hero 첫 슬라이드 preload — LCP 가속 (나머지 4장은 carousel 회전 시 자연 로드) */}
+        <link rel="preload" as="image" href="/hero/hero-1.png" fetchPriority="high" />
+
         {/* Pretendard Variable preload (font-display: swap 자동) */}
         <link
           rel="preload"

@@ -232,9 +232,10 @@ export function HeroCarousel() {
         {SLIDES.map((_, i) => (
           <button
             key={i}
+            type="button"
             onClick={() => setIdx(i)}
-            aria-label={`Slide ${i + 1} of ${SLIDES.length}`}
-            aria-current={idx === i}
+            aria-label={`슬라이드 ${i + 1} / ${SLIDES.length}`}
+            aria-current={idx === i ? 'step' : undefined}
             className={`h-1.5 transition-all duration-500 ${
               idx === i ? 'w-10 bg-white' : 'w-5 bg-white/50 hover:bg-white/80'
             }`}
