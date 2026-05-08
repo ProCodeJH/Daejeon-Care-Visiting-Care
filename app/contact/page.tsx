@@ -92,6 +92,7 @@ export default function ContactPage() {
                   <input
                     required
                     type="text"
+                    autoComplete="name"
                     className="w-full px-4 py-2.5 bg-white border border-gray-200 focus:border-brand-400 focus:outline-none text-sm"
                     style={{ borderRadius: '2px' }}
                   />
@@ -103,6 +104,9 @@ export default function ContactPage() {
                   <input
                     required
                     type="tel"
+                    inputMode="tel"
+                    autoComplete="tel"
+                    pattern="[0-9-]{9,13}"
                     placeholder="010-0000-0000"
                     className="w-full px-4 py-2.5 bg-white border border-gray-200 focus:border-brand-400 focus:outline-none text-sm"
                     style={{ borderRadius: '2px' }}
@@ -130,8 +134,9 @@ export default function ContactPage() {
                   <textarea
                     required
                     rows={5}
-                    className="w-full px-4 py-2.5 bg-white border border-gray-200 focus:border-brand-400 focus:outline-none text-sm resize-none"
-                    style={{ borderRadius: '2px' }}
+                    /* @ts-expect-error field-sizing modern CSS */
+                    style={{ borderRadius: '2px', fieldSizing: 'content' }}
+                    className="w-full px-4 py-2.5 bg-white border border-gray-200 focus:border-brand-400 focus:outline-none text-sm resize-none min-h-[120px]"
                   />
                 </div>
                 <label className="flex items-start gap-2 text-xs text-ink-muted">

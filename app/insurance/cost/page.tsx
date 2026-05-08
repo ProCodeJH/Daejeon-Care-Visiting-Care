@@ -4,6 +4,7 @@ import { useState, useMemo } from 'react';
 import { PageHero } from '@/components/PageHero';
 import { SectionBlock } from '@/components/SectionBlock';
 import { CTASection } from '@/components/CTASection';
+import { AnimatedNumber } from '@/components/AnimatedNumber';
 
 /**
  * 2026년 기준 장기요양 월 한도액 (참고용 — 정확한 금액은 공단 확인).
@@ -127,17 +128,23 @@ export default function CostPage() {
             </h3>
 
             <div className="grid md:grid-cols-3 gap-5">
-              <div className="bg-white p-6">
+              <div className="bg-white p-6 tabular-nums">
                 <p className="text-xs text-ink-muted mb-2">월 한도액</p>
-                <p className="text-2xl font-bold text-ink-primary">{fmt(result.limit)}</p>
+                <p className="text-2xl font-bold text-ink-primary">
+                  <AnimatedNumber value={result.limit} suffix="원" />
+                </p>
               </div>
-              <div className="bg-white p-6">
+              <div className="bg-white p-6 tabular-nums">
                 <p className="text-xs text-ink-muted mb-2">공단 부담 ({((1 - result.rate) * 100).toFixed(0)}%)</p>
-                <p className="text-2xl font-bold text-ink-secondary">{fmt(result.govPay)}</p>
+                <p className="text-2xl font-bold text-ink-secondary">
+                  <AnimatedNumber value={result.govPay} suffix="원" />
+                </p>
               </div>
-              <div className="bg-brand-400 text-white p-6">
+              <div className="bg-brand-600 text-white p-6 tabular-nums">
                 <p className="text-xs opacity-80 mb-2">본인 부담 ({(result.rate * 100).toFixed(0)}%)</p>
-                <p className="text-2xl font-bold">{fmt(result.userPay)}</p>
+                <p className="text-2xl font-bold">
+                  <AnimatedNumber value={result.userPay} suffix="원" />
+                </p>
               </div>
             </div>
 
