@@ -16,7 +16,9 @@ const BUSINESS_JSONLD = {
   description:
     '대전 5구 통합 방문요양센터. 어르신 댁으로 직접 찾아가는 케어 — 방문요양·방문목욕·방문간호. 24시간 상담 가능.',
   url: SITE,
-  logo: `${SITE}/icon`,
+  // Wave 444: Wave 430 silent regression catch — generateImageMetadata 후 /icon 자체 URL 무효.
+  // /icon/large (512×512) schema.org 권장 600×600에 가장 가까움 (paradigm 16 시간차 누락 catch).
+  logo: `${SITE}/icon/large`,
   image: `${SITE}/opengraph-image`,
   telephone: CONTACT.phoneIntl,
   email: CONTACT.email,
