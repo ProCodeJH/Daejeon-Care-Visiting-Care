@@ -233,6 +233,7 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-5">
             {REVIEWS.map((r, i) => (
               <Reveal
+                as="article"
                 key={i}
                 delay={i * 0.08}
                 className="bg-white p-7 border border-gray-100 hover:border-brand-400 hover:shadow-md transition-all relative"

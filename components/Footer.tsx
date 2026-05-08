@@ -138,11 +138,12 @@ export function Footer() {
           <small className="text-xs text-ink-muted block">
             COPYRIGHT © {new Date().getFullYear()} {CONTACT.name} ALL RIGHTS RESERVED.
           </small>
-          <div className="flex items-center gap-4 text-xs text-ink-muted">
+          {/* Wave 364: <nav> = navigation landmark for 법적 정보 + 사이트맵 (3 cross-page links 그룹) */}
+          <nav aria-label="법적 정보 및 사이트맵" className="flex items-center gap-4 text-xs text-ink-muted">
             <a href="/privacy" className="hover:text-[#1B6F4A]">개인정보처리방침</a>
             <a href="/terms" className="hover:text-[#1B6F4A]">이용약관</a>
             <a href="/sitemap" className="hover:text-[#1B6F4A]">사이트맵</a>
-          </div>
+          </nav>
         </div>
       </div>
     </footer>
