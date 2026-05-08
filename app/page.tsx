@@ -59,34 +59,35 @@ export default function Home() {
       {/* 1. Hero Carousel — 902px green/photo BG + 흰색 카피 */}
       <HeroCarousel />
 
-      {/* 1.5. Stats 신뢰 지표 (Hero 직후, 즉시 신뢰) */}
+      {/* 1.5. Stats 신뢰 지표 (Hero 직후, 즉시 신뢰).
+          Wave 386: <dl> semantic — 4 통계 = term/definition pairs. flex-col-reverse로 visual (value 위) 유지. */}
       <section className="bg-white border-b border-gray-100">
-        <div className="max-w-[1200px] mx-auto px-5 py-10 grid grid-cols-2 md:grid-cols-4 gap-6">
-          <Reveal className="text-center">
-            <p className="text-3xl md:text-4xl font-extrabold text-[#1B6F4A] mb-1 tabular-nums">
+        <dl className="max-w-[1200px] mx-auto px-5 py-10 grid grid-cols-2 md:grid-cols-4 gap-6 m-0">
+          <Reveal as="div" className="text-center flex flex-col-reverse gap-1">
+            <dt className="text-xs md:text-sm text-ink-muted font-medium">대전 5구 통합</dt>
+            <dd className="text-3xl md:text-4xl font-extrabold text-[#1B6F4A] tabular-nums m-0">
               <StatsCounter value={5} suffix="구" />
-            </p>
-            <p className="text-xs md:text-sm text-ink-muted font-medium">대전 5구 통합</p>
+            </dd>
           </Reveal>
-          <Reveal delay={0.1} className="text-center">
-            <p className="text-3xl md:text-4xl font-extrabold text-[#1B6F4A] mb-1 tabular-nums">
+          <Reveal as="div" delay={0.1} className="text-center flex flex-col-reverse gap-1">
+            <dt className="text-xs md:text-sm text-ink-muted font-medium">365일 상담 가능</dt>
+            <dd className="text-3xl md:text-4xl font-extrabold text-[#1B6F4A] tabular-nums m-0">
               <StatsCounter value={24} suffix="시간" />
-            </p>
-            <p className="text-xs md:text-sm text-ink-muted font-medium">365일 상담 가능</p>
+            </dd>
           </Reveal>
-          <Reveal delay={0.2} className="text-center">
-            <p className="text-3xl md:text-4xl font-extrabold text-[#1B6F4A] mb-1 tabular-nums">
+          <Reveal as="div" delay={0.2} className="text-center flex flex-col-reverse gap-1">
+            <dt className="text-xs md:text-sm text-ink-muted font-medium">자격 매니저</dt>
+            <dd className="text-3xl md:text-4xl font-extrabold text-[#1B6F4A] tabular-nums m-0">
               <StatsCounter value={CONTACT.managerCount} suffix="+명" />
-            </p>
-            <p className="text-xs md:text-sm text-ink-muted font-medium">자격 매니저</p>
+            </dd>
           </Reveal>
-          <Reveal delay={0.3} className="text-center">
-            <p className="text-3xl md:text-4xl font-extrabold text-[#E63946] mb-1 tabular-nums">
+          <Reveal as="div" delay={0.3} className="text-center flex flex-col-reverse gap-1">
+            <dt className="text-xs md:text-sm text-ink-muted font-medium">대표번호 · 무료 상담</dt>
+            <dd className="text-3xl md:text-4xl font-extrabold text-[#E63946] tabular-nums m-0">
               {CONTACT.phone}
-            </p>
-            <p className="text-xs md:text-sm text-ink-muted font-medium">대표번호 · 무료 상담</p>
+            </dd>
           </Reveal>
-        </div>
+        </dl>
       </section>
 
       {/* 2. About — "집으로 찾아가는 또 다른 가족, 방문요양 서비스" (606px, white) */}
