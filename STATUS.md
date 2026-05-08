@@ -1,6 +1,6 @@
 # STATUS — 대전케어 방문요양센터
 
-**Updated**: 2026-05-09 / Wave 552 / paradigm 18 chain 200-wave milestone (CSS / tailwind config / Pretendard CDN audit saturated — paradigm 17 boundary 정의)
+**Updated**: 2026-05-09 / Wave 553 / paradigm 18 chain 201-wave (광맥 #325! localStorage TTL 7일 (contact + jobs/apply) — PIPA "필요 최소 기간" + stale UX 회피)
 
 > 1쪽 handoff. 자현 5분 결정 진입점.
 

@@ -7,10 +7,14 @@ import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 import { CONTACT } from '@/lib/contact';
 
 const STORAGE_KEY = 'daejeon-care:contact';
+// Wave 553: 7일 TTL — 오래된 폼 컨텍스트 stale, PIPA "필요 최소 기간" 일관.
+const STORAGE_TTL_MS = 7 * 24 * 60 * 60 * 1000;
 
 /**
  * Wave 375: form autosave (Wave 374 saturation pass).
  * /contact 4 fields × privacy 제외 (PIPA).
+ *
+ * Wave 553: TTL 7일 — saved 후 7일 경과 시 자동 만료 (PII 최소 보관 + UX).
  */
 type ContactForm = {
   name?: string;
@@ -19,18 +23,32 @@ type ContactForm = {
   message?: string;
 };
 
+type StoredContactForm = { ts: number; data: ContactForm };
+
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
   const [restored, setRestored] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
-  // 복원 + Wave 380 banner 트리거
+  // 복원 + Wave 380 banner 트리거 (Wave 553: TTL 7일 만료 체크)
   useEffect(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
       if (!saved) return;
-      const data: ContactForm = JSON.parse(saved);
+      const parsed = JSON.parse(saved);
+      // 신규 포맷 {ts, data} 검증 — 구 포맷 또는 ts 부재 시 만료 처리
+      const isNewFormat = parsed && typeof parsed === 'object' && 'ts' in parsed && 'data' in parsed;
+      if (!isNewFormat) {
+        localStorage.removeItem(STORAGE_KEY);
+        return;
+      }
+      const stored = parsed as StoredContactForm;
+      if (Date.now() - stored.ts > STORAGE_TTL_MS) {
+        localStorage.removeItem(STORAGE_KEY);
+        return;
+      }
+      const data = stored.data;
       const form = formRef.current;
       if (!form) return;
       const setVal = (name: string, value?: string) => {
@@ -56,19 +74,20 @@ export default function ContactPage() {
     } catch {}
   };
 
-  // 저장 (privacy 제외 — PIPA)
+  // 저장 (privacy 제외 — PIPA, Wave 553: ts wrapper로 TTL 추적)
   const handleChange = useCallback(() => {
     try {
       const form = formRef.current;
       if (!form) return;
       const fd = new FormData(form);
-      const state: ContactForm = {
+      const data: ContactForm = {
         name: (fd.get('name') as string) || undefined,
         tel: (fd.get('tel') as string) || undefined,
         category: (fd.get('category') as string) || undefined,
         message: (fd.get('message') as string) || undefined,
       };
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      const stored: StoredContactForm = { ts: Date.now(), data };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(stored));
     } catch {}
   }, []);
 

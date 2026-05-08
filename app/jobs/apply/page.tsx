@@ -8,11 +8,15 @@ import { CONTACT } from '@/lib/contact';
 
 const REGIONS = ['유성구', '대덕구', '서구', '중구', '동구', '대전 외'];
 const STORAGE_KEY = 'daejeon-care:jobs-apply';
+// Wave 553: 7일 TTL — 오래된 폼 컨텍스트 stale, PIPA "필요 최소 기간" 일관 (contact form과 동일).
+const STORAGE_TTL_MS = 7 * 24 * 60 * 60 * 1000;
 
 /**
  * Wave 374: form autosave to localStorage.
  * 8 fields × 다양 input — 사용자 5분 투자 보호. 우연 navigation 후 복원.
  * 의도적으로 privacy 동의 제외 — Korean PIPA 명시 동의 매번 요구.
+ *
+ * Wave 553: TTL 7일 — saved 후 7일 경과 시 자동 만료.
  */
 type FormState = {
   name?: string;
@@ -25,6 +29,8 @@ type FormState = {
   message?: string;
 };
 
+type StoredFormState = { ts: number; data: FormState };
+
 export default function JobApplyPage() {
   const [submitted, setSubmitted] = useState(false);
   const [restored, setRestored] = useState(false);
@@ -32,11 +38,23 @@ export default function JobApplyPage() {
   const sectionRef = useRef<HTMLElement>(null);
 
   // 복원 (mount): localStorage → form fields. 복원 성공 시 banner 표시 (Wave 380).
+  // Wave 553: TTL 7일 만료 체크 + 구 포맷 호환.
   useEffect(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
       if (!saved) return;
-      const data: FormState = JSON.parse(saved);
+      const parsed = JSON.parse(saved);
+      const isNewFormat = parsed && typeof parsed === 'object' && 'ts' in parsed && 'data' in parsed;
+      if (!isNewFormat) {
+        localStorage.removeItem(STORAGE_KEY);
+        return;
+      }
+      const stored = parsed as StoredFormState;
+      if (Date.now() - stored.ts > STORAGE_TTL_MS) {
+        localStorage.removeItem(STORAGE_KEY);
+        return;
+      }
+      const data = stored.data;
       const form = formRef.current;
       if (!form) return;
 
@@ -84,12 +102,13 @@ export default function JobApplyPage() {
   };
 
   // 저장 (change): form FormData → localStorage. privacy 제외 (PIPA).
+  // Wave 553: ts wrapper로 TTL 추적.
   const handleChange = useCallback(() => {
     try {
       const form = formRef.current;
       if (!form) return;
       const fd = new FormData(form);
-      const state: FormState = {
+      const data: FormState = {
         name: (fd.get('name') as string) || undefined,
         birth: (fd.get('birth') as string) || undefined,
         tel: (fd.get('tel') as string) || undefined,
@@ -99,7 +118,8 @@ export default function JobApplyPage() {
         availability: (fd.getAll('availability') as string[]).filter(Boolean),
         message: (fd.get('message') as string) || undefined,
       };
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      const stored: StoredFormState = { ts: Date.now(), data };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(stored));
     } catch {}
   }, []);
 
