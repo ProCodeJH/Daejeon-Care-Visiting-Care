@@ -1,5 +1,6 @@
 import { ImageResponse } from 'next/og';
 import { CONTACT } from '@/lib/contact';
+import { SITE } from '@/lib/site';
 
 /**
  * OpenGraph image — 카톡/페북/트위터 공유 시 미리보기 썸네일.
@@ -132,7 +133,7 @@ export default function OGImage() {
             color: '#757575',
           }}
         >
-          대전케어방문요양.kr
+          {SITE.domain}
         </div>
       </div>
     ),

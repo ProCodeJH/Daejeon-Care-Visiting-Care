@@ -1,6 +1,6 @@
 # STATUS — 대전케어 방문요양센터
 
-**Updated**: 2026-05-09 / Wave 530 / paradigm 18 chain 178-wave (광맥 #312 fix end-to-end 검증 — type-check 144 + build success + 25+ routes static SSG)
+**Updated**: 2026-05-09 / Wave 531 / paradigm 18 chain 179-wave (광맥 #313 catch! SITE.domain derived field — opengraph-image hardcoded 대전케어방문요양.kr 단일 source 위반 fix)
 
 > 1쪽 handoff. 자현 5분 결정 진입점.
 
