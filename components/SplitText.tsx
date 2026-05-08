@@ -1,12 +1,15 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import type { ReactNode } from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
 
 /**
  * SplitChars char-by-char stagger entry — 절제 (gap 0.04s, 자연스러움).
  * Hero h1, Section heading 등에 적용.
- * 한글: 글자 단위 split. prefers-reduced-motion 시 framer 자동 비활성.
+ *
+ * Wave 451: useReducedMotion 명시 분기 — framer-motion 11 default는 자동 비활성 X
+ * (MotionConfig reducedMotion="user" 또는 hook 명시 필요). 어르신 vestibular 사용자 보호.
+ *
+ * 한글: 글자 단위 split.
  */
 export function SplitText({
   text,
@@ -21,6 +24,7 @@ export function SplitText({
   charDelay?: number;
   as?: 'span' | 'h1' | 'h2' | 'h3' | 'p';
 }) {
+  const reducedMotion = useReducedMotion();
   const chars = Array.from(text);
   const MotionTag = motion[Tag] as typeof motion.span;
   return (
@@ -34,8 +38,8 @@ export function SplitText({
         <motion.span
           key={i}
           aria-hidden="true"
-          initial={{ y: 14, filter: 'blur(4px)' }}
-          animate={{ y: 0, filter: 'blur(0px)' }}
+          initial={reducedMotion ? false : { y: 14, filter: 'blur(4px)' }}
+          animate={reducedMotion ? false : { y: 0, filter: 'blur(0px)' }}
           transition={{
             duration: 0.55,
             delay: delay + i * charDelay,
