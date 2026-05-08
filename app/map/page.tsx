@@ -37,7 +37,7 @@ export default function MapPage() {
             <div className="bg-[#f8f8f8] p-7">
               <p className="text-brand-400 font-semibold tracking-[0.15em] text-sm mb-2">| HEAD OFFICE</p>
               <h3 className="text-xl font-bold text-ink-primary mb-5">대전케어 본점</h3>
-              <div className="space-y-3 text-ink-secondary">
+              <address className="space-y-3 text-ink-secondary not-italic">
                 <div className="flex items-start gap-3">
                   <MapPin size={18} className="text-brand-400 mt-1 shrink-0" />
                   <span>{CONTACT.address}</span>
@@ -54,7 +54,7 @@ export default function MapPage() {
                   <Mail size={18} className="text-brand-400 mt-1 shrink-0" />
                   <span>{CONTACT.email}</span>
                 </div>
-              </div>
+              </address>
             </div>
 
             {/* 교통편 */}
