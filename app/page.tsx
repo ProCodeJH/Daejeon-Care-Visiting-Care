@@ -64,13 +64,13 @@ export default function Home() {
       <section className="bg-white border-b border-gray-100">
         <dl className="max-w-[1200px] mx-auto px-5 py-10 grid grid-cols-2 md:grid-cols-4 gap-6 m-0">
           <Reveal as="div" className="text-center flex flex-col-reverse gap-1">
-            <dt className="text-xs md:text-sm text-ink-muted font-medium">대전 5구 통합</dt>
+            <dt data-speakable="true" className="text-xs md:text-sm text-ink-muted font-medium">대전 5구 통합</dt>
             <dd className="text-3xl md:text-4xl font-extrabold text-[#1B6F4A] tabular-nums m-0">
               <StatsCounter value={5} suffix="구" />
             </dd>
           </Reveal>
           <Reveal as="div" delay={0.1} className="text-center flex flex-col-reverse gap-1">
-            <dt className="text-xs md:text-sm text-ink-muted font-medium">365일 상담 가능</dt>
+            <dt data-speakable="true" className="text-xs md:text-sm text-ink-muted font-medium">24시간 365일 상담 가능</dt>
             <dd className="text-3xl md:text-4xl font-extrabold text-[#1B6F4A] tabular-nums m-0">
               <StatsCounter value={24} suffix="시간" />
             </dd>
@@ -82,8 +82,10 @@ export default function Home() {
             </dd>
           </Reveal>
           <Reveal as="div" delay={0.3} className="text-center flex flex-col-reverse gap-1">
-            <dt className="text-xs md:text-sm text-ink-muted font-medium">대표번호 · 무료 상담</dt>
-            <dd className="text-3xl md:text-4xl font-extrabold text-[#E63946] tabular-nums m-0">
+            <dt data-speakable="true" className="text-xs md:text-sm text-ink-muted font-medium">
+              대표번호 · 무료 상담 {CONTACT.phone}
+            </dt>
+            <dd className="text-3xl md:text-4xl font-extrabold text-[#E63946] tabular-nums m-0" aria-hidden="true">
               {CONTACT.phone}
             </dd>
           </Reveal>
