@@ -1,6 +1,6 @@
 # 대전케어 방문요양센터
 
-대전 5구 통합 방문요양센터 운영 사이트. **두손누리 디자인을 1:1 React로 재현 + 115+ Wave 자율 폴리시 + production hardening (print/PWA shortcuts/error 3-layer/high-contrast a11y) + Voice Assistant 음성 안내 (Speakable schema) + Web Share API (KakaoTalk 단톡 공유) + JSON-LD 7종 + 30 URLs canonical 일관성 + Silent Issue 광맥 24건 추출 + Single Source 4 layer (lib/contact.ts + lib/site.ts + content/* + 컴포넌트) + alias canonical / dead code purge / FAQ schema 정합 + 정체성 6-way pulse paradigm + Vercel 자동 배포 + 한국 법적 compliance**.
+대전 5구 통합 방문요양센터 운영 사이트. **두손누리 디자인을 1:1 React로 재현 + 128+ Wave 자율 폴리시 + production hardening (print/PWA shortcuts/error 3-layer/high-contrast a11y) + Voice Assistant 음성 안내 (Speakable schema) + Web Share API (KakaoTalk 단톡 공유) + JSON-LD 7종 + 30 URLs canonical 일관성 + **Silent Issue 광맥 34건** + **Single Source 100% saturation** (lib/contact.ts 14 필드 + lib/site.ts + content/* + 컴포넌트, phone 변경 28× 감소) + **Form 보강 8 paradigm** (htmlFor/autoComplete/aria-required/maxLength/pattern/role/name/asterisk) + STATUS.md 1쪽 handoff + production build 검증 (102 kB shared) + 정체성 6-way pulse paradigm + Vercel 자동 배포 + 한국 법적 compliance**.
 
 > **Production**: https://대전케어방문요양.kr  
 > **대표번호**: 042-369-0326 (24시간 상담 가능)  
@@ -242,10 +242,20 @@ git add . && git commit -m "update: 새 FAQ" && git push
 | 22 | 111 | dead component 4 (ManagerHighlight 등) | git history backup + delete |
 | 23 | 112 | FAQ schema vs visible mismatch | 홈 4개 통일 (Google guideline) |
 | 24 | 113 | SITE URL DRY 위반 (7 파일 hardcoded) | lib/site.ts 단일 source |
+| 25 | 117 | /contact 주소 placeholder 누출 | CONTACT.address 통합 |
+| 26 | 118 | lib/site.ts urlFallback 미사용 | docstring 의도 명시 paradigm |
+| 27 | 121 | About careNumber hardcoded | CONTACT.careNumber 통합 |
+| 28 | 122 | managerCount hardcoded × 3 | CONTACT.managerCount 신규 + 5 위치 |
+| 29 | 123 | StatsCounter value={90} hardcoded | CONTACT.managerCount 통합 |
+| 30 | 124 | /insurance/cost share text + manifest 042 | CONTACT.phone 통합 (Single Source 100%) |
+| 31 | 125 | ShareButton text 정체성/042 누락 | conversion funnel 4→2 step |
+| 32 | 126 | Form maxLength 부재 | 30/13/10/1000자 한도 |
+| 33 | 127 | radiogroup/group aria-required 부재 | WCAG 4.1.2 준수 |
+| 34 | 128 | 생년월일 pattern 부재 | YYYY-MM-DD + inputMode=numeric |
 
 추가 SEO/canonical 일관성 (Wave 97-99): 30 URLs `alternates.canonical` + `openGraph.type='article'` + 5 client segment layout.tsx.
 
-**Audit-driven paradigm 검증**: 35 wave 노이즈 0건 (Wave 81-115) + lazyweb research보다 자체 코드 audit가 senior care 한국 도메인 깊이로 더 효과적.
+**Audit-driven paradigm 검증**: 48 wave 노이즈 0건 (Wave 81-128) + lazyweb research보다 자체 코드 audit가 senior care 한국 도메인 깊이로 더 효과적.
 
 ---
 
@@ -261,6 +271,31 @@ git add . && git commit -m "update: 새 FAQ" && git push
 | **4. Component** | `Header / Footer / PageHero / CTASection` | 50+ 페이지 일관 paradigm | UI 변경 1곳 |
 
 자현 운영 시간 대폭 ↓ + drift 방지.
+
+---
+
+## 📝 Form 보강 8 Paradigm (WCAG + Senior Care)
+
+폼 a11y/UX 완전 saturation:
+
+| # | Wave | Paradigm | 효과 |
+|---|---|---|---|
+| 1 | 84-85 | `htmlFor` + `id` 페어링 | 스크린리더 label-input 매핑 + 라벨 클릭 포커스 |
+| 2 | 84-85 | `autoComplete` (name/tel/bday) | 모바일 picker UI 자동 호출 |
+| 3 | 92 | asterisk `aria-hidden` + `required` 의존 | "별표" 노이즈 제거 |
+| 4 | 92-93 | `name` + `value` 속성 | FormData 정확 추출 |
+| 5 | 93 | `role=radiogroup/group` + `aria-label` | 스크린리더 group 컨텍스트 |
+| 6 | 126 | `maxLength` (30/13/10/1000) | 거대 paste 방어 + 백엔드 안전 |
+| 7 | 127 | `aria-required` (group level) | WCAG 4.1.2 준수 |
+| 8 | 128 | `pattern` + `inputMode` + `title` | YYYY-MM-DD 검증 + 모바일 숫자 키패드 |
+
+---
+
+## 📋 STATUS.md handoff (자현 5분 진입점)
+
+별도 STATUS.md (118 lines) 1쪽 handoff: 현재 상태 + 자현 입력 영역 11곳 catalog + chain 상태 + 빠른 명령어. README는 narrative, STATUS는 즉시 액션 — 분리 paradigm.
+
+→ [STATUS.md](./STATUS.md)
 
 ---
 
