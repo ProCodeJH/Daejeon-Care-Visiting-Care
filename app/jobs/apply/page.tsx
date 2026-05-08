@@ -274,10 +274,15 @@ export default function JobApplyPage() {
                       maxLength={10}
                       pattern="\d{4}-\d{2}-\d{2}"
                       title="YYYY-MM-DD 형식 (예: 1965-03-15)"
+                      aria-describedby="apply-birth-hint"
                       inputMode="numeric"
                       className="w-full px-4 py-2.5 bg-[#f8f8f8] border border-gray-200 focus:border-brand-400 focus:outline-none text-sm"
                       style={{ borderRadius: '2px' }}
                     />
+                    {/* Wave 424: 시각 + SR 모두 format hint (WCAG 3.3.5) */}
+                    <span id="apply-birth-hint" className="text-xs text-ink-muted mt-1 block">
+                      YYYY-MM-DD 형식 (예: 1965-03-15)
+                    </span>
                   </div>
                 </div>
 
@@ -295,10 +300,15 @@ export default function JobApplyPage() {
                     autoComplete="tel"
                     pattern="[0-9-]{9,13}"
                     title="숫자와 하이픈만 입력 (예: 010-1234-5678)"
+                    aria-describedby="apply-tel-hint"
                     placeholder="010-0000-0000"
                     className="w-full px-4 py-2.5 bg-[#f8f8f8] border border-gray-200 focus:border-brand-400 focus:outline-none text-sm"
                     style={{ borderRadius: '2px' }}
                   />
+                  {/* Wave 424: 시각 + SR 모두 format hint (WCAG 3.3.5) */}
+                  <span id="apply-tel-hint" className="text-xs text-ink-muted mt-1 block">
+                    숫자와 하이픈만 입력 (예: 010-1234-5678)
+                  </span>
                 </div>
 
                 {/* Wave 420: <label> without htmlFor invalid — <p id> + aria-labelledby 정확 */}

@@ -232,11 +232,16 @@ export default function ContactPage() {
                     enterKeyHint="next"
                     pattern="[0-9-]{9,13}"
                     title="숫자와 하이픈만 입력 (예: 010-1234-5678)"
+                    aria-describedby="contact-tel-hint"
                     maxLength={13}
                     placeholder="010-0000-0000"
                     className="w-full px-4 py-2.5 bg-white border border-gray-200 focus:border-brand-400 focus:outline-none text-sm"
                     style={{ borderRadius: '2px' }}
                   />
+                  {/* Wave 424: 시각 + screen reader 모두 hint 전달 (WCAG 3.3.5) */}
+                  <span id="contact-tel-hint" className="text-xs text-ink-muted mt-1 block">
+                    숫자와 하이픈만 입력 (예: 010-1234-5678)
+                  </span>
                 </div>
                 <div>
                   <label htmlFor="contact-category" className="block text-sm font-semibold text-ink-primary mb-1.5">
