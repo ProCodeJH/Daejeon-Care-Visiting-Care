@@ -107,7 +107,7 @@ export function Footer() {
 
         <div className="border-t border-gray-100 mt-10 pt-5 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
           <p className="text-xs text-ink-muted">
-            COPYRIGHT © {new Date().getFullYear()} 대전케어 방문요양센터 ALL RIGHTS RESERVED.
+            COPYRIGHT © {new Date().getFullYear()} {CONTACT.name} ALL RIGHTS RESERVED.
           </p>
           <div className="flex items-center gap-4 text-xs text-ink-muted">
             <a href="/privacy" className="hover:text-[#1B6F4A]">개인정보처리방침</a>
