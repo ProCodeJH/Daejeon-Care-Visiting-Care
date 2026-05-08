@@ -268,21 +268,22 @@ export default function CostPage() {
       <section className="bg-[#f8f8f8] py-16">
         <div className="max-w-[1000px] mx-auto px-5 grid md:grid-cols-2 gap-5">
           <div className="bg-white p-7">
-            <h3 className="font-bold text-ink-primary mb-3 text-lg">📋 감경 대상 자격</h3>
+            {/* Wave 485: emoji aria-hidden + · span wrap (SR noise 차단, visual 보존) */}
+            <h3 className="font-bold text-ink-primary mb-3 text-lg"><span aria-hidden="true">📋</span> 감경 대상 자격</h3>
             <ul className="space-y-2 text-sm text-ink-secondary">
-              <li>· 의료급여 수급권자</li>
-              <li>· 차상위 본인부담경감 대상자</li>
-              <li>· 천재지변 등으로 생계곤란 인정자</li>
-              <li>· 기타 보건복지부장관이 정하는 자</li>
+              <li><span aria-hidden="true">·</span> 의료급여 수급권자</li>
+              <li><span aria-hidden="true">·</span> 차상위 본인부담경감 대상자</li>
+              <li><span aria-hidden="true">·</span> 천재지변 등으로 생계곤란 인정자</li>
+              <li><span aria-hidden="true">·</span> 기타 보건복지부장관이 정하는 자</li>
             </ul>
           </div>
           <div className="bg-white p-7">
-            <h3 className="font-bold text-ink-primary mb-3 text-lg">💡 비용 추가 안내</h3>
+            <h3 className="font-bold text-ink-primary mb-3 text-lg"><span aria-hidden="true">💡</span> 비용 추가 안내</h3>
             <ul className="space-y-2 text-sm text-ink-secondary">
-              <li>· 본인부담금은 매월 25일 자동 청구</li>
-              <li>· 신용카드·계좌이체로 납부 가능</li>
-              <li>· 건강보험증 / 신분증 / 통장 사본 필요</li>
-              <li>· 의료비 세액공제 항목 포함</li>
+              <li><span aria-hidden="true">·</span> 본인부담금은 매월 25일 자동 청구</li>
+              <li><span aria-hidden="true">·</span> 신용카드·계좌이체로 납부 가능</li>
+              <li><span aria-hidden="true">·</span> 건강보험증 / 신분증 / 통장 사본 필요</li>
+              <li><span aria-hidden="true">·</span> 의료비 세액공제 항목 포함</li>
             </ul>
           </div>
         </div>
