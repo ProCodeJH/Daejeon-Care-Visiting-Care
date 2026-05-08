@@ -112,8 +112,8 @@ export default function JobsPage() {
         </div>
       </section>
 
-      {/* 다음 단계 추천 (cross-page navigation) */}
-      <section className="bg-white py-16">
+      {/* Wave 361: <aside> = complementary landmark (cross-page navigation은 tangential) */}
+      <aside aria-label="추천 페이지" className="bg-white py-16">
         <div className="max-w-[1000px] mx-auto px-5">
           <SectionBlock eyebrow="EXPLORE" title="더 알아보기" sub="지원 절차 + 대전케어 소개" className="mb-10" />
           <div className="grid md:grid-cols-2 gap-5">
@@ -143,7 +143,7 @@ export default function JobsPage() {
             </a>
           </div>
         </div>
-      </section>
+      </aside>
 
       <CTASection
         title="지금 바로 지원하세요"

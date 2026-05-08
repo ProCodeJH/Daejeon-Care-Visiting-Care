@@ -96,8 +96,8 @@ export default function MapPage() {
         </div>
       </section>
 
-      {/* 다음 단계 추천 (cross-page navigation) */}
-      <section className="bg-white py-16">
+      {/* Wave 361: <aside> = complementary landmark (cross-page navigation) */}
+      <aside aria-label="추천 페이지" className="bg-white py-16">
         <div className="max-w-[1000px] mx-auto px-5">
           <SectionBlock eyebrow="EXPLORE" title="더 알아보기" sub="가까운 지점 + 직접 문의" className="mb-10" />
           <div className="grid md:grid-cols-2 gap-5">
@@ -127,7 +127,7 @@ export default function MapPage() {
             </a>
           </div>
         </div>
-      </section>
+      </aside>
 
       <CTASection title="방문 전 전화 주세요" sub="안내 드릴 사항이 있을 수 있습니다" />
     </>
