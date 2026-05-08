@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { SplitText } from './SplitText';
+import { CONTACT } from '@/lib/contact';
 
 /**
  * Hero carousel — 저작권 회피 (Wave 10):
@@ -31,7 +32,7 @@ const SLIDES = [
     grad: 'radial-gradient(circle at 70% 25%, rgba(27,111,74,0.85) 0%, rgba(15,55,38,0.95) 50%, rgba(21,87,58,0.95) 100%), radial-gradient(circle at 20% 75%, rgba(230,57,70,0.4) 0%, transparent 50%)',
     eyebrow: '24시간 언제나',
     title: '언제든 편하게 문의하세요',
-    sub: '대표번호 042-369-0326 · 부모님의 손발이 되어드리겠습니다',
+    sub: `대표번호 ${CONTACT.phone} · 부모님의 손발이 되어드리겠습니다`,
     accent: '#E63946',
   },
 ];
@@ -161,11 +162,11 @@ export function HeroCarousel() {
             무료 상담 신청
           </a>
           <a
-            href="tel:042-369-0326"
+            href={CONTACT.phoneTel}
             className="hero-cta hero-cta-pulse flex items-center gap-2 bg-[#E63946] hover:bg-[#C12A37] text-white px-6 md:px-8 py-3 md:py-3.5 font-bold text-sm md:text-base transition-all relative"
             style={{ borderRadius: '2px' }}
           >
-            ☎ 042-369-0326
+            ☎ {CONTACT.phone}
           </a>
         </div>
 

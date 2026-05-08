@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { ChevronDown, MapPin, Phone } from 'lucide-react';
+import { CONTACT } from '@/lib/contact';
 
 const SERVICES = [
   { value: 'care', label: '방문요양' },
@@ -80,7 +81,7 @@ export function HeroBookingModule() {
           상담 신청하기
         </button>
         <a
-          href="tel:042-369-0326"
+          href={CONTACT.phoneTel}
           className="flex items-center justify-center gap-2 bg-surface-paper hover:bg-surface-vellum text-ink-primary px-6 py-3.5 rounded-full font-semibold transition-colors"
         >
           <Phone size={16} /> 전화로

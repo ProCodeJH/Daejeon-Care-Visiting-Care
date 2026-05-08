@@ -8,6 +8,7 @@ import { StatsCounter } from '@/components/StatsCounter';
 import { FaqJsonLd } from '@/components/FaqJsonLd';
 import { FAQS as ALL_FAQS } from '@/content/faqs';
 import { STORIES } from '@/content/stories';
+import { CONTACT } from '@/lib/contact';
 
 /**
  * 두손누리 home 1:1 layout (Playwright 측정 기반):
@@ -81,7 +82,7 @@ export default function Home() {
           </Reveal>
           <Reveal delay={0.3} className="text-center">
             <p className="text-3xl md:text-4xl font-extrabold text-[#E63946] mb-1 tabular-nums">
-              042-369-0326
+              {CONTACT.phone}
             </p>
             <p className="text-xs md:text-sm text-ink-muted font-medium">대표번호 · 무료 상담</p>
           </Reveal>
@@ -208,11 +209,11 @@ export default function Home() {
               <span style={{ borderRadius: '2px' }}>무료 상담 신청</span>
             </MagneticButton>
             <MagneticButton
-              href="tel:042-369-0326"
+              href={CONTACT.phoneTel}
               className="block bg-[#E63946] hover:bg-[#C12A37] text-white px-8 py-3.5 font-bold transition-colors"
-              ariaLabel="전화 상담 042-369-0326"
+              ariaLabel={`전화 상담 ${CONTACT.phone}`}
             >
-              ☎ 042-369-0326
+              ☎ {CONTACT.phone}
             </MagneticButton>
           </div>
         </div>
