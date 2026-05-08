@@ -402,7 +402,8 @@ export default function JobApplyPage() {
 
                 {/* Wave 383: <dialog> 자세히 — 폼 컨텍스트 유지하며 처리 안내 검토 */}
                 <label className="flex items-start gap-2 text-xs text-ink-muted">
-                  <input type="checkbox" name="privacy" required className="mt-0.5 accent-brand-400" />
+                  {/* Wave 459: aria-required="true" — HTML5 required는 일부 SR 인식, ARIA 1.2 명시가 보장 */}
+                  <input type="checkbox" name="privacy" required aria-required="true" className="mt-0.5 accent-brand-400" />
                   <span>
                     개인정보 수집·이용에 동의합니다 (필수). 수집된 정보는 채용 절차 외 다른 목적으로 사용되지 않습니다.{' '}
                     <PrivacyDialog />
