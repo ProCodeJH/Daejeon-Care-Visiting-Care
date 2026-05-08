@@ -250,11 +250,11 @@ export default function Home() {
                     fill="currentColor"
                   />
                 </svg>
-                <p className="text-ink-secondary leading-relaxed mb-5 text-[15px]">{r.text}</p>
-                {/* 별점 + 태그 + 작성일 */}
+                <blockquote className="text-ink-secondary leading-relaxed mb-5 text-[15px]">{r.text}</blockquote>
+                {/* 별점 + 태그 + 작성일 — cite는 blockquote 형제로 author attribution */}
                 <div className="flex items-center justify-between text-xs">
                   <div>
-                    <p className="font-semibold text-brand-400">- {r.author}</p>
+                    <cite className="not-italic font-semibold text-brand-400">- {r.author}</cite>
                     <time dateTime={r.date.replace('.', '-')} className="text-ink-muted text-[11px] mt-0.5 block">{r.date}</time>
                   </div>
                   <div className="flex items-center gap-2">
