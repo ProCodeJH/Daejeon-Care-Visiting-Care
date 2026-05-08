@@ -231,7 +231,7 @@ export default function JobApplyPage() {
                     maxLength={1000}
                     placeholder="간단한 자기 소개나 어르신 케어에 대한 마음을 적어주세요"
                     className="w-full px-4 py-2.5 bg-[#f8f8f8] border border-gray-200 focus:border-brand-400 focus:outline-none text-sm resize-none"
-                    style={{ borderRadius: '2px' }}
+                    style={{ borderRadius: '2px', fieldSizing: 'content' } as React.CSSProperties}
                   />
                 </div>
 
