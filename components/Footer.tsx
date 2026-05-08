@@ -28,8 +28,10 @@ export function Footer() {
             <span className="inline-flex w-9 h-9 rounded-full bg-[#E63946] grid place-items-center text-lg">♥</span>
             <p className="text-lg md:text-xl font-bold">{CONTACT.hours}</p>
           </div>
+          {/* Wave 407: aria-label 의도 명확 */}
           <a
             href={CONTACT.phoneTel}
+            aria-label={`전화 걸기 대표번호 ${CONTACT.phone} (24시간 상담)`}
             className="hero-cta-pulse flex items-center gap-2 bg-[#E63946] hover:bg-[#C12A37] text-white px-7 py-3 font-bold transition-colors text-lg relative"
             style={{ borderRadius: '2px' }}
           >

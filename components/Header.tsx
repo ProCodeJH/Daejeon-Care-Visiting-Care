@@ -185,9 +185,10 @@ export function Header() {
           })}
         </nav>
 
-        {/* CTA — 24시간 직통 */}
+        {/* CTA — 24시간 직통. Wave 407: aria-label 의도 명확 */}
         <a
           href={CONTACT.phoneTel}
+          aria-label={`전화 걸기 ${CONTACT.phone} (24시간 상담)`}
           className="hidden lg:flex items-center gap-2 bg-[#E63946] hover:bg-[#C12A37] text-white px-5 py-2.5 text-sm font-bold transition-colors"
           style={{ borderRadius: '2px' }}
         >

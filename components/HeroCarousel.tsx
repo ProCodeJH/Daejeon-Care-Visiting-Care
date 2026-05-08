@@ -224,8 +224,10 @@ export function HeroCarousel() {
           >
             무료 상담 신청
           </a>
+          {/* Wave 407: aria-label — phone CTA 의도 명확 ("전화 걸기 042-...") */}
           <a
             href={CONTACT.phoneTel}
+            aria-label={`전화 걸기 ${CONTACT.phone}`}
             className="hero-cta hero-cta-pulse flex items-center gap-2 bg-[#E63946] hover:bg-[#C12A37] text-white px-6 md:px-8 py-3 md:py-3.5 font-bold text-sm md:text-base transition-all relative"
             style={{ borderRadius: '2px' }}
           >
