@@ -143,10 +143,13 @@ export default function Home() {
           </div>
           {VIDEO_ID ? (
             <div className="aspect-video max-w-4xl mx-auto bg-black overflow-hidden shadow-lg">
+              {/* Wave 478: youtube-nocookie privacy (쿠키 추적 X) + lazy loading + referrerpolicy */}
               <iframe
                 className="w-full h-full"
-                src={`https://www.youtube.com/embed/${VIDEO_ID}`}
+                src={`https://www.youtube-nocookie.com/embed/${VIDEO_ID}`}
                 title="대전케어 소개 영상"
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
