@@ -493,9 +493,10 @@
     display: table-header-group;
   }
 
-  /* 헤더에 사이트명 + 042 출력 (브라우저 자동 헤더 외) */
+  /* Wave 551: 헤더 hardcode → CSS var derived (paradigm 16 single source).
+   * --brand-name / --brand-phone / --brand-domain은 layout.tsx에서 CONTACT/SITE로 inject. */
   body:before {
-    content: "대전케어 방문요양센터 · 042-369-0326 · daejeon-care.vercel.app";
+    content: var(--brand-name, "대전케어 방문요양센터") " · " var(--brand-phone, "042-369-0326") " · " var(--brand-domain, "대전케어방문요양.kr");
     display: block;
     font-size: 9pt;
     text-align: center;

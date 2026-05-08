@@ -104,6 +104,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang={SITE.lang}>
       <head>
+        {/* Wave 551: print stylesheet CSS vars — body:before 헤더가 CONTACT/SITE 동기화.
+         * 자현이 phone/brand/domain 변경 시 인쇄본 자동 갱신 (paradigm 16 single source).
+         * Wave 454 XSS escape 패러다임 일관: dangerouslySetInnerHTML 없이 inline style만. */}
+        <style>{`:root { --brand-name: "${CONTACT.name}"; --brand-phone: "${CONTACT.phone}"; --brand-domain: "${SITE.domain}"; }`}</style>
+
         {/* preconnect — Pretendard CDN (font LCP 개선) */}
         <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
 
