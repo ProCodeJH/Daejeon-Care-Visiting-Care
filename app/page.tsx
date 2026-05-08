@@ -181,14 +181,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. Story — "생생한 대전케어 이야기" (215px, white) */}
+      {/* 4. Story — "생생한 대전케어 이야기" (215px, white).
+          Wave 402: dead-end 섹션 → CTA 링크로 conversion path 완성 */}
       <section className="bg-white pt-20 pb-10">
         <div className="max-w-[1200px] mx-auto px-5 text-center">
           <p lang="en" className="text-brand-400 font-semibold tracking-[0.2em] text-sm mb-3">| STORY</p>
           <h2 className="text-2xl md:text-4xl font-bold text-ink-primary mb-3">
             생생한 대전케어 이야기
           </h2>
-          <p className="text-ink-muted">실제 현장의 이야기를 영상으로 만나보세요</p>
+          <p className="text-ink-muted mb-5">실제 현장의 이야기를 영상으로 만나보세요</p>
+          <a
+            href="/story"
+            className="inline-block text-brand-400 hover:text-brand-600 font-semibold text-sm transition-colors underline-offset-4 hover:underline"
+          >
+            이야기 모두 보기 →
+          </a>
         </div>
       </section>
 
