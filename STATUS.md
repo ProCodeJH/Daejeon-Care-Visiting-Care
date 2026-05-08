@@ -1,6 +1,6 @@
 # STATUS — 대전케어 방문요양센터
 
-**Updated**: 2026-05-09 / Wave 569 / paradigm 18 chain 217-wave (Floating CTA UX audit — FloatingCallButton bottom-right + ScrollToTop bottom-left 분리 + motion-safe + 200/600 px 트리거 ✓)
+**Updated**: 2026-05-09 / Wave 570 / paradigm 18 chain 218-wave (Footer SNS empty URL handling — .filter(s.url) + length > 0 조건부 렌더 ✓ paradigm 18 18 dimension)
 
 > 1쪽 handoff. 자현 5분 결정 진입점.
 
