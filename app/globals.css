@@ -22,6 +22,10 @@
     /* Wave 288: scrollbar-gutter stable — scrollbar 등장/사라짐 시 layout shift 회피 (CLS 보호).
      * desktop only 영향 (모바일 scrollbar overlay). FAQ accordion / Stories 등 동적 콘텐츠 안전. */
     scrollbar-gutter: stable;
+    /* Wave 290: scroll-padding-top — sticky header (Header.tsx 64-100px) 보정.
+     * skip-link href="#main-content" 클릭 시 sticky 가려짐 회피.
+     * a11y 핵심: 스크린리더 + 키보드 사용자 senior care 신뢰성. */
+    scroll-padding-top: 100px;
   }
 
   body {
