@@ -136,6 +136,19 @@ export default function JobApplyPage() {
       {/* 지원 폼 */}
       <section className="bg-[#f8f8f8] py-12 pb-20">
         <div className="max-w-[800px] mx-auto px-5">
+          {/* Wave 391: <noscript> fallback — 폼 autosave + submit JS 의존, phone CTA 안내 */}
+          <noscript>
+            <div className="bg-[#FFF8E1] border-l-4 border-[#F5A623] p-4 mb-6">
+              <p className="text-sm text-ink-primary">
+                JavaScript가 비활성화되어 자동 저장 + 제출이 작동하지 않습니다.
+                지원 문의는{' '}
+                <a href={CONTACT.phoneTel} className="underline font-bold text-[#1B6F4A]">
+                  {CONTACT.phone}
+                </a>
+                으로 주시면 친절히 안내드립니다.
+              </p>
+            </div>
+          </noscript>
           <div className="bg-white p-7 md:p-10">
             {submitted ? (
               <>

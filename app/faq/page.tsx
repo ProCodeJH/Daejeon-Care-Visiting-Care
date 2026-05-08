@@ -76,6 +76,19 @@ export default function FAQPage() {
       {/* FAQ 아코디언 */}
       <section className="bg-white py-16">
         <div className="max-w-[900px] mx-auto px-5">
+          {/* Wave 391: <noscript> fallback — JS 비활성 시 모든 답 펼치기 불가, phone CTA 안내 */}
+          <noscript>
+            <div className="bg-[#FFF8E1] border-l-4 border-[#F5A623] p-4 mb-6">
+              <p className="text-sm text-ink-primary">
+                JavaScript가 비활성화되어 답변 펼치기가 제한됩니다.
+                직접 문의는{' '}
+                <a href={`tel:${CONTACT.phone}`} className="underline font-bold text-[#1B6F4A]">
+                  {CONTACT.phone}
+                </a>
+                으로 주세요.
+              </p>
+            </div>
+          </noscript>
           {/* Wave 367: WCAG 4.1.3 Status Messages — 카테고리 필터 결과를 screen reader에 announce */}
           <div aria-live="polite" aria-atomic="true" className="sr-only">
             {activeCat === '전체'
