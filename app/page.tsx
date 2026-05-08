@@ -5,6 +5,7 @@ import { Reveal } from '@/components/Reveal';
 import { TiltCard } from '@/components/TiltCard';
 import { MagneticButton } from '@/components/MagneticButton';
 import { StatsCounter } from '@/components/StatsCounter';
+import { FaqJsonLd } from '@/components/FaqJsonLd';
 
 /**
  * 두손누리 home 1:1 layout (Playwright 측정 기반):
@@ -68,6 +69,7 @@ const FAQS = [
 export default function Home() {
   return (
     <>
+      <FaqJsonLd faqs={FAQS} />
       {/* 1. Hero Carousel — 902px green/photo BG + 흰색 카피 */}
       <HeroCarousel />
 
