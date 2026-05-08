@@ -36,28 +36,63 @@ export default function JobApplyPage() {
         <div className="max-w-[800px] mx-auto px-5">
           <div className="bg-white p-7 md:p-10">
             {submitted ? (
-              <div
-                role="status"
-                aria-live="polite"
-                className="text-center py-12 form-success-enter bg-gradient-to-br from-brand-50 to-brand-100 border-l-4 border-[#1B6F4A] -mx-7 md:-mx-8 px-7 md:px-8"
-              >
-                <div className="w-16 h-16 mx-auto mb-5 rounded-full bg-[#1B6F4A] grid place-items-center text-white text-3xl">
-                  ✓
-                </div>
-                <h3 className="text-2xl font-bold text-[#1B6F4A] mb-3">지원이 접수되었습니다</h3>
-                <p className="text-ink-secondary mb-6">
-                  담당자가 24시간 내에 연락드리겠습니다.
-                  <br />
-                  감사합니다.
-                </p>
-                <a
-                  href="/"
-                  className="inline-block bg-[#1B6F4A] hover:bg-[#15573A] text-white px-6 py-3 font-semibold transition-colors"
-                  style={{ borderRadius: '2px' }}
+              <>
+                <div
+                  role="status"
+                  aria-live="polite"
+                  className="text-center py-12 form-success-enter bg-gradient-to-br from-brand-50 to-brand-100 border-l-4 border-[#1B6F4A] -mx-7 md:-mx-8 px-7 md:px-8"
                 >
-                  홈으로 돌아가기
-                </a>
-              </div>
+                  <div className="w-16 h-16 mx-auto mb-5 rounded-full bg-[#1B6F4A] grid place-items-center text-white text-3xl">
+                    ✓
+                  </div>
+                  <h3 className="text-2xl font-bold text-[#1B6F4A] mb-3">지원이 접수되었습니다</h3>
+                  <p className="text-ink-secondary mb-6">
+                    담당자가 24시간 내에 연락드리겠습니다.
+                    <br />
+                    감사합니다.
+                  </p>
+                  <a
+                    href="/"
+                    className="inline-block bg-[#1B6F4A] hover:bg-[#15573A] text-white px-6 py-3 font-semibold transition-colors"
+                    style={{ borderRadius: '2px' }}
+                  >
+                    홈으로 돌아가기
+                  </a>
+                </div>
+
+                {/* 연락 대기 동안 둘러보기 (post-conversion retention) */}
+                <div className="mt-10 pt-8 border-t border-gray-100">
+                  <p className="text-center text-xs text-ink-muted tracking-[0.15em] mb-6 font-semibold">
+                    | 연락 대기 동안 대전케어 더 알아보기
+                  </p>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <a
+                      href="/about"
+                      className="group bg-[#f8f8f8] hover:bg-brand-50 p-5 transition-colors block border-l-4 border-[#1B6F4A]"
+                    >
+                      <p className="text-xs text-[#1B6F4A] font-bold tracking-[0.15em] mb-1.5">ABOUT</p>
+                      <h4 className="text-base font-bold text-ink-primary mb-1 group-hover:text-[#1B6F4A] transition-colors">
+                        대전케어 소개 →
+                      </h4>
+                      <p className="text-xs text-ink-secondary leading-relaxed">
+                        4 가치 + 공식 등록 + 90+명 매니저 팀
+                      </p>
+                    </a>
+                    <a
+                      href="/story"
+                      className="group bg-[#f8f8f8] hover:bg-brand-50 p-5 transition-colors block border-l-4 border-[#F5A623]"
+                    >
+                      <p className="text-xs text-[#F5A623] font-bold tracking-[0.15em] mb-1.5">STORY</p>
+                      <h4 className="text-base font-bold text-ink-primary mb-1 group-hover:text-[#F5A623] transition-colors">
+                        대전케어 이야기 →
+                      </h4>
+                      <p className="text-xs text-ink-secondary leading-relaxed">
+                        현장 매니저들의 따뜻한 순간들
+                      </p>
+                    </a>
+                  </div>
+                </div>
+              </>
             ) : (
               <form
                 onSubmit={(e) => {
