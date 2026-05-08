@@ -25,7 +25,7 @@ export function Footer() {
       <div className="bg-gradient-to-r from-[#1B6F4A] to-[#15573A] text-white">
         <div className="max-w-[1200px] mx-auto px-5 py-6 flex flex-col md:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-3">
-            <span className="inline-flex w-9 h-9 rounded-full bg-[#E63946] grid place-items-center text-lg">♥</span>
+            <span aria-hidden="true" className="inline-flex w-9 h-9 rounded-full bg-[#E63946] grid place-items-center text-lg">♥</span>
             <p className="text-lg md:text-xl font-bold">{CONTACT.hours}</p>
           </div>
           {/* Wave 407: aria-label 의도 명확 */}

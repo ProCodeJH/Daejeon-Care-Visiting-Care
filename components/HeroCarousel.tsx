@@ -246,7 +246,7 @@ export function HeroCarousel() {
           className="absolute top-6 left-5 md:left-8 z-20 hidden md:flex items-center gap-2 bg-white/95 backdrop-blur-sm px-4 py-2"
           style={{ borderRadius: '2px' }}
         >
-          <span className="inline-flex w-5 h-5 rounded-full bg-[#E63946] grid place-items-center text-white text-[10px]">
+          <span aria-hidden="true" className="inline-flex w-5 h-5 rounded-full bg-[#E63946] grid place-items-center text-white text-[10px]">
             ♥
           </span>
           <span className="text-sm font-bold text-[#1B6F4A]">24시간 상담 가능</span>

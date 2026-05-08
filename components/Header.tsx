@@ -111,7 +111,7 @@ export function Header() {
       <div className="bg-[#1B6F4A] text-white text-xs md:text-sm">
         <div className="max-w-[1200px] mx-auto px-5 py-2 flex items-center justify-between">
           <p className="flex items-center gap-2">
-            <span className="inline-flex w-5 h-5 rounded-full bg-[#E63946] grid place-items-center text-[10px]">♥</span>
+            <span aria-hidden="true" className="inline-flex w-5 h-5 rounded-full bg-[#E63946] grid place-items-center text-[10px]">♥</span>
             <span className="font-medium">{CONTACT.available}</span>
           </p>
           {/* Wave 409: 24h 띠 phone CTA aria-label */}
