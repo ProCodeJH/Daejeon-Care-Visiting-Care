@@ -88,7 +88,7 @@ export default function ProcessPage() {
                     <div className="w-12 h-12 bg-brand-600 group-hover:bg-brand-700 grid place-items-center text-white font-bold transition-colors" style={{ borderRadius: '2px' }}>
                       {s.num}
                     </div>
-                    <p className="text-xs text-brand-600 font-semibold tracking-[0.15em]">STEP</p>
+                    <p lang="en" className="text-xs text-brand-600 font-semibold tracking-[0.15em]">STEP</p>
                   </div>
                   <h3 className="text-lg font-bold text-ink-primary mb-2 leading-snug">{s.title}</h3>
                   <p className="text-sm text-ink-secondary leading-relaxed">{s.desc}</p>
@@ -136,7 +136,7 @@ export default function ProcessPage() {
               href="/insurance/cost"
               className="group bg-[#f8f8f8] hover:bg-brand-50 p-7 transition-colors block border-l-4 border-[#1B6F4A]"
             >
-              <p className="text-xs text-[#1B6F4A] font-bold tracking-[0.15em] mb-2">CALCULATOR</p>
+              <p lang="en" className="text-xs text-[#1B6F4A] font-bold tracking-[0.15em] mb-2">CALCULATOR</p>
               <h3 className="text-lg font-bold text-ink-primary mb-2 group-hover:text-[#1B6F4A] transition-colors">
                 본인부담금 계산 →
               </h3>
@@ -148,7 +148,7 @@ export default function ProcessPage() {
               href="/centers"
               className="group bg-[#f8f8f8] hover:bg-brand-50 p-7 transition-colors block border-l-4 border-brand-600"
             >
-              <p className="text-xs text-brand-600 font-bold tracking-[0.15em] mb-2">LOCATIONS</p>
+              <p lang="en" className="text-xs text-brand-600 font-bold tracking-[0.15em] mb-2">LOCATIONS</p>
               <h3 className="text-lg font-bold text-ink-primary mb-2 group-hover:text-brand-600 transition-colors">
                 대전 5구 지점 →
               </h3>

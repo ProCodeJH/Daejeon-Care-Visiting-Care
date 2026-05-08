@@ -138,7 +138,7 @@ export default function JobsPage() {
               href="/jobs/apply"
               className="group bg-[#f8f8f8] hover:bg-brand-50 p-7 transition-colors block border-l-4 border-brand-600"
             >
-              <p className="text-xs text-brand-600 font-bold tracking-[0.15em] mb-2">APPLY</p>
+              <p lang="en" className="text-xs text-brand-600 font-bold tracking-[0.15em] mb-2">APPLY</p>
               <h3 className="text-lg font-bold text-ink-primary mb-2 group-hover:text-brand-600 transition-colors">
                 지원하기 →
               </h3>
@@ -150,7 +150,7 @@ export default function JobsPage() {
               href="/about"
               className="group bg-[#f8f8f8] hover:bg-brand-50 p-7 transition-colors block border-l-4 border-[#1B6F4A]"
             >
-              <p className="text-xs text-[#1B6F4A] font-bold tracking-[0.15em] mb-2">ABOUT</p>
+              <p lang="en" className="text-xs text-[#1B6F4A] font-bold tracking-[0.15em] mb-2">ABOUT</p>
               <h3 className="text-lg font-bold text-ink-primary mb-2 group-hover:text-[#1B6F4A] transition-colors">
                 대전케어 소개 →
               </h3>

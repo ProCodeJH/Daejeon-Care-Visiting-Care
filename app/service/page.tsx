@@ -130,7 +130,7 @@ export default function ServicePage() {
               href="/process"
               className="group bg-[#f8f8f8] hover:bg-brand-50 p-7 transition-colors block border-l-4 border-brand-600"
             >
-              <p className="text-xs text-brand-600 font-bold tracking-[0.15em] mb-2">STEP</p>
+              <p lang="en" className="text-xs text-brand-600 font-bold tracking-[0.15em] mb-2">STEP</p>
               <h3 className="text-lg font-bold text-ink-primary mb-2 group-hover:text-brand-600 transition-colors">
                 서비스 이용 절차 →
               </h3>
@@ -142,7 +142,7 @@ export default function ServicePage() {
               href="/insurance/cost"
               className="group bg-[#f8f8f8] hover:bg-brand-50 p-7 transition-colors block border-l-4 border-[#1B6F4A]"
             >
-              <p className="text-xs text-[#1B6F4A] font-bold tracking-[0.15em] mb-2">CALCULATOR</p>
+              <p lang="en" className="text-xs text-[#1B6F4A] font-bold tracking-[0.15em] mb-2">CALCULATOR</p>
               <h3 className="text-lg font-bold text-ink-primary mb-2 group-hover:text-[#1B6F4A] transition-colors">
                 본인부담금 계산기 →
               </h3>
