@@ -1,6 +1,7 @@
 import { PageHero } from '@/components/PageHero';
 import { SectionBlock } from '@/components/SectionBlock';
 import { CTASection } from '@/components/CTASection';
+import { Reveal } from '@/components/Reveal';
 
 const COST_BREAKDOWN = [
   { type: '일반 대상자', percent: '15%', desc: '기본 본인부담률', color: 'bg-gray-100' },
@@ -72,13 +73,13 @@ export default function InsurancePage() {
           />
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {COST_BREAKDOWN.map((c, i) => (
-              <div key={i} className={`${c.color} p-6 md:p-7 text-center hover:shadow-md transition-shadow`}>
-                <p className="text-4xl md:text-5xl font-bold text-brand-700 mb-2">
+              <Reveal key={i} delay={i * 0.06} className={`${c.color} p-6 md:p-7 text-center hover:shadow-md transition-shadow`}>
+                <p className="text-4xl md:text-5xl font-bold text-brand-700 mb-2 tabular-nums">
                   {c.percent}
                 </p>
                 <h3 className="font-bold text-ink-primary mb-1">{c.type}</h3>
                 <p className="text-xs text-ink-muted">{c.desc}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
           <p className="text-center text-xs text-ink-muted mt-6">
@@ -97,13 +98,13 @@ export default function InsurancePage() {
           />
           <div className="grid md:grid-cols-3 gap-5">
             {ELIGIBILITY.map((e, i) => (
-              <div key={i} className="bg-[#f8f8f8] p-7 hover:bg-brand-50 transition-colors">
-                <div className="w-10 h-10 bg-brand-400 text-white grid place-items-center font-bold mb-4" style={{ borderRadius: '2px' }}>
+              <Reveal key={i} delay={i * 0.08} className="bg-[#f8f8f8] p-7 hover:bg-brand-50 transition-colors">
+                <div className="w-10 h-10 bg-brand-600 text-white grid place-items-center font-bold mb-4" style={{ borderRadius: '2px' }}>
                   {i + 1}
                 </div>
                 <h3 className="text-xl font-bold text-ink-primary mb-3">{e.title}</h3>
                 <p className="text-sm text-ink-secondary leading-relaxed">{e.desc}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
