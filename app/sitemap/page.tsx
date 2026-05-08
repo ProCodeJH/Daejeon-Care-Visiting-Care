@@ -8,7 +8,7 @@ import { CONTACT } from '@/lib/contact';
 
 export const metadata = {
   title: '사이트맵',
-  description: '대전케어 방문요양센터 전체 페이지 안내.',
+  description: `${CONTACT.name} 전체 페이지 안내.`,
   alternates: { canonical: '/sitemap' },
 };
 

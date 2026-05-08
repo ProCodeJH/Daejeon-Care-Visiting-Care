@@ -7,7 +7,7 @@ import { CONTACT } from '@/lib/contact';
 
 export const metadata: Metadata = {
   title: '찾아오시는 길',
-  description: '대전케어 방문요양센터 본점 위치 + 교통편 + 운영 시간. 대전 5구 어디서나 가까운 지점에서 매니저 매칭.',
+  description: `${CONTACT.name} 본점 위치 + 교통편 + 운영 시간. 대전 5구 어디서나 가까운 지점에서 매니저 매칭.`,
   alternates: { canonical: '/map' },
 };
 

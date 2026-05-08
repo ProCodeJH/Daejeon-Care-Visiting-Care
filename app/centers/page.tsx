@@ -9,7 +9,7 @@ import { MapPin, Users, Phone, ChevronRight } from 'lucide-react';
 
 export const metadata = {
   title: '대전 5구 지점',
-  description: '대전케어 방문요양센터 대전 5구 지점 안내 — 유성구·대덕구·서구·중구·동구 각 지점별 매니저 매칭.',
+  description: `${CONTACT.name} 대전 5구 지점 안내 — 유성구·대덕구·서구·중구·동구 각 지점별 매니저 매칭.`,
   alternates: { canonical: '/centers' },
 };
 

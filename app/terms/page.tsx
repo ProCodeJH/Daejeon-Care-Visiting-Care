@@ -3,7 +3,7 @@ import { CONTACT } from '@/lib/contact';
 
 export const metadata = {
   title: '이용약관',
-  description: '대전케어 방문요양센터 서비스 이용약관.',
+  description: `${CONTACT.name} 서비스 이용약관.`,
   alternates: { canonical: '/terms' },
 };
 

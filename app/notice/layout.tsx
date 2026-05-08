@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
+import { CONTACT } from '@/lib/contact';
 
 export const metadata: Metadata = {
   title: '공지사항',
-  description:
-    '대전케어 방문요양센터 공지사항 — 새로운 소식과 안내 사항을 전해드립니다.',
+  description: `${CONTACT.name} 공지사항 — 새로운 소식과 안내 사항을 전해드립니다.`,
   alternates: { canonical: '/notice' },
 };
 
