@@ -36,6 +36,10 @@ export default function NoticePage() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="제목 검색"
+            autoComplete="off"
+            autoCorrect="off"
+            autoCapitalize="off"
+            spellCheck={false}
             className="flex-1 px-4 py-2.5 border border-gray-200 focus:border-brand-400 focus:outline-none text-sm"
             style={{ borderRadius: '2px' }}
           />
