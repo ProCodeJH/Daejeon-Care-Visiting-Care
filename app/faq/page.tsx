@@ -93,6 +93,42 @@ export default function FAQPage() {
         </div>
       </section>
 
+      {/* 다음 단계 추천 */}
+      <section className="bg-white py-16">
+        <div className="max-w-[1000px] mx-auto px-5">
+          <div className="text-center mb-10">
+            <p className="text-brand-400 font-semibold tracking-[0.2em] text-sm mb-3">| EXPLORE</p>
+            <h2 className="text-2xl md:text-3xl font-bold text-ink-primary">더 알아보기</h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-5">
+            <a
+              href="/insurance/cost"
+              className="group bg-[#f8f8f8] hover:bg-brand-50 p-7 transition-colors block border-l-4 border-[#1B6F4A]"
+            >
+              <p className="text-xs text-[#1B6F4A] font-bold tracking-[0.15em] mb-2">CALCULATOR</p>
+              <h3 className="text-lg font-bold text-ink-primary mb-2 group-hover:text-[#1B6F4A] transition-colors">
+                본인부담금 계산 →
+              </h3>
+              <p className="text-sm text-ink-secondary leading-relaxed">
+                등급별 월 본인부담액을 즉시 확인.
+              </p>
+            </a>
+            <a
+              href="/contact"
+              className="group bg-[#f8f8f8] hover:bg-brand-50 p-7 transition-colors block border-l-4 border-brand-600"
+            >
+              <p className="text-xs text-brand-600 font-bold tracking-[0.15em] mb-2">CONTACT</p>
+              <h3 className="text-lg font-bold text-ink-primary mb-2 group-hover:text-brand-600 transition-colors">
+                직접 문의하기 →
+              </h3>
+              <p className="text-sm text-ink-secondary leading-relaxed">
+                전화 042-369-0326 또는 온라인 폼 (24시간).
+              </p>
+            </a>
+          </div>
+        </div>
+      </section>
+
       <CTASection
         title="원하는 답을 찾지 못하셨나요?"
         sub="언제든 직접 문의 주세요. 친절히 답변드립니다."
