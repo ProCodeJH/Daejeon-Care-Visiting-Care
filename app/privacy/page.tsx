@@ -123,7 +123,7 @@ export default function PrivacyPage() {
 
           {/* Wave 394: <small> semantic disclaimer (Wave 357 패턴) */}
           <small className="block text-xs text-ink-muted mt-10 border-t border-gray-100 pt-6">
-            ※ 본 방침은 자현 비즈니스 운영에 맞춰 [대표자명], 정확한 보유 기간, 위탁사 정보 등 자현이 직접 검토 후 swap 부탁드립니다. 법적 자문 권장.
+            <span aria-hidden="true">※</span> 본 방침은 자현 비즈니스 운영에 맞춰 [대표자명], 정확한 보유 기간, 위탁사 정보 등 자현이 직접 검토 후 swap 부탁드립니다. 법적 자문 권장.
           </small>
         </div>
       </article>

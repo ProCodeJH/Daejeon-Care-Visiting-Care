@@ -105,7 +105,7 @@ export default function TermsPage() {
 
           {/* Wave 393: <small> semantic disclaimer */}
           <small className="block text-xs text-ink-muted mt-10 border-t border-gray-100 pt-6">
-            ※ 본 약관은 표준 안이며 자현 비즈니스 운영에 맞춰 정확한 조건 검토 후 swap 부탁드립니다.
+            <span aria-hidden="true">※</span> 본 약관은 표준 안이며 자현 비즈니스 운영에 맞춰 정확한 조건 검토 후 swap 부탁드립니다.
           </small>
         </div>
       </article>

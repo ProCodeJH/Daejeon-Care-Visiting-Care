@@ -158,7 +158,7 @@ export default function AboutPage() {
           {/* Wave 366: <small> = footnote/disclaimer semantic */}
           <small className="block text-center text-xs text-ink-muted mt-6">
             {/* Wave 455: <a> → <Link> — SPA routing + prefetch */}
-            ※ 정확한 등록번호는 <Link href="/contact" className="text-brand-600 hover:underline">상담 문의</Link>로 확인 가능합니다.
+            <span aria-hidden="true">※</span> 정확한 등록번호는 <Link href="/contact" className="text-brand-600 hover:underline">상담 문의</Link>로 확인 가능합니다.
           </small>
         </div>
       </section>
