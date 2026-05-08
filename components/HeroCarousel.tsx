@@ -122,8 +122,8 @@ export function HeroCarousel() {
       <div className="relative z-10 h-full max-w-[1200px] mx-auto px-5 flex flex-col justify-center items-start text-white">
         <motion.p
           key={`eyebrow-${idx}`}
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 0.95, y: 0 }}
+          initial={{ y: 8 }}
+          animate={{ y: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="text-sm md:text-[19px] mb-3 md:mb-5 tracking-wide font-light"
         >
