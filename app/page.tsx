@@ -267,10 +267,10 @@ export default function Home() {
                   />
                 </svg>
                 <blockquote className="text-ink-secondary leading-relaxed mb-5 text-[15px]">{r.text}</blockquote>
-                {/* 별점 + 태그 + 작성일 — cite는 blockquote 형제로 author attribution */}
+                {/* Wave 413: 별점 + 태그 + 작성일. <cite>는 W3C spec상 work title 전용 — 저자명은 <span>이 정확. */}
                 <div className="flex items-center justify-between text-xs">
                   <div>
-                    <cite className="not-italic font-semibold text-brand-400">- {r.author}</cite>
+                    <span className="font-semibold text-brand-400">- {r.author}</span>
                     <time dateTime={r.date.replace('.', '-')} className="text-ink-muted text-[11px] mt-0.5 block">{r.date}</time>
                   </div>
                   <div className="flex items-center gap-2">
