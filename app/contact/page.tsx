@@ -157,7 +157,7 @@ export default function ContactPage() {
                   />
                 </div>
                 <label className="flex items-start gap-2 text-xs text-ink-muted">
-                  <input type="checkbox" name="privacy" required className="mt-0.5" />
+                  <input type="checkbox" name="privacy" required className="mt-0.5 accent-brand-400" />
                   <span>개인정보 수집·이용에 동의합니다 (필수)</span>
                 </label>
                 <button
