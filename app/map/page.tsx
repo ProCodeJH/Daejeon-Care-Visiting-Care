@@ -49,6 +49,7 @@ export default function MapPage() {
                     TEL.{' '}
                     <a
                       href={CONTACT.phoneTel}
+                      aria-label={`전화 걸기 본점 ${CONTACT.phone}`}
                       className="font-medium hover:text-brand-400 hover:underline transition-colors"
                     >
                       {CONTACT.phone}

@@ -67,6 +67,7 @@ export default function Error({
           </Link>
           <a
             href={CONTACT.phoneTel}
+            aria-label={`전화 걸기 ${CONTACT.phone}`}
             className="flex items-center gap-2 bg-[#E63946] hover:bg-[#C12A37] text-white px-7 py-3 font-bold transition-colors"
             style={{ borderRadius: '2px' }}
           >
