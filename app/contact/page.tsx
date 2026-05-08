@@ -118,6 +118,7 @@ export default function ContactPage() {
                     type="tel"
                     inputMode="tel"
                     autoComplete="tel"
+                    enterKeyHint="next"
                     pattern="[0-9-]{9,13}"
                     maxLength={13}
                     placeholder="010-0000-0000"

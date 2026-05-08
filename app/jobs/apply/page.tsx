@@ -128,6 +128,7 @@ export default function JobApplyPage() {
                       required
                       type="text"
                       autoComplete="bday"
+                      enterKeyHint="next"
                       placeholder="예: 1965-03-15"
                       maxLength={10}
                       pattern="\d{4}-\d{2}-\d{2}"
