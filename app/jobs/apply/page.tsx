@@ -1,14 +1,101 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { PageHero } from '@/components/PageHero';
 import { SectionBlock } from '@/components/SectionBlock';
 import { CONTACT } from '@/lib/contact';
 
 const REGIONS = ['유성구', '대덕구', '서구', '중구', '동구', '대전 외'];
+const STORAGE_KEY = 'daejeon-care:jobs-apply';
+
+/**
+ * Wave 374: form autosave to localStorage.
+ * 8 fields × 다양 input — 사용자 5분 투자 보호. 우연 navigation 후 복원.
+ * 의도적으로 privacy 동의 제외 — Korean PIPA 명시 동의 매번 요구.
+ */
+type FormState = {
+  name?: string;
+  birth?: string;
+  tel?: string;
+  cert?: string;
+  experience?: string;
+  region?: string[];
+  availability?: string[];
+  message?: string;
+};
 
 export default function JobApplyPage() {
   const [submitted, setSubmitted] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  // 복원 (mount): localStorage → form fields
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (!saved) return;
+      const data: FormState = JSON.parse(saved);
+      const form = formRef.current;
+      if (!form) return;
+
+      const setText = (name: string, value?: string) => {
+        if (!value) return;
+        const el = form.elements.namedItem(name) as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement | null;
+        if (el && 'value' in el) el.value = value;
+      };
+      const setRadio = (name: string, value?: string) => {
+        if (!value) return;
+        form.querySelectorAll<HTMLInputElement>(`input[name="${name}"]`).forEach((el) => {
+          el.checked = el.value === value;
+        });
+      };
+      const setChecks = (name: string, values?: string[]) => {
+        if (!values?.length) return;
+        form.querySelectorAll<HTMLInputElement>(`input[name="${name}"]`).forEach((el) => {
+          el.checked = values.includes(el.value);
+        });
+      };
+
+      setText('name', data.name);
+      setText('birth', data.birth);
+      setText('tel', data.tel);
+      setRadio('cert', data.cert);
+      setText('experience', data.experience);
+      setChecks('region', data.region);
+      setChecks('availability', data.availability);
+      setText('message', data.message);
+    } catch {
+      // localStorage 비활성/파싱 실패 시 무시
+    }
+  }, []);
+
+  // 저장 (change): form FormData → localStorage. privacy 제외 (PIPA).
+  const handleChange = useCallback(() => {
+    try {
+      const form = formRef.current;
+      if (!form) return;
+      const fd = new FormData(form);
+      const state: FormState = {
+        name: (fd.get('name') as string) || undefined,
+        birth: (fd.get('birth') as string) || undefined,
+        tel: (fd.get('tel') as string) || undefined,
+        cert: (fd.get('cert') as string) || undefined,
+        experience: (fd.get('experience') as string) || undefined,
+        region: (fd.getAll('region') as string[]).filter(Boolean),
+        availability: (fd.getAll('availability') as string[]).filter(Boolean),
+        message: (fd.get('message') as string) || undefined,
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    } catch {}
+  }, []);
+
+  // 제출 시: localStorage 삭제 (재제출 방지)
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSubmitted(true);
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch {}
+  };
 
   return (
     <>
@@ -96,10 +183,9 @@ export default function JobApplyPage() {
               </>
             ) : (
               <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  setSubmitted(true);
-                }}
+                ref={formRef}
+                onSubmit={handleSubmit}
+                onChange={handleChange}
                 className="space-y-5"
               >
                 <div className="grid md:grid-cols-2 gap-5">
