@@ -22,8 +22,13 @@ export default function PrivacyPage() {
 
       <article className="bg-white py-16">
         <div className="max-w-[800px] mx-auto px-5 prose prose-lg">
+          {/* Wave 394: <time> semantic 시행일 + 최종 수정 (Wave 393 패턴) */}
           <p className="text-sm text-ink-muted mb-10">
-            시행일: 2026년 5월 8일 · 최종 수정: {new Date().toLocaleDateString('ko-KR')}
+            시행일: <time dateTime="2026-05-08">2026년 5월 8일</time>
+            {' · '}최종 수정:{' '}
+            <time dateTime={new Date().toISOString().split('T')[0]}>
+              {new Date().toLocaleDateString('ko-KR')}
+            </time>
           </p>
 
           <Section title="1. 개인정보의 처리 목적">
@@ -73,16 +78,35 @@ export default function PrivacyPage() {
               <li>개인정보 처리 정지 요구</li>
               <li>가명정보 처리에 대한 거부 요구</li>
             </ul>
-            <p>권리 행사 = {CONTACT.phone} 또는 {CONTACT.email}로 연락 주세요.</p>
+            <p>
+              권리 행사 ={' '}
+              <a href={CONTACT.phoneTel} className="font-bold text-brand-600 hover:underline">
+                {CONTACT.phone}
+              </a>{' '}
+              또는{' '}
+              <a href={CONTACT.emailMailto} className="text-brand-600 hover:underline">
+                {CONTACT.email}
+              </a>
+              로 연락 주세요.
+            </p>
           </Section>
 
           <Section title="6. 개인정보 보호 책임자">
-            <p className="bg-brand-50 p-5 border-l-4 border-brand-600 not-prose">
+            {/* Wave 394: <address> + tel:/mailto: 링크 (Wave 354 패턴) */}
+            <address className="bg-brand-50 p-5 border-l-4 border-brand-600 not-italic not-prose">
               <strong>개인정보 보호 책임자</strong>: {CONTACT.representative}<br />
-              <strong>연락처</strong>: {CONTACT.phone}<br />
-              <strong>이메일</strong>: {CONTACT.email}<br />
+              <strong>연락처</strong>:{' '}
+              <a href={CONTACT.phoneTel} className="font-bold hover:underline text-brand-600">
+                {CONTACT.phone}
+              </a>
+              <br />
+              <strong>이메일</strong>:{' '}
+              <a href={CONTACT.emailMailto} className="hover:underline text-brand-600">
+                {CONTACT.email}
+              </a>
+              <br />
               <strong>주소</strong>: {CONTACT.address}
-            </p>
+            </address>
           </Section>
 
           <Section title="7. 개인정보의 안전성 확보 조치">
@@ -97,9 +121,10 @@ export default function PrivacyPage() {
             <p>본 방침은 시행일로부터 적용되며, 법령 및 방침 변경 시 사이트 공지 후 변경합니다.</p>
           </Section>
 
-          <p className="text-xs text-ink-muted mt-10 border-t border-gray-100 pt-6">
+          {/* Wave 394: <small> semantic disclaimer (Wave 357 패턴) */}
+          <small className="block text-xs text-ink-muted mt-10 border-t border-gray-100 pt-6">
             ※ 본 방침은 자현 비즈니스 운영에 맞춰 [대표자명], 정확한 보유 기간, 위탁사 정보 등 자현이 직접 검토 후 swap 부탁드립니다. 법적 자문 권장.
-          </p>
+          </small>
         </div>
       </article>
     </>
