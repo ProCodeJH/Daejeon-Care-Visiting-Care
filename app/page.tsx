@@ -55,7 +55,7 @@ const FAQS = ALL_FAQS.slice(0, 4);
 export default function Home() {
   return (
     <>
-      <FaqJsonLd faqs={ALL_FAQS} />
+      <FaqJsonLd faqs={FAQS} />
       {/* 1. Hero Carousel — 902px green/photo BG + 흰색 카피 */}
       <HeroCarousel />
 
