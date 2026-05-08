@@ -61,10 +61,10 @@ export default function ContactPage() {
                 <div className="w-10 h-10 bg-brand-50 grid place-items-center text-brand-400 shrink-0" style={{ borderRadius: '2px' }}>
                   <MapPin size={18} />
                 </div>
-                <div>
+                <address className="not-italic">
                   <p className="font-semibold text-ink-primary mb-0.5">주소</p>
                   <p className="text-sm">{CONTACT.address}</p>
-                </div>
+                </address>
               </div>
             </div>
           </div>

@@ -70,8 +70,8 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* 사업자 정보 */}
-          <div>
+          {/* 사업자 정보 — HTML5 <address> semantic (site-wide contact info, Footer 자손) */}
+          <address className="not-italic">
             <p className="font-bold text-ink-primary mb-3">기관 정보</p>
             <ul className="space-y-2 text-sm text-ink-secondary">
               <li>주소: {CONTACT.address}</li>
@@ -79,7 +79,7 @@ export function Footer() {
               <li>사업자등록번호: {CONTACT.bizNumber}</li>
               <li>장기요양기관 지정번호: {CONTACT.careNumber}</li>
             </ul>
-          </div>
+          </address>
         </div>
 
         {/* SNS 아이콘 (자현이 lib/contact.ts SNS URL 입력 시 자동 활성) */}
