@@ -29,6 +29,33 @@
      * skip-link href="#main-content" 클릭 시 sticky 가려짐 회피.
      * a11y 핵심: 스크린리더 + 키보드 사용자 senior care 신뢰성. */
     scroll-padding-top: 100px;
+    /* Wave 432: font-synthesis 차단 — Pretendard Variable wght 100-900 직접 사용,
+     * 브라우저가 fake-bold/italic 합성하는 추함 방지. 한국어는 italic 자체가 부자연. */
+    font-synthesis: none;
+  }
+
+  /* Wave 432: 네이티브 폼 컨트롤 정체성 그린 — accent-color (Chrome 93+, FF 92+, Safari 15.4+).
+   * checkbox/radio/range/progress/select 자동 적용 (Tailwind accent-* 인라인 일치). */
+  :root {
+    accent-color: #1B6F4A;
+  }
+
+  /* Wave 432: 모바일 tap UX — 어르신 실수 zoom 회피 + 깔끔한 tap feedback.
+   * touch-action: manipulation = 300ms tap delay 제거 + double-tap-to-zoom 차단 (panic 회피).
+   * -webkit-tap-highlight-color = 정체성 그린 subtle (회색 default flash 대체). */
+  button,
+  a,
+  [role='button'],
+  [role='link'],
+  input[type='button'],
+  input[type='submit'],
+  input[type='reset'],
+  input[type='checkbox'],
+  input[type='radio'],
+  select,
+  summary {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(27, 111, 74, 0.15);
   }
 
   body {
