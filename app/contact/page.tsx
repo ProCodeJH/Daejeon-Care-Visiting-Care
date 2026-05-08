@@ -93,10 +93,11 @@ export default function ContactPage() {
               >
                 <div>
                   <label htmlFor="contact-name" className="block text-sm font-semibold text-ink-primary mb-1.5">
-                    이름 <span className="text-brand-400">*</span>
+                    이름 <span aria-hidden="true" className="text-brand-400">*</span>
                   </label>
                   <input
                     id="contact-name"
+                    name="name"
                     required
                     type="text"
                     autoComplete="name"
@@ -106,10 +107,11 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <label htmlFor="contact-tel" className="block text-sm font-semibold text-ink-primary mb-1.5">
-                    연락처 <span className="text-brand-400">*</span>
+                    연락처 <span aria-hidden="true" className="text-brand-400">*</span>
                   </label>
                   <input
                     id="contact-tel"
+                    name="tel"
                     required
                     type="tel"
                     inputMode="tel"
@@ -126,6 +128,7 @@ export default function ContactPage() {
                   </label>
                   <select
                     id="contact-category"
+                    name="category"
                     className="w-full px-4 py-2.5 bg-white border border-gray-200 focus:border-brand-400 focus:outline-none text-sm"
                     style={{ borderRadius: '2px' }}
                   >
@@ -138,10 +141,11 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <label htmlFor="contact-message" className="block text-sm font-semibold text-ink-primary mb-1.5">
-                    문의 내용 <span className="text-brand-400">*</span>
+                    문의 내용 <span aria-hidden="true" className="text-brand-400">*</span>
                   </label>
                   <textarea
                     id="contact-message"
+                    name="message"
                     required
                     rows={5}
                     style={{ borderRadius: '2px', fieldSizing: 'content' } as React.CSSProperties}

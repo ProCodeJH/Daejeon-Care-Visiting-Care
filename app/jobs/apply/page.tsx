@@ -104,7 +104,7 @@ export default function JobApplyPage() {
                 <div className="grid md:grid-cols-2 gap-5">
                   <div>
                     <label htmlFor="apply-name" className="block text-sm font-bold text-ink-primary mb-1.5">
-                      성함 <span className="text-brand-400">*</span>
+                      성함 <span aria-hidden="true" className="text-brand-400">*</span>
                     </label>
                     <input
                       id="apply-name"
@@ -117,7 +117,7 @@ export default function JobApplyPage() {
                   </div>
                   <div>
                     <label htmlFor="apply-birth" className="block text-sm font-bold text-ink-primary mb-1.5">
-                      생년월일 <span className="text-brand-400">*</span>
+                      생년월일 <span aria-hidden="true" className="text-brand-400">*</span>
                     </label>
                     <input
                       id="apply-birth"
@@ -133,7 +133,7 @@ export default function JobApplyPage() {
 
                 <div>
                   <label htmlFor="apply-tel" className="block text-sm font-bold text-ink-primary mb-1.5">
-                    연락처 <span className="text-brand-400">*</span>
+                    연락처 <span aria-hidden="true" className="text-brand-400">*</span>
                   </label>
                   <input
                     id="apply-tel"
@@ -150,7 +150,7 @@ export default function JobApplyPage() {
 
                 <div>
                   <label className="block text-sm font-bold text-ink-primary mb-1.5">
-                    자격증 종류 <span className="text-brand-400">*</span>
+                    자격증 종류 <span aria-hidden="true" className="text-brand-400">*</span>
                   </label>
                   <div className="flex gap-4 text-sm">
                     {['요양보호사 1급', '요양보호사 2급', '간호조무사', '사회복지사', '기타'].map((c) => (
@@ -164,7 +164,7 @@ export default function JobApplyPage() {
 
                 <div>
                   <label htmlFor="apply-experience" className="block text-sm font-bold text-ink-primary mb-1.5">
-                    경력 <span className="text-brand-400">*</span>
+                    경력 <span aria-hidden="true" className="text-brand-400">*</span>
                   </label>
                   <select
                     id="apply-experience"
@@ -183,7 +183,7 @@ export default function JobApplyPage() {
 
                 <div>
                   <label className="block text-sm font-bold text-ink-primary mb-1.5">
-                    희망 근무지 <span className="text-brand-400">*</span>
+                    희망 근무지 <span aria-hidden="true" className="text-brand-400">*</span>
                   </label>
                   <div className="grid grid-cols-3 md:grid-cols-6 gap-2">
                     {REGIONS.map((r) => (
