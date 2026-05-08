@@ -116,7 +116,7 @@ export default function InfoPage() {
               href="/story"
               className="group bg-[#f8f8f8] hover:bg-brand-50 p-7 transition-colors block border-l-4 border-[#F5A623]"
             >
-              <p className="text-xs text-[#F5A623] font-bold tracking-[0.15em] mb-2">STORY</p>
+              <p lang="en" className="text-xs text-[#F5A623] font-bold tracking-[0.15em] mb-2">STORY</p>
               <h3 className="text-lg font-bold text-ink-primary mb-2 group-hover:text-[#F5A623] transition-colors">
                 대전케어 이야기 →
               </h3>
@@ -128,7 +128,7 @@ export default function InfoPage() {
               href="/service"
               className="group bg-[#f8f8f8] hover:bg-brand-50 p-7 transition-colors block border-l-4 border-brand-600"
             >
-              <p className="text-xs text-brand-600 font-bold tracking-[0.15em] mb-2">SERVICE</p>
+              <p lang="en" className="text-xs text-brand-600 font-bold tracking-[0.15em] mb-2">SERVICE</p>
               <h3 className="text-lg font-bold text-ink-primary mb-2 group-hover:text-brand-600 transition-colors">
                 서비스 소개 →
               </h3>
