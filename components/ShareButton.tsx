@@ -65,6 +65,11 @@ export function ShareButton({
     >
       <Icon size={16} />
       {label}
+      {/* Wave 443: sr-only aria-live region — state 변경 시 screen reader announce.
+       * VoiceOver 등 일부 SR은 aria-label fixed 우선 → visible text 변경 무시. 별도 region으로 우회. */}
+      <span className="sr-only" aria-live="polite" role="status">
+        {state === 'shared' ? '공유되었습니다' : state === 'copied' ? '주소가 복사되었습니다' : state === 'error' ? '공유에 실패했습니다' : ''}
+      </span>
     </button>
   );
 }
