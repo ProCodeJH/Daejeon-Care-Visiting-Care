@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import { SplitText } from './SplitText';
 import { CONTACT } from '@/lib/contact';
 
@@ -118,20 +118,34 @@ function HeroDecoration() {
 
 export function HeroCarousel() {
   const [idx, setIdx] = useState(0);
+  const [paused, setPaused] = useState(false);
   const ref = useRef<HTMLElement>(null);
+  const reducedMotion = useReducedMotion();
 
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
   const letterbox = useTransform(scrollYProgress, [0, 1], [0, 24]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0.4]);
   const decorParallax = useTransform(scrollYProgress, [0, 1], [0, -80]);
 
+  // Wave 348 (WCAG 2.2.2 Pause, Stop, Hide): auto-rotate >5s requires user control.
+  // Skip when paused, focused-within (keyboard nav), or prefers-reduced-motion.
   useEffect(() => {
+    if (paused || reducedMotion) return;
     const t = setInterval(() => setIdx((i) => (i + 1) % SLIDES.length), 6000);
     return () => clearInterval(t);
-  }, []);
+  }, [paused, reducedMotion]);
 
   return (
-    <section ref={ref} aria-labelledby="hero-title" className="relative w-full h-[600px] md:h-[902px] overflow-hidden bg-black">
+    <section
+      ref={ref}
+      aria-labelledby="hero-title"
+      aria-roledescription="carousel"
+      onFocus={() => setPaused(true)}
+      onBlur={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setPaused(false);
+      }}
+      className="relative w-full h-[600px] md:h-[902px] overflow-hidden bg-black"
+    >
       {/* gradient slides */}
       <motion.div style={{ opacity: heroOpacity }} className="absolute inset-0">
         {SLIDES.map((s, i) => (
@@ -230,6 +244,22 @@ export function HeroCarousel() {
           <span className="text-sm font-bold text-[#1B6F4A]">24시간 상담 가능</span>
         </div>
       </div>
+
+      {/* Wave 348 (WCAG 2.2.2): Pause/play button — required for auto-rotate >5s. */}
+      {!reducedMotion && (
+        <button
+          type="button"
+          onClick={() => setPaused((p) => !p)}
+          aria-label={paused ? '슬라이드 자동 전환 재생' : '슬라이드 자동 전환 일시정지'}
+          aria-pressed={paused}
+          className="absolute bottom-7 right-5 md:right-8 z-20 w-10 h-10 grid place-items-center bg-white/90 hover:bg-white text-[#1B6F4A] backdrop-blur-sm transition-colors"
+          style={{ borderRadius: '2px' }}
+        >
+          <span aria-hidden="true" className="text-base leading-none">
+            {paused ? '▶' : '❚❚'}
+          </span>
+        </button>
+      )}
 
       {/* Dot pagination */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
