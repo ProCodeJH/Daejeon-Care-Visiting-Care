@@ -97,11 +97,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         {/* Hero 첫 슬라이드 preload — LCP 가속 (나머지 4장은 carousel 회전 시 자연 로드) */}
         <link rel="preload" as="image" href="/hero/hero-1.png" fetchPriority="high" />
 
-        {/* Pretendard Variable preload (font-display: swap 자동) */}
+        {/* Pretendard Variable preload (font-display: swap 자동).
+         * Wave 292: crossOrigin="anonymous" 추가 — preload + @import cache key 일치 (double-fetch 회피).
+         * preconnect (line 95)도 anonymous라 일관성. */}
         <link
           rel="preload"
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css"
           as="style"
+          crossOrigin="anonymous"
         />
 
         {/* speculation rules — 핵심 nav + cross-page recommendation 12 페이지 prerender (즉시 응답) */}
