@@ -2,23 +2,49 @@ import type { MetadataRoute } from 'next';
 
 /**
  * site.webmanifest — 모바일 홈 화면 추가 (PWA-lite).
+ * shortcuts = long-press 앱 아이콘 시 핵심 routes 빠른 진입 (senior care use case).
  */
 export default function manifest(): MetadataRoute.Manifest {
   return {
+    id: '/',
     name: '대전케어 방문요양센터',
     short_name: '대전케어',
     description:
       '대전 5구 통합 방문요양센터 · 24시간 상담 042-369-0326 · 어르신 댁으로 직접 찾아가는 케어',
     start_url: '/',
+    scope: '/',
     display: 'standalone',
+    display_override: ['standalone', 'minimal-ui'],
     background_color: '#FFFFFF',
     theme_color: '#1B6F4A',
     lang: 'ko-KR',
+    dir: 'ltr',
     orientation: 'portrait',
     categories: ['health', 'lifestyle', 'medical'],
+    prefer_related_applications: false,
     icons: [
       { src: '/icon', sizes: '64x64', type: 'image/png' },
       { src: '/apple-icon', sizes: '180x180', type: 'image/png' },
+    ],
+    shortcuts: [
+      {
+        name: '본인부담금 계산',
+        short_name: '비용 계산',
+        description: '장기요양 등급별 본인부담액 즉시 확인',
+        url: '/insurance/cost',
+      },
+      {
+        name: '대전 5구 지점',
+        short_name: '지점 안내',
+        description: '유성·대덕·서구·중구·동구 가까운 지점',
+        url: '/centers',
+      },
+      {
+        name: '직접 문의하기',
+        short_name: '문의',
+        description: '24시간 상담 가능 · 042-369-0326',
+        url: '/contact',
+      },
     ],
   };
 }
