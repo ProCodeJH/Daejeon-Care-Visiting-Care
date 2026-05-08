@@ -82,6 +82,18 @@
     transform: translateY(0);
   }
 
+  /* Form submitted box entrance scale (정체성 그린 highlight) */
+  .form-success-enter {
+    animation: formSuccessEnter 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  @keyframes formSuccessEnter {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .form-success-enter { animation: none; }
+  }
+
   /* Hero CTA pulse halo — 어르신 즉시 인지 (정체성 코랄, 절제 4s cycle) */
   .hero-cta-pulse::after {
     content: '';
