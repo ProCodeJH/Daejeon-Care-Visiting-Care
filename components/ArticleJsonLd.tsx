@@ -2,8 +2,11 @@
  * Article JSON-LD — Story/Notice detail 페이지용.
  * Google 검색 결과 > Article 리치 노출 (썸네일 + 작성일 + 저자 carousel).
  * Senior care content 발견성 ↑.
+ *
+ * Wave 475: CONTACT.name single source — author/publisher hardcoded 위반 catch (paradigm 16).
  */
 import { SITE as SITE_CONFIG } from '@/lib/site';
+import { CONTACT } from '@/lib/contact';
 
 const SITE = SITE_CONFIG.url;
 const ORG_ID = `${SITE}/#business`;
@@ -14,7 +17,7 @@ export function ArticleJsonLd({
   description,
   datePublished,
   dateModified,
-  author = '대전케어 방문요양센터',
+  author = CONTACT.name,
   url,
 }: {
   type?: 'Article' | 'BlogPosting' | 'NewsArticle';
@@ -40,7 +43,7 @@ export function ArticleJsonLd({
     },
     publisher: {
       '@type': 'Organization',
-      name: '대전케어 방문요양센터',
+      name: CONTACT.name,
       '@id': ORG_ID,
       logo: {
         '@type': 'ImageObject',
