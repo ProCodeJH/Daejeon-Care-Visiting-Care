@@ -121,8 +121,8 @@ export default function ServicePage() {
         </div>
       </section>
 
-      {/* 다음 단계 추천 (cross-page navigation) */}
-      <section className="bg-white py-16">
+      {/* Wave 363: <aside> = complementary landmark (cross-page navigation) */}
+      <aside aria-label="추천 페이지" className="bg-white py-16">
         <div className="max-w-[1000px] mx-auto px-5">
           <SectionBlock eyebrow="NEXT STEP" title="다음 단계" sub="서비스 시작 전 알아두면 좋은 정보" className="mb-10" />
           <div className="grid md:grid-cols-2 gap-5">
@@ -152,7 +152,7 @@ export default function ServicePage() {
             </a>
           </div>
         </div>
-      </section>
+      </aside>
 
       <CTASection />
     </>

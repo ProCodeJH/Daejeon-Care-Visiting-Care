@@ -190,8 +190,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 다음 단계 추천 (cross-page navigation) */}
-      <section className="bg-white py-16">
+      {/* Wave 363: <aside> = complementary landmark (cross-page navigation) */}
+      <aside aria-label="추천 페이지" className="bg-white py-16">
         <div className="max-w-[1000px] mx-auto px-5">
           <SectionBlock eyebrow="EXPLORE" title="더 알아보기" sub="대전케어 서비스와 절차" className="mb-10" />
           <div className="grid md:grid-cols-2 gap-5">
@@ -221,7 +221,7 @@ export default function AboutPage() {
             </a>
           </div>
         </div>
-      </section>
+      </aside>
 
       <CTASection title="만나 뵙기를 기다립니다" sub="언제든 편하게 문의 주세요" />
     </>

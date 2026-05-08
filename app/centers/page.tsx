@@ -120,8 +120,8 @@ export default function CentersPage() {
         </div>
       </section>
 
-      {/* 다음 단계 추천 */}
-      <section className="bg-white py-16">
+      {/* Wave 363: <aside> = complementary landmark (cross-page navigation) */}
+      <aside aria-label="추천 페이지" className="bg-white py-16">
         <div className="max-w-[1000px] mx-auto px-5">
           <SectionBlock eyebrow="EXPLORE" title="더 알아보기" sub="서비스 소개와 찾아오시는 길" className="mb-10" />
           <div className="grid md:grid-cols-2 gap-5">
@@ -151,7 +151,7 @@ export default function CentersPage() {
             </a>
           </div>
         </div>
-      </section>
+      </aside>
 
       <CTASection />
     </>

@@ -109,8 +109,8 @@ export default function FAQPage() {
         </div>
       </section>
 
-      {/* 다음 단계 추천 */}
-      <section className="bg-white py-16">
+      {/* Wave 363: <aside> = complementary landmark (cross-page navigation) */}
+      <aside aria-label="추천 페이지" className="bg-white py-16">
         <div className="max-w-[1000px] mx-auto px-5">
           <div className="text-center mb-10">
             <p className="text-brand-400 font-semibold tracking-[0.2em] text-sm mb-3">| EXPLORE</p>
@@ -143,7 +143,7 @@ export default function FAQPage() {
             </a>
           </div>
         </div>
-      </section>
+      </aside>
 
       <CTASection
         title="원하는 답을 찾지 못하셨나요?"
