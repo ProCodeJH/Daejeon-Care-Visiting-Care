@@ -3,6 +3,7 @@ import { PageHero } from '@/components/PageHero';
 import { SectionBlock } from '@/components/SectionBlock';
 import { CTASection } from '@/components/CTASection';
 import { MapPin, Phone, Clock, Mail } from 'lucide-react';
+import { CONTACT } from '@/lib/contact';
 
 export const metadata: Metadata = {
   title: '찾아오시는 길',
@@ -39,11 +40,11 @@ export default function MapPage() {
               <div className="space-y-3 text-ink-secondary">
                 <div className="flex items-start gap-3">
                   <MapPin size={18} className="text-brand-400 mt-1 shrink-0" />
-                  <span>대전광역시 [구] [동] [도로명주소], [건물명] [층호]</span>
+                  <span>{CONTACT.address}</span>
                 </div>
                 <div className="flex items-start gap-3">
                   <Phone size={18} className="text-brand-400 mt-1 shrink-0" />
-                  <span>TEL. 042-369-0326 · FAX. 042-369-0326</span>
+                  <span>TEL. {CONTACT.phone} · FAX. {CONTACT.phone}</span>
                 </div>
                 <div className="flex items-start gap-3">
                   <Clock size={18} className="text-brand-400 mt-1 shrink-0" />
