@@ -11,6 +11,9 @@ import { Volume2, VolumeX } from 'lucide-react';
  * - SpeakableSpec: 외부 voice assistant (Siri/Google) 음성 인식
  * - SpeakButton: 사이트 내 explicit button (페이지 안에서 직접 듣기)
  *
+ * Wave 441: Korean voice 명시 선택 — lang='ko-KR'만으론 브라우저가 영어 voice로 fallback,
+ * 어르신에게 무의미한 발음. getVoices() + voiceschanged event로 한국어 voice 보장.
+ *
  * 미지원 브라우저: button 비표시 (graceful degrade).
  */
 export function SpeakButton({
@@ -22,16 +25,28 @@ export function SpeakButton({
 }) {
   const [speaking, setSpeaking] = useState(false);
   const [supported, setSupported] = useState(false);
+  const [koVoice, setKoVoice] = useState<SpeechSynthesisVoice | null>(null);
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-      setSupported(true);
-    }
+    if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
+    setSupported(true);
+
+    // Wave 441: 한국어 voice 탐색 — voices는 async 로드 (voiceschanged event 필수)
+    const findKoreanVoice = () => {
+      const voices = window.speechSynthesis.getVoices();
+      const ko =
+        voices.find((v) => v.lang === 'ko-KR') ||
+        voices.find((v) => v.lang.startsWith('ko'));
+      if (ko) setKoVoice(ko);
+    };
+
+    findKoreanVoice();
+    window.speechSynthesis.addEventListener('voiceschanged', findKoreanVoice);
+
     return () => {
+      window.speechSynthesis.removeEventListener('voiceschanged', findKoreanVoice);
       // 페이지 떠날 때 음성 중단
-      if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-      }
+      window.speechSynthesis.cancel();
     };
   }, []);
 
@@ -46,6 +61,8 @@ export function SpeakButton({
     }
     const utter = new SpeechSynthesisUtterance(text);
     utter.lang = 'ko-KR';
+    // Wave 441: Korean voice 명시 — 영어 voice fallback 시 발음 불명확 방지
+    if (koVoice) utter.voice = koVoice;
     utter.rate = 0.95; // 어르신 부담 없는 약간 느린 속도
     utter.pitch = 1;
     utter.onend = () => setSpeaking(false);
