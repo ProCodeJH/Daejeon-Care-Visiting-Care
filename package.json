@@ -2,7 +2,7 @@
   "name": "daejeon-care-web-v3",
   "version": "0.1.0",
   "private": true,
-  "description": "대전케어 방문요양센터 — 두손누리 1:1 React + 130+ Wave audit-driven (Single Source 100% / Form 8 paradigm / JSON-LD 7종 / Voice/Share/Schema). Next.js 15 + Tailwind 3 + Framer Motion 11 + Pretendard.",
+  "description": "대전케어 방문요양센터 — 두손누리 1:1 React + 490+ Wave audit-driven (paradigm 18 chain 146 wave / 광맥 308건 / 8 100% saturation / paradigm 16 chain self-audit 34). Next.js 15 + Tailwind 3 + Framer Motion 11 + Pretendard.",
   "scripts": {
     "dev": "next dev --turbopack --port 3012",
     "build": "next build",
