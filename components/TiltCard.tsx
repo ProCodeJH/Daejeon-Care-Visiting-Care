@@ -1,6 +1,7 @@
 'use client';
 
 import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from 'framer-motion';
+import Link from 'next/link';
 import type { ReactNode } from 'react';
 
 /**
@@ -67,6 +68,15 @@ export function TiltCard({
 
   if (href) {
     // Wave 389: 사이트 globally `*:focus-visible { outline: 2px solid #2563EB }` 사용 — 일관성
+    // Wave 462: internal/external 분기 — internal은 <Link> (SPA routing + prefetch), external은 raw <a>
+    const isInternal = href.startsWith('/');
+    if (isInternal) {
+      return (
+        <Link href={href} className="block">
+          {content}
+        </Link>
+      );
+    }
     return (
       <a href={href} className="block">
         {content}
