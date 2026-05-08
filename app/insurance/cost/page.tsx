@@ -152,9 +152,14 @@ export default function CostPage() {
             <p className="text-brand-400 font-semibold tracking-[0.15em] text-sm mb-3">
               | RESULT
             </p>
-            <h3 className="text-xl font-bold text-ink-primary mb-6">
+            <h3 className="text-xl font-bold text-ink-primary mb-2">
               월 본인부담액 (예상)
             </h3>
+            <p className="text-sm text-ink-secondary mb-6">
+              장기요양 <strong className="text-brand-600">{grade === '인지' ? '인지지원등급' : `${grade}등급`}</strong>
+              {' · '}
+              <strong className="text-brand-600">{RATES[rateKey].label}</strong>
+            </p>
 
             <div className="grid md:grid-cols-3 gap-5">
               <div className="bg-white p-6 tabular-nums">
@@ -189,7 +194,9 @@ export default function CostPage() {
               </span>
               <ShareButton
                 title="대전케어 본인부담금 계산 결과"
-                text={`장기요양 ${grade}등급 (${RATES[rateKey].label}) — 월 본인부담 ${fmt(result.userPay)} · 공단 부담 ${fmt(result.govPay)}\n대전케어 방문요양센터 042-369-0326`}
+                text={`장기요양 ${
+                  grade === '인지' ? '인지지원등급' : `${grade}등급`
+                } (${RATES[rateKey].label}) — 월 본인부담 ${fmt(result.userPay)} · 공단 부담 ${fmt(result.govPay)}\n대전케어 방문요양센터 042-369-0326`}
               />
               <button
                 type="button"
