@@ -4,6 +4,7 @@ import { CTASection } from '@/components/CTASection';
 import { NOTICES } from '@/content/notices';
 import { STORIES } from '@/content/stories';
 import { CENTERS } from '@/content/centers';
+import { CONTACT } from '@/lib/contact';
 
 export const metadata = {
   title: '사이트맵',
@@ -37,7 +38,7 @@ const SECTIONS = [
     title: '노인정보',
     color: 'border-[#F5A623]',
     pages: [
-      { href: '/story', label: '대전케어 이야기' },
+      { href: '/story', label: `${CONTACT.brand} 이야기` },
       { href: '/info', label: '요양 정보' },
     ],
   },

@@ -37,7 +37,7 @@ const NAV = [
     label: '노인정보',
     href: '/info',
     children: [
-      { href: '/story', label: '대전케어 이야기' },
+      { href: '/story', label: `${CONTACT.brand} 이야기` },
       { href: '/info', label: '요양 정보' },
     ],
   },

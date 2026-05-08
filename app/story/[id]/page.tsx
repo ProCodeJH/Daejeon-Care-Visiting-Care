@@ -21,7 +21,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { id } = await params;
   const s = STORIES.find((s) => s.id === Number(id));
-  if (!s) return { title: '대전케어 이야기' };
+  if (!s) return { title: `${CONTACT.brand} 이야기` };
   // Wave 426: per-story openGraph image (thumbnail 있으면 사용, 없으면 default OG)
   // Wave 428: twitter card + openGraph article section/tags (cross-platform share quality)
   return {
@@ -75,7 +75,7 @@ export default async function StoryDetailPage({
         sub={s.excerpt}
         crumbs={[
           { label: '노인정보' },
-          { label: '대전케어 이야기', href: '/story' },
+          { label: `${CONTACT.brand} 이야기`, href: '/story' },
         ]}
       />
 
