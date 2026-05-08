@@ -1,4 +1,5 @@
 import { PageHero } from '@/components/PageHero';
+import { SectionBlock } from '@/components/SectionBlock';
 import { CTASection } from '@/components/CTASection';
 import { MapPin, Phone, Clock, Mail } from 'lucide-react';
 
@@ -67,6 +68,39 @@ export default function MapPage() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 다음 단계 추천 (cross-page navigation) */}
+      <section className="bg-white py-16">
+        <div className="max-w-[1000px] mx-auto px-5">
+          <SectionBlock eyebrow="EXPLORE" title="더 알아보기" sub="가까운 지점 + 직접 문의" className="mb-10" />
+          <div className="grid md:grid-cols-2 gap-5">
+            <a
+              href="/centers"
+              className="group bg-[#f8f8f8] hover:bg-brand-50 p-7 transition-colors block border-l-4 border-brand-600"
+            >
+              <p className="text-xs text-brand-600 font-bold tracking-[0.15em] mb-2">LOCATIONS</p>
+              <h3 className="text-lg font-bold text-ink-primary mb-2 group-hover:text-brand-600 transition-colors">
+                대전 5구 지점 →
+              </h3>
+              <p className="text-sm text-ink-secondary leading-relaxed">
+                유성·대덕·서구·중구·동구 지점별 매니저 매칭.
+              </p>
+            </a>
+            <a
+              href="/contact"
+              className="group bg-[#f8f8f8] hover:bg-brand-50 p-7 transition-colors block border-l-4 border-[#1B6F4A]"
+            >
+              <p className="text-xs text-[#1B6F4A] font-bold tracking-[0.15em] mb-2">CONTACT</p>
+              <h3 className="text-lg font-bold text-ink-primary mb-2 group-hover:text-[#1B6F4A] transition-colors">
+                직접 문의하기 →
+              </h3>
+              <p className="text-sm text-ink-secondary leading-relaxed">
+                전화 042-369-0326 또는 온라인 폼 (24시간).
+              </p>
+            </a>
           </div>
         </div>
       </section>
