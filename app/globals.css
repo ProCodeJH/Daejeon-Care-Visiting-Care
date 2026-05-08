@@ -82,6 +82,28 @@
     transform: translateY(0);
   }
 
+  /* Hero CTA pulse halo — 어르신 즉시 인지 (정체성 코랄, 절제 4s cycle) */
+  .hero-cta-pulse::after {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    background: rgba(230, 57, 70, 0.4);
+    z-index: -1;
+    animation: heroCtaPulse 3.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    border-radius: inherit;
+  }
+  @keyframes heroCtaPulse {
+    0% { transform: scale(1); opacity: 0.5; }
+    70% { transform: scale(1.12); opacity: 0; }
+    100% { transform: scale(1.12); opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-cta-pulse::after {
+      animation: none;
+      opacity: 0;
+    }
+  }
+
   /* Floating call button — pulse halo (절제, prefers-reduced-motion 자동 X) */
   .floating-call-btn {
     position: relative;

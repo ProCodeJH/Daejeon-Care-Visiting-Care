@@ -161,7 +161,7 @@ export function HeroCarousel() {
           </a>
           <a
             href="tel:042-369-0326"
-            className="hero-cta flex items-center gap-2 bg-[#E63946] hover:bg-[#C12A37] text-white px-6 md:px-8 py-3 md:py-3.5 font-bold text-sm md:text-base transition-all"
+            className="hero-cta hero-cta-pulse flex items-center gap-2 bg-[#E63946] hover:bg-[#C12A37] text-white px-6 md:px-8 py-3 md:py-3.5 font-bold text-sm md:text-base transition-all relative"
             style={{ borderRadius: '2px' }}
           >
             ☎ 042-369-0326
