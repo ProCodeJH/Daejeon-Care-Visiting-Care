@@ -1,6 +1,7 @@
 'use client';
 
 import { SplitText } from './SplitText';
+import { BreadcrumbJsonLd } from './BreadcrumbJsonLd';
 
 /**
  * Sub-page Hero — breadcrumb + title (SplitText char stagger).
@@ -18,6 +19,12 @@ export function PageHero({
   crumbs?: Crumb[];
 }) {
   return (
+    <>
+      {crumbs.length > 0 && (
+        <BreadcrumbJsonLd
+          crumbs={crumbs.map((c) => ({ name: c.label, href: c.href }))}
+        />
+      )}
     <section
       className="relative w-full h-[280px] md:h-[320px] flex items-center justify-center text-white overflow-hidden"
       style={{
@@ -63,5 +70,6 @@ export function PageHero({
         {sub && <p className="text-base md:text-lg opacity-90 leading-relaxed">{sub}</p>}
       </div>
     </section>
+    </>
   );
 }
