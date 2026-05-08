@@ -1,15 +1,16 @@
 'use client';
 
-import { motion, type Variants } from 'framer-motion';
+import { motion, useReducedMotion, type Variants } from 'framer-motion';
 import type { ReactNode } from 'react';
 
 /**
  * 절제된 scroll-reveal — IntersectionObserver 기반 (whileInView).
  * once: true = 한 번만 발동 (어르신 산만 방지).
  * delay 옵션 = staggered 카드 그리드용.
- * prefers-reduced-motion 시 framer-motion 자동 비활성.
- */
-/**
+ *
+ * Wave 452: useReducedMotion 명시 분기 — framer-motion 11 default 자동 비활성 X
+ * (Wave 451 SplitText와 동일 패턴). 어르신 vestibular 보호.
+ *
  * SEO + JS-disabled fallback paradigm:
  * - opacity 변화 X (SSG render 시 visible 1)
  * - y motion만 유지 (slide-in entry)
@@ -31,7 +32,12 @@ export function Reveal({
   className?: string;
   as?: 'div' | 'section' | 'article' | 'li';
 }) {
+  const reducedMotion = useReducedMotion();
   const MotionTag = motion[Tag] as typeof motion.div;
+  // Wave 452: reduced 시 motion props omit → plain element render (children visible 즉시)
+  if (reducedMotion) {
+    return <MotionTag className={className}>{children}</MotionTag>;
+  }
   return (
     <MotionTag
       className={className}
