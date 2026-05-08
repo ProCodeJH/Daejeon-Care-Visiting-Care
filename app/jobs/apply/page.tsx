@@ -130,6 +130,9 @@ export default function JobApplyPage() {
                       autoComplete="bday"
                       placeholder="예: 1965-03-15"
                       maxLength={10}
+                      pattern="\d{4}-\d{2}-\d{2}"
+                      title="YYYY-MM-DD 형식 (예: 1965-03-15)"
+                      inputMode="numeric"
                       className="w-full px-4 py-2.5 bg-[#f8f8f8] border border-gray-200 focus:border-brand-400 focus:outline-none text-sm"
                       style={{ borderRadius: '2px' }}
                     />
