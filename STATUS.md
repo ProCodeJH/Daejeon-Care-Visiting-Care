@@ -1,6 +1,6 @@
 # STATUS — 대전케어 방문요양센터
 
-**Updated**: 2026-05-09 / Wave 565 / paradigm 18 chain 213-wave (console audit — error.tsx/global-error.tsx console.error 보존 + WebVitals 3 dev-only log + production strip ✓)
+**Updated**: 2026-05-09 / Wave 566 / paradigm 18 chain 214-wave (loading.tsx 0 + Suspense 0 + dynamic 0 — SSG 100% prerender 적합 paradigm, async fetch 없음)
 
 > 1쪽 handoff. 자현 5분 결정 진입점.
 
