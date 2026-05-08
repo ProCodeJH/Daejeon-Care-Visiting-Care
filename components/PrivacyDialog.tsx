@@ -66,8 +66,12 @@ export function PrivacyDialog() {
           </a>
           에서 확인하실 수 있습니다.
         </p>
+        {/* Wave 446: autoFocus — modal open 시 first focus를 confirm 버튼으로.
+         * 어르신이 무의식 Enter 누르면 X close (코드 순서상 first focusable)에 hit해서 콘텐츠 못 보고 닫힘 회피.
+         * autoFocus는 closed dialog에서는 발동 안 함 (showModal 시에만). */}
         <button
           type="button"
+          autoFocus
           onClick={close}
           className="w-full bg-brand-400 hover:bg-brand-500 text-white py-2 font-semibold transition-colors"
           style={{ borderRadius: '2px' }}
