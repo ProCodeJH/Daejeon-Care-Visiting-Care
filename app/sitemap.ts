@@ -27,6 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/info', priority: 0.7, freq: 'monthly' },
     { path: '/jobs', priority: 0.85, freq: 'weekly' },
     { path: '/jobs/apply', priority: 0.8, freq: 'monthly' },
+    { path: '/centers', priority: 0.85, freq: 'monthly' },
     { path: '/notice', priority: 0.6, freq: 'weekly' },
     { path: '/contact', priority: 0.95, freq: 'monthly' },
     { path: '/qna', priority: 0.85, freq: 'monthly' },

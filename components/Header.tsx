@@ -20,6 +20,7 @@ const NAV = [
       { href: '/service', label: '서비스 소개' },
       { href: '/process', label: '서비스 이용 절차' },
       { href: '/homecare', label: '방문요양' },
+      { href: '/centers', label: '5구 지점' },
       { href: '/map', label: '찾아오시는 길' },
     ],
   },
