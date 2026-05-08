@@ -316,9 +316,11 @@ export default function Home() {
             </h2>
           </div>
           <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+            {/* Wave 384: name="home-faq" — exclusive accordion (Chrome 120+/FF 124+/Safari 17.2+).
+                동시에 1개 답만 표시 = 산만 회피. 미지원 브라우저는 multi-open (graceful degrade). */}
             {FAQS.map((f, i) => (
               <Reveal key={i} delay={i * 0.05}>
-                <details className="group bg-white p-5 border border-gray-100 hover:border-brand-400 transition-colors cursor-pointer">
+                <details name="home-faq" className="group bg-white p-5 border border-gray-100 hover:border-brand-400 transition-colors cursor-pointer">
                   <summary className="font-semibold text-ink-primary flex items-start gap-3 list-none">
                     <span className="text-brand-400 font-bold shrink-0">Q.</span>
                     <span className="flex-1">{f.q}</span>
