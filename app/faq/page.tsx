@@ -30,6 +30,7 @@ export default function FAQPage() {
             {CATS.map((c) => (
               <button
                 key={c}
+                type="button"
                 onClick={() => {
                   setActiveCat(c);
                   setOpenIdx(null);
@@ -60,7 +61,10 @@ export default function FAQPage() {
                 } transition-all`}
               >
                 <button
+                  type="button"
                   onClick={() => setOpenIdx(openIdx === i ? null : i)}
+                  aria-expanded={openIdx === i}
+                  aria-controls={`faq-answer-${i}`}
                   className="w-full text-left p-5 md:p-6 flex items-start gap-4"
                 >
                   <span className="text-brand-400 font-bold text-xl shrink-0">Q.</span>
@@ -76,7 +80,11 @@ export default function FAQPage() {
                   </span>
                 </button>
                 {openIdx === i && (
-                  <div className="px-5 md:px-6 pb-5 md:pb-6 pl-12 md:pl-14 -mt-2">
+                  <div
+                    id={`faq-answer-${i}`}
+                    role="region"
+                    className="px-5 md:px-6 pb-5 md:pb-6 pl-12 md:pl-14 -mt-2"
+                  >
                     <div className="bg-brand-50 p-4 md:p-5 flex items-start gap-3">
                       <span className="text-brand-400 font-bold shrink-0">A.</span>
                       <p className="text-ink-secondary leading-relaxed">{f.a}</p>

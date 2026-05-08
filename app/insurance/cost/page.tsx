@@ -96,6 +96,7 @@ export default function CostPage() {
                 {Object.keys(MONTHLY_LIMITS).map((g) => (
                   <button
                     key={g}
+                    type="button"
                     onClick={() => setGrade(g)}
                     className={`py-3 text-sm font-semibold transition-colors ${
                       grade === g

@@ -32,6 +32,7 @@ export default function NoticePage() {
             style={{ borderRadius: '2px' }}
           />
           <button
+            type="button"
             className="bg-brand-400 hover:bg-brand-500 text-white px-5 py-2.5 text-sm font-semibold transition-colors"
             style={{ borderRadius: '2px' }}
           >
@@ -92,6 +93,8 @@ export default function NoticePage() {
             {[1, 2, 3].map((p) => (
               <button
                 key={p}
+                type="button"
+                aria-label={`${p} 페이지`}
                 className={`w-9 h-9 text-sm transition-colors ${
                   p === 1
                     ? 'bg-brand-400 text-white'
