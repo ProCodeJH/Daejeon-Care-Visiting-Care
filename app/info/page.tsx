@@ -86,6 +86,7 @@ export default function InfoPage() {
             sub="공단·복지서비스 등 외부 사이트 안내"
             className="mb-12"
           />
+          {/* Wave 411: aria-label로 "외부 사이트 새 창" 사전 안내 (WCAG G201) */}
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {RESOURCES.map((r, i) => (
               <a
@@ -93,6 +94,7 @@ export default function InfoPage() {
                 href={r.href}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={`${r.title} 외부 사이트 새 창에서 열기`}
                 className="bg-white p-6 hover:shadow-md transition-shadow border border-gray-100 hover:border-brand-400"
               >
                 <p className="font-bold text-ink-primary mb-1">{r.title}</p>
