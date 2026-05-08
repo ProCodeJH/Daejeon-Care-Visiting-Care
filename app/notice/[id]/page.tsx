@@ -43,30 +43,28 @@ export default async function NoticeDetailPage({
   return (
     <>
       <PageHero
-        title="공지사항"
-        sub="새로운 소식을 알려드립니다"
-        crumbs={[{ label: '고객센터' }, { label: '공지사항', href: '/notice' }]}
+        title={n.title}
+        sub={n.body.slice(0, 100).replace(/\s+/g, ' ').trim()}
+        crumbs={[
+          { label: '고객센터' },
+          { label: '공지사항', href: '/notice' },
+        ]}
       />
 
       <article className="bg-white py-16">
         <div className="max-w-[800px] mx-auto px-5">
           {/* 메타 */}
-          <div className="border-b border-gray-200 pb-6 mb-8">
+          <div className="border-b border-gray-200 pb-6 mb-8 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
             {n.pinned && (
-              <span className="inline-block bg-[#E63946] text-white text-xs font-bold px-2.5 py-1 mb-3" style={{ borderRadius: '2px' }}>
+              <span className="inline-block bg-[#E63946] text-white text-xs font-bold px-2.5 py-1" style={{ borderRadius: '2px' }}>
                 공지
               </span>
             )}
-            <h1 className="text-2xl md:text-3xl font-bold text-ink-primary leading-snug mb-4" style={{ textWrap: 'balance' as const }}>
-              {n.title}
-            </h1>
-            <div className="flex flex-wrap items-center gap-x-5 gap-y-1 text-sm text-ink-muted">
-              <span>{n.author}</span>
-              <span>·</span>
-              <time dateTime={n.date}>{n.date}</time>
-              <span>·</span>
-              <span>조회 {n.views}</span>
-            </div>
+            <span className="text-ink-muted">{n.author}</span>
+            <span className="text-ink-muted">·</span>
+            <time dateTime={n.date} className="text-ink-muted">{n.date}</time>
+            <span className="text-ink-muted">·</span>
+            <span className="text-ink-muted">조회 {n.views}</span>
           </div>
 
           {/* 본문 */}

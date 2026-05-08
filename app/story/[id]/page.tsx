@@ -43,19 +43,22 @@ export default async function StoryDetailPage({
   return (
     <>
       <PageHero
-        title="대전케어 이야기"
-        sub="현장에서 만난 따뜻한 순간"
-        crumbs={[{ label: '노인정보' }, { label: '대전케어 이야기', href: '/story' }]}
+        title={s.title}
+        sub={s.excerpt}
+        crumbs={[
+          { label: '노인정보' },
+          { label: '대전케어 이야기', href: '/story' },
+        ]}
       />
 
       <article className="bg-white py-16">
         <div className="max-w-[800px] mx-auto px-5">
-          <div className="mb-8">
-            <p className="text-xs text-brand-600 font-semibold tracking-[0.2em] mb-3">{s.cat.toUpperCase()}</p>
-            <h1 className="text-2xl md:text-3xl font-bold text-ink-primary leading-snug mb-4" style={{ textWrap: 'balance' as const }}>
-              {s.title}
-            </h1>
-            <time dateTime={s.date} className="text-sm text-ink-muted">{s.date}</time>
+          <div className="mb-8 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
+            <p className="text-xs text-brand-600 font-semibold tracking-[0.2em]">
+              {s.cat.toUpperCase()}
+            </p>
+            <span className="text-ink-muted">·</span>
+            <time dateTime={s.date} className="text-ink-muted">{s.date}</time>
           </div>
 
           {/* 썸네일 자리 (저작권 0 gradient) */}
