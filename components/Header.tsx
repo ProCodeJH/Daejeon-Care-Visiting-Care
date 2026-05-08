@@ -102,7 +102,12 @@ export function Header() {
             <span className="inline-flex w-5 h-5 rounded-full bg-[#E63946] grid place-items-center text-[10px]">♥</span>
             <span className="font-medium">{CONTACT.available}</span>
           </p>
-          <a href={CONTACT.phoneTel} className="font-bold hover:text-[#FFD166] transition-colors">
+          {/* Wave 409: 24h 띠 phone CTA aria-label */}
+          <a
+            href={CONTACT.phoneTel}
+            aria-label={`전화 걸기 대표번호 ${CONTACT.phone}`}
+            className="font-bold hover:text-[#FFD166] transition-colors"
+          >
             대표번호 {CONTACT.phone}
           </a>
         </div>
@@ -248,9 +253,11 @@ export function Header() {
                 )}
               </div>
             ))}
+            {/* Wave 409: 모바일 메뉴 phone CTA aria-label */}
             <a
               href={CONTACT.phoneTel}
               onClick={() => setOpen(false)}
+              aria-label={`전화 걸기 ${CONTACT.phone} (24시간 상담)`}
               className="mt-4 bg-[#E63946] text-white text-center py-4 font-bold flex items-center justify-center gap-2"
               style={{ borderRadius: '2px' }}
             >

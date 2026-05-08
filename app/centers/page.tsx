@@ -87,8 +87,10 @@ export default function CentersPage() {
                     ))}
                   </ul>
 
+                  {/* Wave 409: aria-label — 지점별 phone 의도 명확 */}
                   <a
                     href={CONTACT.phoneTel}
+                    aria-label={`${c.shortName} 지점 상담 전화 걸기 ${CONTACT.phone}`}
                     className="flex items-center justify-center gap-2 bg-[#1B6F4A] hover:bg-[#15573A] text-white py-2.5 font-semibold transition-colors text-sm"
                     style={{ borderRadius: '2px' }}
                   >
