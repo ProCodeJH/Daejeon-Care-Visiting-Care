@@ -26,9 +26,10 @@ type FormState = {
 
 export default function JobApplyPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [restored, setRestored] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
 
-  // 복원 (mount): localStorage → form fields
+  // 복원 (mount): localStorage → form fields. 복원 성공 시 banner 표시 (Wave 380).
   useEffect(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
@@ -63,10 +64,22 @@ export default function JobApplyPage() {
       setChecks('region', data.region);
       setChecks('availability', data.availability);
       setText('message', data.message);
+      // 실제 데이터가 로드되었음을 banner 표시 (빈 객체 저장된 경우 회피)
+      const hasData = Object.values(data).some((v) => (Array.isArray(v) ? v.length > 0 : !!v));
+      if (hasData) setRestored(true);
     } catch {
       // localStorage 비활성/파싱 실패 시 무시
     }
   }, []);
+
+  // 새로 시작 (Wave 380): localStorage 삭제 + form 리셋 + banner 닫기
+  const handleReset = () => {
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+      formRef.current?.reset();
+      setRestored(false);
+    } catch {}
+  };
 
   // 저장 (change): form FormData → localStorage. privacy 제외 (PIPA).
   const handleChange = useCallback(() => {
@@ -188,6 +201,25 @@ export default function JobApplyPage() {
                 onChange={handleChange}
                 className="space-y-5"
               >
+                {/* Wave 380: 복원 안내 banner — 이전 작성 내용 자동 불러옴을 명시 + 새로 시작 옵션 */}
+                {restored && (
+                  <div
+                    role="status"
+                    className="bg-brand-50 border-l-4 border-brand-400 p-4 -mt-2 flex flex-wrap items-center justify-between gap-3"
+                  >
+                    <p className="text-sm text-brand-700 flex items-center gap-2">
+                      <span aria-hidden="true">✓</span>
+                      이전에 작성하신 내용을 불러왔습니다.
+                    </p>
+                    <button
+                      type="button"
+                      onClick={handleReset}
+                      className="text-xs text-ink-muted hover:text-ink-primary underline"
+                    >
+                      새로 시작
+                    </button>
+                  </div>
+                )}
                 {/* Wave 375: 자동 저장 안내 — feature dark matter 회피, 사용자 신뢰 보강 */}
                 <p className="text-xs text-ink-muted flex items-center gap-2 -mt-2 mb-1">
                   <span aria-hidden="true" className="w-5 h-5 grid place-items-center bg-brand-50 text-brand-600 text-[11px] shrink-0" style={{ borderRadius: '999px' }}>
