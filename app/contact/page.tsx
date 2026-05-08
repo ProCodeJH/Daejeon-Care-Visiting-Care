@@ -63,7 +63,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <p className="font-semibold text-ink-primary mb-0.5">주소</p>
-                  <p className="text-sm">대전광역시 [구] [동] [도로명주소], [건물명] [층호]</p>
+                  <p className="text-sm">{CONTACT.address}</p>
                 </div>
               </div>
             </div>
