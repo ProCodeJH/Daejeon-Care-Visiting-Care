@@ -28,8 +28,7 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: 'lh3.googleusercontent.com' },
       { protocol: 'https', hostname: 'images.unsplash.com' },
       // cdn.imweb.me 제거 (저작권 회피, Wave 10)
-      { protocol: 'https', hostname: 'i.ytimg.com' },
-      { protocol: 'https', hostname: 'img.youtube.com' },
+      // YouTube 도메인 제거 (Wave 21 video embed 제거 후 미사용, Wave 139 cleanup)
     ],
   },
   async headers() {

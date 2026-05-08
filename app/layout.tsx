@@ -91,10 +91,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang={SITE.lang}>
       <head>
-        {/* preconnect — 외부 자산 빠른 로딩 (LCP 개선) */}
+        {/* preconnect — Pretendard CDN (font LCP 개선) */}
         <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://www.youtube.com" />
-        <link rel="dns-prefetch" href="https://i.ytimg.com" />
 
         {/* Pretendard Variable preload (font-display: swap 자동) */}
         <link
