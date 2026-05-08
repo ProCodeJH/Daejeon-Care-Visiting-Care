@@ -158,8 +158,9 @@ export default function GradePage() {
                 <span><strong>대리신청</strong>: 가족·이해관계인이 위임장으로 대리 신청</span>
               </li>
             </ul>
+            {/* Wave 486: emoji aria-hidden (paradigm 16 saturation) */}
             <p className="mt-5 text-sm text-ink-secondary bg-white p-4 border border-brand-200">
-              💡 대전케어가 신청서 작성부터 결과 통보까지 <strong className="text-brand-400">전 과정 동행</strong>합니다.
+              <span aria-hidden="true">💡</span> 대전케어가 신청서 작성부터 결과 통보까지 <strong className="text-brand-400">전 과정 동행</strong>합니다.
             </p>
           </div>
         </div>

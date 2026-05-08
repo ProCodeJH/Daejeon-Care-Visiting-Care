@@ -67,8 +67,9 @@ export default function InfoPage() {
                   </div>
                   <h3 className="text-lg font-bold text-ink-primary mb-2">{t.title}</h3>
                   <p className="text-sm text-ink-secondary leading-relaxed mb-3">{t.desc}</p>
+                  {/* Wave 486: emoji aria-hidden (paradigm 16 saturation) */}
                   <p className="text-xs text-ink-muted">
-                    📞 자세한 안내는 <a href={CONTACT.phoneTel} className="font-bold text-brand-600 hover:underline">상담 {CONTACT.phone}</a>
+                    <span aria-hidden="true">📞</span> 자세한 안내는 <a href={CONTACT.phoneTel} className="font-bold text-brand-600 hover:underline">상담 {CONTACT.phone}</a>
                   </p>
                 </article>
               </Reveal>
