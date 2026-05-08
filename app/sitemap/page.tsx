@@ -97,7 +97,7 @@ export default function SitemapPage() {
                         href={p.href}
                         className="text-sm text-ink-secondary hover:text-brand-600 transition-colors flex items-center gap-1.5"
                       >
-                        <span className="text-brand-400">›</span>
+                        <span aria-hidden="true" className="text-brand-400">›</span>
                         {p.label}
                       </Link>
                     </li>
@@ -122,7 +122,7 @@ export default function SitemapPage() {
                     href={`/notice/${n.id}`}
                     className="text-sm text-ink-secondary hover:text-brand-600 transition-colors line-clamp-1"
                   >
-                    <span className="text-brand-400 mr-1.5">›</span>
+                    <span aria-hidden="true" className="text-brand-400 mr-1.5">›</span>
                     {n.title}
                   </Link>
                 </li>
@@ -139,7 +139,7 @@ export default function SitemapPage() {
                     href={`/story/${s.id}`}
                     className="text-sm text-ink-secondary hover:text-brand-600 transition-colors line-clamp-1"
                   >
-                    <span className="text-brand-400 mr-1.5">›</span>
+                    <span aria-hidden="true" className="text-brand-400 mr-1.5">›</span>
                     {s.title}
                   </Link>
                 </li>
