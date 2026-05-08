@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { PageHero } from '@/components/PageHero';
 import { CTASection } from '@/components/CTASection';
 import { FaqJsonLd } from '@/components/FaqJsonLd';
@@ -12,6 +12,28 @@ const CATS = ['전체', '신청', '서비스', '비용'];
 export default function FAQPage() {
   const [activeCat, setActiveCat] = useState('전체');
   const [openIdx, setOpenIdx] = useState<number | null>(0);
+
+  // Wave 369: URL deep-link — 카테고리 필터 공유 시 받는 사람도 동일 필터 적용.
+  // 전체 = clean URL, 다른 카테고리 = ?cat=비용 등.
+  useEffect(() => {
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlCat = urlParams.get('cat');
+      if (urlCat && CATS.includes(urlCat)) {
+        setActiveCat(urlCat);
+      }
+    } catch {}
+  }, []);
+
+  useEffect(() => {
+    try {
+      const newUrl =
+        activeCat === '전체'
+          ? window.location.pathname
+          : `${window.location.pathname}?cat=${encodeURIComponent(activeCat)}`;
+      window.history.replaceState(null, '', newUrl);
+    } catch {}
+  }, [activeCat]);
 
   const filtered = activeCat === '전체' ? FAQS : FAQS.filter((f) => f.cat === activeCat);
 
