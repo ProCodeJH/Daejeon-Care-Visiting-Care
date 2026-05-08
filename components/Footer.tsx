@@ -91,7 +91,7 @@ export function Footer() {
                 key={s.label}
                 href={s.url}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 aria-label={s.label}
                 className="w-9 h-9 grid place-items-center bg-gray-50 hover:bg-[#1B6F4A] text-ink-secondary hover:text-white transition-colors"
                 style={{ borderRadius: '999px' }}

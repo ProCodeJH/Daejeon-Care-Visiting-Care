@@ -18,9 +18,9 @@ const TOPICS: Topic[] = [
 
 const RESOURCES = [
   { title: '국민건강보험공단', sub: '장기요양보험 신청', href: 'https://www.nhis.or.kr' },
-  { title: '실버용품 쇼핑몰', sub: '복지용구 구입', href: '#' },
-  { title: '요양기관 검색', sub: '전국 요양기관 정보', href: '#' },
-  { title: '복지 서비스', sub: '대전시 어르신 복지', href: '#' },
+  { title: '노인장기요양보험', sub: '공식 안내 + 등급 신청', href: 'https://www.longtermcare.or.kr' },
+  { title: '대전광역시청', sub: '대전시 어르신 복지', href: 'https://www.daejeon.go.kr' },
+  { title: '복지로', sub: '국가 복지 서비스 통합', href: 'https://www.bokjiro.go.kr' },
 ];
 
 export default function InfoPage() {
@@ -78,7 +78,7 @@ export default function InfoPage() {
                 key={i}
                 href={r.href}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="bg-white p-6 hover:shadow-md transition-shadow border border-gray-100 hover:border-brand-400"
               >
                 <p className="font-bold text-ink-primary mb-1">{r.title}</p>
