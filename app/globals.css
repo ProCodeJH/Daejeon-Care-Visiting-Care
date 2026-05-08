@@ -19,6 +19,9 @@
     /* text-wrap pretty/balance 한국어 */
     word-break: keep-all;
     overflow-wrap: anywhere;
+    /* Wave 288: scrollbar-gutter stable — scrollbar 등장/사라짐 시 layout shift 회피 (CLS 보호).
+     * desktop only 영향 (모바일 scrollbar overlay). FAQ accordion / Stories 등 동적 콘텐츠 안전. */
+    scrollbar-gutter: stable;
   }
 
   body {
