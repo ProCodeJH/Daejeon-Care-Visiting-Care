@@ -1,6 +1,6 @@
 # STATUS — 대전케어 방문요양센터
 
-**Updated**: 2026-05-09 / Wave 529 / paradigm 18 chain 177-wave (광맥 #312 catch! notices.ts CONTACT.phone derived 4건 — 27 wave saturation 끝 paradigm 16 self-audit 36)
+**Updated**: 2026-05-09 / Wave 530 / paradigm 18 chain 178-wave (광맥 #312 fix end-to-end 검증 — type-check 144 + build success + 25+ routes static SSG)
 
 > 1쪽 handoff. 자현 5분 결정 진입점.
 
