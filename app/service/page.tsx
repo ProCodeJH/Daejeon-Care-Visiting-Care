@@ -114,6 +114,39 @@ export default function ServicePage() {
         </div>
       </section>
 
+      {/* 다음 단계 추천 (cross-page navigation) */}
+      <section className="bg-white py-16">
+        <div className="max-w-[1000px] mx-auto px-5">
+          <SectionBlock eyebrow="NEXT STEP" title="다음 단계" sub="서비스 시작 전 알아두면 좋은 정보" className="mb-10" />
+          <div className="grid md:grid-cols-2 gap-5">
+            <a
+              href="/process"
+              className="group bg-[#f8f8f8] hover:bg-brand-50 p-7 transition-colors block border-l-4 border-brand-600"
+            >
+              <p className="text-xs text-brand-600 font-bold tracking-[0.15em] mb-2">STEP</p>
+              <h3 className="text-lg font-bold text-ink-primary mb-2 group-hover:text-brand-600 transition-colors">
+                서비스 이용 절차 →
+              </h3>
+              <p className="text-sm text-ink-secondary leading-relaxed">
+                장기요양인정서 수령부터 서비스 시작까지 6단계 절차를 자세히 안내합니다.
+              </p>
+            </a>
+            <a
+              href="/insurance/cost"
+              className="group bg-[#f8f8f8] hover:bg-brand-50 p-7 transition-colors block border-l-4 border-[#1B6F4A]"
+            >
+              <p className="text-xs text-[#1B6F4A] font-bold tracking-[0.15em] mb-2">CALCULATOR</p>
+              <h3 className="text-lg font-bold text-ink-primary mb-2 group-hover:text-[#1B6F4A] transition-colors">
+                본인부담금 계산기 →
+              </h3>
+              <p className="text-sm text-ink-secondary leading-relaxed">
+                등급과 본인부담률에 따른 월 본인부담액을 즉시 확인하세요.
+              </p>
+            </a>
+          </div>
+        </div>
+      </section>
+
       <CTASection />
     </>
   );
