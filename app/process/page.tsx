@@ -1,6 +1,7 @@
 import { PageHero } from '@/components/PageHero';
 import { SectionBlock } from '@/components/SectionBlock';
 import { CTASection } from '@/components/CTASection';
+import { Reveal } from '@/components/Reveal';
 
 const STEPS = [
   {
@@ -61,17 +62,23 @@ export default function ProcessPage() {
             className="mb-12"
           />
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {STEPS.map((s) => (
-              <div key={s.num} className="bg-[#f8f8f8] p-7 hover:bg-brand-50 transition-colors group">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 bg-brand-400 group-hover:bg-brand-500 grid place-items-center text-white font-bold transition-colors" style={{ borderRadius: '2px' }}>
-                    {s.num}
+            {STEPS.map((s, i) => (
+              <Reveal key={s.num} delay={i * 0.1}>
+                <div className="bg-[#f8f8f8] p-7 hover:bg-brand-50 transition-colors group h-full relative">
+                  {/* 연결 선 (다음 카드로) */}
+                  {i < STEPS.length - 1 && i % 3 !== 2 && (
+                    <span aria-hidden="true" className="hidden lg:block absolute top-12 -right-3 text-brand-400 font-bold text-xl opacity-50">→</span>
+                  )}
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 bg-brand-600 group-hover:bg-brand-700 grid place-items-center text-white font-bold transition-colors" style={{ borderRadius: '2px' }}>
+                      {s.num}
+                    </div>
+                    <p className="text-xs text-brand-600 font-semibold tracking-[0.15em]">STEP</p>
                   </div>
-                  <p className="text-xs text-brand-400 font-semibold tracking-[0.15em]">STEP</p>
+                  <h3 className="text-lg font-bold text-ink-primary mb-2 leading-snug">{s.title}</h3>
+                  <p className="text-sm text-ink-secondary leading-relaxed">{s.desc}</p>
                 </div>
-                <h3 className="text-lg font-bold text-ink-primary mb-2 leading-snug">{s.title}</h3>
-                <p className="text-sm text-ink-secondary leading-relaxed">{s.desc}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
