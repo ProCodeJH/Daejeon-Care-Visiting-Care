@@ -6,15 +6,16 @@
 
 ---
 
-## ✅ Vercel deploy 회복 (Wave 145 → Wave 147)
+## ⚠️ Vercel webhook 영구 막힘 — 자현 manual 액션 필요
 
-**Wave 138-146 사이 Vercel webhook 지연 발생 → Wave 145 empty trigger commit 후 자동 회복**:
-- 마지막 production deploy 갱신: Wave 138 → **Wave 146** (BUILDING → READY 곧 완료)
-- Wave 139-146 모든 변경 (Hero 5장 이미지 + dead asset cleanup × 3 + brand single source 등) **한 번에 자동 적용**
-- rate limit 아니었음 (webhook 지연만)
-- 자현 dashboard 확인 불필요 (이미 회복)
+**증상**: Wave 146 deploy 이후 5+ commit (Wave 147-155 trigger × 3) 모두 webhook 미작동.
+**자현 priority Wave 148 (overlay 제거) production 미반영**.
 
-**learning**: 자율 chain 빠른 push 시 Vercel webhook 가끔 missed. empty commit (`git commit --allow-empty`)으로 즉시 재트리거 가능 — 향후 동일 상황에서 재사용 paradigm.
+**자현 1분 액션** (둘 중 하나):
+1. **Manual Redeploy**: https://vercel.com/gujahyeons-projects/web-v3/deployments → 최신 commit `20ffc9a` 옆 ⋯ → "Redeploy"
+2. **GitHub 재연결** (영구 fix): https://vercel.com/gujahyeons-projects/web-v3/settings/git → "Reconnect with GitHub"
+
+**자율 chain stand-by**: push 추가 자제 (큐 적체 방지). 자현 manual deploy 후 chain 정상 재개.
 
 ---
 
