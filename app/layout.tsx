@@ -8,6 +8,7 @@ import { ScrollProgress } from '@/components/ScrollProgress';
 import { WebVitals } from '@/components/WebVitals';
 import { StructuredData } from '@/components/StructuredData';
 import { FloatingCallButton } from '@/components/FloatingCallButton';
+import { ScrollToTop } from '@/components/ScrollToTop';
 
 const SITE = 'https://대전케어방문요양.kr';
 
@@ -83,12 +84,19 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ko">
       <head>
-        {/* DNS prefetch + preconnect — 외부 자산 빠른 로딩 */}
-        <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+        {/* preconnect — 외부 자산 빠른 로딩 (LCP 개선) */}
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.youtube.com" />
         <link rel="dns-prefetch" href="https://i.ytimg.com" />
-        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
-        {/* speculation rules — 메인 nav 페이지 prerender */}
+
+        {/* Pretendard Variable preload (font-display: swap 자동) */}
+        <link
+          rel="preload"
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css"
+          as="style"
+        />
+
+        {/* speculation rules — 핵심 nav 8 페이지 prerender (즉시 응답) */}
         <script
           type="speculationrules"
           dangerouslySetInnerHTML={{
@@ -96,7 +104,23 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               prerender: [
                 {
                   source: 'list',
-                  urls: ['/about', '/service', '/contact', '/insurance', '/faq'],
+                  urls: [
+                    '/about',
+                    '/service',
+                    '/contact',
+                    '/insurance',
+                    '/insurance/cost',
+                    '/centers',
+                    '/faq',
+                    '/jobs',
+                  ],
+                },
+              ],
+              prefetch: [
+                {
+                  source: 'document',
+                  where: { href_matches: '/*' },
+                  eagerness: 'moderate',
                 },
               ],
             }),
@@ -117,6 +141,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <WebVitals />
         <Header />
         <main id="main-content">{children}</main>
+        <ScrollToTop />
         <FloatingCallButton />
         <Footer />
       </body>
