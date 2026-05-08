@@ -39,8 +39,9 @@ export function AnimatedNumber({
     return () => controls.stop();
   }, [value, duration, motionValue]);
 
+  // Wave 497: aria-atomic="true" — number animate 시 부분 발음 회피, 전체 새 값 announce (faq/notice/story 일관)
   return (
-    <span aria-live="polite">
+    <span aria-live="polite" aria-atomic="true">
       {prefix}
       {display}
       {suffix}
