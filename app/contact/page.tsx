@@ -1,12 +1,70 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { PageHero } from '@/components/PageHero';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 import { CONTACT } from '@/lib/contact';
 
+const STORAGE_KEY = 'daejeon-care:contact';
+
+/**
+ * Wave 375: form autosave (Wave 374 saturation pass).
+ * /contact 4 fields × privacy 제외 (PIPA).
+ */
+type ContactForm = {
+  name?: string;
+  tel?: string;
+  category?: string;
+  message?: string;
+};
+
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  // 복원
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (!saved) return;
+      const data: ContactForm = JSON.parse(saved);
+      const form = formRef.current;
+      if (!form) return;
+      const setVal = (name: string, value?: string) => {
+        if (!value) return;
+        const el = form.elements.namedItem(name) as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement | null;
+        if (el && 'value' in el) el.value = value;
+      };
+      setVal('name', data.name);
+      setVal('tel', data.tel);
+      setVal('category', data.category);
+      setVal('message', data.message);
+    } catch {}
+  }, []);
+
+  // 저장 (privacy 제외 — PIPA)
+  const handleChange = useCallback(() => {
+    try {
+      const form = formRef.current;
+      if (!form) return;
+      const fd = new FormData(form);
+      const state: ContactForm = {
+        name: (fd.get('name') as string) || undefined,
+        tel: (fd.get('tel') as string) || undefined,
+        category: (fd.get('category') as string) || undefined,
+        message: (fd.get('message') as string) || undefined,
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    } catch {}
+  }, []);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSubmitted(true);
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch {}
+  };
 
   return (
     <>
@@ -99,12 +157,18 @@ export default function ContactPage() {
               </div>
             ) : (
               <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  setSubmitted(true);
-                }}
+                ref={formRef}
+                onSubmit={handleSubmit}
+                onChange={handleChange}
                 className="space-y-4"
               >
+                {/* Wave 375: 자동 저장 안내 (Wave 374 패턴 saturation pass) */}
+                <p className="text-xs text-ink-muted flex items-center gap-2 -mt-1">
+                  <span aria-hidden="true" className="w-5 h-5 grid place-items-center bg-brand-50 text-brand-600 text-[11px] shrink-0" style={{ borderRadius: '999px' }}>
+                    💾
+                  </span>
+                  입력 내용은 자동 저장됩니다.
+                </p>
                 <div>
                   <label htmlFor="contact-name" className="block text-sm font-semibold text-ink-primary mb-1.5">
                     이름 <span aria-hidden="true" className="text-brand-400">*</span>

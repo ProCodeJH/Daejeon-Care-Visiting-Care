@@ -188,6 +188,13 @@ export default function JobApplyPage() {
                 onChange={handleChange}
                 className="space-y-5"
               >
+                {/* Wave 375: 자동 저장 안내 — feature dark matter 회피, 사용자 신뢰 보강 */}
+                <p className="text-xs text-ink-muted flex items-center gap-2 -mt-2 mb-1">
+                  <span aria-hidden="true" className="w-5 h-5 grid place-items-center bg-brand-50 text-brand-600 text-[11px] shrink-0" style={{ borderRadius: '999px' }}>
+                    💾
+                  </span>
+                  입력하신 내용은 자동 저장됩니다. 실수로 페이지를 닫아도 안심하세요.
+                </p>
                 <div className="grid md:grid-cols-2 gap-5">
                   <div>
                     <label htmlFor="apply-name" className="block text-sm font-bold text-ink-primary mb-1.5">
