@@ -24,6 +24,7 @@ export async function generateMetadata({
   if (!n) return { title: '공지사항' };
   const description = n.body.slice(0, 140).replace(/\s+/g, ' ').trim();
   // Wave 427: authors metadata + openGraph article authors
+  // Wave 428: twitter card + openGraph article section (cross-platform share quality)
   return {
     title: n.title,
     description,
@@ -35,6 +36,12 @@ export async function generateMetadata({
       type: 'article',
       publishedTime: n.date,
       authors: [n.author],
+      section: '공지사항',
+    },
+    twitter: {
+      card: 'summary',
+      title: n.title,
+      description,
     },
   };
 }

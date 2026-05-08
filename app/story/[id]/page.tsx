@@ -23,6 +23,7 @@ export async function generateMetadata({
   const s = STORIES.find((s) => s.id === Number(id));
   if (!s) return { title: '대전케어 이야기' };
   // Wave 426: per-story openGraph image (thumbnail 있으면 사용, 없으면 default OG)
+  // Wave 428: twitter card + openGraph article section/tags (cross-platform share quality)
   return {
     title: s.title,
     description: s.excerpt,
@@ -32,7 +33,15 @@ export async function generateMetadata({
       description: s.excerpt,
       type: 'article',
       publishedTime: s.date,
+      section: s.cat,
+      tags: [s.cat],
       ...(s.thumbnail && { images: [{ url: s.thumbnail, alt: s.title }] }),
+    },
+    twitter: {
+      card: s.thumbnail ? 'summary_large_image' : 'summary',
+      title: s.title,
+      description: s.excerpt,
+      ...(s.thumbnail && { images: [s.thumbnail] }),
     },
   };
 }
