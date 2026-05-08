@@ -1,6 +1,6 @@
 # STATUS — 대전케어 방문요양센터
 
-**Updated**: 2026-05-09 / Wave 542 / paradigm 18 chain 190-wave (cleanup audit saturated — notice debounce ✓ + contact/jobs/apply setTimeout DOM-only no-React-state ✓)
+**Updated**: 2026-05-09 / Wave 543 / paradigm 18 chain 191-wave (error boundary audit saturated — error.tsx + global-error.tsx digest logging + role=alert + head meta full set ✓)
 
 > 1쪽 handoff. 자현 5분 결정 진입점.
 
