@@ -94,7 +94,7 @@ export default function Home() {
       <section className="bg-white py-20 md:py-28">
         <div className="max-w-[1200px] mx-auto px-5">
           <div className="text-center mb-12">
-            <p className="text-brand-400 font-semibold tracking-[0.2em] text-sm mb-4">| ABOUT</p>
+            <p lang="en" className="text-brand-400 font-semibold tracking-[0.2em] text-sm mb-4">| ABOUT</p>
             <h2 className="text-2xl md:text-4xl font-bold text-ink-primary mb-5 leading-snug">
               집으로 찾아가는 또 다른 가족,
               <br />
@@ -131,7 +131,7 @@ export default function Home() {
       <section className="bg-[#f8f8f8] py-20">
         <div className="max-w-[1200px] mx-auto px-5">
           <div className="text-center mb-10">
-            <p className="text-brand-400 font-semibold tracking-[0.2em] text-sm mb-3">| VIDEO</p>
+            <p lang="en" className="text-brand-400 font-semibold tracking-[0.2em] text-sm mb-3">| VIDEO</p>
             <h2 className="text-2xl md:text-3xl font-bold text-ink-primary">
               영상으로 보는 대전케어
             </h2>
@@ -184,7 +184,7 @@ export default function Home() {
       {/* 4. Story — "생생한 대전케어 이야기" (215px, white) */}
       <section className="bg-white pt-20 pb-10">
         <div className="max-w-[1200px] mx-auto px-5 text-center">
-          <p className="text-brand-400 font-semibold tracking-[0.2em] text-sm mb-3">| STORY</p>
+          <p lang="en" className="text-brand-400 font-semibold tracking-[0.2em] text-sm mb-3">| STORY</p>
           <h2 className="text-2xl md:text-4xl font-bold text-ink-primary mb-3">
             생생한 대전케어 이야기
           </h2>
@@ -225,7 +225,7 @@ export default function Home() {
       <section className="bg-[#fefffd] py-20 cv-auto">
         <div className="max-w-[1200px] mx-auto px-5">
           <div className="text-center mb-12">
-            <p className="text-brand-400 font-semibold tracking-[0.2em] text-sm mb-3">| REVIEWS</p>
+            <p lang="en" className="text-brand-400 font-semibold tracking-[0.2em] text-sm mb-3">| REVIEWS</p>
             <h2 className="text-2xl md:text-4xl font-bold text-ink-primary leading-snug">
               대전케어를 찾아주신
               <br />
@@ -280,7 +280,7 @@ export default function Home() {
       <section className="bg-white py-20 cv-auto">
         <div className="max-w-[1200px] mx-auto px-5">
           <div className="text-center mb-10">
-            <p className="text-brand-400 font-semibold tracking-[0.2em] text-sm mb-3">| BLOG</p>
+            <p lang="en" className="text-brand-400 font-semibold tracking-[0.2em] text-sm mb-3">| BLOG</p>
             <h2 className="text-2xl md:text-3xl font-bold text-ink-primary">
               대전케어 이야기
             </h2>
@@ -311,7 +311,7 @@ export default function Home() {
       <section className="bg-[#f8f8f8] py-20 cv-auto">
         <div className="max-w-[1200px] mx-auto px-5">
           <div className="text-center mb-10">
-            <p className="text-brand-400 font-semibold tracking-[0.2em] text-sm mb-3">| FAQ</p>
+            <p lang="en" className="text-brand-400 font-semibold tracking-[0.2em] text-sm mb-3">| FAQ</p>
             <h2 className="text-2xl md:text-3xl font-bold text-ink-primary">
               자주 묻는 질문
             </h2>
