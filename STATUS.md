@@ -1,6 +1,6 @@
 # STATUS — 대전케어 방문요양센터
 
-**Updated**: 2026-05-09 / Wave 499 / paradigm 18 chain 147-wave (Wave 500 임박 — paradigm 17 자연 termination 영역)
+**Updated**: 2026-05-09 / **Wave 500 milestone 🎉** / paradigm 18 chain 149-wave (paradigm 17 honest termination 자연 도달)
 
 > 1쪽 handoff. 자현 5분 결정 진입점.
 
