@@ -6,6 +6,7 @@ import { SectionBlock } from '@/components/SectionBlock';
 import { CTASection } from '@/components/CTASection';
 import { AnimatedNumber } from '@/components/AnimatedNumber';
 import { ShareButton } from '@/components/ShareButton';
+import { SpeakButton } from '@/components/SpeakButton';
 import { CONTACT } from '@/lib/contact';
 
 /**
@@ -213,11 +214,17 @@ export default function CostPage() {
               정확한 금액은 국민건강보험공단 또는 대전케어 상담을 통해 확인하세요.
             </small>
 
-            {/* 결과 공유/인쇄 — 가족 단톡 + 손에 들고 비교 use case (인쇄 시 자체 숨김) */}
+            {/* Wave 379: 결과 음성 안내 + 공유/인쇄 (Wave 378 패턴 saturation pass).
+                어르신이 "월 본인부담 X원" 직접 듣고 가족 결정 즉시. 인쇄 시 자체 숨김. */}
             <div className="mt-6 pt-5 border-t border-brand-200 flex flex-wrap items-center gap-3 print:hidden">
               <span className="text-xs text-ink-muted font-semibold tracking-[0.15em]">
-                | 가족과 공유
+                | 음성 듣기 / 가족과 공유
               </span>
+              <SpeakButton
+                text={`장기요양 ${
+                  grade === '인지' ? '인지지원등급' : `${grade}등급`
+                } ${RATES[rateKey].label} 적용 시. 월 한도액은 ${fmt(result.limit)}이고, 본인 부담금은 ${(result.rate * 100).toFixed(0)}퍼센트 적용 ${fmt(result.userPay)}, 공단 부담은 ${fmt(result.govPay)}입니다.`}
+              />
               <ShareButton
                 title="대전케어 본인부담금 계산 결과"
                 text={`장기요양 ${

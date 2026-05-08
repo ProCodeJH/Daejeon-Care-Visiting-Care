@@ -6,6 +6,7 @@ import { NOTICES } from '@/content/notices';
 import { PageHero } from '@/components/PageHero';
 import { CTASection } from '@/components/CTASection';
 import { ShareButton } from '@/components/ShareButton';
+import { SpeakButton } from '@/components/SpeakButton';
 import { ArticleJsonLd } from '@/components/ArticleJsonLd';
 import { CONTACT } from '@/lib/contact';
 
@@ -93,9 +94,10 @@ export default async function NoticeDetailPage({
             {n.body}
           </div>
 
-          {/* 공유 (모바일 = 네이티브 share sheet · KakaoTalk 단톡 즉시 공유) */}
-          <div className="mt-10 pt-6 border-t border-gray-100 flex items-center gap-3">
-            <span className="text-xs text-ink-muted font-semibold tracking-[0.15em]">| SHARE</span>
+          {/* Wave 379: 음성 듣기 + 공유 (Wave 378 패턴 saturation pass) */}
+          <div className="mt-10 pt-6 border-t border-gray-100 flex flex-wrap items-center gap-3">
+            <span lang="en" className="text-xs text-ink-muted font-semibold tracking-[0.15em]">| LISTEN & SHARE</span>
+            <SpeakButton text={`${n.title}. ${n.body}`} />
             <ShareButton
               title={n.title}
               text={`${n.body.slice(0, 140).replace(/\s+/g, ' ').trim()}\n— ${CONTACT.name} ${CONTACT.phone}`}
