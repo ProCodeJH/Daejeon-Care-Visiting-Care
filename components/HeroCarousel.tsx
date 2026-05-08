@@ -147,10 +147,16 @@ export function HeroCarousel() {
       className="relative w-full h-[600px] md:h-[902px] overflow-hidden bg-black"
     >
       {/* gradient slides */}
+      {/* Wave 437: ARIA APG Carousel pattern — slide-level role/roledescription/label.
+       * carousel container (line 142)에 이미 aria-roledescription="carousel" → slide-level도 일치 필요.
+       * aria-label "N / M"으로 위치 정보 (screen reader 사용자가 어디 있는지 명확). */}
       <motion.div style={{ opacity: heroOpacity }} className="absolute inset-0">
         {SLIDES.map((s, i) => (
           <div
             key={i}
+            role="group"
+            aria-roledescription="slide"
+            aria-label={`${i + 1} / ${SLIDES.length}`}
             aria-hidden={idx !== i}
             className="absolute inset-0 transition-opacity duration-[1400ms] ease-out"
             style={{
