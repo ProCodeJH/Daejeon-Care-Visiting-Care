@@ -12,7 +12,7 @@ const BUSINESS_JSONLD = {
   '@type': 'MedicalBusiness',
   '@id': `${SITE}/#business`,
   name: CONTACT.name,
-  alternateName: '대전케어',
+  alternateName: CONTACT.brand,
   description:
     '대전 5구 통합 방문요양센터. 어르신 댁으로 직접 찾아가는 케어 — 방문요양·방문목욕·방문간호. 24시간 상담 가능.',
   url: SITE,
@@ -65,7 +65,7 @@ const BUSINESS_JSONLD = {
   serviceType: ['방문요양', '방문목욕', '방문간호', '장기요양 등급 신청 도움'],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
-    name: '대전케어 서비스',
+    name: `${CONTACT.brand} 서비스`,
     itemListElement: [
       {
         '@type': 'Offer',

@@ -9,7 +9,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     id: '/',
     name: CONTACT.name,
-    short_name: '대전케어',
+    short_name: CONTACT.brand,
     description: `대전 5구 통합 방문요양센터 · 24시간 상담 ${CONTACT.phone} · 어르신 댁으로 직접 찾아가는 케어`,
     start_url: '/',
     scope: '/',

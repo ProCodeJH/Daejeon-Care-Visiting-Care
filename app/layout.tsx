@@ -21,8 +21,8 @@ export const metadata: Metadata = {
   description: `대전 5구 통합 ${CONTACT.name}. 어르신 댁으로 직접 찾아가는 케어 — 방문요양·방문목욕·방문간호. 24시간 상담 가능 ${CONTACT.phone}.`,
   keywords: [
     '대전 방문요양',
-    '대전케어',
-    '방문요양센터',
+    CONTACT.brand,
+    CONTACT.service,
     '재가복지',
     '장기요양',
     '요양보호사',
@@ -79,7 +79,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
-    title: '대전케어',
+    title: CONTACT.brand,
   },
 };
 

@@ -1,6 +1,6 @@
 # STATUS — 대전케어 방문요양센터
 
-**Updated**: 2026-05-09 / Wave 535 / paradigm 18 chain 183-wave (광맥 #317 cascade saturation! Header + sitemap + story layout + story [id] 5 location 광역 catch)
+**Updated**: 2026-05-09 / Wave 536 / paradigm 18 chain 184-wave (광맥 #318 structural data brand! manifest short_name + appleWebApp.title + JSON-LD alternateName + service + keywords)
 
 > 1쪽 handoff. 자현 5분 결정 진입점.
 
