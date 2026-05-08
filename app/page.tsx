@@ -12,7 +12,11 @@ import { StatsCounter } from '@/components/StatsCounter';
  * BG 교차 (white / #f8f8f8 / #fefffd) + green accent #61B05A.
  */
 
-const VIDEO_ID = 'Q3ZFz0gEvOE'; // 두손누리 자체 video (자현이 daejeon-care YouTube ID로 swap)
+/**
+ * 자현이 daejeon-care 자체 YouTube 영상 추가 시 ID swap.
+ * 빈 문자열 = placeholder card 표시 (저작권 0).
+ */
+const VIDEO_ID = ''; // 예: 'abc123XYZ'
 
 const REVIEWS = [
   {
@@ -134,7 +138,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. Video Section — YouTube embed (594px, #f8f8f8) */}
+      {/* 3. Video Section — YouTube embed 또는 placeholder */}
       <section className="bg-[#f8f8f8] py-20">
         <div className="max-w-[1200px] mx-auto px-5">
           <div className="text-center mb-10">
@@ -143,15 +147,48 @@ export default function Home() {
               영상으로 보는 대전케어
             </h2>
           </div>
-          <div className="aspect-video max-w-4xl mx-auto bg-black overflow-hidden shadow-lg">
-            <iframe
-              className="w-full h-full"
-              src={`https://www.youtube.com/embed/${VIDEO_ID}`}
-              title="대전케어 소개 영상"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </div>
+          {VIDEO_ID ? (
+            <div className="aspect-video max-w-4xl mx-auto bg-black overflow-hidden shadow-lg">
+              <iframe
+                className="w-full h-full"
+                src={`https://www.youtube.com/embed/${VIDEO_ID}`}
+                title="대전케어 소개 영상"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          ) : (
+            // placeholder — 자현이 자체 영상 ID 추가 시 자동 iframe
+            <div
+              className="aspect-video max-w-4xl mx-auto overflow-hidden shadow-lg relative grid place-items-center text-white text-center px-5"
+              style={{
+                background:
+                  'radial-gradient(circle at 30% 30%, #1B6F4A 0%, #15573A 50%, #0F3726 100%), radial-gradient(circle at 70% 70%, rgba(230,57,70,0.4) 0%, transparent 60%)',
+              }}
+            >
+              {/* SVG decorative dots (CC0) */}
+              <svg
+                aria-hidden="true"
+                className="absolute inset-0 w-full h-full pointer-events-none opacity-25"
+              >
+                <pattern id="vid-dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+                  <circle cx="20" cy="20" r="1.2" fill="rgba(255,255,255,0.5)" />
+                </pattern>
+                <rect width="100%" height="100%" fill="url(#vid-dots)" />
+              </svg>
+              <div className="relative z-10">
+                <div className="w-20 h-20 mx-auto rounded-full bg-white/15 backdrop-blur-sm grid place-items-center mb-5">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </div>
+                <p className="text-xl md:text-2xl font-bold mb-2">대전케어 영상 준비 중</p>
+                <p className="text-sm md:text-base opacity-80">
+                  곧 어르신 일상과 매니저 이야기를 영상으로 만나보실 수 있습니다.
+                </p>
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
