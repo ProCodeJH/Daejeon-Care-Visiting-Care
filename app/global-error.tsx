@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import { CONTACT } from '@/lib/contact';
 
 /**
@@ -7,6 +8,9 @@ import { CONTACT } from '@/lib/contact';
  * 자체 <html> + <body> 포함 (layout 대체).
  * 인라인 스타일 only (CSS chunk 로드 안 될 가능성 대비).
  * Wave 417: CONTACT import — single source paradigm (CSS chunk 실패 X JS module OK).
+ *
+ * Wave 477: error logging 추가 — error.tsx 패턴 일관 (paradigm 16).
+ * Vercel 자동 internal logging 별도, application context (digest + message) 보존.
  */
 export default function GlobalError({
   error,
@@ -15,6 +19,11 @@ export default function GlobalError({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  useEffect(() => {
+    if (typeof window !== 'undefined' && error?.digest) {
+      console.error('[daejeon-care global-error]', error.digest, error.message);
+    }
+  }, [error]);
   return (
     <html lang="ko">
       {/* Wave 434: <head> 필수 — global-error는 layout.tsx 크래시 last-resort. metadata API 미동작.
