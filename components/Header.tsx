@@ -176,9 +176,12 @@ export function Header() {
 
         {/* Mobile menu */}
         <button
+          type="button"
           onClick={() => setOpen(!open)}
           className="lg:hidden w-10 h-10 grid place-items-center"
-          aria-label="메뉴"
+          aria-label={open ? '메뉴 닫기' : '메뉴 열기'}
+          aria-expanded={open}
+          aria-controls="mobile-nav"
         >
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
@@ -186,7 +189,7 @@ export function Header() {
 
       {/* Mobile Nav */}
       {open && (
-        <nav className="lg:hidden border-t border-gray-100 bg-white">
+        <nav id="mobile-nav" className="lg:hidden border-t border-gray-100 bg-white">
           <div className="px-5 py-4 flex flex-col">
             {NAV.map((item) => (
               <div key={item.label} className="border-b border-gray-50 py-3">

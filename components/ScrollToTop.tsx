@@ -22,6 +22,7 @@ export function ScrollToTop() {
 
   return (
     <button
+      type="button"
       onClick={() => {
         const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' });

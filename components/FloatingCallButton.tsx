@@ -25,7 +25,8 @@ export function FloatingCallButton() {
   return (
     <div className="fixed bottom-5 right-5 z-50 flex items-center gap-2">
       <button
-        aria-label="닫기"
+        type="button"
+        aria-label="전화 상담 버튼 닫기"
         onClick={() => setDismissed(true)}
         className="w-7 h-7 grid place-items-center bg-white/90 hover:bg-white text-ink-muted hover:text-ink-primary backdrop-blur-sm shadow-sm transition-all"
         style={{ borderRadius: '999px' }}
