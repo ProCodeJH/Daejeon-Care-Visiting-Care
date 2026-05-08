@@ -84,7 +84,10 @@ export function Footer() {
 
         {/* SNS 아이콘 (자현이 lib/contact.ts SNS URL 입력 시 자동 활성) */}
         {SNS_ICONS.length > 0 && (
-          <div className="mt-8 flex items-center gap-3 justify-center md:justify-start">
+          <nav
+            aria-label="SNS 채널"
+            className="mt-8 flex items-center gap-3 justify-center md:justify-start"
+          >
             <span className="text-xs text-ink-muted">SNS:</span>
             {SNS_ICONS.map((s) => (
               <a
@@ -99,7 +102,7 @@ export function Footer() {
                 <s.Icon size={16} strokeWidth={1.8} />
               </a>
             ))}
-          </div>
+          </nav>
         )}
 
         <div className="border-t border-gray-100 mt-10 pt-5 flex flex-col md:flex-row md:items-center md:justify-between gap-3">

@@ -123,7 +123,7 @@ export function Header() {
           </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-10">
+        <nav aria-label="주 메뉴" className="hidden lg:flex items-center gap-10">
           {NAV.map((item) => (
             <div
               key={item.label}
@@ -189,7 +189,7 @@ export function Header() {
 
       {/* Mobile Nav */}
       {open && (
-        <nav id="mobile-nav" className="lg:hidden border-t border-gray-100 bg-white">
+        <nav id="mobile-nav" aria-label="모바일 메뉴" className="lg:hidden border-t border-gray-100 bg-white">
           <div className="px-5 py-4 flex flex-col">
             {NAV.map((item) => (
               <div key={item.label} className="border-b border-gray-50 py-3">
