@@ -8,6 +8,10 @@ import type { Config } from 'tailwindcss';
  */
 export default {
   content: ['./app/**/*.{ts,tsx}', './components/**/*.{ts,tsx}'],
+  // Wave 456: darkMode 'class' 명시 — 이 사이트는 light only (globals.css colorScheme: 'only light').
+  // default 'media'는 prefers-color-scheme: dark 시 dark variant 자동 활성 → light-only 의도 위반.
+  // 'class'로 변경하면 .dark class 명시 시에만 dark variant 활성 (이 사이트는 사용 안 함 = 안전).
+  darkMode: 'class',
   future: {
     // Wave 289: hover: modifier에 자동 @media (hover: hover) wrap.
     // mobile 터치 디바이스 hover ghost (탭 후 hover state 잔존) 회피.
