@@ -1,6 +1,6 @@
 # STATUS — 대전케어 방문요양센터
 
-**Updated**: 2026-05-09 / Wave 560 / paradigm 18 chain 208-wave (lib export usage audit — SITE.url/domain/lang/locale/urlFallback ✓ + CONTACT 14 필드 ✓ + SNS Footer ✓ dead code 0)
+**Updated**: 2026-05-09 / Wave 561 / paradigm 18 chain 209-wave (날짜 format consistency saturated — stories/notices 11 entries 모두 ISO 8601 yyyy-mm-dd + Footer dynamic toISOString 일관)
 
 > 1쪽 handoff. 자현 5분 결정 진입점.
 
