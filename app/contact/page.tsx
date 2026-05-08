@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { PageHero } from '@/components/PageHero';
+import { PrivacyDialog } from '@/components/PrivacyDialog';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 import { CONTACT } from '@/lib/contact';
 
@@ -268,9 +269,13 @@ export default function ContactPage() {
                     className="w-full px-4 py-2.5 bg-white border border-gray-200 focus:border-brand-400 focus:outline-none text-sm resize-none min-h-[120px]"
                   />
                 </div>
+                {/* Wave 383: <dialog> 자세히 — 폼 컨텍스트 유지하며 처리 안내 검토 */}
                 <label className="flex items-start gap-2 text-xs text-ink-muted">
                   <input type="checkbox" name="privacy" required className="mt-0.5 accent-brand-400" />
-                  <span>개인정보 수집·이용에 동의합니다 (필수)</span>
+                  <span>
+                    개인정보 수집·이용에 동의합니다 (필수){' '}
+                    <PrivacyDialog />
+                  </span>
                 </label>
                 <button
                   type="submit"
