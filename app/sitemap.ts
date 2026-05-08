@@ -18,7 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/', priority: 1.0, freq: 'weekly' },
     { path: '/about', priority: 0.9, freq: 'monthly' },
     { path: '/service', priority: 0.95, freq: 'monthly' },
-    { path: '/homecare', priority: 0.9, freq: 'monthly' },
+    { path: '/homecare', priority: 0.5, freq: 'monthly' },
     { path: '/process', priority: 0.85, freq: 'monthly' },
     { path: '/insurance', priority: 0.9, freq: 'monthly' },
     { path: '/insurance/grade', priority: 0.85, freq: 'monthly' },
@@ -32,9 +32,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/terms', priority: 0.3, freq: 'monthly' },
     { path: '/notice', priority: 0.6, freq: 'weekly' },
     { path: '/contact', priority: 0.95, freq: 'monthly' },
-    { path: '/qna', priority: 0.85, freq: 'monthly' },
+    { path: '/qna', priority: 0.5, freq: 'monthly' },
     { path: '/faq', priority: 0.8, freq: 'monthly' },
     { path: '/map', priority: 0.85, freq: 'monthly' },
+    { path: '/sitemap', priority: 0.3, freq: 'monthly' },
   ];
 
   const noticeRoutes: MetadataRoute.Sitemap = NOTICES.map((n) => ({
