@@ -82,7 +82,8 @@ export default function FAQPage() {
               <p className="text-sm text-ink-primary">
                 JavaScript가 비활성화되어 답변 펼치기가 제한됩니다.
                 직접 문의는{' '}
-                <a href={`tel:${CONTACT.phone}`} className="underline font-bold text-[#1B6F4A]">
+                {/* Wave 471: CONTACT.phoneTel single source (다른 3 noscript 패턴 일관) */}
+                <a href={CONTACT.phoneTel} className="underline font-bold text-[#1B6F4A]">
                   {CONTACT.phone}
                 </a>
                 으로 주세요.
