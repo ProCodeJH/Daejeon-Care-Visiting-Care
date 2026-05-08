@@ -1,9 +1,29 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
 import { PageHero } from '@/components/PageHero';
 import { CTASection } from '@/components/CTASection';
 import { NOTICES } from '@/content/notices';
+
+/**
+ * Wave 359: 검색어 매치 부분에 <mark> semantic + 시각 highlight.
+ * regex split + capture group으로 all matches 처리.
+ */
+function highlightMatch(text: string, query: string): ReactNode {
+  if (!query) return text;
+  const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const regex = new RegExp(`(${escaped})`, 'gi');
+  const parts = text.split(regex);
+  return parts.map((part, i) =>
+    i % 2 === 1 ? (
+      <mark key={i} className="bg-yellow-100 text-ink-primary px-0.5">
+        {part}
+      </mark>
+    ) : (
+      part
+    ),
+  );
+}
 
 export default function NoticePage() {
   const [search, setSearch] = useState('');
@@ -85,7 +105,7 @@ export default function NoticePage() {
                   </td>
                   <td className="py-4 text-ink-primary">
                     <a href={`/notice/${n.id}`} className="hover:text-brand-400 font-medium">
-                      {n.title}
+                      {highlightMatch(n.title, search)}
                     </a>
                   </td>
                   <td className="py-4 text-center text-sm text-ink-muted hidden md:table-cell">{n.author}</td>
