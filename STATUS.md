@@ -1,6 +1,6 @@
 # STATUS — 대전케어 방문요양센터
 
-**Updated**: 2026-05-09 / Wave 559 / paradigm 18 chain 207-wave (deployment 0 config Vercel auto-detect + WebVitals dev-only 3 observer cleanup + 0kB library)
+**Updated**: 2026-05-09 / Wave 560 / paradigm 18 chain 208-wave (lib export usage audit — SITE.url/domain/lang/locale/urlFallback ✓ + CONTACT 14 필드 ✓ + SNS Footer ✓ dead code 0)
 
 > 1쪽 handoff. 자현 5분 결정 진입점.
 
