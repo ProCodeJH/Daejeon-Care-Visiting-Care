@@ -198,9 +198,10 @@ export default function CostPage() {
             <h3 className="text-xl font-bold text-ink-primary mb-2">
               월 본인부담액 (예상)
             </h3>
+            {/* Wave 489: JSX expression · → span aria-hidden (Wave 488 saturation pass) */}
             <p className="text-sm text-ink-secondary mb-6">
               장기요양 <strong className="text-brand-600">{grade === '인지' ? '인지지원등급' : `${grade}등급`}</strong>
-              {' · '}
+              {' '}<span aria-hidden="true">·</span>{' '}
               <strong className="text-brand-600">{RATES[rateKey].label}</strong>
             </p>
 
