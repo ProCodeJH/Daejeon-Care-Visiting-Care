@@ -1,6 +1,6 @@
 # 대전케어 방문요양센터
 
-대전 5구 통합 방문요양센터 운영 사이트. **두손누리 디자인을 1:1 React로 재현 + 42 Wave 자율 폴리시 + Vercel 자동 배포 + 한국 법적 compliance**.
+대전 5구 통합 방문요양센터 운영 사이트. **두손누리 디자인을 1:1 React로 재현 + 50+ Wave 자율 폴리시 + Vercel 자동 배포 + 한국 법적 compliance + 정체성 6-way pulse paradigm**.
 
 > **Production**: https://대전케어방문요양.kr  
 > **대표번호**: 042-369-0326 (24시간 상담 가능)  
