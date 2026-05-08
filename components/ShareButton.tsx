@@ -1,12 +1,15 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Share2, Check, Copy } from 'lucide-react';
 
 /**
  * Web Share API + clipboard fallback.
  * Senior care use case: 가족이 KakaoTalk/Telegram 단톡에 정보 공유.
  * 모바일 = 네이티브 share sheet, 데스크톱 = 클립보드 복사 + toast.
+ *
+ * Wave 541: setTimeout cleanup on unmount (paradigm 16 catch — 사용자가 share 후
+ * 2초 안에 다른 페이지 이동 시 setState on unmounted component 회피).
  */
 export function ShareButton({
   title,
@@ -18,6 +21,19 @@ export function ShareButton({
   url?: string;
 }) {
   const [state, setState] = useState<'idle' | 'shared' | 'copied' | 'error'>('idle');
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // 새 timer 설정 전 기존 timer 정리 + unmount 시 정리
+  function scheduleReset() {
+    if (timerRef.current) clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => setState('idle'), 2000);
+  }
+
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
+  }, []);
 
   async function handleShare() {
     const shareUrl =
@@ -27,7 +43,7 @@ export function ShareButton({
       try {
         await navigator.share({ title, text, url: shareUrl });
         setState('shared');
-        setTimeout(() => setState('idle'), 2000);
+        scheduleReset();
         return;
       } catch (err) {
         if ((err as Error)?.name === 'AbortError') return;
@@ -38,11 +54,11 @@ export function ShareButton({
       try {
         await navigator.clipboard.writeText(shareUrl);
         setState('copied');
-        setTimeout(() => setState('idle'), 2000);
+        scheduleReset();
         return;
       } catch {
         setState('error');
-        setTimeout(() => setState('idle'), 2000);
+        scheduleReset();
       }
     }
   }
