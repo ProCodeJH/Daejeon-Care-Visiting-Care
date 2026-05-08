@@ -72,7 +72,7 @@ export default async function NoticeDetailPage({
 
       <article className="bg-white py-16">
         <div className="max-w-[800px] mx-auto px-5">
-          {/* 메타 */}
+          {/* 메타 + Wave 388 읽기 시간 예상 */}
           <div className="border-b border-gray-200 pb-6 mb-8 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
             {n.pinned && (
               <span className="inline-block bg-[#E63946] text-white text-xs font-bold px-2.5 py-1" style={{ borderRadius: '2px' }}>
@@ -84,6 +84,10 @@ export default async function NoticeDetailPage({
             <time dateTime={n.date} className="text-ink-muted">{n.date}</time>
             <span className="text-ink-muted">·</span>
             <span className="text-ink-muted">조회 {n.views}</span>
+            <span className="text-ink-muted">·</span>
+            <span className="text-ink-muted text-xs">
+              📖 {Math.max(1, Math.ceil(n.body.length / 300))}분 읽기
+            </span>
           </div>
 
           {/* 본문 */}

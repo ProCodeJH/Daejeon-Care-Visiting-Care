@@ -70,12 +70,17 @@ export default async function StoryDetailPage({
 
       <article className="bg-white py-16">
         <div className="max-w-[800px] mx-auto px-5">
+          {/* Wave 388: 읽기 시간 예상 — Korean 300 chars/min 보수 (어르신 적합) */}
           <div className="mb-8 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
             <p className="text-xs text-brand-600 font-semibold tracking-[0.2em]">
               {s.cat.toUpperCase()}
             </p>
             <span className="text-ink-muted">·</span>
             <time dateTime={s.date} className="text-ink-muted">{s.date}</time>
+            <span className="text-ink-muted">·</span>
+            <span className="text-ink-muted text-xs">
+              📖 {Math.max(1, Math.ceil(s.body.length / 300))}분 읽기
+            </span>
           </div>
 
           {/* Wave 358: <figure>+<img>+<figcaption> semantic — 자현 이미지 입력 시 SEO/Image 인덱스 + a11y.
