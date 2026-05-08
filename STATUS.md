@@ -1,6 +1,6 @@
 # STATUS — 대전케어 방문요양센터
 
-**Updated**: 2026-05-09 / Wave 520 / paradigm 18 chain 168-wave (절제 mode 19 wave 연속)
+**Updated**: 2026-05-09 / Wave 521 / paradigm 18 chain 169-wave (절제 mode 20 wave 연속)
 
 > 1쪽 handoff. 자현 5분 결정 진입점.
 
