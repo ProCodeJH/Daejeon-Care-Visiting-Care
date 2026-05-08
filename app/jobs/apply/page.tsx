@@ -211,10 +211,12 @@ export default function JobApplyPage() {
             ) : (
               <form
                 ref={formRef}
+                method="POST"
                 onSubmit={handleSubmit}
                 onChange={handleChange}
                 className="space-y-5"
               >
+                {/* Wave 421: method="POST" — JS 비활성 fallback 시 PII URL 노출 방지 (PIPA 준수) */}
                 {/* Wave 380: 복원 안내 banner — 이전 작성 내용 자동 불러옴을 명시 + 새로 시작 옵션 */}
                 {restored && (
                   <div

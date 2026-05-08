@@ -171,10 +171,12 @@ export default function ContactPage() {
             ) : (
               <form
                 ref={formRef}
+                method="POST"
                 onSubmit={handleSubmit}
                 onChange={handleChange}
                 className="space-y-4"
               >
+                {/* Wave 421: method="POST" — JS 비활성 fallback 시 PII URL 노출 방지 (PIPA 준수) */}
                 {/* Wave 380: 복원 banner */}
                 {restored && (
                   <div
