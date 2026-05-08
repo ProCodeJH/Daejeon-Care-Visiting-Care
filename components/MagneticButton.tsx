@@ -1,12 +1,14 @@
 'use client';
 
-import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useReducedMotion } from 'framer-motion';
 import type { ReactNode } from 'react';
 
 /**
  * 자석 hover — 마우스 위치에 따라 버튼이 미세 끌림 (max 6px).
  * senior care 적합: 8px 미만 = 어르신 부담 X.
- * prefers-reduced-motion 시 framer-motion 자동 비활성.
+ *
+ * Wave 453: useReducedMotion 명시 분기 — framer-motion 11 default 자동 비활성 X.
+ * reduced 시 onMouseMove/onMouseLeave undefined → magnetic 효과 0 (plain button).
  */
 export function MagneticButton({
   children,
@@ -25,6 +27,7 @@ export function MagneticButton({
   maxPull?: number;
   ariaLabel?: string;
 }) {
+  const reducedMotion = useReducedMotion();
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const sx = useSpring(x, { stiffness: 280, damping: 22 });
@@ -50,9 +53,9 @@ export function MagneticButton({
 
   return (
     <motion.div
-      onMouseMove={handleMove}
-      onMouseLeave={reset}
-      style={{ x: sx, y: sy }}
+      onMouseMove={reducedMotion ? undefined : handleMove}
+      onMouseLeave={reducedMotion ? undefined : reset}
+      style={reducedMotion ? undefined : { x: sx, y: sy }}
       className="inline-block"
     >
       <Tag {...tagProps} aria-label={ariaLabel} className={className}>

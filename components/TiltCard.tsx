@@ -1,12 +1,14 @@
 'use client';
 
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from 'framer-motion';
 import type { ReactNode } from 'react';
 
 /**
  * 절제된 3D tilt — hover 시 max 2deg rotateX/Y.
  * jahyeon Image3DTilt 적용을 senior care에 맞게 축소.
- * prefers-reduced-motion 시 framer-motion 자동 비활성.
+ *
+ * Wave 453: useReducedMotion 명시 분기 — 3D rotate가 vestibular 자극 가능.
+ * reduced 시 mouse handlers undefined + transform style omit → plain card.
  */
 export function TiltCard({
   children,
@@ -21,6 +23,7 @@ export function TiltCard({
   href?: string;
   ariaLabel?: string;
 }) {
+  const reducedMotion = useReducedMotion();
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const sx = useSpring(x, { stiffness: 250, damping: 20 });
@@ -41,15 +44,19 @@ export function TiltCard({
 
   const content = (
     <motion.div
-      onMouseMove={handleMove}
-      onMouseLeave={reset}
-      style={{
-        rotateX,
-        rotateY,
-        transformStyle: 'preserve-3d',
-        transformPerspective: 1200,
-      }}
-      whileHover={{ y: -2 }}
+      onMouseMove={reducedMotion ? undefined : handleMove}
+      onMouseLeave={reducedMotion ? undefined : reset}
+      style={
+        reducedMotion
+          ? undefined
+          : {
+              rotateX,
+              rotateY,
+              transformStyle: 'preserve-3d',
+              transformPerspective: 1200,
+            }
+      }
+      whileHover={reducedMotion ? undefined : { y: -2 }}
       transition={{ type: 'spring', stiffness: 200, damping: 18 }}
       className={`will-change-transform ${className}`}
       aria-label={ariaLabel}
