@@ -2,7 +2,11 @@
  * 대전케어 방문요양센터 공식 로고 SVG.
  * 손바닥 cradle + 어르신 + 하트 = 따뜻한 케어.
  * 색: 녹색(손) + 노란주황(어르신) + 빨강(하트). 자현 정체성 자산.
+ *
+ * Wave 537: aria-label + 로고 텍스트 brand → CONTACT.brand/service derived (paradigm 16 cascade).
  */
+import { CONTACT } from '@/lib/contact';
+
 export function Logo({
   size = 40,
   withText = true,
@@ -23,7 +27,7 @@ export function Logo({
         xmlns="http://www.w3.org/2000/svg"
         {...(withText
           ? { 'aria-hidden': true as const }
-          : { role: 'img', 'aria-label': '대전케어 방문요양센터 로고' })}
+          : { role: 'img', 'aria-label': `${CONTACT.name} 로고` })}
         className="shrink-0"
       >
         {/* 손바닥 (cradle 곡선) */}
@@ -45,8 +49,8 @@ export function Logo({
       {/* 텍스트 */}
       {withText && (
         <div className="leading-[1.05]">
-          <p className="font-extrabold text-[15px] md:text-[17px] text-[#1B6F4A]">대전케어</p>
-          <p className="font-extrabold text-[13px] md:text-[15px] text-[#E63946]">방문요양센터</p>
+          <p className="font-extrabold text-[15px] md:text-[17px] text-[#1B6F4A]">{CONTACT.brand}</p>
+          <p className="font-extrabold text-[13px] md:text-[15px] text-[#E63946]">{CONTACT.service}</p>
         </div>
       )}
     </div>

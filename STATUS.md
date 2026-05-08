@@ -1,6 +1,6 @@
 # STATUS — 대전케어 방문요양센터
 
-**Updated**: 2026-05-09 / Wave 536 / paradigm 18 chain 184-wave (광맥 #318 structural data brand! manifest short_name + appleWebApp.title + JSON-LD alternateName + service + keywords)
+**Updated**: 2026-05-09 / Wave 537 / paradigm 18 chain 185-wave (광맥 #319 Logo.tsx visible! aria-label + brand p + service p — 가장 visible UI brand 정합성)
 
 > 1쪽 handoff. 자현 5분 결정 진입점.
 
