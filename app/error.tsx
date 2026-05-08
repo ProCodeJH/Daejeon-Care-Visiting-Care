@@ -31,8 +31,9 @@ export default function Error({
           'radial-gradient(circle at 30% 30%, #1B6F4A 0%, #15573A 50%, #0F3726 100%), radial-gradient(circle at 70% 70%, rgba(245,166,35,0.25) 0%, transparent 60%)',
       }}
     >
-      <div className="text-center max-w-xl">
-        <p className="text-sm font-bold tracking-[0.3em] mb-4 opacity-80">SOMETHING WENT WRONG</p>
+      {/* Wave 392: role="alert" 즉시 announce + lang="en" 영어 발음 정확 */}
+      <div role="alert" className="text-center max-w-xl">
+        <p lang="en" className="text-sm font-bold tracking-[0.3em] mb-4 opacity-80">SOMETHING WENT WRONG</p>
         <h1
           className="text-4xl md:text-6xl font-extrabold mb-5 leading-tight"
           style={{ textWrap: 'balance' as const }}

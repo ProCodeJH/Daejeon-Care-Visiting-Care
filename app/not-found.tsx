@@ -20,7 +20,8 @@ export default function NotFound() {
       }}
     >
       <div className="text-center max-w-xl">
-        <p className="text-sm font-bold tracking-[0.3em] mb-4 opacity-80">404 NOT FOUND</p>
+        {/* Wave 392: lang="en" 영어 발음 정확 (TTS) */}
+        <p lang="en" className="text-sm font-bold tracking-[0.3em] mb-4 opacity-80">404 NOT FOUND</p>
         <h1 className="text-4xl md:text-6xl font-extrabold mb-5 leading-tight" style={{ textWrap: 'balance' as const }}>
           페이지를
           <br />
@@ -50,8 +51,8 @@ export default function NotFound() {
           </a>
         </div>
 
-        {/* 자주 찾는 페이지 */}
-        <div className="border-t border-white/20 pt-6">
+        {/* Wave 392: <nav> landmark — 자주 찾는 페이지 navigation 그룹 */}
+        <nav aria-label="자주 찾는 페이지" className="border-t border-white/20 pt-6">
           <p className="text-xs opacity-70 mb-3 flex items-center justify-center gap-2">
             <Search size={12} />자주 찾는 페이지
           </p>
@@ -62,7 +63,7 @@ export default function NotFound() {
             <Link href="/contact" className="opacity-90 hover:opacity-100 underline-offset-4 hover:underline">상담 문의</Link>
             <Link href="/faq" className="opacity-90 hover:opacity-100 underline-offset-4 hover:underline">자주 묻는 질문</Link>
           </div>
-        </div>
+        </nav>
       </div>
     </section>
   );
