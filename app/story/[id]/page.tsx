@@ -86,9 +86,9 @@ export default async function StoryDetailPage({
             <p className="text-xs text-brand-600 font-semibold tracking-[0.2em]">
               {s.cat.toUpperCase()}
             </p>
-            <span className="text-ink-muted">·</span>
+            <span aria-hidden="true" className="text-ink-muted">·</span>
             <time dateTime={s.date} className="text-ink-muted">{s.date}</time>
-            <span className="text-ink-muted">·</span>
+            <span aria-hidden="true" className="text-ink-muted">·</span>
             <span className="text-ink-muted text-xs">
               <span aria-hidden="true">📖</span> {Math.max(1, Math.ceil(s.body.length / 300))}분 읽기
             </span>

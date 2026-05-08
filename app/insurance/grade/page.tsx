@@ -142,19 +142,19 @@ export default function GradePage() {
             </h3>
             <ul className="space-y-3 text-ink-secondary">
               <li className="flex items-start gap-3">
-                <span className="text-brand-400 font-bold mt-0.5">·</span>
+                <span aria-hidden="true" className="text-brand-400 font-bold mt-0.5">·</span>
                 <span><strong>방문</strong>: 가까운 국민건강보험공단 지사</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-brand-400 font-bold mt-0.5">·</span>
+                <span aria-hidden="true" className="text-brand-400 font-bold mt-0.5">·</span>
                 <span><strong>인터넷</strong>: 국민건강보험공단 홈페이지 (www.nhis.or.kr)</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-brand-400 font-bold mt-0.5">·</span>
+                <span aria-hidden="true" className="text-brand-400 font-bold mt-0.5">·</span>
                 <span><strong>우편/팩스</strong>: 공단 지사에 신청서 발송</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-brand-400 font-bold mt-0.5">·</span>
+                <span aria-hidden="true" className="text-brand-400 font-bold mt-0.5">·</span>
                 <span><strong>대리신청</strong>: 가족·이해관계인이 위임장으로 대리 신청</span>
               </li>
             </ul>

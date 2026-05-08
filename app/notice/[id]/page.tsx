@@ -90,11 +90,11 @@ export default async function NoticeDetailPage({
               </span>
             )}
             <span className="text-ink-muted">{n.author}</span>
-            <span className="text-ink-muted">·</span>
+            <span aria-hidden="true" className="text-ink-muted">·</span>
             <time dateTime={n.date} className="text-ink-muted">{n.date}</time>
-            <span className="text-ink-muted">·</span>
+            <span aria-hidden="true" className="text-ink-muted">·</span>
             <span className="text-ink-muted">조회 {n.views}</span>
-            <span className="text-ink-muted">·</span>
+            <span aria-hidden="true" className="text-ink-muted">·</span>
             <span className="text-ink-muted text-xs">
               <span aria-hidden="true">📖</span> {Math.max(1, Math.ceil(n.body.length / 300))}분 읽기
             </span>
