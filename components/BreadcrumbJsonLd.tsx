@@ -2,7 +2,9 @@
  * BreadcrumbList JSON-LD — 페이지별 inject (SEO).
  * Google 검색 결과 > breadcrumb 리치 노출.
  */
-const SITE = 'https://대전케어방문요양.kr';
+import { SITE as SITE_CONFIG } from '@/lib/site';
+
+const SITE = SITE_CONFIG.url;
 
 type Crumb = { name: string; href?: string };
 

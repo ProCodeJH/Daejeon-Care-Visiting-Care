@@ -1,13 +1,14 @@
 import type { MetadataRoute } from 'next';
 import { NOTICES } from '@/content/notices';
 import { STORIES } from '@/content/stories';
+import { SITE } from '@/lib/site';
 
 /**
  * sitemap.xml — 17 정적 + N notice detail + M story detail = 동적 확장.
  * lastModified는 글 작성일 (notice/story) 또는 빌드 시점.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const SITE = 'https://대전케어방문요양.kr';
+  const SITE_URL = SITE.url;
   const now = new Date();
 
   const staticRoutes: {
@@ -39,14 +40,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   const noticeRoutes: MetadataRoute.Sitemap = NOTICES.map((n) => ({
-    url: `${SITE}/notice/${n.id}`,
+    url: `${SITE_URL}/notice/${n.id}`,
     lastModified: new Date(n.date),
     changeFrequency: 'monthly',
     priority: n.pinned ? 0.7 : 0.5,
   }));
 
   const storyRoutes: MetadataRoute.Sitemap = STORIES.map((s) => ({
-    url: `${SITE}/story/${s.id}`,
+    url: `${SITE_URL}/story/${s.id}`,
     lastModified: new Date(s.date),
     changeFrequency: 'monthly',
     priority: 0.6,
@@ -54,7 +55,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     ...staticRoutes.map(({ path, priority, freq }) => ({
-      url: `${SITE}${path}`,
+      url: `${SITE_URL}${path}`,
       lastModified: now,
       changeFrequency: freq,
       priority,

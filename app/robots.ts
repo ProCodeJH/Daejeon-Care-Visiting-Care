@@ -1,11 +1,11 @@
 import type { MetadataRoute } from 'next';
+import { SITE } from '@/lib/site';
 
 /**
  * robots.txt — Next.js 15 native.
  * Google/Naver/Daum 허용 + AI training bots 차단.
  */
 export default function robots(): MetadataRoute.Robots {
-  const SITE = 'https://대전케어방문요양.kr';
 
   // 26 AI training bots 차단 (자현 콘텐츠 보호)
   const aiBots = [
@@ -27,7 +27,7 @@ export default function robots(): MetadataRoute.Robots {
       // AI 학습 bots 차단
       ...aiBots.map((bot) => ({ userAgent: bot, disallow: '/' })),
     ],
-    sitemap: `${SITE}/sitemap.xml`,
-    host: SITE,
+    sitemap: `${SITE.url}/sitemap.xml`,
+    host: SITE.url,
   };
 }

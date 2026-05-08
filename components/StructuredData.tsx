@@ -3,8 +3,9 @@
  * 자현 정체성 (대표번호 + 24시간 + 대전 5구) + 한글 도메인.
  */
 import { CONTACT } from '@/lib/contact';
+import { SITE as SITE_CONFIG } from '@/lib/site';
 
-const SITE = 'https://대전케어방문요양.kr';
+const SITE = SITE_CONFIG.url;
 
 const BUSINESS_JSONLD = {
   '@context': 'https://schema.org',

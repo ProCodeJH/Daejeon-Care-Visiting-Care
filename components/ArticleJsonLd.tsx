@@ -3,7 +3,9 @@
  * Google 검색 결과 > Article 리치 노출 (썸네일 + 작성일 + 저자 carousel).
  * Senior care content 발견성 ↑.
  */
-const SITE = 'https://대전케어방문요양.kr';
+import { SITE as SITE_CONFIG } from '@/lib/site';
+
+const SITE = SITE_CONFIG.url;
 const ORG_ID = `${SITE}/#business`;
 
 export function ArticleJsonLd({

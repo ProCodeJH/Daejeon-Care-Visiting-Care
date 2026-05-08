@@ -10,11 +10,10 @@ import { StructuredData } from '@/components/StructuredData';
 import { FloatingCallButton } from '@/components/FloatingCallButton';
 import { ScrollToTop } from '@/components/ScrollToTop';
 import { CONTACT } from '@/lib/contact';
-
-const SITE = 'https://대전케어방문요양.kr';
+import { SITE } from '@/lib/site';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE),
+  metadataBase: new URL(SITE.url),
   title: {
     default: `대전케어 방문요양센터 — 24시간 상담 ${CONTACT.phone}`,
     template: '%s | 대전케어 방문요양센터',
@@ -41,7 +40,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: '대전케어 방문요양센터',
     description: `대전 5구 통합 방문요양 — 24시간 상담 가능 ${CONTACT.phone}`,
-    url: SITE,
+    url: SITE.url,
     locale: 'ko_KR',
     type: 'website',
     siteName: '대전케어 방문요양센터',
@@ -68,7 +67,7 @@ export const metadata: Metadata = {
     // other: { 'naver-site-verification': 'XXXXXXXXXX' },
   },
   alternates: {
-    canonical: SITE,
+    canonical: SITE.url,
   },
   category: 'health',
 };
