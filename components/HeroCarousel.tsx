@@ -131,7 +131,7 @@ export function HeroCarousel() {
   }, []);
 
   return (
-    <section ref={ref} className="relative w-full h-[600px] md:h-[902px] overflow-hidden bg-black">
+    <section ref={ref} aria-labelledby="hero-title" className="relative w-full h-[600px] md:h-[902px] overflow-hidden bg-black">
       {/* gradient slides */}
       <motion.div style={{ opacity: heroOpacity }} className="absolute inset-0">
         {SLIDES.map((s, i) => (
@@ -180,6 +180,7 @@ export function HeroCarousel() {
         </motion.p>
 
         <h1
+          id="hero-title"
           key={`title-${idx}`}
           className="text-3xl md:text-6xl font-bold mb-5 md:mb-8 leading-tight max-w-3xl drop-shadow-md"
           style={{
