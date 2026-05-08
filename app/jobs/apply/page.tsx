@@ -113,6 +113,7 @@ export default function JobApplyPage() {
                       required
                       type="text"
                       autoComplete="name"
+                      maxLength={30}
                       className="w-full px-4 py-2.5 bg-[#f8f8f8] border border-gray-200 focus:border-brand-400 focus:outline-none text-sm"
                       style={{ borderRadius: '2px' }}
                     />
@@ -128,6 +129,7 @@ export default function JobApplyPage() {
                       type="text"
                       autoComplete="bday"
                       placeholder="예: 1965-03-15"
+                      maxLength={10}
                       className="w-full px-4 py-2.5 bg-[#f8f8f8] border border-gray-200 focus:border-brand-400 focus:outline-none text-sm"
                       style={{ borderRadius: '2px' }}
                     />
@@ -143,6 +145,7 @@ export default function JobApplyPage() {
                     name="tel"
                     required
                     type="tel"
+                    maxLength={13}
                     inputMode="tel"
                     autoComplete="tel"
                     pattern="[0-9-]{9,13}"
@@ -222,6 +225,7 @@ export default function JobApplyPage() {
                     id="apply-message"
                     name="message"
                     rows={4}
+                    maxLength={1000}
                     placeholder="간단한 자기 소개나 어르신 케어에 대한 마음을 적어주세요"
                     className="w-full px-4 py-2.5 bg-[#f8f8f8] border border-gray-200 focus:border-brand-400 focus:outline-none text-sm resize-none"
                     style={{ borderRadius: '2px' }}

@@ -102,6 +102,7 @@ export default function ContactPage() {
                     required
                     type="text"
                     autoComplete="name"
+                    maxLength={30}
                     className="w-full px-4 py-2.5 bg-white border border-gray-200 focus:border-brand-400 focus:outline-none text-sm"
                     style={{ borderRadius: '2px' }}
                   />
@@ -118,6 +119,7 @@ export default function ContactPage() {
                     inputMode="tel"
                     autoComplete="tel"
                     pattern="[0-9-]{9,13}"
+                    maxLength={13}
                     placeholder="010-0000-0000"
                     className="w-full px-4 py-2.5 bg-white border border-gray-200 focus:border-brand-400 focus:outline-none text-sm"
                     style={{ borderRadius: '2px' }}
@@ -149,6 +151,7 @@ export default function ContactPage() {
                     name="message"
                     required
                     rows={5}
+                    maxLength={1000}
                     style={{ borderRadius: '2px', fieldSizing: 'content' } as React.CSSProperties}
                     className="w-full px-4 py-2.5 bg-white border border-gray-200 focus:border-brand-400 focus:outline-none text-sm resize-none min-h-[120px]"
                   />
