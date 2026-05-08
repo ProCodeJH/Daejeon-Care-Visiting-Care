@@ -36,8 +36,23 @@ export default function CostPage() {
   const [grade, setGrade] = useState('3');
   const [rateKey, setRateKey] = useState('general');
 
-  // sessionStorage 복원 — 페이지 이동 후 돌아오면 같은 선택 유지 (가족이 다른 페이지 보고 와도 결과 비교 가능)
+  // Wave 368: URL params + sessionStorage 복원 — 가족 단톡 공유 시 설정 그대로 전달.
+  // 우선순위: URL > sessionStorage > default. URL이 가장 explicit한 의도.
   useEffect(() => {
+    // 1차: URL params 확인 (cross-device 공유 시나리오)
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlGrade = urlParams.get('grade');
+      const urlRate = urlParams.get('rate');
+      if (urlGrade && MONTHLY_LIMITS[urlGrade]) {
+        setGrade(urlGrade);
+        if (urlRate && RATES[urlRate]) setRateKey(urlRate);
+        return; // URL 우선 — sessionStorage 건너뜀
+      }
+    } catch {
+      // URL 파싱 실패 시 sessionStorage fallback
+    }
+    // 2차: sessionStorage (within-session 페이지 이동)
     try {
       const saved = sessionStorage.getItem(STORAGE_KEY);
       if (!saved) return;
@@ -45,17 +60,23 @@ export default function CostPage() {
       if (g && MONTHLY_LIMITS[g]) setGrade(g);
       if (r && RATES[r]) setRateKey(r);
     } catch {
-      // 무시 — sessionStorage 비활성/파싱 실패 시 default 유지
+      // 비활성/파싱 실패 시 default 유지
     }
   }, []);
 
-  // 변경 시 자동 저장
+  // Wave 368: 변경 시 sessionStorage + URL 동시 갱신.
+  // history.replaceState = scroll/history 오염 없이 URL만 업데이트 (Share 시 정확한 링크).
   useEffect(() => {
     try {
       sessionStorage.setItem(STORAGE_KEY, JSON.stringify({ grade, rateKey }));
-    } catch {
-      // 무시
-    }
+    } catch {}
+    try {
+      const params = new URLSearchParams();
+      params.set('grade', grade);
+      params.set('rate', rateKey);
+      const newUrl = `${window.location.pathname}?${params.toString()}`;
+      window.history.replaceState(null, '', newUrl);
+    } catch {}
   }, [grade, rateKey]);
 
   const result = useMemo(() => {
