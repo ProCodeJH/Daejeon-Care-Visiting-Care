@@ -74,10 +74,18 @@ export const metadata: Metadata = {
 };
 
 export const viewport = {
-  themeColor: '#1B6F4A', // 자현 정체성 그린
+  // 정체성 그린 — light/dark prefers-color-scheme 분리 (다크 모드 사용자도 정체성 유지)
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#1B6F4A' },
+    { media: '(prefers-color-scheme: dark)', color: '#0F3726' },
+  ],
+  // 사이트는 라이트 테마 only — 어르신 가독성 우선 (다크 모드 변환 X)
+  colorScheme: 'light',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
+  // iPhone 노치 + 하단 home indicator safe-area 활용
+  viewportFit: 'cover',
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
