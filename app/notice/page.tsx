@@ -20,11 +20,19 @@ export default function NoticePage() {
         crumbs={[{ label: '고객센터', href: '/contact' }, { label: '공지사항' }]}
       />
 
-      {/* 검색 */}
+      {/* 검색 — 실시간 필터 (button = 시각 affordance + Enter 키 자연 흐름) */}
       <section className="bg-white py-10 border-b border-gray-100">
-        <div className="max-w-[1000px] mx-auto px-5 flex items-center gap-3">
+        <form
+          role="search"
+          aria-label="공지사항 검색"
+          onSubmit={(e) => e.preventDefault()}
+          className="max-w-[1000px] mx-auto px-5 flex items-center gap-3"
+        >
+          <label htmlFor="notice-search" className="sr-only">제목 검색</label>
           <input
-            type="text"
+            id="notice-search"
+            name="q"
+            type="search"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="제목 검색"
@@ -32,13 +40,13 @@ export default function NoticePage() {
             style={{ borderRadius: '2px' }}
           />
           <button
-            type="button"
+            type="submit"
             className="bg-brand-400 hover:bg-brand-500 text-white px-5 py-2.5 text-sm font-semibold transition-colors"
             style={{ borderRadius: '2px' }}
           >
             검색
           </button>
-        </div>
+        </form>
       </section>
 
       {/* 게시판 */}
