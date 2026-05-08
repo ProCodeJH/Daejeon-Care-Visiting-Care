@@ -49,7 +49,9 @@ export default function Error({
         </p>
 
         <div className="flex flex-wrap justify-center gap-3 mb-10">
+          {/* Wave 415: type="button" 명시 — default "submit" 방지 (defensive) */}
           <button
+            type="button"
             onClick={() => reset()}
             className="flex items-center gap-2 bg-white text-[#1B6F4A] px-7 py-3 font-bold transition-colors hover:bg-gray-100"
             style={{ borderRadius: '2px' }}
