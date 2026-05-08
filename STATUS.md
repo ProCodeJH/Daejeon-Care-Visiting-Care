@@ -1,6 +1,6 @@
 # STATUS — 대전케어 방문요양센터
 
-**Updated**: 2026-05-09 / Wave 558 / paradigm 18 chain 206-wave (React key anti-pattern audit saturated — filtered list key={n.id} stable + key={i} 11 파일 모두 정적 SSR 안전)
+**Updated**: 2026-05-09 / Wave 559 / paradigm 18 chain 207-wave (deployment 0 config Vercel auto-detect + WebVitals dev-only 3 observer cleanup + 0kB library)
 
 > 1쪽 handoff. 자현 5분 결정 진입점.
 
