@@ -98,6 +98,22 @@ export default function ContactPage() {
 
       {/* 문의 폼 + 정보. Wave 425: ref for scroll-to-top after submit success */}
       <section ref={sectionRef} className="bg-white py-16">
+        <div className="max-w-[1200px] mx-auto px-5">
+          {/* Wave 464: <noscript> fallback — 폼 autosave + submit JS 의존, phone CTA 안내 (faq/insurance-cost/jobs-apply 패턴 일관) */}
+          <noscript>
+            <div className="bg-[#FFF8E1] border-l-4 border-[#F5A623] p-4 mb-6">
+              <p className="text-sm text-ink-primary">
+                <strong>JavaScript가 비활성화되어 있습니다.</strong> 온라인 문의 폼은 JS 활성 시 작동합니다.{' '}
+                <br className="hidden md:inline" />
+                지금 바로 상담 원하시면{' '}
+                <a href={CONTACT.phoneTel} className="underline font-bold text-[#1B6F4A]">
+                  {CONTACT.phone}
+                </a>
+                {' '}으로 전화 주세요. 24시간 상담 가능.
+              </p>
+            </div>
+          </noscript>
+        </div>
         <div className="max-w-[1200px] mx-auto px-5 grid md:grid-cols-2 gap-10">
           {/* 왼쪽: 정보 */}
           <div>
