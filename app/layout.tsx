@@ -15,10 +15,10 @@ import { SITE } from '@/lib/site';
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: `대전케어 방문요양센터 — 24시간 상담 ${CONTACT.phone}`,
-    template: '%s | 대전케어 방문요양센터',
+    default: `${CONTACT.name} — 24시간 상담 ${CONTACT.phone}`,
+    template: `%s | ${CONTACT.name}`,
   },
-  description: `대전 5구 통합 방문요양센터. 어르신 댁으로 직접 찾아가는 케어 — 방문요양·방문목욕·방문간호. 24시간 상담 가능 ${CONTACT.phone}.`,
+  description: `대전 5구 통합 ${CONTACT.name}. 어르신 댁으로 직접 찾아가는 케어 — 방문요양·방문목욕·방문간호. 24시간 상담 가능 ${CONTACT.phone}.`,
   keywords: [
     '대전 방문요양',
     '대전케어',
