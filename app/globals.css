@@ -283,6 +283,16 @@
   }
 }
 
+/* Wave 365: content-visibility: auto + contain-intrinsic-size — off-screen 섹션 렌더 skip.
+ * 초기 paint cost ↓ (LCP/INP 개선). scroll 시 자동 렌더.
+ * `auto` keyword (Chrome 116+)는 마지막 rendered height 자동 학습 → CLS 0.
+ * Cmd+F / anchor / scrollIntoView 모두 호환 (Chrome 90+).
+ * 적용: 본문 below-fold 섹션 (home Reviews/Blog/FAQ 등). */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}
+
 /* View Transitions API — 페이지 전환 부드러움 */
 @view-transition {
   navigation: auto;

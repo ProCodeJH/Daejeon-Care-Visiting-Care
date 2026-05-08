@@ -219,8 +219,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. Reviews — "대전케어를 찾아주신 고객의 목소리" (496px, #fefffd) */}
-      <section className="bg-[#fefffd] py-20">
+      {/* 6. Reviews — "대전케어를 찾아주신 고객의 목소리" (496px, #fefffd).
+          Wave 365: cv-auto = off-screen 시 render skip (initial paint cost ↓). */}
+      <section className="bg-[#fefffd] py-20 cv-auto">
         <div className="max-w-[1200px] mx-auto px-5">
           <div className="text-center mb-12">
             <p className="text-brand-400 font-semibold tracking-[0.2em] text-sm mb-3">| REVIEWS</p>
@@ -274,8 +275,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. Blog — "대전케어 이야기" 4 cards (588px, white) */}
-      <section className="bg-white py-20">
+      {/* 7. Blog — "대전케어 이야기" 4 cards (588px, white). Wave 365: cv-auto. */}
+      <section className="bg-white py-20 cv-auto">
         <div className="max-w-[1200px] mx-auto px-5">
           <div className="text-center mb-10">
             <p className="text-brand-400 font-semibold tracking-[0.2em] text-sm mb-3">| BLOG</p>
@@ -304,8 +305,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 8. FAQ — 4 cards (491px, #f8f8f8) */}
-      <section className="bg-[#f8f8f8] py-20">
+      {/* 8. FAQ — 4 cards (491px, #f8f8f8). Wave 365: cv-auto. */}
+      <section className="bg-[#f8f8f8] py-20 cv-auto">
         <div className="max-w-[1200px] mx-auto px-5">
           <div className="text-center mb-10">
             <p className="text-brand-400 font-semibold tracking-[0.2em] text-sm mb-3">| FAQ</p>
