@@ -20,38 +20,39 @@ export default function NoticePage() {
         crumbs={[{ label: '고객센터', href: '/contact' }, { label: '공지사항' }]}
       />
 
-      {/* 검색 — 실시간 필터 (button = 시각 affordance + Enter 키 자연 흐름) */}
+      {/* 검색 — 실시간 필터. Wave 353: HTML5 <search> element (Chrome/FF/Safari all 2023+).
+          implicit role="search" landmark — ARIA 속성보다 native semantic. */}
       <section className="bg-white py-10 border-b border-gray-100">
-        <form
-          role="search"
-          aria-label="공지사항 검색"
-          onSubmit={(e) => e.preventDefault()}
-          className="max-w-[1000px] mx-auto px-5 flex items-center gap-3"
-        >
-          <label htmlFor="notice-search" className="sr-only">제목 검색</label>
-          <input
-            id="notice-search"
-            name="q"
-            type="search"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="제목 검색"
-            autoComplete="off"
-            autoCorrect="off"
-            autoCapitalize="off"
-            spellCheck={false}
-            enterKeyHint="search"
-            className="flex-1 px-4 py-2.5 border border-gray-200 focus:border-brand-400 focus:outline-none text-sm"
-            style={{ borderRadius: '2px' }}
-          />
-          <button
-            type="submit"
-            className="bg-brand-400 hover:bg-brand-500 text-white px-5 py-2.5 text-sm font-semibold transition-colors"
-            style={{ borderRadius: '2px' }}
+        <search aria-label="공지사항 검색">
+          <form
+            onSubmit={(e) => e.preventDefault()}
+            className="max-w-[1000px] mx-auto px-5 flex items-center gap-3"
           >
-            검색
-          </button>
-        </form>
+            <label htmlFor="notice-search" className="sr-only">제목 검색</label>
+            <input
+              id="notice-search"
+              name="q"
+              type="search"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="제목 검색"
+              autoComplete="off"
+              autoCorrect="off"
+              autoCapitalize="off"
+              spellCheck={false}
+              enterKeyHint="search"
+              className="flex-1 px-4 py-2.5 border border-gray-200 focus:border-brand-400 focus:outline-none text-sm"
+              style={{ borderRadius: '2px' }}
+            />
+            <button
+              type="submit"
+              className="bg-brand-400 hover:bg-brand-500 text-white px-5 py-2.5 text-sm font-semibold transition-colors"
+              style={{ borderRadius: '2px' }}
+            >
+              검색
+            </button>
+          </form>
+        </search>
       </section>
 
       {/* 게시판 */}

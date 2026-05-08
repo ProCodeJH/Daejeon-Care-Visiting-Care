@@ -19,6 +19,9 @@
     /* text-wrap pretty/balance 한국어 */
     word-break: keep-all;
     overflow-wrap: anywhere;
+    /* Wave 353: text-spacing-trim — Korean 괄호/따옴표 시작 공백 자동 trim (CSS Text 4, Chrome 123+).
+     * 예: "(필수)", "「인용」" 부호 앞 어색한 띄움 제거. 미지원 브라우저는 무시 (graceful). */
+    text-spacing-trim: trim-start;
     /* Wave 288: scrollbar-gutter stable — scrollbar 등장/사라짐 시 layout shift 회피 (CLS 보호).
      * desktop only 영향 (모바일 scrollbar overlay). FAQ accordion / Stories 등 동적 콘텐츠 안전. */
     scrollbar-gutter: stable;
