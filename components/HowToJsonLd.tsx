@@ -1,3 +1,5 @@
+import { SITE } from '@/lib/site';
+
 /**
  * HowTo JSON-LD — Google 검색 결과 단계별 리치 노출.
  * "장기요양 신청 방법" / "방문요양 이용 절차" 검색 시 단계별 표시.
@@ -21,7 +23,7 @@ export function HowToJsonLd({
     name,
     description,
     totalTime,
-    inLanguage: 'ko',
+    inLanguage: SITE.lang,
     step: steps.map((s, i) => ({
       '@type': 'HowToStep',
       position: i + 1,

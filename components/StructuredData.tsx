@@ -21,7 +21,7 @@ const BUSINESS_JSONLD = {
   telephone: CONTACT.phoneIntl,
   email: CONTACT.email,
   priceRange: '₩',
-  inLanguage: 'ko',
+  inLanguage: SITE_CONFIG.lang,
   currenciesAccepted: 'KRW',
   paymentAccepted: '본인부담금 (장기요양보험)',
   address: {
@@ -99,7 +99,7 @@ const WEBSITE_JSONLD = {
   '@id': `${SITE}/#website`,
   url: SITE,
   name: CONTACT.name,
-  inLanguage: 'ko',
+  inLanguage: SITE_CONFIG.lang,
   publisher: { '@id': `${SITE}/#business` },
 };
 
@@ -115,7 +115,7 @@ const SPEAKABLE_JSONLD = {
     '@type': 'SpeakableSpecification',
     cssSelector: ['h1', '[data-speakable]'],
   },
-  inLanguage: 'ko',
+  inLanguage: SITE_CONFIG.lang,
 };
 
 export function StructuredData() {

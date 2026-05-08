@@ -32,7 +32,7 @@ export function ArticleJsonLd({
     description,
     datePublished,
     dateModified: dateModified ?? datePublished,
-    inLanguage: 'ko',
+    inLanguage: SITE_CONFIG.lang,
     author: {
       '@type': 'Organization',
       name: author,

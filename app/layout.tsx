@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     title: '대전케어 방문요양센터',
     description: `대전 5구 통합 방문요양 — 24시간 상담 가능 ${CONTACT.phone}`,
     url: SITE.url,
-    locale: 'ko_KR',
+    locale: SITE.locale,
     type: 'website',
     siteName: '대전케어 방문요양센터',
   },
@@ -89,7 +89,7 @@ export const viewport = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="ko">
+    <html lang={SITE.lang}>
       <head>
         {/* preconnect — 외부 자산 빠른 로딩 (LCP 개선) */}
         <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
