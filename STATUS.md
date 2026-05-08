@@ -1,6 +1,6 @@
 # STATUS — 대전케어 방문요양센터
 
-**Updated**: 2026-05-09 / Wave 501 / paradigm 18 chain 150-wave (paradigm 17 honest termination 자연 도달, real catches 거의 zero)
+**Updated**: 2026-05-09 / Wave 502 / paradigm 18 chain 151-wave (paradigm 17 honest termination, strict tsconfig --noUnusedLocals/Parameters pass)
 
 > 1쪽 handoff. 자현 5분 결정 진입점.
 
