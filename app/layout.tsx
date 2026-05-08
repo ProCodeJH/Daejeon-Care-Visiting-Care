@@ -120,7 +120,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           crossOrigin="anonymous"
         />
 
-        {/* speculation rules — 핵심 nav + cross-page recommendation 12 페이지 prerender (즉시 응답) */}
+        {/* speculation rules — 핵심 nav + cross-page recommendation 12 페이지 prerender (즉시 응답).
+         * Wave 454: XSS escape (defensive — hardcoded URL 안전하지만 5 JSON-LD 컴포넌트와 일관성). */}
         <script
           type="speculationrules"
           dangerouslySetInnerHTML={{
@@ -144,7 +145,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                   ],
                 },
               ],
-            }),
+            }).replace(/</g, '\\u003c'),
           }}
         />
       </head>

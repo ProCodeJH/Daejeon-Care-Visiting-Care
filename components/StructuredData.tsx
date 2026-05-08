@@ -126,19 +126,21 @@ const SPEAKABLE_JSONLD = {
 };
 
 export function StructuredData() {
+  // Wave 454: XSS 방어 — </script> 같은 string이 JSON에 들어가도 script tag 조기 종료 차단.
+  // 현재 hardcoded CONTACT라 직접 위험 X지만 defensive 표준 (다른 5 JSON-LD 컴포넌트와 일관성).
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(BUSINESS_JSONLD) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(BUSINESS_JSONLD).replace(/</g, '\\u003c') }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBSITE_JSONLD) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBSITE_JSONLD).replace(/</g, '\\u003c') }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(SPEAKABLE_JSONLD) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(SPEAKABLE_JSONLD).replace(/</g, '\\u003c') }}
       />
     </>
   );
