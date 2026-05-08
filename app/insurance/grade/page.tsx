@@ -111,9 +111,10 @@ export default function GradePage() {
             sub="신청부터 등급 결과 통보까지 약 30일"
             className="mb-12"
           />
-          <div className="grid md:grid-cols-5 gap-3">
+          {/* Wave 355: <ol>+<li> WCAG 1.3.1 (sequential process semantic). list-none = decimal marker 숨김 (visual badge로 대체) */}
+          <ol className="grid md:grid-cols-5 gap-3 list-none p-0 m-0">
             {STEPS.map((s, i) => (
-              <Reveal key={s.num} delay={i * 0.08}>
+              <Reveal as="li" key={s.num} delay={i * 0.08}>
                 <div className="bg-white p-5 text-center relative h-full">
                   <div className="w-12 h-12 bg-brand-600 grid place-items-center text-white font-bold mx-auto mb-3" style={{ borderRadius: '2px' }}>
                     {s.num}
@@ -126,7 +127,7 @@ export default function GradePage() {
                 </div>
               </Reveal>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
 

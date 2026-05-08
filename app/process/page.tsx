@@ -75,9 +75,10 @@ export default function ProcessPage() {
             sub="어르신과 가족이 안심하고 시작할 수 있도록"
             className="mb-12"
           />
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {/* Wave 355: <ol>+<li> WCAG 1.3.1 (6-step process). list-none = decimal marker 숨김 */}
+          <ol className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 list-none p-0 m-0">
             {STEPS.map((s, i) => (
-              <Reveal key={s.num} delay={i * 0.1}>
+              <Reveal as="li" key={s.num} delay={i * 0.1}>
                 <div className="bg-[#f8f8f8] p-7 hover:bg-brand-50 transition-colors group h-full relative">
                   {/* 연결 선 (다음 카드로) */}
                   {i < STEPS.length - 1 && i % 3 !== 2 && (
@@ -94,7 +95,7 @@ export default function ProcessPage() {
                 </div>
               </Reveal>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
 
@@ -113,15 +114,16 @@ export default function ProcessPage() {
             sub="어르신께서 마음에 드실 때까지 매니저를 매칭합니다"
             className="mb-12"
           />
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          {/* Wave 355: <ol>+<li> 4-step verification process semantic */}
+          <ol className="grid grid-cols-2 lg:grid-cols-4 gap-4 list-none p-0 m-0">
             {VERIFICATION.map((v) => (
-              <div key={v.num} className="bg-white p-6 text-center border border-gray-100 hover:border-brand-400 transition-colors">
+              <li key={v.num} className="bg-white p-6 text-center border border-gray-100 hover:border-brand-400 transition-colors">
                 <p className="text-3xl font-bold text-brand-400 mb-2">{v.num}</p>
                 <h3 className="font-bold text-ink-primary mb-2">{v.title}</h3>
                 <p className="text-sm text-ink-muted">{v.desc}</p>
-              </div>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
 
