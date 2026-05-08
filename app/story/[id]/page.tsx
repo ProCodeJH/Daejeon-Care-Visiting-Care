@@ -6,6 +6,7 @@ import { STORIES } from '@/content/stories';
 import { PageHero } from '@/components/PageHero';
 import { CTASection } from '@/components/CTASection';
 import { ShareButton } from '@/components/ShareButton';
+import { ArticleJsonLd } from '@/components/ArticleJsonLd';
 
 export function generateStaticParams() {
   return STORIES.map((s) => ({ id: String(s.id) }));
@@ -42,6 +43,13 @@ export default async function StoryDetailPage({
 
   return (
     <>
+      <ArticleJsonLd
+        type="BlogPosting"
+        headline={s.title}
+        description={s.excerpt}
+        datePublished={s.date}
+        url={`/story/${s.id}`}
+      />
       <PageHero
         title={s.title}
         sub={s.excerpt}

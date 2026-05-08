@@ -6,6 +6,7 @@ import { NOTICES } from '@/content/notices';
 import { PageHero } from '@/components/PageHero';
 import { CTASection } from '@/components/CTASection';
 import { ShareButton } from '@/components/ShareButton';
+import { ArticleJsonLd } from '@/components/ArticleJsonLd';
 
 export function generateStaticParams() {
   return NOTICES.map((n) => ({ id: String(n.id) }));
@@ -42,6 +43,14 @@ export default async function NoticeDetailPage({
 
   return (
     <>
+      <ArticleJsonLd
+        type="NewsArticle"
+        headline={n.title}
+        description={n.body.slice(0, 200).replace(/\s+/g, ' ').trim()}
+        datePublished={n.date}
+        author={n.author}
+        url={`/notice/${n.id}`}
+      />
       <PageHero
         title={n.title}
         sub={n.body.slice(0, 100).replace(/\s+/g, ' ').trim()}
