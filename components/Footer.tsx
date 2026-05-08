@@ -30,7 +30,7 @@ export function Footer() {
           </div>
           <a
             href={CONTACT.phoneTel}
-            className="flex items-center gap-2 bg-[#E63946] hover:bg-[#C12A37] text-white px-7 py-3 font-bold transition-colors text-lg"
+            className="hero-cta-pulse flex items-center gap-2 bg-[#E63946] hover:bg-[#C12A37] text-white px-7 py-3 font-bold transition-colors text-lg relative"
             style={{ borderRadius: '2px' }}
           >
             <Phone size={20} />
