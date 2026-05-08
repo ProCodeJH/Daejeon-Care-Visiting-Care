@@ -265,6 +265,8 @@ export default function JobApplyPage() {
                       aria-required="true"
                       type="text"
                       autoComplete="name"
+                      autoCorrect="off"
+                      spellCheck={false}
                       enterKeyHint="next"
                       maxLength={30}
                       className="w-full px-4 py-2.5 bg-[#f8f8f8] border border-gray-200 focus:border-brand-400 focus:outline-none text-sm"
