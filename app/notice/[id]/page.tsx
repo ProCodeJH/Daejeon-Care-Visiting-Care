@@ -23,15 +23,18 @@ export async function generateMetadata({
   const n = NOTICES.find((n) => n.id === Number(id));
   if (!n) return { title: '공지사항' };
   const description = n.body.slice(0, 140).replace(/\s+/g, ' ').trim();
+  // Wave 427: authors metadata + openGraph article authors
   return {
     title: n.title,
     description,
+    authors: [{ name: n.author }],
     alternates: { canonical: `/notice/${n.id}` },
     openGraph: {
       title: n.title,
       description,
       type: 'article',
       publishedTime: n.date,
+      authors: [n.author],
     },
   };
 }
