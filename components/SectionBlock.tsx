@@ -24,9 +24,10 @@ export function SectionBlock({
     <div className={`${al} ${className}`}>
       {/* Wave 371: WCAG 3.1.2 Language of Parts (Level AA) — eyebrow는 모든 페이지에서 영어 라벨.
           한국어 screen reader가 영어 발음 규칙으로 읽도록 lang="en" 명시. */}
+      {/* Wave 465: | (vertical bar) decorative — SR "pipe"/"vertical bar" 발음 noise 차단 */}
       {eyebrow && (
         <p lang="en" className="text-brand-400 font-semibold tracking-[0.2em] text-sm mb-3">
-          | {eyebrow}
+          <span aria-hidden="true">|</span> {eyebrow}
         </p>
       )}
       <h2 className="text-2xl md:text-4xl font-bold text-ink-primary mb-4 leading-snug">
