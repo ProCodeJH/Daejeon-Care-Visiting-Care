@@ -134,8 +134,7 @@ export default function ContactPage() {
                   <textarea
                     required
                     rows={5}
-                    /* @ts-expect-error field-sizing modern CSS */
-                    style={{ borderRadius: '2px', fieldSizing: 'content' }}
+                    style={{ borderRadius: '2px', fieldSizing: 'content' } as React.CSSProperties}
                     className="w-full px-4 py-2.5 bg-white border border-gray-200 focus:border-brand-400 focus:outline-none text-sm resize-none min-h-[120px]"
                   />
                 </div>
