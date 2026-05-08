@@ -132,6 +132,7 @@ export default function ContactPage() {
                   <select
                     id="contact-category"
                     name="category"
+                    autoComplete="off"
                     className="w-full px-4 py-2.5 bg-white border border-gray-200 focus:border-brand-400 focus:outline-none text-sm"
                     style={{ borderRadius: '2px' }}
                   >
@@ -152,6 +153,7 @@ export default function ContactPage() {
                     required
                     rows={5}
                     maxLength={1000}
+                    autoComplete="off"
                     style={{ borderRadius: '2px', fieldSizing: 'content' } as React.CSSProperties}
                     className="w-full px-4 py-2.5 bg-white border border-gray-200 focus:border-brand-400 focus:outline-none text-sm resize-none min-h-[120px]"
                   />
