@@ -159,7 +159,7 @@ export default function JobApplyPage() {
                   <label className="block text-sm font-bold text-ink-primary mb-1.5">
                     자격증 종류 <span aria-hidden="true" className="text-brand-400">*</span>
                   </label>
-                  <div role="radiogroup" aria-label="자격증 종류" className="flex gap-4 text-sm">
+                  <div role="radiogroup" aria-label="자격증 종류" aria-required="true" className="flex gap-4 text-sm">
                     {['요양보호사 1급', '요양보호사 2급', '간호조무사', '사회복지사', '기타'].map((c) => (
                       <label key={c} className="flex items-center gap-2 cursor-pointer">
                         <input type="radio" name="cert" value={c} required className="accent-brand-400" />
@@ -193,7 +193,7 @@ export default function JobApplyPage() {
                   <label className="block text-sm font-bold text-ink-primary mb-1.5">
                     희망 근무지 <span aria-hidden="true" className="text-brand-400">*</span>
                   </label>
-                  <div role="group" aria-label="희망 근무지" className="grid grid-cols-3 md:grid-cols-6 gap-2">
+                  <div role="group" aria-label="희망 근무지" aria-required="true" className="grid grid-cols-3 md:grid-cols-6 gap-2">
                     {REGIONS.map((r) => (
                       <label key={r} className="flex items-center gap-2 text-sm cursor-pointer p-2 bg-[#f8f8f8] hover:bg-brand-50 transition-colors" style={{ borderRadius: '2px' }}>
                         <input type="checkbox" name="region" value={r} className="accent-brand-400" />
