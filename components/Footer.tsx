@@ -140,9 +140,10 @@ export function Footer() {
         <div className="border-t border-gray-100 mt-10 pt-5 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
           {/* Wave 357: <small> semantic — copyright는 canonical "small print" 영역 (HTML5 spec).
               Wave 373: 최종 업데이트 표시 — SSG build time 자동 갱신, "활성 유지" 신뢰 시그널. */}
-          {/* Wave 488: © aria-hidden — visible "COPYRIGHT" + © redundant (SR "copyright sign COPYRIGHT" noise) */}
+          {/* Wave 488: © aria-hidden — visible "COPYRIGHT" + © redundant (SR "copyright sign COPYRIGHT" noise)
+           * Wave 491: 영문 부분 lang="en" wrap — Korean SR이 영문 발음 규칙으로 정확 읽기 (WCAG 3.1.2) */}
           <small className="text-xs text-ink-muted block">
-            COPYRIGHT <span aria-hidden="true">©</span> {new Date().getFullYear()} {CONTACT.name} ALL RIGHTS RESERVED.
+            <span lang="en">COPYRIGHT</span> <span aria-hidden="true">©</span> {new Date().getFullYear()} {CONTACT.name} <span lang="en">ALL RIGHTS RESERVED</span>.
             {' '}<span aria-hidden="true">·</span>{' '}
             최종 업데이트{' '}
             <time dateTime={new Date().toISOString().split('T')[0]}>
