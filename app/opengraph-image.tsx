@@ -1,10 +1,11 @@
 import { ImageResponse } from 'next/og';
+import { CONTACT } from '@/lib/contact';
 
 /**
  * OpenGraph image — 카톡/페북/트위터 공유 시 미리보기 썸네일.
  * 정체성 색 + 한글 카피 + 24시간 + 대표번호.
  */
-export const alt = '대전케어 방문요양센터 — 24시간 상담 042-369-0326';
+export const alt = `대전케어 방문요양센터 — 24시간 상담 ${CONTACT.phone}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -117,7 +118,7 @@ export default function OGImage() {
             borderRadius: 4,
           }}
         >
-          ☎ 042-369-0326
+          ☎ {CONTACT.phone}
         </div>
 
         {/* 좌하단 도메인 */}

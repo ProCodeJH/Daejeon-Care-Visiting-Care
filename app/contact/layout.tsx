@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
+import { CONTACT } from '@/lib/contact';
 
 /**
  * Segment layout — page.tsx가 'use client'라 metadata export 불가 → 여기서 처리.
@@ -7,8 +8,7 @@ import type { ReactNode } from 'react';
  */
 export const metadata: Metadata = {
   title: '상담 문의',
-  description:
-    '대전케어 방문요양센터 상담 문의 — 24시간 상담 042-369-0326. 무료 상담 + 등급 신청 도움.',
+  description: `대전케어 방문요양센터 상담 문의 — 24시간 상담 ${CONTACT.phone}. 무료 상담 + 등급 신청 도움.`,
   alternates: { canonical: '/contact' },
 };
 

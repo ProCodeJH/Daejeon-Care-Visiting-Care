@@ -9,17 +9,17 @@ import { WebVitals } from '@/components/WebVitals';
 import { StructuredData } from '@/components/StructuredData';
 import { FloatingCallButton } from '@/components/FloatingCallButton';
 import { ScrollToTop } from '@/components/ScrollToTop';
+import { CONTACT } from '@/lib/contact';
 
 const SITE = 'https://대전케어방문요양.kr';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
   title: {
-    default: '대전케어 방문요양센터 — 24시간 상담 042-369-0326',
+    default: `대전케어 방문요양센터 — 24시간 상담 ${CONTACT.phone}`,
     template: '%s | 대전케어 방문요양센터',
   },
-  description:
-    '대전 5구 통합 방문요양센터. 어르신 댁으로 직접 찾아가는 케어 — 방문요양·방문목욕·방문간호. 24시간 상담 가능 042-369-0326.',
+  description: `대전 5구 통합 방문요양센터. 어르신 댁으로 직접 찾아가는 케어 — 방문요양·방문목욕·방문간호. 24시간 상담 가능 ${CONTACT.phone}.`,
   keywords: [
     '대전 방문요양',
     '대전케어',
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   formatDetection: { telephone: true, address: true, email: true },
   openGraph: {
     title: '대전케어 방문요양센터',
-    description: '대전 5구 통합 방문요양 — 24시간 상담 가능 042-369-0326',
+    description: `대전 5구 통합 방문요양 — 24시간 상담 가능 ${CONTACT.phone}`,
     url: SITE,
     locale: 'ko_KR',
     type: 'website',
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: '대전케어 방문요양센터',
-    description: '24시간 상담 가능 — 042-369-0326',
+    description: `24시간 상담 가능 — ${CONTACT.phone}`,
   },
   robots: {
     index: true,
