@@ -2,12 +2,13 @@
   "name": "daejeon-care-web-v3",
   "version": "0.1.0",
   "private": true,
-  "description": "대전케어 — 두손누리 디자인 reference + daejeon-care 콘텐츠 (Tailwind + Framer Motion + Sanity, processsfom scratch)",
+  "description": "대전케어 방문요양센터 — 두손누리 1:1 React + 130+ Wave audit-driven (Single Source 100% / Form 8 paradigm / JSON-LD 7종 / Voice/Share/Schema). Next.js 15 + Tailwind 3 + Framer Motion 11 + Pretendard.",
   "scripts": {
     "dev": "next dev --turbopack --port 3012",
     "build": "next build",
     "start": "next start --port 3012",
-    "lint": "next lint"
+    "lint": "next lint",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "clsx": "^2.1.1",
