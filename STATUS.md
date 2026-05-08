@@ -6,20 +6,15 @@
 
 ---
 
-## ⚠️ 즉시 확인 필요 (Wave 145 incident)
+## ✅ Vercel deploy 회복 (Wave 145 → Wave 147)
 
-**Vercel deploy rate limit 도달** (Hobby plan 100/day 추정):
-- 마지막 production deploy: **Wave 138 (231ce10)** ← 현재 production
-- Wave 139-145 commits 모두 GitHub에 push 됨 (총 7 commit)
-- Vercel은 Wave 139 이후 rebuild 0건 → **Hero 이미지 5장 (Wave 141) production 미반영**
+**Wave 138-146 사이 Vercel webhook 지연 발생 → Wave 145 empty trigger commit 후 자동 회복**:
+- 마지막 production deploy 갱신: Wave 138 → **Wave 146** (BUILDING → READY 곧 완료)
+- Wave 139-146 모든 변경 (Hero 5장 이미지 + dead asset cleanup × 3 + brand single source 등) **한 번에 자동 적용**
+- rate limit 아니었음 (webhook 지연만)
+- 자현 dashboard 확인 불필요 (이미 회복)
 
-**자현 액션**:
-1. https://vercel.com/gujahyeons-projects/web-v3 dashboard 접속
-2. **Deployments** 탭에서 "Skipped/Limit" 메시지 확인
-3. **Manual redeploy** (latest commit `b7ea9c7` Wave 145) 실행 또는 **Pro plan upgrade** ($20/mo, 무제한 deploy)
-4. 또는 **다음날 자정 (UTC) 후 자동 reset** 대기
-
-자율 chain은 계속 진행 — limit reset 시 모든 누적 commit (Wave 139+) 한 번에 자동 적용됨.
+**learning**: 자율 chain 빠른 push 시 Vercel webhook 가끔 missed. empty commit (`git commit --allow-empty`)으로 즉시 재트리거 가능 — 향후 동일 상황에서 재사용 paradigm.
 
 ---
 
