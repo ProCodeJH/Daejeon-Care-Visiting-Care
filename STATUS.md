@@ -1,6 +1,6 @@
 # STATUS — 대전케어 방문요양센터
 
-**Updated**: 2026-05-09 / Wave 562 / paradigm 18 chain 210-wave (paradigm 14 sync ritual #10 — 광맥 325건 + paradigm 18 12 dimension cycle + build success + memory 동기화)
+**Updated**: 2026-05-09 / Wave 563 / paradigm 18 chain 211-wave (hero PNG 1.7-2MB × 5 = 9.5MB 측정 — 외부 sharp/squoosh + 자현 직접 작업 scope, STATUS.md §5 정의 ✓)
 
 > 1쪽 handoff. 자현 5분 결정 진입점.
 
