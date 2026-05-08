@@ -18,8 +18,9 @@ export default function TermsPage() {
 
       <article className="bg-white py-16">
         <div className="max-w-[800px] mx-auto px-5">
+          {/* Wave 393: <time> semantic 시행일 */}
           <p className="text-sm text-ink-muted mb-10">
-            시행일: 2026년 5월 8일
+            시행일: <time dateTime="2026-05-08">2026년 5월 8일</time>
           </p>
 
           <Section title="제1조 (목적)">
@@ -85,17 +86,27 @@ export default function TermsPage() {
           </Section>
 
           <Section title="제10조 (문의)">
-            <p className="bg-brand-50 p-5 border-l-4 border-brand-600 not-prose">
+            {/* Wave 393: <address> + tel:/mailto: 링크 (Wave 354 패턴 saturation pass) */}
+            <address className="bg-brand-50 p-5 border-l-4 border-brand-600 not-italic not-prose">
               <strong>대전케어 방문요양센터</strong><br />
-              연락처: {CONTACT.phone} (24시간 상담)<br />
-              이메일: {CONTACT.email}<br />
+              연락처:{' '}
+              <a href={CONTACT.phoneTel} className="font-bold hover:underline text-brand-600">
+                {CONTACT.phone}
+              </a>{' '}
+              (24시간 상담)<br />
+              이메일:{' '}
+              <a href={CONTACT.emailMailto} className="hover:underline text-brand-600">
+                {CONTACT.email}
+              </a>
+              <br />
               주소: {CONTACT.address}
-            </p>
+            </address>
           </Section>
 
-          <p className="text-xs text-ink-muted mt-10 border-t border-gray-100 pt-6">
+          {/* Wave 393: <small> semantic disclaimer */}
+          <small className="block text-xs text-ink-muted mt-10 border-t border-gray-100 pt-6">
             ※ 본 약관은 표준 안이며 자현 비즈니스 운영에 맞춰 정확한 조건 검토 후 swap 부탁드립니다.
-          </p>
+          </small>
         </div>
       </article>
     </>
