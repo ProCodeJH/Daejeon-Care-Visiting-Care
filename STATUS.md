@@ -1,6 +1,6 @@
 # STATUS — 대전케어 방문요양센터
 
-**Updated**: 2026-05-09 / Wave 557 / paradigm 18 chain 205-wave (form label WCAG 1.3.1 + 4.1.2 완전 — 10 htmlFor↔id + 5 group aria-labelledby + role group/radiogroup ✓)
+**Updated**: 2026-05-09 / Wave 558 / paradigm 18 chain 206-wave (React key anti-pattern audit saturated — filtered list key={n.id} stable + key={i} 11 파일 모두 정적 SSR 안전)
 
 > 1쪽 handoff. 자현 5분 결정 진입점.
 
