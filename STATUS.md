@@ -1,6 +1,6 @@
 # STATUS — 대전케어 방문요양센터
 
-**Updated**: 2026-05-09 / Wave 554 / paradigm 18 chain 202-wave (URL deep-link 4 location encoding audit saturated — notice/cost/story/faq 모두 encodeURIComponent ✓)
+**Updated**: 2026-05-09 / Wave 555 / paradigm 18 chain 203-wave (insurance/cost dual state URL>sessionStorage>default 정확 설계 + dictionary validation defensive ✓)
 
 > 1쪽 handoff. 자현 5분 결정 진입점.
 
