@@ -17,61 +17,26 @@ export default {
           vellum: '#EBE3D4',
           night: '#1A1814',
         },
-        ink_legacy: {
-          primary: '#2A2520',
-          secondary: '#5C544A',
-          muted: '#9A9085',
-          inverse: '#FAF7F2',
-        },
-        // 대전케어 UI 블루 (의료 신뢰). 로고 자체 녹색은 #1B6F4A 별도 유지.
+        // 대전케어 UI 블루 (의료 신뢰). 자현 정체성 그린 #1B6F4A / 코랄 #E63946 / 노랑 #F5A623는 inline style로 직접 사용.
         brand: {
           50: '#EFF6FF',
           100: '#DBEAFE',
           200: '#BFDBFE',
           300: '#93C5FD',
-          400: '#60A5FA', // primary (동일 변수, 톤만 blue로)
+          400: '#60A5FA', // primary
           500: '#3B82F6',
           600: '#2563EB',
           700: '#1D4ED8',
           800: '#1E40AF',
           900: '#1E3A8A',
         },
-        sage: {
-          50: '#EFF6FF',
-          200: '#BFDBFE',
-          500: '#60A5FA',
-          700: '#1D4ED8',
-          900: '#1E3A8A',
-        },
-        // 자현 정체성 (로고): 그린 + 코랄 + 노랑
-        identity: {
-          green: '#1B6F4A',
-          'green-deep': '#15573A',
-          coral: '#E63946',
-          'coral-deep': '#C12A37',
-          yellow: '#F5A623',
-        },
         ink: {
-          primary: '#212121', // rgb(33, 33, 33) - 두손누리 텍스트
-          secondary: '#444444', // rgb(68, 68, 68)
-          muted: '#757575', // rgb(117, 117, 117)
+          primary: '#212121',
+          secondary: '#444444',
+          muted: '#757575',
           inverse: '#FFFFFF',
-          deepest: '#2B2B2B', // 두손누리 dark BG rgb(43, 43, 43)
+          deepest: '#2B2B2B',
           black: '#000000',
-        },
-        terra: {
-          50: '#FBF1EB',
-          200: '#EFD3BF',
-          500: '#C97B4F',
-          700: '#9A5837',
-          900: '#5A3220',
-        },
-        warm: {
-          50: '#FCF6E8',
-          200: '#F2D9A8',
-          500: '#D4A65F',
-          700: '#9C7838',
-          900: '#5C461F',
         },
       },
       fontFamily: {
