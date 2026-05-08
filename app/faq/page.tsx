@@ -115,7 +115,9 @@ export default function FAQPage() {
                   <span className="flex-1 font-semibold text-ink-primary leading-snug">
                     {f.q}
                   </span>
+                  {/* Wave 482: aria-hidden — ▾ Unicode chevron decorative (SR "downwards triangle" noise 차단) */}
                   <span
+                    aria-hidden="true"
                     className={`text-brand-400 text-xl shrink-0 transition-transform ${
                       openIdx === i ? 'rotate-180' : ''
                     }`}

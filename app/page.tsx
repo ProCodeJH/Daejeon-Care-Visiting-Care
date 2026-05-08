@@ -341,7 +341,8 @@ export default function Home() {
                   <summary className="font-semibold text-ink-primary flex items-start gap-3 list-none">
                     <span className="text-brand-400 font-bold shrink-0">Q.</span>
                     <span className="flex-1">{f.q}</span>
-                    <span className="text-brand-400 group-open:rotate-180 transition-transform">▾</span>
+                    {/* Wave 482: aria-hidden — ▾ Unicode chevron decorative (SR noise 차단) */}
+                    <span aria-hidden="true" className="text-brand-400 group-open:rotate-180 transition-transform">▾</span>
                   </summary>
                   <div className="mt-3 pl-6 text-sm text-ink-secondary leading-relaxed">
                     <span className="text-brand-400 font-bold mr-2">A.</span>
