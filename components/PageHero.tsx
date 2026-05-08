@@ -44,18 +44,21 @@ export function PageHero({
 
       <div className="text-center px-5 relative z-10">
         {crumbs.length > 0 && (
-          <nav className="text-xs md:text-sm opacity-80 mb-3 flex items-center justify-center gap-2" aria-label="breadcrumb">
-            <a href="/" className="hover:opacity-100">홈</a>
-            {crumbs.map((c, i) => (
-              <span key={i} className="flex items-center gap-2">
-                <span aria-hidden="true" className="opacity-60">›</span>
-                {c.href ? (
-                  <a href={c.href} className="hover:opacity-100">{c.label}</a>
-                ) : (
-                  <span className="font-medium" aria-current="page">{c.label}</span>
-                )}
-              </span>
-            ))}
+          <nav className="text-xs md:text-sm opacity-80 mb-3" aria-label="breadcrumb">
+            {/* Wave 303: <ol>+<li> W3C ARIA Authoring Practices breadcrumb pattern. */}
+            <ol className="list-none p-0 m-0 flex items-center justify-center gap-2 flex-wrap">
+              <li><a href="/" className="hover:opacity-100">홈</a></li>
+              {crumbs.map((c, i) => (
+                <li key={i} className="flex items-center gap-2">
+                  <span aria-hidden="true" className="opacity-60">›</span>
+                  {c.href ? (
+                    <a href={c.href} className="hover:opacity-100">{c.label}</a>
+                  ) : (
+                    <span className="font-medium" aria-current="page">{c.label}</span>
+                  )}
+                </li>
+              ))}
+            </ol>
           </nav>
         )}
         <h1
