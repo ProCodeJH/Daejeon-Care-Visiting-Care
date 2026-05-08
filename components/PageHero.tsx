@@ -67,7 +67,14 @@ export function PageHero({
         >
           <SplitText text={title} charDelay={0.035} />
         </h1>
-        {sub && <p className="text-base md:text-lg opacity-90 leading-relaxed">{sub}</p>}
+        {sub && (
+          <p
+            className="text-base md:text-lg opacity-90 leading-relaxed"
+            data-speakable="true"
+          >
+            {sub}
+          </p>
+        )}
       </div>
     </section>
     </>

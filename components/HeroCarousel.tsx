@@ -147,6 +147,7 @@ export function HeroCarousel() {
           animate={{ opacity: 0.92, y: 0 }}
           transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
           className="text-base md:text-xl max-w-2xl leading-relaxed font-light"
+          data-speakable="true"
         >
           {SLIDES[idx].sub}
         </motion.p>
