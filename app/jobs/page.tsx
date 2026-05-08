@@ -1,14 +1,17 @@
 import { PageHero } from '@/components/PageHero';
 import { SectionBlock } from '@/components/SectionBlock';
 import { CTASection } from '@/components/CTASection';
+import { Wallet, Clock, Home, BookOpen, Users, Heart, type LucideIcon } from 'lucide-react';
 
-const BENEFITS = [
-  { icon: '💰', title: '안정적 수입', desc: '국민건강보험공단 지원 사업으로 급여 안정성' },
-  { icon: '⏰', title: '시간 자율성', desc: '하루 3-4시간 / 본인 일정 맞춰 매칭' },
-  { icon: '🏠', title: '가까운 지역', desc: '거주지 인근 어르신 댁 우선 매칭' },
-  { icon: '📚', title: '교육 지원', desc: '센터 자체 교육 프로그램 + 자격증 갱신 지원' },
-  { icon: '🤝', title: '동료 네트워크', desc: '경력 매니저와의 노하우 공유 + 정기 모임' },
-  { icon: '❤️', title: '보람 있는 일', desc: '어르신과 가족의 일상에 함께하는 의미' },
+type Benefit = { Icon: LucideIcon; title: string; desc: string };
+
+const BENEFITS: Benefit[] = [
+  { Icon: Wallet, title: '안정적 수입', desc: '국민건강보험공단 지원 사업으로 급여 안정성' },
+  { Icon: Clock, title: '시간 자율성', desc: '하루 3-4시간 / 본인 일정 맞춰 매칭' },
+  { Icon: Home, title: '가까운 지역', desc: '거주지 인근 어르신 댁 우선 매칭' },
+  { Icon: BookOpen, title: '교육 지원', desc: '센터 자체 교육 프로그램 + 자격증 갱신 지원' },
+  { Icon: Users, title: '동료 네트워크', desc: '경력 매니저와의 노하우 공유 + 정기 모임' },
+  { Icon: Heart, title: '보람 있는 일', desc: '어르신과 가족의 일상에 함께하는 의미' },
 ];
 
 const REQUIREMENTS = [
@@ -68,8 +71,10 @@ export default function JobsPage() {
           />
           <div className="grid md:grid-cols-3 gap-5">
             {BENEFITS.map((b, i) => (
-              <div key={i} className="bg-white p-7 hover:shadow-md transition-shadow">
-                <div className="text-4xl mb-4">{b.icon}</div>
+              <div key={i} className="bg-white p-7 hover:shadow-md transition-shadow group">
+                <div className="w-12 h-12 grid place-items-center bg-brand-50 text-brand-600 group-hover:bg-brand-600 group-hover:text-white transition-colors mb-4" style={{ borderRadius: '2px' }}>
+                  <b.Icon size={24} strokeWidth={1.8} />
+                </div>
                 <h3 className="text-lg font-bold text-ink-primary mb-2">{b.title}</h3>
                 <p className="text-sm text-ink-secondary leading-relaxed">{b.desc}</p>
               </div>

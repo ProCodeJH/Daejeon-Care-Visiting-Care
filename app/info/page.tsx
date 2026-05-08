@@ -2,43 +2,17 @@ import { PageHero } from '@/components/PageHero';
 import { SectionBlock } from '@/components/SectionBlock';
 import { CTASection } from '@/components/CTASection';
 
-const TOPICS = [
-  {
-    title: '치매 어르신 케어',
-    desc: '치매 진행을 늦추는 일상 케어 방법',
-    icon: '🧠',
-    href: '/info/dementia',
-  },
-  {
-    title: '낙상 예방',
-    desc: '집안에서 어르신 낙상을 막는 7가지',
-    icon: '🛡️',
-    href: '/info/fall',
-  },
-  {
-    title: '식사 관리',
-    desc: '연령대별 식단 가이드 + 영양제 안내',
-    icon: '🍱',
-    href: '/info/meal',
-  },
-  {
-    title: '복용약 관리',
-    desc: '여러 약을 안전하게 복용하는 법',
-    icon: '💊',
-    href: '/info/medication',
-  },
-  {
-    title: '인지활동',
-    desc: '두뇌 자극 활동으로 활기찬 일상',
-    icon: '🎨',
-    href: '/info/cognitive',
-  },
-  {
-    title: '복지 서비스',
-    desc: '국가/지자체 복지 서비스 신청 가이드',
-    icon: '📋',
-    href: '/info/welfare',
-  },
+import { Brain, ShieldCheck, UtensilsCrossed, Pill, Palette, ClipboardList, type LucideIcon } from 'lucide-react';
+
+type Topic = { title: string; desc: string; Icon: LucideIcon; href: string };
+
+const TOPICS: Topic[] = [
+  { title: '치매 어르신 케어', desc: '치매 진행을 늦추는 일상 케어 방법', Icon: Brain, href: '/info/dementia' },
+  { title: '낙상 예방', desc: '집안에서 어르신 낙상을 막는 7가지', Icon: ShieldCheck, href: '/info/fall' },
+  { title: '식사 관리', desc: '연령대별 식단 가이드 + 영양제 안내', Icon: UtensilsCrossed, href: '/info/meal' },
+  { title: '복용약 관리', desc: '여러 약을 안전하게 복용하는 법', Icon: Pill, href: '/info/medication' },
+  { title: '인지활동', desc: '두뇌 자극 활동으로 활기찬 일상', Icon: Palette, href: '/info/cognitive' },
+  { title: '복지 서비스', desc: '국가/지자체 복지 서비스 신청 가이드', Icon: ClipboardList, href: '/info/welfare' },
 ];
 
 const RESOURCES = [
@@ -73,12 +47,14 @@ export default function InfoPage() {
                 href={t.href}
                 className="group block bg-[#f8f8f8] hover:bg-brand-50 p-7 transition-colors"
               >
-                <div className="text-4xl mb-4">{t.icon}</div>
-                <h3 className="text-lg font-bold text-ink-primary mb-2 group-hover:text-brand-400 transition-colors">
+                <div className="w-12 h-12 grid place-items-center bg-white group-hover:bg-brand-600 text-brand-600 group-hover:text-white transition-colors mb-4 shadow-sm" style={{ borderRadius: '2px' }}>
+                  <t.Icon size={24} strokeWidth={1.8} />
+                </div>
+                <h3 className="text-lg font-bold text-ink-primary mb-2 group-hover:text-brand-600 transition-colors">
                   {t.title}
                 </h3>
                 <p className="text-sm text-ink-secondary leading-relaxed">{t.desc}</p>
-                <p className="text-xs text-brand-400 mt-4 font-semibold">자세히 보기 →</p>
+                <p className="text-xs text-brand-600 mt-4 font-semibold">자세히 보기 →</p>
               </a>
             ))}
           </div>

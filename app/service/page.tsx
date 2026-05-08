@@ -1,25 +1,32 @@
 import { PageHero } from '@/components/PageHero';
 import { SectionBlock } from '@/components/SectionBlock';
 import { CTASection } from '@/components/CTASection';
+import { HandHeart, Home, Footprints, MessageCircle, type LucideIcon } from 'lucide-react';
 
-const SUB_SERVICES = [
+type SubService = {
+  Icon: LucideIcon;
+  title: string;
+  items: string[];
+};
+
+const SUB_SERVICES: SubService[] = [
   {
-    icon: '🤝',
+    Icon: HandHeart,
     title: '신체활동 지원',
     items: ['세면 도움', '구강 관리', '머리 감기기', '몸단장', '옷 갈아입히기', '목욕 도움', '식사 도움', '체위 변경', '이동 도움', '신체기능 유지/증진', '화장실 이용'],
   },
   {
-    icon: '🏠',
+    Icon: Home,
     title: '일상생활 지원',
     items: ['취사', '청소 및 주변정돈', '세탁'],
   },
   {
-    icon: '🚶',
+    Icon: Footprints,
     title: '개인활동 지원',
     items: ['외출 시 동행', '일상업무 대행 (약국/병원 약 타오기 등)'],
   },
   {
-    icon: '💬',
+    Icon: MessageCircle,
     title: '정서 지원',
     items: ['말벗', '격려 및 위로', '생활상담'],
   },
@@ -83,10 +90,12 @@ export default function ServicePage() {
             {SUB_SERVICES.map((s, i) => (
               <div
                 key={i}
-                className="bg-[#f8f8f8] p-7 hover:bg-brand-50 transition-colors"
+                className="bg-[#f8f8f8] p-7 hover:bg-brand-50 transition-colors group"
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="text-3xl">{s.icon}</span>
+                  <div className="w-12 h-12 grid place-items-center bg-[#1B6F4A] text-white group-hover:bg-[#15573A] transition-colors" style={{ borderRadius: '2px' }}>
+                    <s.Icon size={24} strokeWidth={1.8} />
+                  </div>
                   <h3 className="text-xl font-bold text-ink-primary">{s.title}</h3>
                 </div>
                 <ul className="space-y-2 text-ink-secondary">
