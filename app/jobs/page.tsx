@@ -103,6 +103,39 @@ export default function JobsPage() {
         </div>
       </section>
 
+      {/* 다음 단계 추천 (cross-page navigation) */}
+      <section className="bg-white py-16">
+        <div className="max-w-[1000px] mx-auto px-5">
+          <SectionBlock eyebrow="EXPLORE" title="더 알아보기" sub="지원 절차 + 대전케어 소개" className="mb-10" />
+          <div className="grid md:grid-cols-2 gap-5">
+            <a
+              href="/jobs/apply"
+              className="group bg-[#f8f8f8] hover:bg-brand-50 p-7 transition-colors block border-l-4 border-brand-600"
+            >
+              <p className="text-xs text-brand-600 font-bold tracking-[0.15em] mb-2">APPLY</p>
+              <h3 className="text-lg font-bold text-ink-primary mb-2 group-hover:text-brand-600 transition-colors">
+                지원하기 →
+              </h3>
+              <p className="text-sm text-ink-secondary leading-relaxed">
+                간단한 지원서로 시작 — 24시간 내 담당자 연락드립니다.
+              </p>
+            </a>
+            <a
+              href="/about"
+              className="group bg-[#f8f8f8] hover:bg-brand-50 p-7 transition-colors block border-l-4 border-[#1B6F4A]"
+            >
+              <p className="text-xs text-[#1B6F4A] font-bold tracking-[0.15em] mb-2">ABOUT</p>
+              <h3 className="text-lg font-bold text-ink-primary mb-2 group-hover:text-[#1B6F4A] transition-colors">
+                대전케어 소개 →
+              </h3>
+              <p className="text-sm text-ink-secondary leading-relaxed">
+                인사말 + 4 가치 + 공식 등록 + 90+명 매니저.
+              </p>
+            </a>
+          </div>
+        </div>
+      </section>
+
       <CTASection
         title="지금 바로 지원하세요"
         sub="전화 주시면 친절히 안내드립니다"
