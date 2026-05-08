@@ -1,6 +1,6 @@
 # STATUS — 대전케어 방문요양센터
 
-**Updated**: 2026-05-09 / Wave 568 / paradigm 18 chain 216-wave (광맥 #326 documentation — `next lint` deprecated + ESLint config 누락. type-check + build sufficient, 자현 승인 시 codemod migration)
+**Updated**: 2026-05-09 / Wave 569 / paradigm 18 chain 217-wave (Floating CTA UX audit — FloatingCallButton bottom-right + ScrollToTop bottom-left 분리 + motion-safe + 200/600 px 트리거 ✓)
 
 > 1쪽 handoff. 자현 5분 결정 진입점.
 
