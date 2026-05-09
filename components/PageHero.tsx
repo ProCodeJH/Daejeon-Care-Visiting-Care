@@ -37,46 +37,49 @@ export function PageHero({
           'radial-gradient(circle at 20% 30%, #1E40AF 0%, #1E3A8A 45%, #172554 100%), radial-gradient(circle at 80% 70%, rgba(230,57,70,0.3) 0%, transparent 60%)',
       }}
     >
-      {/* 자현 PNG 배경 이미지 + dark navy overlay (텍스트 가독성 보장) */}
+      {/* Wave 577 v2: 이미지 원본 그대로 (자현 명시). overlay 0. 텍스트 가독성은 strong shadow + crumbs 박스화. */}
       {bg && (
-        <>
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              backgroundImage: `url(${bg})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              opacity: 0.55,
-            }}
-          />
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background:
-                'linear-gradient(180deg, rgba(23,37,84,0.55) 0%, rgba(30,58,138,0.65) 50%, rgba(23,37,84,0.75) 100%)',
-            }}
-          />
-        </>
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage: `url(${bg})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
       )}
 
-      <svg
-        aria-hidden="true"
-        className="absolute inset-0 w-full h-full pointer-events-none opacity-25 mix-blend-screen"
-      >
-        <pattern id="ph-dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-          <circle cx="20" cy="20" r="1.2" fill="rgba(255,255,255,0.5)" />
-        </pattern>
-        <rect width="100%" height="100%" fill="url(#ph-dots)" />
-      </svg>
+      {/* Dot pattern은 이미지 있을 때 제거 (이미지 거슬림 회피) */}
+      {!bg && (
+        <svg
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full pointer-events-none opacity-25 mix-blend-screen"
+        >
+          <pattern id="ph-dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+            <circle cx="20" cy="20" r="1.2" fill="rgba(255,255,255,0.5)" />
+          </pattern>
+          <rect width="100%" height="100%" fill="url(#ph-dots)" />
+        </svg>
+      )}
 
       <div className="text-center px-5 relative z-10">
         {crumbs.length > 0 && (
-          <nav className="text-xs md:text-sm opacity-80 mb-3" aria-label="breadcrumb">
-            {/* Wave 303: <ol>+<li> W3C ARIA Authoring Practices breadcrumb pattern. */}
+          <nav
+            className="text-xs md:text-sm mb-3 inline-flex"
+            aria-label="breadcrumb"
+            style={
+              bg
+                ? {
+                    background: 'rgba(0,0,0,0.35)',
+                    padding: '6px 14px',
+                    borderRadius: '999px',
+                    backdropFilter: 'blur(4px)',
+                  }
+                : undefined
+            }
+          >
             <ol className="list-none p-0 m-0 flex items-center justify-center gap-2 flex-wrap">
-              {/* Wave 455: <a> → <Link> — Lenis smooth scroll + prefetch */}
               <li><Link href="/" className="hover:opacity-100">홈</Link></li>
               {crumbs.map((c, i) => (
                 <li key={i} className="flex items-center gap-2">
@@ -91,19 +94,27 @@ export function PageHero({
             </ol>
           </nav>
         )}
-        {/* Wave 435: textWrap 제거 — globals.css h1-h6 { text-wrap: balance } single source */}
+        {/* Wave 577 v2: 이미지 원본 보존 + 강한 text-shadow로 가독성 (overlay 없음) */}
         <h1
-          className="text-3xl md:text-5xl font-bold mb-3 drop-shadow-md"
+          className="text-3xl md:text-5xl font-bold mb-3"
           style={{
             fontVariationSettings: '"wght" 800',
+            textShadow: bg
+              ? '0 2px 8px rgba(0,0,0,0.85), 0 0 14px rgba(0,0,0,0.55), 0 4px 16px rgba(0,0,0,0.4)'
+              : undefined,
           }}
         >
           <SplitText text={title} charDelay={0.035} />
         </h1>
         {sub && (
           <p
-            className="text-base md:text-lg opacity-95 leading-relaxed drop-shadow-sm"
+            className="text-base md:text-lg opacity-95 leading-relaxed"
             data-speakable="true"
+            style={{
+              textShadow: bg
+                ? '0 1px 6px rgba(0,0,0,0.85), 0 0 10px rgba(0,0,0,0.55)'
+                : undefined,
+            }}
           >
             {sub}
           </p>
