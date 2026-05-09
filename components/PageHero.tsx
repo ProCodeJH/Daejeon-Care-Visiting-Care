@@ -37,11 +37,13 @@ export function PageHero({
           'radial-gradient(circle at 20% 30%, #1E40AF 0%, #1E3A8A 45%, #172554 100%), radial-gradient(circle at 80% 70%, rgba(230,57,70,0.3) 0%, transparent 60%)',
       }}
     >
-      {/* Wave 577 v2: 이미지 원본 그대로 (자현 명시). overlay 0. 텍스트 가독성은 strong shadow + crumbs 박스화. */}
+      {/* Wave 577 v2: 이미지 원본 그대로 (자현 명시). overlay 0.
+       * Wave 578: Ken Burns 슬로우 zoom + pan — '살아있는' 느낌 (20s cycle, prefers-reduced-motion 안전).
+       * scale 1.0 → 1.08 + position drift, ease-in-out alternate infinite. */}
       {bg && (
         <div
           aria-hidden="true"
-          className="absolute inset-0 pointer-events-none"
+          className="absolute inset-0 pointer-events-none page-hero-kenburns motion-reduce:!animate-none"
           style={{
             backgroundImage: `url(${bg})`,
             backgroundSize: 'cover',

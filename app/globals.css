@@ -584,3 +584,26 @@
     border: 2px solid ButtonText !important;
   }
 }
+/* ──────────────────────────────────────────────────────────────
+   Wave 578: PageHero Ken Burns — slow zoom + pan, '살아있는' 느낌.
+   senior care 적합 paradigm: 20s cycle, ease-in-out, prefers-reduced-motion safe.
+   ────────────────────────────────────────────────────────────── */
+@keyframes ph-kenburns {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.08) translate(-1.5%, -0.8%);
+  }
+}
+
+.page-hero-kenburns {
+  animation: ph-kenburns 20s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-hero-kenburns {
+    animation: none;
+  }
+}
