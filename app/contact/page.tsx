@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { PageHero } from '@/components/PageHero';
@@ -125,7 +125,7 @@ export default function ContactPage() {
                 <strong>JavaScript가 비활성화되어 있습니다.</strong> 온라인 문의 폼은 JS 활성 시 작동합니다.{' '}
                 <br className="hidden md:inline" />
                 지금 바로 상담 원하시면{' '}
-                <a href={CONTACT.phoneTel} className="underline font-bold text-[#1B6F4A]">
+                <a href={CONTACT.phoneTel} className="underline font-bold text-[#1E40AF]">
                   {CONTACT.phone}
                 </a>
                 {' '}으로 전화 주세요. 24시간 상담 가능.
@@ -205,12 +205,12 @@ export default function ContactPage() {
               <div
                 role="status"
                 aria-live="polite"
-                className="bg-gradient-to-br from-brand-50 to-brand-100 p-8 text-center border-l-4 border-[#1B6F4A] form-success-enter"
+                className="bg-gradient-to-br from-brand-50 to-brand-100 p-8 text-center border-l-4 border-[#1E40AF] form-success-enter"
               >
-                <div aria-hidden="true" className="w-14 h-14 mx-auto mb-4 rounded-full bg-[#1B6F4A] grid place-items-center text-white text-2xl">
+                <div aria-hidden="true" className="w-14 h-14 mx-auto mb-4 rounded-full bg-[#1E40AF] grid place-items-center text-white text-2xl">
                   ✓
                 </div>
-                <p className="font-bold text-[#1B6F4A] mb-2 text-lg">문의가 접수되었습니다</p>
+                <p className="font-bold text-[#1E40AF] mb-2 text-lg">문의가 접수되었습니다</p>
                 <p className="text-sm text-ink-secondary">빠른 시일 내에 연락드리겠습니다.</p>
               </div>
             ) : (

@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { PageHero } from '@/components/PageHero';
 import { SectionBlock } from '@/components/SectionBlock';
 import { CTASection } from '@/components/CTASection';
@@ -15,6 +15,7 @@ export default function MapPage() {
   return (
     <>
       <PageHero
+        bg="/page-hero/page-hero-10.png"
         title="찾아오시는 길"
         sub="대전 대덕구 신탄진로 808 — 본점 1곳에서 대전 5구 전 지역 매니저 운영"
         crumbs={[{ label: '센터소개', href: '/about' }, { label: '찾아오시는 길' }]}
@@ -123,10 +124,10 @@ export default function MapPage() {
             </a>
             <a
               href="/contact"
-              className="group bg-[#f8f8f8] hover:bg-brand-50 p-7 transition-colors block border-l-4 border-[#1B6F4A]"
+              className="group bg-[#f8f8f8] hover:bg-brand-50 p-7 transition-colors block border-l-4 border-[#1E40AF]"
             >
-              <p lang="en" className="text-xs text-[#1B6F4A] font-bold tracking-[0.15em] mb-2">CONTACT</p>
-              <h3 className="text-lg font-bold text-ink-primary mb-2 group-hover:text-[#1B6F4A] transition-colors">
+              <p lang="en" className="text-xs text-[#1E40AF] font-bold tracking-[0.15em] mb-2">CONTACT</p>
+              <h3 className="text-lg font-bold text-ink-primary mb-2 group-hover:text-[#1E40AF] transition-colors">
                 직접 문의하기 →
               </h3>
               <p className="text-sm text-ink-secondary leading-relaxed">

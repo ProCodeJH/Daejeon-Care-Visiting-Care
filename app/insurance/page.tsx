@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { PageHero } from '@/components/PageHero';
 import { SectionBlock } from '@/components/SectionBlock';
 import { CTASection } from '@/components/CTASection';
@@ -37,6 +37,7 @@ export default function InsurancePage() {
   return (
     <>
       <PageHero
+        bg="/page-hero/page-hero-4.png"
         title="노인장기요양보험"
         sub="국민건강보험공단의 사회보장 제도를 안내드립니다"
         crumbs={[{ label: '노인장기요양보험' }]}
@@ -139,10 +140,10 @@ export default function InsurancePage() {
             </a>
             <a
               href="/insurance/cost"
-              className="group bg-[#f8f8f8] hover:bg-brand-50 p-7 transition-colors block border-l-4 border-[#1B6F4A]"
+              className="group bg-[#f8f8f8] hover:bg-brand-50 p-7 transition-colors block border-l-4 border-[#1E40AF]"
             >
-              <p lang="en" className="text-xs text-[#1B6F4A] font-bold tracking-[0.15em] mb-2">CALCULATOR</p>
-              <h3 className="text-lg font-bold text-ink-primary mb-2 group-hover:text-[#1B6F4A] transition-colors">
+              <p lang="en" className="text-xs text-[#1E40AF] font-bold tracking-[0.15em] mb-2">CALCULATOR</p>
+              <h3 className="text-lg font-bold text-ink-primary mb-2 group-hover:text-[#1E40AF] transition-colors">
                 본인부담금 계산기 →
               </h3>
               <p className="text-sm text-ink-secondary leading-relaxed">

@@ -1,4 +1,4 @@
-import { CONTACT } from '@/lib/contact';
+﻿import { CONTACT } from '@/lib/contact';
 import { Phone } from 'lucide-react';
 
 /**
@@ -39,7 +39,7 @@ export function CTASection({
           </a>
           <a
             href="/contact"
-            className="bg-white border-2 border-[#1B6F4A] hover:bg-[#1B6F4A] hover:text-white text-[#1B6F4A] px-8 py-3 font-semibold transition-colors"
+            className="bg-white border-2 border-[#1E40AF] hover:bg-[#1E40AF] hover:text-white text-[#1E40AF] px-8 py-3 font-semibold transition-colors"
             style={{ borderRadius: '2px' }}
           >
             온라인 문의

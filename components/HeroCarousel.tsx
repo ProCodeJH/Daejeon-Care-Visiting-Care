@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
@@ -40,7 +40,7 @@ const SLIDES: Slide[] = [
     eyebrow: '장기요양등급 신청이 어려우시면',
     title: '등급신청을 도와 드립니다',
     sub: '상담부터 신청까지 전문 상담사와 함께 하세요',
-    accent: '#1B6F4A',
+    accent: '#1E40AF',
   },
   {
     grad: 'radial-gradient(circle at 25% 30%, rgba(15,55,38,0.95) 0%, rgba(27,111,74,0.85) 30%, rgba(21,87,58,0.95) 100%), radial-gradient(circle at 80% 60%, rgba(245,166,35,0.35) 0%, transparent 55%)',
@@ -64,7 +64,7 @@ const SLIDES: Slide[] = [
     eyebrow: '어르신과 가족 모두',
     title: '함께 상담드립니다',
     sub: '등급 신청부터 본인부담금까지 가족 회의처럼 자세히',
-    accent: '#1B6F4A',
+    accent: '#1E40AF',
   },
   {
     grad: 'radial-gradient(circle at 60% 40%, rgba(27,111,74,0.85) 0%, rgba(15,55,38,0.95) 50%, rgba(21,87,58,0.95) 100%), radial-gradient(circle at 25% 70%, rgba(230,57,70,0.4) 0%, transparent 50%)',
@@ -225,7 +225,7 @@ export function HeroCarousel() {
         <div className="flex gap-3 mt-8 md:mt-12 flex-wrap">
           <a
             href="/contact"
-            className="hero-cta bg-white hover:bg-gray-50 text-[#1B6F4A] px-6 md:px-8 py-3 md:py-3.5 font-bold text-sm md:text-base transition-all"
+            className="hero-cta bg-white hover:bg-gray-50 text-[#1E40AF] px-6 md:px-8 py-3 md:py-3.5 font-bold text-sm md:text-base transition-all"
             style={{ borderRadius: '2px' }}
           >
             무료 상담 신청
@@ -249,7 +249,7 @@ export function HeroCarousel() {
           <span aria-hidden="true" className="inline-flex w-5 h-5 rounded-full bg-[#E63946] grid place-items-center text-white text-[10px]">
             ♥
           </span>
-          <span className="text-sm font-bold text-[#1B6F4A]">24시간 상담 가능</span>
+          <span className="text-sm font-bold text-[#1E40AF]">24시간 상담 가능</span>
         </div>
       </div>
 
@@ -260,7 +260,7 @@ export function HeroCarousel() {
           onClick={() => setPaused((p) => !p)}
           aria-label={paused ? '슬라이드 자동 전환 재생' : '슬라이드 자동 전환 일시정지'}
           aria-pressed={paused}
-          className="absolute bottom-7 right-5 md:right-8 z-20 w-10 h-10 grid place-items-center bg-white/90 hover:bg-white text-[#1B6F4A] backdrop-blur-sm transition-colors"
+          className="absolute bottom-7 right-5 md:right-8 z-20 w-10 h-10 grid place-items-center bg-white/90 hover:bg-white text-[#1E40AF] backdrop-blur-sm transition-colors"
           style={{ borderRadius: '2px' }}
         >
           <span aria-hidden="true" className="text-base leading-none">

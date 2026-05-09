@@ -6,7 +6,8 @@ import { BreadcrumbJsonLd } from './BreadcrumbJsonLd';
 
 /**
  * Sub-page Hero — breadcrumb + title (SplitText char stagger).
- * 정체성 그라디언트 + decorative dots SVG (CC0).
+ * Wave 575: bg prop — 페이지별 ChatGPT 생성 배경 이미지 + dark indigo overlay.
+ *   bg 미지정 시 default 인디고 그라디언트 (Wave 575 컬러 swap).
  */
 type Crumb = { label: string; href?: string };
 
@@ -14,10 +15,13 @@ export function PageHero({
   title,
   sub,
   crumbs = [],
+  bg,
 }: {
   title: string;
   sub?: string;
   crumbs?: Crumb[];
+  /** 배경 이미지 path (예: '/page-hero/page-hero-1.png'). 미지정 시 그라디언트만. */
+  bg?: string;
 }) {
   return (
     <>
@@ -27,15 +31,39 @@ export function PageHero({
         />
       )}
     <section
-      className="relative w-full h-[280px] md:h-[320px] flex items-center justify-center text-white overflow-hidden"
+      className="relative w-full h-[280px] md:h-[360px] flex items-center justify-center text-white overflow-hidden"
       style={{
         background:
-          'radial-gradient(circle at 20% 30%, #1B6F4A 0%, #15573A 45%, #0F3726 100%), radial-gradient(circle at 80% 70%, rgba(230,57,70,0.3) 0%, transparent 60%)',
+          'radial-gradient(circle at 20% 30%, #1E40AF 0%, #1E3A8A 45%, #172554 100%), radial-gradient(circle at 80% 70%, rgba(230,57,70,0.3) 0%, transparent 60%)',
       }}
     >
+      {/* 자현 PNG 배경 이미지 + dark navy overlay (텍스트 가독성 보장) */}
+      {bg && (
+        <>
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              backgroundImage: `url(${bg})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              opacity: 0.55,
+            }}
+          />
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background:
+                'linear-gradient(180deg, rgba(23,37,84,0.55) 0%, rgba(30,58,138,0.65) 50%, rgba(23,37,84,0.75) 100%)',
+            }}
+          />
+        </>
+      )}
+
       <svg
         aria-hidden="true"
-        className="absolute inset-0 w-full h-full pointer-events-none opacity-30 mix-blend-screen"
+        className="absolute inset-0 w-full h-full pointer-events-none opacity-25 mix-blend-screen"
       >
         <pattern id="ph-dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
           <circle cx="20" cy="20" r="1.2" fill="rgba(255,255,255,0.5)" />
@@ -63,9 +91,9 @@ export function PageHero({
             </ol>
           </nav>
         )}
-        {/* Wave 435: textWrap 제거 — globals.css h1-h6 { text-wrap: balance } single source (Wave 434 saturation pass) */}
+        {/* Wave 435: textWrap 제거 — globals.css h1-h6 { text-wrap: balance } single source */}
         <h1
-          className="text-3xl md:text-5xl font-bold mb-3"
+          className="text-3xl md:text-5xl font-bold mb-3 drop-shadow-md"
           style={{
             fontVariationSettings: '"wght" 800',
           }}
@@ -74,7 +102,7 @@ export function PageHero({
         </h1>
         {sub && (
           <p
-            className="text-base md:text-lg opacity-90 leading-relaxed"
+            className="text-base md:text-lg opacity-95 leading-relaxed drop-shadow-sm"
             data-speakable="true"
           >
             {sub}

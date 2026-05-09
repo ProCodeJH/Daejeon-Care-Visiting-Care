@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { PageHero } from '@/components/PageHero';
 import { SectionBlock } from '@/components/SectionBlock';
 import { CTASection } from '@/components/CTASection';
@@ -68,6 +68,7 @@ export default function GradePage() {
         steps={STEPS.map((s) => ({ name: s.title, text: s.desc }))}
       />
       <PageHero
+        bg="/page-hero/page-hero-6.png"
         title="장기요양등급절차 및 심사"
         sub="등급 신청부터 결과 통보까지 안내드립니다"
         crumbs={[

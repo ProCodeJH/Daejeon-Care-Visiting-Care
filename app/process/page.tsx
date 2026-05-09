@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { PageHero } from '@/components/PageHero';
 import { SectionBlock } from '@/components/SectionBlock';
 import { CTASection } from '@/components/CTASection';
@@ -62,6 +62,7 @@ export default function ProcessPage() {
         steps={STEPS.map((s) => ({ name: s.title, text: s.desc }))}
       />
       <PageHero
+        bg="/page-hero/page-hero-3.png"
         title="서비스 이용 절차"
         sub="신청부터 서비스까지 한 단계씩 안내드립니다"
         crumbs={[{ label: '센터소개', href: '/about' }, { label: '서비스 이용 절차' }]}
@@ -135,10 +136,10 @@ export default function ProcessPage() {
           <div className="grid md:grid-cols-2 gap-5">
             <a
               href="/insurance/cost"
-              className="group bg-[#f8f8f8] hover:bg-brand-50 p-7 transition-colors block border-l-4 border-[#1B6F4A]"
+              className="group bg-[#f8f8f8] hover:bg-brand-50 p-7 transition-colors block border-l-4 border-[#1E40AF]"
             >
-              <p lang="en" className="text-xs text-[#1B6F4A] font-bold tracking-[0.15em] mb-2">CALCULATOR</p>
-              <h3 className="text-lg font-bold text-ink-primary mb-2 group-hover:text-[#1B6F4A] transition-colors">
+              <p lang="en" className="text-xs text-[#1E40AF] font-bold tracking-[0.15em] mb-2">CALCULATOR</p>
+              <h3 className="text-lg font-bold text-ink-primary mb-2 group-hover:text-[#1E40AF] transition-colors">
                 본인부담금 계산 →
               </h3>
               <p className="text-sm text-ink-secondary leading-relaxed">

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useEffect } from 'react';
 import Link from 'next/link';
@@ -28,7 +28,7 @@ export default function Error({
       className="min-h-[70vh] flex items-center justify-center text-white px-5 py-20"
       style={{
         background:
-          'radial-gradient(circle at 30% 30%, #1B6F4A 0%, #15573A 50%, #0F3726 100%), radial-gradient(circle at 70% 70%, rgba(245,166,35,0.25) 0%, transparent 60%)',
+          'radial-gradient(circle at 30% 30%, #1E40AF 0%, #1E3A8A 50%, #172554 100%), radial-gradient(circle at 70% 70%, rgba(245,166,35,0.25) 0%, transparent 60%)',
       }}
     >
       {/* Wave 392: role="alert" 즉시 announce + lang="en" 영어 발음 정확 */}
@@ -51,7 +51,7 @@ export default function Error({
           <button
             type="button"
             onClick={() => reset()}
-            className="flex items-center gap-2 bg-white text-[#1B6F4A] px-7 py-3 font-bold transition-colors hover:bg-gray-100"
+            className="flex items-center gap-2 bg-white text-[#1E40AF] px-7 py-3 font-bold transition-colors hover:bg-gray-100"
             style={{ borderRadius: '2px' }}
           >
             <RefreshCw size={18} />

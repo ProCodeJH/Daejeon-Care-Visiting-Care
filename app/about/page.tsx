@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import Link from 'next/link';
 import { PageHero } from '@/components/PageHero';
 import { CONTACT } from '@/lib/contact';
@@ -64,6 +64,7 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
+        bg="/page-hero/page-hero-1.png"
         title="인사말"
         sub="부모님의 손발이 되겠습니다"
         crumbs={[{ label: '센터소개', href: '/about' }, { label: '인사말' }]}
@@ -108,25 +109,25 @@ export default function AboutPage() {
           <dl className="grid grid-cols-2 md:grid-cols-4 gap-6 border-y border-gray-100 py-10 m-0">
             <div className="text-center flex flex-col-reverse gap-2">
               <dt className="text-sm text-ink-muted font-medium">대전 5구 통합</dt>
-              <dd className="text-4xl md:text-5xl font-extrabold text-[#1B6F4A] tabular-nums m-0">
+              <dd className="text-4xl md:text-5xl font-extrabold text-[#1E40AF] tabular-nums m-0">
                 <StatsCounter value={5} suffix="구" />
               </dd>
             </div>
             <div className="text-center flex flex-col-reverse gap-2">
               <dt className="text-sm text-ink-muted font-medium">365일 상담 가능</dt>
-              <dd className="text-4xl md:text-5xl font-extrabold text-[#1B6F4A] tabular-nums m-0">
+              <dd className="text-4xl md:text-5xl font-extrabold text-[#1E40AF] tabular-nums m-0">
                 <StatsCounter value={24} suffix="시간" />
               </dd>
             </div>
             <div className="text-center flex flex-col-reverse gap-2">
               <dt className="text-sm text-ink-muted font-medium">자격 매니저</dt>
-              <dd className="text-4xl md:text-5xl font-extrabold text-[#1B6F4A] tabular-nums m-0">
+              <dd className="text-4xl md:text-5xl font-extrabold text-[#1E40AF] tabular-nums m-0">
                 <StatsCounter value={CONTACT.managerCount} suffix="+명" />
               </dd>
             </div>
             <div className="text-center flex flex-col-reverse gap-2">
               <dt className="text-sm text-ink-muted font-medium">무료 상담 + 등급 신청 동행</dt>
-              <dd className="text-4xl md:text-5xl font-extrabold text-[#1B6F4A] tabular-nums m-0">
+              <dd className="text-4xl md:text-5xl font-extrabold text-[#1E40AF] tabular-nums m-0">
                 <StatsCounter value={100} suffix="%" />
               </dd>
             </div>
@@ -147,7 +148,7 @@ export default function AboutPage() {
           <dl className="grid grid-cols-2 md:grid-cols-4 gap-4 m-0">
             {TRUST_BADGES.map((b, i) => (
               <Reveal key={i} delay={i * 0.06} className="bg-[#f8f8f8] p-5 text-center hover:bg-brand-50 transition-colors group">
-                <div className="w-12 h-12 mx-auto mb-3 grid place-items-center bg-white text-[#1B6F4A] group-hover:bg-[#1B6F4A] group-hover:text-white transition-colors shadow-sm" style={{ borderRadius: '999px' }}>
+                <div className="w-12 h-12 mx-auto mb-3 grid place-items-center bg-white text-[#1E40AF] group-hover:bg-[#1E40AF] group-hover:text-white transition-colors shadow-sm" style={{ borderRadius: '999px' }}>
                   <b.Icon size={22} strokeWidth={1.8} />
                 </div>
                 <dt className="font-bold text-ink-primary text-sm mb-1">{b.title}</dt>
@@ -213,10 +214,10 @@ export default function AboutPage() {
             </a>
             <a
               href="/centers"
-              className="group bg-[#f8f8f8] hover:bg-brand-50 p-7 transition-colors block border-l-4 border-[#1B6F4A]"
+              className="group bg-[#f8f8f8] hover:bg-brand-50 p-7 transition-colors block border-l-4 border-[#1E40AF]"
             >
-              <p lang="en" className="text-xs text-[#1B6F4A] font-bold tracking-[0.15em] mb-2">LOCATIONS</p>
-              <h3 className="text-lg font-bold text-ink-primary mb-2 group-hover:text-[#1B6F4A] transition-colors">
+              <p lang="en" className="text-xs text-[#1E40AF] font-bold tracking-[0.15em] mb-2">LOCATIONS</p>
+              <h3 className="text-lg font-bold text-ink-primary mb-2 group-hover:text-[#1E40AF] transition-colors">
                 대전 5구 지점 →
               </h3>
               <p className="text-sm text-ink-secondary leading-relaxed">

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * 대전케어 방문요양센터 공식 로고.
  * 손바닥 cradle + 어르신 + 하트 = 따뜻한 케어.
  * 색: 녹색(손) + 주황(어르신) + 코랄(하트). 자현 정체성 자산.
@@ -38,7 +38,7 @@ export function Logo({
       {/* 텍스트 */}
       {withText && (
         <div className="leading-[1.05]">
-          <p className="font-extrabold text-[15px] md:text-[17px] text-[#1B6F4A]">{CONTACT.brand}</p>
+          <p className="font-extrabold text-[15px] md:text-[17px] text-[#1E40AF]">{CONTACT.brand}</p>
           <p className="font-extrabold text-[13px] md:text-[15px] text-[#E63946]">{CONTACT.service}</p>
         </div>
       )}

@@ -1,4 +1,4 @@
-import { PageHero } from '@/components/PageHero';
+﻿import { PageHero } from '@/components/PageHero';
 import { SectionBlock } from '@/components/SectionBlock';
 import { CTASection } from '@/components/CTASection';
 import { Reveal } from '@/components/Reveal';
@@ -19,6 +19,7 @@ export default function CentersPage() {
   return (
     <>
       <PageHero
+        bg="/page-hero/page-hero-7.png"
         title="본점 안내"
         sub="대전 대덕구 신탄진로 808 — 대전 5구 어디든 어르신 댁으로 직접 찾아갑니다"
         crumbs={[{ label: '센터소개' }, { label: '본점 안내' }]}
@@ -29,13 +30,13 @@ export default function CentersPage() {
         <dl className="max-w-[1200px] mx-auto px-5 grid grid-cols-3 gap-6 text-center m-0">
           <Reveal as="div" className="flex flex-col-reverse gap-1">
             <dt className="text-xs md:text-sm text-ink-muted font-medium">대전 5구 전 지역</dt>
-            <dd className="text-3xl md:text-4xl font-extrabold text-[#1B6F4A] tabular-nums m-0">
+            <dd className="text-3xl md:text-4xl font-extrabold text-[#1E40AF] tabular-nums m-0">
               <StatsCounter value={5} suffix="구" />
             </dd>
           </Reveal>
           <Reveal as="div" delay={0.1} className="flex flex-col-reverse gap-1">
             <dt className="text-xs md:text-sm text-ink-muted font-medium">자격 매니저 수</dt>
-            <dd className="text-3xl md:text-4xl font-extrabold text-[#1B6F4A] tabular-nums m-0">
+            <dd className="text-3xl md:text-4xl font-extrabold text-[#1E40AF] tabular-nums m-0">
               <StatsCounter value={main.managers} suffix="명" />
             </dd>
           </Reveal>
@@ -87,7 +88,7 @@ export default function CentersPage() {
               <a
                 href={CONTACT.phoneTel}
                 aria-label={`본점 상담 전화 걸기 ${CONTACT.phone}`}
-                className="flex items-center justify-center gap-2 bg-[#1B6F4A] hover:bg-[#15573A] text-white py-3 font-semibold transition-colors"
+                className="flex items-center justify-center gap-2 bg-[#1E40AF] hover:bg-[#1E3A8A] text-white py-3 font-semibold transition-colors"
                 style={{ borderRadius: '2px' }}
               >
                 <Phone size={16} />
@@ -136,10 +137,10 @@ export default function CentersPage() {
             </a>
             <a
               href="/map"
-              className="group bg-[#f8f8f8] hover:bg-brand-50 p-7 transition-colors block border-l-4 border-[#1B6F4A]"
+              className="group bg-[#f8f8f8] hover:bg-brand-50 p-7 transition-colors block border-l-4 border-[#1E40AF]"
             >
-              <p lang="en" className="text-xs text-[#1B6F4A] font-bold tracking-[0.15em] mb-2">MAP</p>
-              <h3 className="text-lg font-bold text-ink-primary mb-2 group-hover:text-[#1B6F4A] transition-colors">
+              <p lang="en" className="text-xs text-[#1E40AF] font-bold tracking-[0.15em] mb-2">MAP</p>
+              <h3 className="text-lg font-bold text-ink-primary mb-2 group-hover:text-[#1E40AF] transition-colors">
                 찾아오시는 길 →
               </h3>
               <p className="text-sm text-ink-secondary leading-relaxed">

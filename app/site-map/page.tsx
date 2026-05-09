@@ -1,4 +1,4 @@
-import Link from 'next/link';
+﻿import Link from 'next/link';
 import { PageHero } from '@/components/PageHero';
 import { CTASection } from '@/components/CTASection';
 import { NOTICES } from '@/content/notices';
@@ -15,7 +15,7 @@ export const metadata = {
 const SECTIONS = [
   {
     title: '센터소개',
-    color: 'border-[#1B6F4A]',
+    color: 'border-[#1E40AF]',
     pages: [
       { href: '/about', label: '인사말' },
       { href: '/service', label: '서비스 소개' },
@@ -52,7 +52,7 @@ const SECTIONS = [
   },
   {
     title: '고객센터',
-    color: 'border-[#1B6F4A]',
+    color: 'border-[#1E40AF]',
     pages: [
       { href: '/notice', label: '공지사항' },
       { href: '/contact', label: '문의 / 상담' },
@@ -114,7 +114,7 @@ export default function SitemapPage() {
       <section className="bg-[#f8f8f8] py-16">
         {/* Wave 382: detail 콘텐츠 navigation도 nav landmark — 공지/이야기 별도 landmark */}
         <div className="max-w-[1200px] mx-auto px-5 grid md:grid-cols-2 gap-6">
-          <nav aria-label={`공지사항 전체 ${NOTICES.length}건`} className="bg-white p-6 border-t-4 border-[#1B6F4A]">
+          <nav aria-label={`공지사항 전체 ${NOTICES.length}건`} className="bg-white p-6 border-t-4 border-[#1E40AF]">
             <h2 className="text-lg font-bold text-ink-primary mb-4">공지사항 ({NOTICES.length})</h2>
             <ul className="space-y-2">
               {NOTICES.map((n) => (

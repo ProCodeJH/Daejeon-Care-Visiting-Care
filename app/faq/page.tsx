@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useEffect } from 'react';
 import { PageHero } from '@/components/PageHero';
@@ -83,7 +83,7 @@ export default function FAQPage() {
                 JavaScript가 비활성화되어 답변 펼치기가 제한됩니다.
                 직접 문의는{' '}
                 {/* Wave 471: CONTACT.phoneTel single source (다른 3 noscript 패턴 일관) */}
-                <a href={CONTACT.phoneTel} className="underline font-bold text-[#1B6F4A]">
+                <a href={CONTACT.phoneTel} className="underline font-bold text-[#1E40AF]">
                   {CONTACT.phone}
                 </a>
                 으로 주세요.
@@ -163,10 +163,10 @@ export default function FAQPage() {
           <div className="grid md:grid-cols-2 gap-5">
             <a
               href="/insurance/cost"
-              className="group bg-[#f8f8f8] hover:bg-brand-50 p-7 transition-colors block border-l-4 border-[#1B6F4A]"
+              className="group bg-[#f8f8f8] hover:bg-brand-50 p-7 transition-colors block border-l-4 border-[#1E40AF]"
             >
-              <p lang="en" className="text-xs text-[#1B6F4A] font-bold tracking-[0.15em] mb-2">CALCULATOR</p>
-              <h3 className="text-lg font-bold text-ink-primary mb-2 group-hover:text-[#1B6F4A] transition-colors">
+              <p lang="en" className="text-xs text-[#1E40AF] font-bold tracking-[0.15em] mb-2">CALCULATOR</p>
+              <h3 className="text-lg font-bold text-ink-primary mb-2 group-hover:text-[#1E40AF] transition-colors">
                 본인부담금 계산 →
               </h3>
               <p className="text-sm text-ink-secondary leading-relaxed">

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { PageHero } from '@/components/PageHero';
@@ -171,7 +171,7 @@ export default function JobApplyPage() {
               <p className="text-sm text-ink-primary">
                 JavaScript가 비활성화되어 자동 저장 + 제출이 작동하지 않습니다.
                 지원 문의는{' '}
-                <a href={CONTACT.phoneTel} className="underline font-bold text-[#1B6F4A]">
+                <a href={CONTACT.phoneTel} className="underline font-bold text-[#1E40AF]">
                   {CONTACT.phone}
                 </a>
                 으로 주시면 친절히 안내드립니다.
@@ -184,12 +184,12 @@ export default function JobApplyPage() {
                 <div
                   role="status"
                   aria-live="polite"
-                  className="text-center py-12 form-success-enter bg-gradient-to-br from-brand-50 to-brand-100 border-l-4 border-[#1B6F4A] -mx-7 md:-mx-8 px-7 md:px-8"
+                  className="text-center py-12 form-success-enter bg-gradient-to-br from-brand-50 to-brand-100 border-l-4 border-[#1E40AF] -mx-7 md:-mx-8 px-7 md:px-8"
                 >
-                  <div aria-hidden="true" className="w-16 h-16 mx-auto mb-5 rounded-full bg-[#1B6F4A] grid place-items-center text-white text-3xl">
+                  <div aria-hidden="true" className="w-16 h-16 mx-auto mb-5 rounded-full bg-[#1E40AF] grid place-items-center text-white text-3xl">
                     ✓
                   </div>
-                  <h3 className="text-2xl font-bold text-[#1B6F4A] mb-3">지원이 접수되었습니다</h3>
+                  <h3 className="text-2xl font-bold text-[#1E40AF] mb-3">지원이 접수되었습니다</h3>
                   <p className="text-ink-secondary mb-6">
                     담당자가 24시간 내에 연락드리겠습니다.
                     <br />
@@ -197,7 +197,7 @@ export default function JobApplyPage() {
                   </p>
                   <a
                     href="/"
-                    className="inline-block bg-[#1B6F4A] hover:bg-[#15573A] text-white px-6 py-3 font-semibold transition-colors"
+                    className="inline-block bg-[#1E40AF] hover:bg-[#1E3A8A] text-white px-6 py-3 font-semibold transition-colors"
                     style={{ borderRadius: '2px' }}
                   >
                     홈으로 돌아가기
@@ -213,10 +213,10 @@ export default function JobApplyPage() {
                   <div className="grid md:grid-cols-2 gap-4">
                     <a
                       href="/about"
-                      className="group bg-[#f8f8f8] hover:bg-brand-50 p-5 transition-colors block border-l-4 border-[#1B6F4A]"
+                      className="group bg-[#f8f8f8] hover:bg-brand-50 p-5 transition-colors block border-l-4 border-[#1E40AF]"
                     >
-                      <p lang="en" className="text-xs text-[#1B6F4A] font-bold tracking-[0.15em] mb-1.5">ABOUT</p>
-                      <h4 className="text-base font-bold text-ink-primary mb-1 group-hover:text-[#1B6F4A] transition-colors">
+                      <p lang="en" className="text-xs text-[#1E40AF] font-bold tracking-[0.15em] mb-1.5">ABOUT</p>
+                      <h4 className="text-base font-bold text-ink-primary mb-1 group-hover:text-[#1E40AF] transition-colors">
                         대전케어 소개 →
                       </h4>
                       <p className="text-xs text-ink-secondary leading-relaxed">

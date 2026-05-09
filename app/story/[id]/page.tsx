@@ -114,7 +114,7 @@ export default async function StoryDetailPage({
           ) : (
             <div
               aria-hidden="true"
-              className="aspect-[16/8] bg-gradient-to-br from-brand-200 via-brand-400 to-[#1B6F4A] mb-10"
+              className="aspect-[16/8] bg-gradient-to-br from-brand-200 via-brand-400 to-[#1E40AF] mb-10"
               style={{ borderRadius: '2px' }}
             />
           )}

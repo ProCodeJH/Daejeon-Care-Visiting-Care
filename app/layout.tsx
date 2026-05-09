@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import './globals.css';
 import { Header } from '@/components/Header';
@@ -86,8 +86,8 @@ export const metadata: Metadata = {
 export const viewport = {
   // 정체성 그린 — light/dark prefers-color-scheme 분리 (다크 모드 사용자도 정체성 유지)
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#1B6F4A' },
-    { media: '(prefers-color-scheme: dark)', color: '#0F3726' },
+    { media: '(prefers-color-scheme: light)', color: '#1E40AF' },
+    { media: '(prefers-color-scheme: dark)', color: '#172554' },
   ],
   // 사이트는 라이트 테마 only — 어르신 가독성 우선 (다크 모드 변환 X).
   // Wave 293: 'light' (hint) → 'only light' (강제) — iOS dark mode 사용자 auto-invert 차단.
@@ -158,7 +158,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         {/* a11y: skip-to-content */}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-[#1B6F4A] focus:text-white focus:px-4 focus:py-2 focus:font-bold focus:outline-none"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-[#1E40AF] focus:text-white focus:px-4 focus:py-2 focus:font-bold focus:outline-none"
         >
           본문으로 건너뛰기
         </a>

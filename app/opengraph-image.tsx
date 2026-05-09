@@ -1,4 +1,4 @@
-import { ImageResponse } from 'next/og';
+﻿import { ImageResponse } from 'next/og';
 import { CONTACT } from '@/lib/contact';
 import { SITE } from '@/lib/site';
 
@@ -31,7 +31,7 @@ export default function OGImage() {
             display: 'flex',
             alignItems: 'center',
             gap: 12,
-            background: '#1B6F4A',
+            background: '#1E40AF',
             color: 'white',
             padding: '10px 20px',
             fontSize: 26,
@@ -71,7 +71,7 @@ export default function OGImage() {
             style={{
               fontSize: 96,
               fontWeight: 900,
-              color: '#1B6F4A',
+              color: '#1E40AF',
               letterSpacing: '-0.03em',
               lineHeight: 1,
             }}

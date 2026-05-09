@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { HeroCarousel } from '@/components/HeroCarousel';
 import { Reveal } from '@/components/Reveal';
@@ -65,19 +65,19 @@ export default function Home() {
         <dl className="max-w-[1200px] mx-auto px-5 py-10 grid grid-cols-2 md:grid-cols-4 gap-6 m-0">
           <Reveal as="div" className="text-center flex flex-col-reverse gap-1">
             <dt data-speakable="true" className="text-xs md:text-sm text-ink-muted font-medium">대전 5구 통합</dt>
-            <dd className="text-3xl md:text-4xl font-extrabold text-[#1B6F4A] tabular-nums m-0">
+            <dd className="text-3xl md:text-4xl font-extrabold text-[#1E40AF] tabular-nums m-0">
               <StatsCounter value={5} suffix="구" />
             </dd>
           </Reveal>
           <Reveal as="div" delay={0.1} className="text-center flex flex-col-reverse gap-1">
             <dt data-speakable="true" className="text-xs md:text-sm text-ink-muted font-medium">24시간 365일 상담 가능</dt>
-            <dd className="text-3xl md:text-4xl font-extrabold text-[#1B6F4A] tabular-nums m-0">
+            <dd className="text-3xl md:text-4xl font-extrabold text-[#1E40AF] tabular-nums m-0">
               <StatsCounter value={24} suffix="시간" />
             </dd>
           </Reveal>
           <Reveal as="div" delay={0.2} className="text-center flex flex-col-reverse gap-1">
             <dt className="text-xs md:text-sm text-ink-muted font-medium">자격 매니저</dt>
-            <dd className="text-3xl md:text-4xl font-extrabold text-[#1B6F4A] tabular-nums m-0">
+            <dd className="text-3xl md:text-4xl font-extrabold text-[#1E40AF] tabular-nums m-0">
               <StatsCounter value={CONTACT.managerCount} suffix="+명" />
             </dd>
           </Reveal>
@@ -160,7 +160,7 @@ export default function Home() {
               className="aspect-video max-w-4xl mx-auto overflow-hidden shadow-lg relative grid place-items-center text-white text-center px-5"
               style={{
                 background:
-                  'radial-gradient(circle at 30% 30%, #1B6F4A 0%, #15573A 50%, #0F3726 100%), radial-gradient(circle at 70% 70%, rgba(230,57,70,0.4) 0%, transparent 60%)',
+                  'radial-gradient(circle at 30% 30%, #1E40AF 0%, #1E3A8A 50%, #172554 100%), radial-gradient(circle at 70% 70%, rgba(230,57,70,0.4) 0%, transparent 60%)',
               }}
             >
               {/* SVG decorative dots (CC0) */}

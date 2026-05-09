@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useEffect } from 'react';
 import { CONTACT } from '@/lib/contact';
@@ -31,7 +31,7 @@ export default function GlobalError({
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-        <meta name="theme-color" content="#1B6F4A" />
+        <meta name="theme-color" content="#1E40AF" />
         <title>잠시 문제가 발생했습니다 · {CONTACT.name}</title>
       </head>
       <body
@@ -39,7 +39,7 @@ export default function GlobalError({
           margin: 0,
           fontFamily: 'system-ui, -apple-system, Pretendard, sans-serif',
           background:
-            'radial-gradient(circle at 30% 30%, #1B6F4A 0%, #15573A 50%, #0F3726 100%)',
+            'radial-gradient(circle at 30% 30%, #1E40AF 0%, #1E3A8A 50%, #172554 100%)',
           color: '#fff',
           minHeight: '100vh',
           display: 'flex',
@@ -91,7 +91,7 @@ export default function GlobalError({
               onClick={() => reset()}
               style={{
                 background: '#fff',
-                color: '#1B6F4A',
+                color: '#1E40AF',
                 padding: '12px 28px',
                 fontWeight: 700,
                 fontSize: '16px',

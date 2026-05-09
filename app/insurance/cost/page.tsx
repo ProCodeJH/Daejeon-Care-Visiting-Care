@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useMemo, useEffect } from 'react';
 import { PageHero } from '@/components/PageHero';
@@ -91,6 +91,7 @@ export default function CostPage() {
   return (
     <>
       <PageHero
+        bg="/page-hero/page-hero-5.png"
         title="본인부담금 계산기"
         sub="등급과 본인부담률에 따른 월 본인부담액을 즉시 확인"
         crumbs={[
@@ -108,7 +109,7 @@ export default function CostPage() {
               <p className="text-sm text-ink-primary">
                 JavaScript가 비활성화되어 자동 계산기를 사용할 수 없습니다.
                 본인부담금은{' '}
-                <a href={CONTACT.phoneTel} className="underline font-bold text-[#1B6F4A]">
+                <a href={CONTACT.phoneTel} className="underline font-bold text-[#1E40AF]">
                   {CONTACT.phone}
                 </a>
                 으로 문의 주세요.

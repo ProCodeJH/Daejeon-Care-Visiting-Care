@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { PageHero } from '@/components/PageHero';
 import { SectionBlock } from '@/components/SectionBlock';
 import { CTASection } from '@/components/CTASection';
@@ -44,6 +44,7 @@ export default function InfoPage() {
   return (
     <>
       <PageHero
+        bg="/page-hero/page-hero-8.png"
         title="요양 정보"
         sub="어르신과 가족이 알아두면 좋은 정보"
         crumbs={[{ label: '노인정보', href: '/info' }, { label: '요양 정보' }]}

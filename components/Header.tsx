@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
@@ -108,7 +108,7 @@ export function Header() {
   return (
     <>
       {/* 24시간 상담 띠 */}
-      <div className="bg-[#1B6F4A] text-white text-xs md:text-sm">
+      <div className="bg-[#1E40AF] text-white text-xs md:text-sm">
         <div className="max-w-[1200px] mx-auto px-5 py-2 flex items-center justify-between">
           <p className="flex items-center gap-2">
             <span aria-hidden="true" className="inline-flex w-5 h-5 rounded-full bg-[#E63946] grid place-items-center text-[10px]">♥</span>
@@ -139,7 +139,7 @@ export function Header() {
         >
           {/* 로고 */}
           <Link href="/" className="flex items-center hover:opacity-90 transition-opacity">
-            <Logo size={48} withText />
+            <Logo size={72} withText />
           </Link>
 
         {/* Desktop Nav — Wave 351: 키보드 a11y 강화.

@@ -1,4 +1,4 @@
-import Link from 'next/link';
+﻿import Link from 'next/link';
 import { Logo } from './Logo';
 import { CONTACT, SNS } from '@/lib/contact';
 import { Phone, Clock, Mail, Instagram, Youtube, Facebook, MessageCircle, MapPin } from 'lucide-react';
@@ -21,9 +21,9 @@ const SNS_ICONS = [
  */
 export function Footer() {
   return (
-    <footer className="bg-white border-t-2 border-[#1B6F4A]/20">
+    <footer className="bg-white border-t-2 border-[#1E40AF]/20">
       {/* 24시간 상담 강조 띠 */}
-      <div className="bg-gradient-to-r from-[#1B6F4A] to-[#15573A] text-white">
+      <div className="bg-gradient-to-r from-[#1E40AF] to-[#1E3A8A] text-white">
         <div className="max-w-[1200px] mx-auto px-5 py-6 flex flex-col md:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-3">
             <span aria-hidden="true" className="inline-flex w-9 h-9 rounded-full bg-[#E63946] grid place-items-center text-lg">♥</span>
@@ -46,7 +46,7 @@ export function Footer() {
         <div className="grid md:grid-cols-3 gap-8">
           {/* Brand */}
           <div>
-            <Logo size={56} withText />
+            <Logo size={80} withText />
             <p className="text-sm text-ink-muted leading-relaxed mt-5">
               어르신과 가족을 향한 따뜻한 마음으로,
               <br />
@@ -59,28 +59,28 @@ export function Footer() {
             <p className="font-bold text-ink-primary mb-3">연락처</p>
             <ul className="space-y-2 text-sm text-ink-secondary">
               <li className="flex items-start gap-2">
-                <Phone size={14} className="text-[#1B6F4A] mt-1 shrink-0" />
+                <Phone size={14} className="text-[#1E40AF] mt-1 shrink-0" />
                 {/* Wave 354: tel: 링크 — 모바일 one-tap dial */}
                 <span>
                   대표번호{' '}
                   <a
                     href={CONTACT.phoneTel}
-                    className="font-bold hover:text-[#1B6F4A] hover:underline transition-colors"
+                    className="font-bold hover:text-[#1E40AF] hover:underline transition-colors"
                   >
                     {CONTACT.phone}
                   </a>
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <Clock size={14} className="text-[#1B6F4A] mt-1 shrink-0" />
+                <Clock size={14} className="text-[#1E40AF] mt-1 shrink-0" />
                 <span>{CONTACT.available}</span>
               </li>
               <li className="flex items-start gap-2">
-                <Mail size={14} className="text-[#1B6F4A] mt-1 shrink-0" />
+                <Mail size={14} className="text-[#1E40AF] mt-1 shrink-0" />
                 {/* Wave 354: mailto: 링크 — 메일 클라이언트 자동 열림 */}
                 <a
                   href={CONTACT.emailMailto}
-                  className="hover:text-[#1B6F4A] hover:underline transition-colors"
+                  className="hover:text-[#1E40AF] hover:underline transition-colors"
                 >
                   {CONTACT.email}
                 </a>
@@ -128,7 +128,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`${s.label} 외부 사이트 새 창에서 열기`}
-                className="w-9 h-9 grid place-items-center bg-gray-50 hover:bg-[#1B6F4A] text-ink-secondary hover:text-white transition-colors"
+                className="w-9 h-9 grid place-items-center bg-gray-50 hover:bg-[#1E40AF] text-ink-secondary hover:text-white transition-colors"
                 style={{ borderRadius: '999px' }}
               >
                 <s.Icon size={16} strokeWidth={1.8} />
@@ -153,9 +153,9 @@ export function Footer() {
           {/* Wave 364: <nav> = navigation landmark for 법적 정보 + 사이트맵 (3 cross-page links 그룹) */}
           <nav aria-label="법적 정보 및 사이트맵" className="flex items-center gap-4 text-xs text-ink-muted">
             {/* Wave 455: <a> → <Link> — Lenis smooth scroll + View Transitions + prefetch 활성 */}
-            <Link href="/privacy" className="hover:text-[#1B6F4A]">개인정보처리방침</Link>
-            <Link href="/terms" className="hover:text-[#1B6F4A]">이용약관</Link>
-            <Link href="/site-map" className="hover:text-[#1B6F4A]">사이트맵</Link>
+            <Link href="/privacy" className="hover:text-[#1E40AF]">개인정보처리방침</Link>
+            <Link href="/terms" className="hover:text-[#1E40AF]">이용약관</Link>
+            <Link href="/site-map" className="hover:text-[#1E40AF]">사이트맵</Link>
           </nav>
         </div>
       </div>

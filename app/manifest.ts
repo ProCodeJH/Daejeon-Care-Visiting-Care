@@ -1,4 +1,4 @@
-import type { MetadataRoute } from 'next';
+﻿import type { MetadataRoute } from 'next';
 import { CONTACT } from '@/lib/contact';
 
 /**
@@ -16,7 +16,7 @@ export default function manifest(): MetadataRoute.Manifest {
     display: 'standalone',
     display_override: ['standalone', 'minimal-ui'],
     background_color: '#FFFFFF',
-    theme_color: '#1B6F4A',
+    theme_color: '#1E40AF',
     lang: 'ko-KR',
     dir: 'ltr',
     orientation: 'portrait',

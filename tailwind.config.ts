@@ -1,4 +1,4 @@
-import type { Config } from 'tailwindcss';
+﻿import type { Config } from 'tailwindcss';
 
 /**
  * 두손누리 분석 + daejeon-care brand:
@@ -27,7 +27,7 @@ export default {
           vellum: '#EBE3D4',
           night: '#1A1814',
         },
-        // 대전케어 UI 블루 (의료 신뢰). 자현 정체성 그린 #1B6F4A / 코랄 #E63946 / 노랑 #F5A623는 inline style로 직접 사용.
+        // 대전케어 UI 블루 (의료 신뢰). 자현 정체성 그린 #1E40AF / 코랄 #E63946 / 노랑 #F5A623는 inline style로 직접 사용.
         brand: {
           50: '#EFF6FF',
           100: '#DBEAFE',

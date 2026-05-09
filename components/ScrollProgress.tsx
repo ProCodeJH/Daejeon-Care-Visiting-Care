@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { motion, useScroll, useSpring, useReducedMotion } from 'framer-motion';
 
@@ -24,7 +24,7 @@ export function ScrollProgress() {
       style={{ scaleX: reducedMotion ? scrollYProgress : scaleX, transformOrigin: '0% 50%' }}
       className="fixed top-0 left-0 right-0 h-[2px] z-[60] origin-left"
     >
-      <div className="h-full bg-gradient-to-r from-[#1B6F4A] via-[#2563EB] to-[#E63946]" />
+      <div className="h-full bg-gradient-to-r from-[#1E40AF] via-[#2563EB] to-[#E63946]" />
     </motion.div>
   );
 }
