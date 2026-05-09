@@ -11,6 +11,7 @@ export default function TermsPage() {
   return (
     <>
       <PageHero
+        bg="/page-hero/page-hero-5.png"
         title="이용약관"
         sub="대전케어 방문요양 서비스 이용약관"
         crumbs={[{ label: '이용약관' }]}

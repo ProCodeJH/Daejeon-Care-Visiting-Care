@@ -143,6 +143,7 @@ export default function JobApplyPage() {
   return (
     <>
       <PageHero
+        bg="/page-hero/page-hero-9.png"
         title="요양보호사 지원하기"
         sub="대전케어와 함께 일하실 분의 지원을 환영합니다"
         crumbs={[

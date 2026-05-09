@@ -35,7 +35,7 @@ type Slide = {
 
 const SLIDES: Slide[] = [
   {
-    grad: 'radial-gradient(circle at 18% 24%, rgba(27,111,74,0.95) 0%, rgba(21,87,58,0.85) 35%, rgba(15,55,38,0.95) 100%), radial-gradient(circle at 78% 76%, rgba(230,57,70,0.45) 0%, transparent 50%)',
+    grad: 'radial-gradient(circle at 18% 24%, rgba(30,64,175,0.95) 0%, rgba(30,58,138,0.85) 35%, rgba(23,37,84,0.95) 100%), radial-gradient(circle at 78% 76%, rgba(230,57,70,0.45) 0%, transparent 50%)',
     bg: '/hero/hero-1.png',
     eyebrow: '장기요양등급 신청이 어려우시면',
     title: '등급신청을 도와 드립니다',
@@ -43,7 +43,7 @@ const SLIDES: Slide[] = [
     accent: '#1E40AF',
   },
   {
-    grad: 'radial-gradient(circle at 25% 30%, rgba(15,55,38,0.95) 0%, rgba(27,111,74,0.85) 30%, rgba(21,87,58,0.95) 100%), radial-gradient(circle at 80% 60%, rgba(245,166,35,0.35) 0%, transparent 55%)',
+    grad: 'radial-gradient(circle at 25% 30%, rgba(23,37,84,0.95) 0%, rgba(30,64,175,0.85) 30%, rgba(30,58,138,0.95) 100%), radial-gradient(circle at 80% 60%, rgba(245,166,35,0.35) 0%, transparent 55%)',
     bg: '/hero/hero-2.png',
     eyebrow: '부모님 마음에 맞는',
     title: '요양보호사님을 찾아드릴게요',
@@ -51,7 +51,7 @@ const SLIDES: Slide[] = [
     accent: '#F5A623',
   },
   {
-    grad: 'radial-gradient(circle at 70% 25%, rgba(27,111,74,0.85) 0%, rgba(15,55,38,0.95) 50%, rgba(21,87,58,0.95) 100%), radial-gradient(circle at 20% 75%, rgba(230,57,70,0.4) 0%, transparent 50%)',
+    grad: 'radial-gradient(circle at 70% 25%, rgba(30,64,175,0.85) 0%, rgba(23,37,84,0.95) 50%, rgba(30,58,138,0.95) 100%), radial-gradient(circle at 20% 75%, rgba(230,57,70,0.4) 0%, transparent 50%)',
     bg: '/hero/hero-3.png',
     eyebrow: '24시간 언제나',
     title: '언제든 편하게 문의하세요',
@@ -59,7 +59,7 @@ const SLIDES: Slide[] = [
     accent: '#E63946',
   },
   {
-    grad: 'radial-gradient(circle at 30% 70%, rgba(27,111,74,0.85) 0%, rgba(15,55,38,0.95) 50%, rgba(21,87,58,0.95) 100%), radial-gradient(circle at 80% 30%, rgba(245,166,35,0.4) 0%, transparent 50%)',
+    grad: 'radial-gradient(circle at 30% 70%, rgba(30,64,175,0.85) 0%, rgba(23,37,84,0.95) 50%, rgba(30,58,138,0.95) 100%), radial-gradient(circle at 80% 30%, rgba(245,166,35,0.4) 0%, transparent 50%)',
     bg: '/hero/hero-4.png',
     eyebrow: '어르신과 가족 모두',
     title: '함께 상담드립니다',
@@ -67,7 +67,7 @@ const SLIDES: Slide[] = [
     accent: '#1E40AF',
   },
   {
-    grad: 'radial-gradient(circle at 60% 40%, rgba(27,111,74,0.85) 0%, rgba(15,55,38,0.95) 50%, rgba(21,87,58,0.95) 100%), radial-gradient(circle at 25% 70%, rgba(230,57,70,0.4) 0%, transparent 50%)',
+    grad: 'radial-gradient(circle at 60% 40%, rgba(30,64,175,0.85) 0%, rgba(23,37,84,0.95) 50%, rgba(30,58,138,0.95) 100%), radial-gradient(circle at 25% 70%, rgba(230,57,70,0.4) 0%, transparent 50%)',
     bg: '/hero/hero-5.png',
     eyebrow: '신체활동부터 정서 지원까지',
     title: '일상이 활기차도록',

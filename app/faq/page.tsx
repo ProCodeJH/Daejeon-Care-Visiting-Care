@@ -41,6 +41,7 @@ export default function FAQPage() {
     <>
       <FaqJsonLd faqs={FAQS} />
       <PageHero
+        bg="/page-hero/page-hero-8.png"
         title="자주 묻는 질문"
         sub="궁금증을 빠르게 풀어드립니다"
         crumbs={[{ label: '고객센터', href: '/contact' }, { label: 'FAQ' }]}

@@ -110,6 +110,7 @@ export default function ContactPage() {
   return (
     <>
       <PageHero
+        bg="/page-hero/page-hero-3.png"
         title="문의 / 상담"
         sub="언제든 편하게 연락 주세요"
         crumbs={[{ label: '고객센터', href: '/contact' }, { label: '문의 / 상담' }]}

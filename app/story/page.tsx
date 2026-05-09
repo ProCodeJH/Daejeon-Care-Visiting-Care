@@ -37,6 +37,7 @@ export default function StoryPage() {
   return (
     <>
       <PageHero
+        bg="/page-hero/page-hero-2.png"
         title={`${CONTACT.brand} 이야기`}
         sub="현장에서 만난 따뜻한 순간을 함께 나눕니다"
         crumbs={[{ label: '노인정보', href: '/info' }, { label: `${CONTACT.brand} 이야기` }]}

@@ -74,6 +74,7 @@ export default function SitemapPage() {
   return (
     <>
       <PageHero
+        bg="/page-hero/page-hero-7.png"
         title="사이트맵"
         sub="대전케어 방문요양센터 전체 페이지 안내"
         crumbs={[{ label: '사이트맵' }]}

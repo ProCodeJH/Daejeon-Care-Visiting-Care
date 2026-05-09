@@ -58,6 +58,7 @@ export default function NoticePage() {
   return (
     <>
       <PageHero
+        bg="/page-hero/page-hero-1.png"
         title="공지사항"
         sub="새로운 소식을 알려드립니다"
         crumbs={[{ label: '고객센터', href: '/contact' }, { label: '공지사항' }]}

@@ -15,6 +15,7 @@ export default function PrivacyPage() {
   return (
     <>
       <PageHero
+        bg="/page-hero/page-hero-4.png"
         title="개인정보처리방침"
         sub="어르신과 가족의 개인정보를 안전하게 보호합니다"
         crumbs={[{ label: '개인정보처리방침' }]}
