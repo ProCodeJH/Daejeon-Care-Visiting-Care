@@ -62,6 +62,14 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  // Wave 574: /sitemap → /site-map 301 redirect (paradigm 16 cascade #328).
+  // Wave 573에서 Next.js 15.5.15 turbopack 충돌 회피로 page route 변경. 검색엔진이 이미
+  // indexed한 /sitemap URL이 404 되지 않도록 영구 redirect — SEO link equity 보존.
+  async redirects() {
+    return [
+      { source: '/sitemap', destination: '/site-map', permanent: true },
+    ];
+  },
 };
 
 export default nextConfig;
