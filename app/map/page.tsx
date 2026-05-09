@@ -16,20 +16,26 @@ export default function MapPage() {
     <>
       <PageHero
         title="찾아오시는 길"
-        sub="대전 5구 어디서나 가까운 지점에서"
+        sub="대전 대덕구 신탄진로 808 — 본점 1곳에서 대전 5구 전 지역 매니저 운영"
         crumbs={[{ label: '센터소개', href: '/about' }, { label: '찾아오시는 길' }]}
       />
 
       {/* 지도 + 정보 */}
       <section className="bg-white py-16">
         <div className="max-w-[1200px] mx-auto px-5">
-          {/* Kakao Map placeholder — 자현이 실제 daum map embed로 swap */}
-          <div className="aspect-[16/9] md:aspect-[3/1] bg-gray-100 mb-10 grid place-items-center border border-gray-200">
-            <div className="text-center text-ink-muted">
-              <MapPin size={48} className="mx-auto text-brand-400 mb-3" />
-              <p className="font-medium">카카오 지도 / Daum 지도 embed 자리</p>
-              <p className="text-xs mt-1">자현이 src를 daejeon-care 실제 위치로 swap</p>
-            </div>
+          {/* 카카오맵 임베드 — 신탄진로 808 좌표.
+           * Wave 575: 일반 검색 결과 카카오맵 iframe 임베드 (저작권 0).
+           * 자현이 카카오맵 좌표 추출해 src 정확화 가능. 우선 검색 URL로 작동. */}
+          <div className="aspect-[16/9] md:aspect-[3/1] mb-10 border border-gray-200 overflow-hidden">
+            <iframe
+              src="https://map.kakao.com/?q=%EB%8C%80%EC%A0%84%20%EB%8C%80%EB%8D%95%EA%B5%AC%20%EC%8B%A0%ED%83%84%EC%A7%84%EB%A1%9C%20808"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              loading="lazy"
+              title="대전케어 본점 위치 — 대전 대덕구 신탄진로 808"
+              allowFullScreen
+            />
           </div>
 
           <div className="grid md:grid-cols-2 gap-5">

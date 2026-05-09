@@ -8,35 +8,35 @@ import { CENTERS } from '@/content/centers';
 import { MapPin, Users, Phone, ChevronRight } from 'lucide-react';
 
 export const metadata = {
-  title: '대전 5구 지점',
-  description: `${CONTACT.name} 대전 5구 지점 안내 — 유성구·대덕구·서구·중구·동구 각 지점별 매니저 매칭.`,
+  title: '본점 안내',
+  description: `${CONTACT.name} 본점 — 대전 대덕구 신탄진로 808. 대전 5구 어디든 어르신 댁 인근 매니저 매칭.`,
   alternates: { canonical: '/centers' },
 };
 
 export default function CentersPage() {
-  const totalManagers = CENTERS.reduce((sum, c) => sum + c.managers, 0);
+  const main = CENTERS[0]!;
 
   return (
     <>
       <PageHero
-        title="대전 5구 지점"
-        sub="유성·대덕·서구·중구·동구 — 가까운 지점에서 빠르게"
-        crumbs={[{ label: '센터소개' }, { label: '5구 지점' }]}
+        title="본점 안내"
+        sub="대전 대덕구 신탄진로 808 — 대전 5구 어디든 어르신 댁으로 직접 찾아갑니다"
+        crumbs={[{ label: '센터소개' }, { label: '본점 안내' }]}
       />
 
-      {/* 통합 stats. Wave 387: <dl> semantic saturation pass (home Wave 386 패턴) */}
+      {/* 통합 stats — 본점 1곳화 후 신뢰 지표 재구성 */}
       <section className="bg-white py-12 border-b border-gray-100">
         <dl className="max-w-[1200px] mx-auto px-5 grid grid-cols-3 gap-6 text-center m-0">
           <Reveal as="div" className="flex flex-col-reverse gap-1">
-            <dt className="text-xs md:text-sm text-ink-muted font-medium">대전 5구 모두 운영</dt>
+            <dt className="text-xs md:text-sm text-ink-muted font-medium">대전 5구 전 지역</dt>
             <dd className="text-3xl md:text-4xl font-extrabold text-[#1B6F4A] tabular-nums m-0">
-              <StatsCounter value={CENTERS.length} suffix="구" />
+              <StatsCounter value={5} suffix="구" />
             </dd>
           </Reveal>
           <Reveal as="div" delay={0.1} className="flex flex-col-reverse gap-1">
-            <dt className="text-xs md:text-sm text-ink-muted font-medium">총 자격 매니저 수</dt>
+            <dt className="text-xs md:text-sm text-ink-muted font-medium">자격 매니저 수</dt>
             <dd className="text-3xl md:text-4xl font-extrabold text-[#1B6F4A] tabular-nums m-0">
-              <StatsCounter value={totalManagers} suffix="명" />
+              <StatsCounter value={main.managers} suffix="명" />
             </dd>
           </Reveal>
           <Reveal as="div" delay={0.2} className="flex flex-col-reverse gap-1">
@@ -48,59 +48,53 @@ export default function CentersPage() {
         </dl>
       </section>
 
-      {/* 지점 카드 grid */}
+      {/* 본점 카드 — 1곳 fullwidth */}
       <section className="bg-[#f8f8f8] py-20">
-        <div className="max-w-[1200px] mx-auto px-5">
+        <div className="max-w-[900px] mx-auto px-5">
           <SectionBlock
-            eyebrow="LOCATIONS"
-            title="가까운 지점 찾기"
-            sub="어르신 거주지 인근 지점에서 매니저를 매칭드립니다"
+            eyebrow="MAIN OFFICE"
+            title="본점 위치"
+            sub="대전 대덕구 신탄진로 808 — 본점 1곳에서 대전 5구 전 지역 매니저 운영"
             className="mb-12"
           />
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {CENTERS.map((c, i) => (
-              <Reveal key={c.slug} delay={i * 0.06}>
-                <article className="bg-white p-7 hover:shadow-md transition-all border-t-4 border-brand-600 h-full">
-                  <div className="flex items-baseline justify-between mb-4">
-                    <div>
-                      <h3 className="text-xl font-bold text-ink-primary mb-1">{c.name}</h3>
-                      <p className="text-xs text-ink-muted">{c.region}</p>
-                    </div>
-                    <div className="flex items-center gap-1.5 text-brand-600 font-semibold text-sm">
-                      <Users size={14} />
-                      {c.managers}명
-                    </div>
-                  </div>
+          <Reveal>
+            <article className="bg-white p-8 md:p-10 hover:shadow-md transition-all border-t-4 border-brand-600">
+              <div className="flex items-baseline justify-between mb-5">
+                <div>
+                  <h3 className="text-2xl font-bold text-ink-primary mb-1">{main.name}</h3>
+                  <p className="text-sm text-ink-muted">{main.region}</p>
+                </div>
+                <div className="flex items-center gap-1.5 text-brand-600 font-semibold">
+                  <Users size={16} />
+                  {main.managers}명
+                </div>
+              </div>
 
-                  {/* Wave 381: <address> semantic — 각 center가 <article>이므로 이 안의 address는 그 center의 contact info (HTML5 정확) */}
-                  <address className="not-italic text-sm text-ink-secondary mb-4 flex items-start gap-2">
-                    <MapPin size={14} className="text-brand-600 mt-0.5 shrink-0" />
-                    <span>{c.address}</span>
-                  </address>
+              <address className="not-italic text-base text-ink-secondary mb-5 flex items-start gap-2">
+                <MapPin size={16} className="text-brand-600 mt-1 shrink-0" />
+                <span className="leading-relaxed">{main.address}</span>
+              </address>
 
-                  <ul className="text-sm text-ink-secondary space-y-1.5 mb-5 border-t border-gray-100 pt-4">
-                    {c.features.map((f, j) => (
-                      <li key={j} className="flex items-start gap-2">
-                        <ChevronRight size={14} className="text-brand-400 mt-0.5 shrink-0" />
-                        <span>{f}</span>
-                      </li>
-                    ))}
-                  </ul>
+              <ul className="text-sm text-ink-secondary space-y-2 mb-6 border-t border-gray-100 pt-5">
+                {main.features.map((f, j) => (
+                  <li key={j} className="flex items-start gap-2">
+                    <ChevronRight size={14} className="text-brand-400 mt-0.5 shrink-0" />
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
 
-                  {/* Wave 409: aria-label — 지점별 phone 의도 명확 */}
-                  <a
-                    href={CONTACT.phoneTel}
-                    aria-label={`${c.shortName} 지점 상담 전화 걸기 ${CONTACT.phone}`}
-                    className="flex items-center justify-center gap-2 bg-[#1B6F4A] hover:bg-[#15573A] text-white py-2.5 font-semibold transition-colors text-sm"
-                    style={{ borderRadius: '2px' }}
-                  >
-                    <Phone size={14} />
-                    {c.shortName} 지점 상담 · {CONTACT.phone}
-                  </a>
-                </article>
-              </Reveal>
-            ))}
-          </div>
+              <a
+                href={CONTACT.phoneTel}
+                aria-label={`본점 상담 전화 걸기 ${CONTACT.phone}`}
+                className="flex items-center justify-center gap-2 bg-[#1B6F4A] hover:bg-[#15573A] text-white py-3 font-semibold transition-colors"
+                style={{ borderRadius: '2px' }}
+              >
+                <Phone size={16} />
+                본점 상담 · {CONTACT.phone}
+              </a>
+            </article>
+          </Reveal>
         </div>
       </section>
 
@@ -113,12 +107,11 @@ export default function CentersPage() {
               어르신 댁에서 가장 가까운 매니저 우선 매칭
             </h3>
             <p className="text-ink-secondary leading-relaxed mb-3">
-              대전케어는 어르신 거주지 5km 이내 매니저를 우선 매칭합니다.
-              짧은 이동 시간 = 약속 시간 정확 + 어르신 부담 감소.
+              본점은 신탄진로 808에 있지만 매니저는 대전 5구 곳곳에 거주합니다.
+              어르신 댁 인근 매니저를 우선 매칭해 짧은 이동·정확한 약속 시간·어르신 부담 감소를 만들어 드립니다.
             </p>
-            {/* Wave 486: emoji aria-hidden (paradigm 16 saturation) */}
             <p className="text-sm text-ink-muted">
-              <span aria-hidden="true">💡</span> 5구 외 지역 (세종·청주·옥천 등) 거주 어르신도 상담 가능. {CONTACT.phone}으로 문의 주세요.
+              <span aria-hidden="true">💡</span> 5구 외 지역(세종·청주·옥천 등) 거주 어르신도 먼저 상담해 드립니다. {CONTACT.phone}으로 편하게 연락 주세요.
             </p>
           </div>
         </div>

@@ -1,10 +1,15 @@
 /**
- * 대전케어 방문요양센터 공식 로고 SVG.
+ * 대전케어 방문요양센터 공식 로고.
  * 손바닥 cradle + 어르신 + 하트 = 따뜻한 케어.
- * 색: 녹색(손) + 노란주황(어르신) + 빨강(하트). 자현 정체성 자산.
+ * 색: 녹색(손) + 주황(어르신) + 코랄(하트). 자현 정체성 자산.
  *
- * Wave 537: aria-label + 로고 텍스트 brand → CONTACT.brand/service derived (paradigm 16 cascade).
+ * Wave 575: SVG hand-crafted → 자현 ChatGPT 생성 PNG로 교체.
+ *   원본: public/logo.png (배경 투명 PNG, 정사각 비례)
+ *   Header LCP critical → priority + width/height 명시.
+ *
+ * Wave 537: aria-label + 로고 텍스트 brand → CONTACT.brand/service derived.
  */
+import Image from 'next/image';
 import { CONTACT } from '@/lib/contact';
 
 export function Logo({
@@ -18,33 +23,17 @@ export function Logo({
 }) {
   return (
     <div className={`flex items-center gap-3 ${className}`}>
-      {/* 로고 마크 — 텍스트 동반 시 aria-hidden (스크린리더 중복 방지), 아이콘 only 시 aria-label */}
-      <svg
+      {/* 로고 마크 — 텍스트 동반 시 alt 빈 문자열 (decorative, SR 중복 회피),
+       * 아이콘 only 시 alt에 brand name (의미 전달). */}
+      <Image
+        src="/logo.png"
         width={size}
         height={size}
-        viewBox="0 0 100 100"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        {...(withText
-          ? { 'aria-hidden': true as const }
-          : { role: 'img', 'aria-label': `${CONTACT.name} 로고` })}
-        className="shrink-0"
-      >
-        {/* 손바닥 (cradle 곡선) */}
-        <path
-          d="M 12 55 Q 12 78 35 82 Q 50 84 65 82 Q 88 78 88 55 Q 88 50 85 50 Q 85 70 60 75 Q 50 76 40 75 Q 15 70 15 50 Q 12 50 12 55 Z"
-          fill="#1B6F4A"
-        />
-        {/* 어르신 몸 */}
-        <ellipse cx="50" cy="58" rx="14" ry="16" fill="#F5A623" />
-        {/* 어르신 머리 */}
-        <circle cx="50" cy="36" r="11" fill="#F5A623" />
-        {/* 하트 */}
-        <path
-          d="M 64 22 Q 64 18 68 18 Q 72 18 72 22 Q 72 18 76 18 Q 80 18 80 22 Q 80 28 72 33 Q 64 28 64 22 Z"
-          fill="#E63946"
-        />
-      </svg>
+        alt={withText ? '' : `${CONTACT.name} 로고`}
+        priority
+        className="shrink-0 select-none"
+        style={{ width: size, height: size, objectFit: 'contain' }}
+      />
 
       {/* 텍스트 */}
       {withText && (

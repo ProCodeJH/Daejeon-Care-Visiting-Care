@@ -39,7 +39,7 @@ export const CONTACT = {
   /** 자격 매니저 수 (marketing copy "{managerCount}+명" 용도). 자현 비즈니스 성장 시 업데이트. */
   managerCount: 90,
   // 🔧 자현 편집
-  address: '대전광역시 [구] [동] [도로명주소]',
+  address: '대전광역시 대덕구 신탄진로 808',
   representative: '[대표자명]',
   bizNumber: '[사업자등록번호]',
   careNumber: '[장기요양기관 지정번호]',
