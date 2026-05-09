@@ -36,7 +36,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/qna', priority: 0.5, freq: 'monthly' },
     { path: '/faq', priority: 0.8, freq: 'monthly' },
     { path: '/map', priority: 0.85, freq: 'monthly' },
-    { path: '/sitemap', priority: 0.3, freq: 'monthly' },
+    { path: '/site-map', priority: 0.3, freq: 'monthly' },
   ];
 
   const noticeRoutes: MetadataRoute.Sitemap = NOTICES.map((n) => ({

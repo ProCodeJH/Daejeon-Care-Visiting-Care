@@ -155,7 +155,7 @@ export function Footer() {
             {/* Wave 455: <a> → <Link> — Lenis smooth scroll + View Transitions + prefetch 활성 */}
             <Link href="/privacy" className="hover:text-[#1B6F4A]">개인정보처리방침</Link>
             <Link href="/terms" className="hover:text-[#1B6F4A]">이용약관</Link>
-            <Link href="/sitemap" className="hover:text-[#1B6F4A]">사이트맵</Link>
+            <Link href="/site-map" className="hover:text-[#1B6F4A]">사이트맵</Link>
           </nav>
         </div>
       </div>

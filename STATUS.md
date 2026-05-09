@@ -1,6 +1,6 @@
 # STATUS — 대전케어 방문요양센터
 
-**Updated**: 2026-05-09 / Wave 572 / paradigm 18 chain 220-wave (color scheme dark mode audit — themeColor 2 location 정의 + CSS @media dark 0 + Tailwind dark: 0 = light only paradigm 정합)
+**Updated**: 2026-05-09 / Wave 573 / paradigm 18 chain 221-wave (광맥 #327! Next.js 15.5.15 turbopack 충돌 — app/sitemap.ts metadata route + app/sitemap/page.tsx 페이지 같은 /sitemap claim. /site-map 으로 rename + 4 references 동기화)
 
 > 1쪽 handoff. 자현 5분 결정 진입점.
 
