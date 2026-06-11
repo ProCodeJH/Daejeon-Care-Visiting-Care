@@ -1,25 +1,49 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { PageHero } from '@/components/PageHero';
 import { CTASection } from '@/components/CTASection';
 import { STORIES as POSTS } from '@/content/stories';
 import { CONTACT } from '@/lib/contact';
+import {
+  ADMIN_CONTENT_EVENT,
+  fetchAdminContent,
+  getStoryUrl,
+  sortByDateDesc,
+  STORY_CATEGORIES,
+  type AdminStory,
+  type ManagedStory,
+} from '@/lib/admin-content';
 
 // Wave 534: CATEGORIES brand-prefixed → CONTACT.brand derived (paradigm 16 cascade audit).
 // Wave 533 stories.ts cat 변경 후 cascade 누락 catch — brand 변경 시 filter 정합성 보장.
-const CATEGORIES = ['전체', `${CONTACT.brand} 이야기`, `${CONTACT.brand} 일상`, '현장 이야기', '공지'];
+const CATEGORIES = STORY_CATEGORIES;
 
 export default function StoryPage() {
   const [activeCat, setActiveCat] = useState('전체');
+  const [adminStories, setAdminStories] = useState<AdminStory[]>([]);
 
   // Wave 395: URL deep-link (Wave 369 패턴 saturation pass) — 카테고리 공유
   useEffect(() => {
     try {
       const urlParams = new URLSearchParams(window.location.search);
       const urlCat = urlParams.get('cat');
-      if (urlCat && CATEGORIES.includes(urlCat)) setActiveCat(urlCat);
+      if (urlCat && CATEGORIES.some((category) => category === urlCat)) setActiveCat(urlCat);
     } catch {}
+  }, []);
+
+  useEffect(() => {
+    const loadAdminContent = async () => {
+      const snapshot = await fetchAdminContent();
+      setAdminStories(snapshot.stories);
+    };
+    void loadAdminContent();
+    window.addEventListener(ADMIN_CONTENT_EVENT, loadAdminContent);
+    window.addEventListener('storage', loadAdminContent);
+    return () => {
+      window.removeEventListener(ADMIN_CONTENT_EVENT, loadAdminContent);
+      window.removeEventListener('storage', loadAdminContent);
+    };
   }, []);
 
   useEffect(() => {
@@ -32,7 +56,11 @@ export default function StoryPage() {
     } catch {}
   }, [activeCat]);
 
-  const filtered = activeCat === '전체' ? POSTS : POSTS.filter((p) => p.cat === activeCat);
+  const posts = useMemo(
+    () => sortByDateDesc<ManagedStory>([...adminStories, ...POSTS]),
+    [adminStories],
+  );
+  const filtered = activeCat === '전체' ? posts : posts.filter((p) => p.cat === activeCat);
 
   return (
     <>
@@ -73,15 +101,15 @@ export default function StoryPage() {
           {/* Wave 395: WCAG 4.1.3 aria-live status (Wave 367 패턴 saturation pass) */}
           <div aria-live="polite" aria-atomic="true" className="sr-only">
             {activeCat === '전체'
-              ? `전체 ${POSTS.length}건의 이야기`
+              ? `전체 ${posts.length}건의 이야기`
               : `${activeCat} 카테고리 ${filtered.length}건의 이야기`}
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {filtered.map((p) => (
               <a
-                key={p.id}
-                href={`/story/${p.id}`}
-                className="group block bg-[#f8f8f8] hover:bg-brand-50 transition-colors overflow-hidden"
+                key={String(p.id)}
+                href={getStoryUrl(p)}
+                className="group block bg-white border border-slate-200 hover:border-brand-300 transition-all duration-500 overflow-hidden hover:-translate-y-1 hover:shadow-xl"
                 aria-label={p.title}
               >
                 {/* Wave 376: <img> SEO/lazy + gradient aria-hidden (Wave 358 패턴 saturation pass).
@@ -95,23 +123,24 @@ export default function StoryPage() {
                       height={300}
                       loading="lazy"
                       decoding="async"
-                      className="absolute inset-0 w-full h-full object-cover"
+                      className="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-105"
                     />
                   ) : (
-                    <div
-                      aria-hidden="true"
-                      className="absolute inset-0 bg-gradient-to-br from-brand-200 to-brand-400"
-                    />
+                    <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(135deg,#F8FAFC_0%,#EAF2FF_50%,#D7E4F5_100%)]">
+                      <div className="absolute left-5 right-5 top-6 h-px bg-slate-300/70" />
+                      <div className="absolute bottom-6 left-5 h-12 w-24 border-l-2 border-t-2 border-brand-500/70" />
+                      <div className="absolute right-6 top-6 h-20 w-20 rounded-full border border-brand-300/70" />
+                    </div>
                   )}
                   {p.isNotice && (
-                    <span className="absolute top-3 left-3 bg-white text-brand-400 text-xs font-bold px-2 py-1 z-10" style={{ borderRadius: '2px' }}>
+                    <span className="absolute top-3 left-3 bg-white text-brand-700 text-xs font-bold px-2 py-1 z-10 shadow-sm" style={{ borderRadius: '2px' }}>
                       공지
                     </span>
                   )}
                 </div>
                 <div className="p-5">
-                  <p className="text-xs text-brand-400 font-semibold mb-2">{p.cat}</p>
-                  <h3 className="font-bold text-ink-primary leading-snug mb-2 group-hover:text-brand-400 transition-colors line-clamp-2">
+                  <p className="text-xs text-brand-600 font-semibold mb-2">{p.cat}</p>
+                  <h3 className="font-bold text-ink-primary leading-snug mb-2 group-hover:text-brand-600 transition-colors line-clamp-2">
                     {p.title}
                   </h3>
                   <p className="text-sm text-ink-secondary line-clamp-2 mb-3 leading-relaxed">

@@ -4,7 +4,7 @@ import { SectionBlock } from '@/components/SectionBlock';
 import { CTASection } from '@/components/CTASection';
 import { Reveal } from '@/components/Reveal';
 import { JobPostingJsonLd } from '@/components/JobPostingJsonLd';
-import { Wallet, Clock, Home, BookOpen, Users, Heart, type LucideIcon } from 'lucide-react';
+import { Wallet, Clock, Home, BookOpen, Users, Heart, Phone, type LucideIcon } from 'lucide-react';
 import { CONTACT } from '@/lib/contact';
 
 export const metadata: Metadata = {
@@ -84,7 +84,8 @@ export default function JobsPage() {
             className="inline-block mt-8 bg-brand-400 hover:bg-brand-500 text-white px-8 py-4 font-bold text-lg transition-colors"
             style={{ borderRadius: '2px' }}
           >
-            <span aria-hidden="true">☎️</span> {CONTACT.phone} 문의
+            <Phone size={18} aria-hidden="true" className="mr-2 inline" />
+            {CONTACT.phone} 문의
           </a>
         </div>
       </section>

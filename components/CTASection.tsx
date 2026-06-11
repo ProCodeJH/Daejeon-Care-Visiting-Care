@@ -1,5 +1,5 @@
 ﻿import { CONTACT } from '@/lib/contact';
-import { Phone } from 'lucide-react';
+import { Heart, Phone } from 'lucide-react';
 
 /**
  * 페이지 하단 통일 CTA — 24시간 상담 + 대표번호 강조.
@@ -18,8 +18,9 @@ export function CTASection({
     <section aria-label="상담 문의" className={`${bg} py-16 md:py-20`}>
       <div className="max-w-[1200px] mx-auto px-5 text-center">
         <p className="inline-flex items-center gap-2 text-[#E63946] font-bold text-sm tracking-wider mb-4">
-          {/* Wave 448: aria-hidden — ♥ unicode SR "heart" 발음 noise 차단 (decorative) */}
-          <span aria-hidden="true" className="w-6 h-6 rounded-full bg-[#E63946] grid place-items-center text-white text-xs">♥</span>
+          <span aria-hidden="true" className="w-6 h-6 rounded-full bg-[#E63946] grid place-items-center text-white text-xs">
+            <Heart size={13} fill="currentColor" />
+          </span>
           {CONTACT.available}
         </p>
         <h2 className="text-2xl md:text-4xl font-bold text-ink-primary mb-3 leading-snug">

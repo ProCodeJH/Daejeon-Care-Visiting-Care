@@ -16,37 +16,31 @@ const GRADES = [
     grade: '1등급',
     score: '95점 이상',
     desc: '일상생활에서 전적으로 다른 사람의 도움이 필요한 상태',
-    color: 'bg-red-50 border-red-300 text-red-700',
   },
   {
     grade: '2등급',
     score: '75 ~ 94점',
     desc: '일상생활에서 상당 부분 다른 사람의 도움이 필요한 상태',
-    color: 'bg-orange-50 border-orange-300 text-orange-700',
   },
   {
     grade: '3등급',
     score: '60 ~ 74점',
     desc: '일상생활에서 부분적으로 다른 사람의 도움이 필요한 상태',
-    color: 'bg-amber-50 border-amber-300 text-amber-700',
   },
   {
     grade: '4등급',
     score: '51 ~ 59점',
     desc: '일상생활에서 일정 부분 다른 사람의 도움이 필요한 상태',
-    color: 'bg-yellow-50 border-yellow-300 text-yellow-700',
   },
   {
     grade: '5등급',
     score: '45 ~ 50점 + 치매',
     desc: '치매 환자 (노인성 치매로 일정 점수 미만이지만 치매 진단 받은 자)',
-    color: 'bg-brand-50 border-brand-300 text-brand-700',
   },
   {
     grade: '인지지원등급',
     score: '45점 미만 + 치매',
     desc: '치매 환자 중 신체 기능은 양호하나 인지 활동 지원이 필요한 자',
-    color: 'bg-blue-50 border-blue-300 text-blue-700',
   },
 ];
 
@@ -88,10 +82,22 @@ export default function GradePage() {
           />
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {GRADES.map((g, i) => (
-              <Reveal key={g.grade} delay={i * 0.06} className={`${g.color} border-l-4 p-6 hover:shadow-md transition-shadow`}>
-                <div className="flex items-baseline justify-between mb-3">
-                  <h3 className="text-xl font-bold">{g.grade}</h3>
-                  <p className="text-sm font-mono opacity-75">{g.score}</p>
+              <Reveal
+                key={g.grade}
+                delay={i * 0.06}
+                className="nextgen-card group border border-slate-200 bg-white p-6 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-brand-300 hover:shadow-xl"
+              >
+                <div aria-hidden="true" className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-800 via-brand-500 to-[#E63946]" />
+                <div className="mb-5 flex items-start justify-between gap-4">
+                  <div className="flex items-center gap-3">
+                    <span className="grid h-11 w-11 place-items-center bg-slate-950 text-sm font-extrabold text-white transition group-hover:bg-brand-700" style={{ borderRadius: '4px' }}>
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <h3 className="text-xl font-extrabold text-ink-primary">{g.grade}</h3>
+                  </div>
+                  <p className="shrink-0 border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold text-slate-600" style={{ borderRadius: '999px' }}>
+                    {g.score}
+                  </p>
                 </div>
                 <p className="text-sm leading-relaxed text-ink-secondary">{g.desc}</p>
               </Reveal>
@@ -114,18 +120,15 @@ export default function GradePage() {
             className="mb-12"
           />
           {/* Wave 355: <ol>+<li> WCAG 1.3.1 (sequential process semantic). list-none = decimal marker 숨김 (visual badge로 대체) */}
-          <ol className="grid md:grid-cols-5 gap-3 list-none p-0 m-0">
+          <ol className="process-track grid md:grid-cols-5 gap-3 list-none p-0 m-0">
             {STEPS.map((s, i) => (
-              <Reveal as="li" key={s.num} delay={i * 0.08}>
-                <div className="bg-white p-5 text-center relative h-full">
-                  <div className="w-12 h-12 bg-brand-600 grid place-items-center text-white font-bold mx-auto mb-3" style={{ borderRadius: '2px' }}>
+              <Reveal as="li" key={s.num} delay={i * 0.08} className="relative z-10">
+                <div className="nextgen-card h-full border border-slate-200 bg-white p-5 text-center shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-brand-300 hover:shadow-xl">
+                  <div className="process-node mx-auto mb-5 grid h-12 w-12 place-items-center bg-brand-700 text-white font-extrabold" data-delay={String(i)} style={{ borderRadius: '4px' }}>
                     {s.num}
                   </div>
                   <h3 className="font-bold text-ink-primary mb-2 text-sm">{s.title}</h3>
                   <p className="text-xs text-ink-muted leading-relaxed">{s.desc}</p>
-                  {i < STEPS.length - 1 && (
-                    <span aria-hidden="true" className="hidden md:block absolute -right-2 top-8 text-brand-600 font-bold opacity-50">→</span>
-                  )}
                 </div>
               </Reveal>
             ))}
@@ -161,7 +164,8 @@ export default function GradePage() {
             </ul>
             {/* Wave 486: emoji aria-hidden (paradigm 16 saturation) */}
             <p className="mt-5 text-sm text-ink-secondary bg-white p-4 border border-brand-200">
-              <span aria-hidden="true">💡</span> 대전케어가 신청서 작성부터 결과 통보까지 <strong className="text-brand-400">전 과정 동행</strong>합니다.
+              <span className="mr-2 inline-block bg-brand-600 px-2 py-0.5 text-xs font-bold text-white" style={{ borderRadius: '2px' }}>안내</span>
+              대전케어가 신청서 작성부터 결과 통보까지 <strong className="text-brand-400">전 과정 동행</strong>합니다.
             </p>
           </div>
         </div>

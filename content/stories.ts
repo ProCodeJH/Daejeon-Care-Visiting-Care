@@ -5,7 +5,7 @@
  * Wave 575: 6건 모두 저작권 회피 자체 표현 재작성.
  * 다른 사이트 PR 카피 흔적 0건 — 자현 정체성 표현으로 100% 새로 작성.
  *
- * 🔧 자현 편집 가이드:
+ * 자현 편집 가이드:
  *   - 썸네일 (선택): `thumbnail: '/story/post-1.png'` 추가 → gradient placeholder 자동 대체
  *   - 사이즈 권장: 1200×600 (16:8) WebP 또는 PNG
  *   - 위치: public/story/post-N.png

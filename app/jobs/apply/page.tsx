@@ -1,6 +1,7 @@
 ﻿'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
+import { Check, Save } from 'lucide-react';
 import { PageHero } from '@/components/PageHero';
 import { SectionBlock } from '@/components/SectionBlock';
 import { PrivacyDialog } from '@/components/PrivacyDialog';
@@ -188,7 +189,7 @@ export default function JobApplyPage() {
                   className="text-center py-12 form-success-enter bg-gradient-to-br from-brand-50 to-brand-100 border-l-4 border-[#1E40AF] -mx-7 md:-mx-8 px-7 md:px-8"
                 >
                   <div aria-hidden="true" className="w-16 h-16 mx-auto mb-5 rounded-full bg-[#1E40AF] grid place-items-center text-white text-3xl">
-                    ✓
+                    <Check size={32} />
                   </div>
                   <h3 className="text-2xl font-bold text-[#1E40AF] mb-3">지원이 접수되었습니다</h3>
                   <p className="text-ink-secondary mb-6">
@@ -255,7 +256,7 @@ export default function JobApplyPage() {
                     className="bg-brand-50 border-l-4 border-brand-400 p-4 -mt-2 flex flex-wrap items-center justify-between gap-3"
                   >
                     <p className="text-sm text-brand-700 flex items-center gap-2">
-                      <span aria-hidden="true">✓</span>
+                      <Check size={16} aria-hidden="true" />
                       이전에 작성하신 내용을 불러왔습니다.
                     </p>
                     <button
@@ -270,7 +271,7 @@ export default function JobApplyPage() {
                 {/* Wave 375: 자동 저장 안내 — feature dark matter 회피, 사용자 신뢰 보강 */}
                 <p className="text-xs text-ink-muted flex items-center gap-2 -mt-2 mb-1">
                   <span aria-hidden="true" className="w-5 h-5 grid place-items-center bg-brand-50 text-brand-600 text-[11px] shrink-0" style={{ borderRadius: '999px' }}>
-                    💾
+                    <Save size={12} />
                   </span>
                   입력하신 내용은 자동 저장됩니다. 실수로 페이지를 닫아도 안심하세요.
                 </p>

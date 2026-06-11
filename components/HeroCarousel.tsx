@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
+import { Heart, Pause, Phone, Play } from 'lucide-react';
 import { SplitText } from './SplitText';
 import { CONTACT } from '@/lib/contact';
 
@@ -15,7 +16,7 @@ import { CONTACT } from '@/lib/contact';
 /**
  * Hero SLIDES — gradient mesh (저작권 0 default).
  *
- * 🔧 자현 이미지 swap 가이드:
+ * 자현 이미지 swap 가이드:
  *   - 이미지 사이즈: 1920×1080 (16:9) WebP 또는 JPG, 200-400 KB 권장
  *   - 위치: `public/hero-1.webp` 등 (Next.js static asset)
  *   - 활성: 각 SLIDE에 `bg: '/hero-1.webp'` 추가 (optional)
@@ -237,7 +238,8 @@ export function HeroCarousel() {
             className="hero-cta hero-cta-pulse flex items-center gap-2 bg-[#E63946] hover:bg-[#C12A37] text-white px-6 md:px-8 py-3 md:py-3.5 font-bold text-sm md:text-base transition-all relative"
             style={{ borderRadius: '2px' }}
           >
-            <span aria-hidden="true">☎</span> {CONTACT.phone}
+            <Phone size={18} aria-hidden="true" />
+            {CONTACT.phone}
           </a>
         </div>
 
@@ -247,7 +249,7 @@ export function HeroCarousel() {
           style={{ borderRadius: '2px' }}
         >
           <span aria-hidden="true" className="inline-flex w-5 h-5 rounded-full bg-[#E63946] grid place-items-center text-white text-[10px]">
-            ♥
+            <Heart size={12} fill="currentColor" />
           </span>
           <span className="text-sm font-bold text-[#1E40AF]">24시간 상담 가능</span>
         </div>
@@ -263,9 +265,7 @@ export function HeroCarousel() {
           className="absolute bottom-7 right-5 md:right-8 z-20 w-10 h-10 grid place-items-center bg-white/90 hover:bg-white text-[#1E40AF] backdrop-blur-sm transition-colors"
           style={{ borderRadius: '2px' }}
         >
-          <span aria-hidden="true" className="text-base leading-none">
-            {paused ? '▶' : '❚❚'}
-          </span>
+          {paused ? <Play size={17} aria-hidden="true" /> : <Pause size={17} aria-hidden="true" />}
         </button>
       )}
 

@@ -19,6 +19,15 @@ npm run dev   # http://localhost:3012
 
 ---
 
+## 관리자 콘텐츠
+
+- `/admin`: 센터장용 관리 화면
+- 관리 가능 항목: 고객 후기 사진/본문, 대전케어 이야기, 대전케어 일상, 현장 이야기, 공지
+- 운영 저장소: `supabase/admin-content-schema.sql` 실행 후 Vercel 환경변수 설정
+- 필수 환경변수: `ADMIN_PASSWORD`, `SUPABASE_URL`, `SUPABASE_ANON_KEY`
+
+---
+
 ## 🛠 Tech Stack
 
 - **Next.js 15** App Router (SSG · 35+ static pages)
@@ -300,4 +309,3 @@ git add . && git commit -m "update: 새 FAQ" && git push
 ---
 
 **자세한 배포 가이드** → [DEPLOY.md](./DEPLOY.md)
-

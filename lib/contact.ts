@@ -2,13 +2,13 @@
  * 대전케어 방문요양센터 연락처 (단일 source of truth).
  * 자현이 한 곳만 수정하면 사이트 전체 반영.
  *
- * 🔧 자현 편집 필요 필드 (대괄호 [...] 표시):
+ * 자현 편집 필요 필드 (대괄호 [...] 표시):
  *   - address: 본점 정확한 주소 입력
  *   - representative: 대표자 성함
  *   - bizNumber: 사업자등록번호 (XXX-XX-XXXXX 형식)
  *   - careNumber: 장기요양기관 지정번호 (관할 구청 발급)
  *
- * ✅ 자동 적용 위치:
+ * 자동 적용 위치:
  *   - Footer 사업자 정보 4 필드
  *   - About 인증 배지 (지정번호 자리)
  *   - JSON-LD MedicalBusiness (StructuredData.tsx)
@@ -38,7 +38,7 @@ export const CONTACT = {
   emailMailto: `mailto:${EMAIL}` as const,
   /** 자격 매니저 수 (marketing copy "{managerCount}+명" 용도). 자현 비즈니스 성장 시 업데이트. */
   managerCount: 90,
-  // 🔧 자현 편집
+  // 자현 편집
   address: '대전광역시 대덕구 신탄진로 808',
   representative: '[대표자명]',
   bizNumber: '[사업자등록번호]',

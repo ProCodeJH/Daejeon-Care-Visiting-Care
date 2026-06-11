@@ -35,6 +35,7 @@ dev-*.log
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
 
 # vercel
 .vercel
@@ -62,5 +63,6 @@ playwright-report/
 *.png
 !public/**/*.png
 !components/**/*.png
+/data/admin-content.json
 
 .vercel

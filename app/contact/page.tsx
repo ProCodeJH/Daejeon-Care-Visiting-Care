@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { PageHero } from '@/components/PageHero';
 import { PrivacyDialog } from '@/components/PrivacyDialog';
-import { Phone, Mail, MapPin, Clock } from 'lucide-react';
+import { Check, Clock, Mail, MapPin, Phone, Save } from 'lucide-react';
 import { CONTACT } from '@/lib/contact';
 
 const STORAGE_KEY = 'daejeon-care:contact';
@@ -209,7 +209,7 @@ export default function ContactPage() {
                 className="bg-gradient-to-br from-brand-50 to-brand-100 p-8 text-center border-l-4 border-[#1E40AF] form-success-enter"
               >
                 <div aria-hidden="true" className="w-14 h-14 mx-auto mb-4 rounded-full bg-[#1E40AF] grid place-items-center text-white text-2xl">
-                  ✓
+                  <Check size={28} />
                 </div>
                 <p className="font-bold text-[#1E40AF] mb-2 text-lg">문의가 접수되었습니다</p>
                 <p className="text-sm text-ink-secondary">빠른 시일 내에 연락드리겠습니다.</p>
@@ -230,7 +230,7 @@ export default function ContactPage() {
                     className="bg-brand-50 border-l-4 border-brand-400 p-3 flex flex-wrap items-center justify-between gap-2"
                   >
                     <p className="text-sm text-brand-700 flex items-center gap-2">
-                      <span aria-hidden="true">✓</span>
+                      <Check size={16} aria-hidden="true" />
                       이전에 작성하신 내용을 불러왔습니다.
                     </p>
                     <button
@@ -245,7 +245,7 @@ export default function ContactPage() {
                 {/* Wave 375: 자동 저장 안내 (Wave 374 패턴 saturation pass) */}
                 <p className="text-xs text-ink-muted flex items-center gap-2 -mt-1">
                   <span aria-hidden="true" className="w-5 h-5 grid place-items-center bg-brand-50 text-brand-600 text-[11px] shrink-0" style={{ borderRadius: '999px' }}>
-                    💾
+                    <Save size={12} />
                   </span>
                   입력 내용은 자동 저장됩니다.
                 </p>

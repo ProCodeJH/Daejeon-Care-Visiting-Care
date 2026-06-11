@@ -1,6 +1,7 @@
 ﻿'use client';
 
 import { useState, useMemo, useEffect } from 'react';
+import { ClipboardList, Info, Printer } from 'lucide-react';
 import { PageHero } from '@/components/PageHero';
 import { SectionBlock } from '@/components/SectionBlock';
 import { CTASection } from '@/components/CTASection';
@@ -260,7 +261,8 @@ export default function CostPage() {
                 style={{ borderRadius: '2px' }}
                 aria-label="본인부담금 계산 결과 인쇄"
               >
-                🖨 인쇄
+                <Printer size={16} aria-hidden="true" />
+                인쇄
               </button>
             </div>
           </div>
@@ -272,7 +274,10 @@ export default function CostPage() {
         <div className="max-w-[1000px] mx-auto px-5 grid md:grid-cols-2 gap-5">
           <div className="bg-white p-7">
             {/* Wave 485: emoji aria-hidden + · span wrap (SR noise 차단, visual 보존) */}
-            <h3 className="font-bold text-ink-primary mb-3 text-lg"><span aria-hidden="true">📋</span> 감경 대상 자격</h3>
+            <h3 className="font-bold text-ink-primary mb-3 text-lg flex items-center gap-2">
+              <ClipboardList size={20} aria-hidden="true" className="text-brand-600" />
+              감경 대상 자격
+            </h3>
             <ul className="space-y-2 text-sm text-ink-secondary">
               <li><span aria-hidden="true">·</span> 의료급여 수급권자</li>
               <li><span aria-hidden="true">·</span> 차상위 본인부담경감 대상자</li>
@@ -281,7 +286,10 @@ export default function CostPage() {
             </ul>
           </div>
           <div className="bg-white p-7">
-            <h3 className="font-bold text-ink-primary mb-3 text-lg"><span aria-hidden="true">💡</span> 비용 추가 안내</h3>
+            <h3 className="font-bold text-ink-primary mb-3 text-lg flex items-center gap-2">
+              <Info size={20} aria-hidden="true" className="text-brand-600" />
+              비용 추가 안내
+            </h3>
             <ul className="space-y-2 text-sm text-ink-secondary">
               <li><span aria-hidden="true">·</span> 본인부담금은 매월 25일 자동 청구</li>
               <li><span aria-hidden="true">·</span> 신용카드·계좌이체로 납부 가능</li>

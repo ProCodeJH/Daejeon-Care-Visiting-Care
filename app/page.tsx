@@ -1,5 +1,7 @@
 ﻿'use client';
 
+import { useEffect, useMemo, useState } from 'react';
+import { ArrowRight, Phone, Quote, Star } from 'lucide-react';
 import { HeroCarousel } from '@/components/HeroCarousel';
 import { Reveal } from '@/components/Reveal';
 import { TiltCard } from '@/components/TiltCard';
@@ -9,6 +11,15 @@ import { FaqJsonLd } from '@/components/FaqJsonLd';
 import { FAQS as ALL_FAQS } from '@/content/faqs';
 import { STORIES } from '@/content/stories';
 import { CONTACT } from '@/lib/contact';
+import {
+  ADMIN_CONTENT_EVENT,
+  fetchAdminContent,
+  getStoryUrl,
+  sortByDateDesc,
+  type AdminReview,
+  type AdminStory,
+  type ManagedStory,
+} from '@/lib/admin-content';
 
 /**
  * 두손누리 home 1:1 layout (Playwright 측정 기반):
@@ -22,37 +33,67 @@ import { CONTACT } from '@/lib/contact';
  */
 const VIDEO_ID = ''; // 예: 'abc123XYZ'
 
-const REVIEWS = [
+const DEFAULT_REVIEWS: AdminReview[] = [
   {
+    id: 'default-review-1',
     text: '상담 때 요청사항을 자세히 물어봐주셨어요. 대화가 많은 분이 좋으신지, 식사는 짜게 드시는지 물어봐 주셔서 좋았습니다.',
     author: '보호자 김OO 님',
     tag: '방문요양',
     rating: 5,
     date: '2026.04',
+    createdAt: '2026-04-01T00:00:00.000Z',
+    updatedAt: '2026-04-01T00:00:00.000Z',
   },
   {
+    id: 'default-review-2',
     text: '어머니께서 처음에는 낯설어 하셨는데 요양보호사 선생님이 정말 친근하게 다가가 주셔서 금방 적응하셨어요.',
     author: '보호자 박OO 님',
     tag: '정서 지원',
     rating: 5,
     date: '2026.03',
+    createdAt: '2026-03-01T00:00:00.000Z',
+    updatedAt: '2026-03-01T00:00:00.000Z',
   },
   {
+    id: 'default-review-3',
     text: '서비스 이용 절차가 복잡할 줄 알았는데 센터에서 등급 신청부터 하나하나 친절하게 도와주셔서 감사했습니다.',
     author: '보호자 이OO 님',
     tag: '등급 신청',
     rating: 5,
     date: '2026.02',
+    createdAt: '2026-02-01T00:00:00.000Z',
+    updatedAt: '2026-02-01T00:00:00.000Z',
   },
 ];
-
-// Home Blog 섹션 = stories 최신 4개 (단일 source)
-const BLOGS = STORIES.slice(0, 4).map((s) => ({ id: s.id, title: s.title, tag: s.cat }));
 
 // Home FAQ 섹션 = faqs 첫 4개 (전체 7개는 /faq 페이지)
 const FAQS = ALL_FAQS.slice(0, 4);
 
 export default function Home() {
+  const [adminReviews, setAdminReviews] = useState<AdminReview[]>([]);
+  const [adminStories, setAdminStories] = useState<AdminStory[]>([]);
+
+  useEffect(() => {
+    const loadAdminContent = async () => {
+      const snapshot = await fetchAdminContent();
+      setAdminReviews(snapshot.reviews);
+      setAdminStories(snapshot.stories);
+    };
+    void loadAdminContent();
+    window.addEventListener(ADMIN_CONTENT_EVENT, loadAdminContent);
+    window.addEventListener('storage', loadAdminContent);
+    return () => {
+      window.removeEventListener(ADMIN_CONTENT_EVENT, loadAdminContent);
+      window.removeEventListener('storage', loadAdminContent);
+    };
+  }, []);
+
+  const reviews = useMemo(() => [...adminReviews, ...DEFAULT_REVIEWS].slice(0, 3), [adminReviews]);
+  const blogs = useMemo(
+    () => sortByDateDesc<ManagedStory>([...adminStories, ...STORIES]).slice(0, 4),
+    [adminStories],
+  );
+
   return (
     <>
       <FaqJsonLd faqs={FAQS} />
@@ -200,9 +241,10 @@ export default function Home() {
           <p className="text-ink-muted mb-5">실제 현장의 이야기를 영상으로 만나보세요</p>
           <a
             href="/story"
-            className="inline-block text-brand-400 hover:text-brand-600 font-semibold text-sm transition-colors underline-offset-4 hover:underline"
+            className="inline-flex items-center gap-1.5 text-brand-400 hover:text-brand-600 font-semibold text-sm transition-colors underline-offset-4 hover:underline"
           >
-            이야기 모두 보기 →
+            이야기 모두 보기
+            <ArrowRight size={15} aria-hidden="true" />
           </a>
         </div>
       </section>
@@ -229,7 +271,10 @@ export default function Home() {
               className="block bg-[#E63946] hover:bg-[#C12A37] text-white px-8 py-3.5 font-bold transition-colors"
               ariaLabel={`전화 상담 ${CONTACT.phone}`}
             >
-              <span aria-hidden="true">☎</span> {CONTACT.phone}
+              <span className="inline-flex items-center gap-2">
+                <Phone size={18} aria-hidden="true" />
+                {CONTACT.phone}
+              </span>
             </MagneticButton>
           </div>
         </div>
@@ -248,42 +293,49 @@ export default function Home() {
             </h2>
           </div>
           <div className="grid md:grid-cols-3 gap-5">
-            {REVIEWS.map((r, i) => (
+            {reviews.map((r, i) => (
               <Reveal
                 as="article"
-                key={i}
+                key={r.id}
                 delay={i * 0.08}
-                className="bg-white p-7 border border-gray-100 hover:border-brand-400 hover:shadow-md transition-all relative"
+                className="group relative overflow-hidden bg-white border border-slate-200 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-brand-300 hover:shadow-xl"
               >
-                {/* Quote SVG (CC0, 직접 작성) */}
-                <svg
-                  aria-hidden="true"
-                  width="40"
-                  height="32"
-                  viewBox="0 0 40 32"
-                  fill="none"
-                  className="text-brand-400 mb-3 opacity-80"
-                >
-                  <path
-                    d="M9.5 0 C4.25 0 0 4.25 0 9.5 L0 22 C0 27.5 4.5 32 10 32 L11 32 C11.5 32 12 31.5 12 31 L12 22.5 C12 22 11.5 21.5 11 21.5 L8.5 21.5 C7 21.5 6 20.5 6 19 L6 18 C6 16.5 7 15.5 8.5 15.5 L11 15.5 C11.5 15.5 12 15 12 14.5 L12 1 C12 0.5 11.5 0 11 0 L9.5 0 Z M27.5 0 C22.25 0 18 4.25 18 9.5 L18 22 C18 27.5 22.5 32 28 32 L29 32 C29.5 32 30 31.5 30 31 L30 22.5 C30 22 29.5 21.5 29 21.5 L26.5 21.5 C25 21.5 24 20.5 24 19 L24 18 C24 16.5 25 15.5 26.5 15.5 L29 15.5 C29.5 15.5 30 15 30 14.5 L30 1 C30 0.5 29.5 0 29 0 L27.5 0 Z"
-                    fill="currentColor"
-                  />
-                </svg>
-                <blockquote className="text-ink-secondary leading-relaxed mb-5 text-[15px]">{r.text}</blockquote>
-                {/* Wave 413: 별점 + 태그 + 작성일. <cite>는 W3C spec상 work title 전용 — 저자명은 <span>이 정확. */}
-                <div className="flex items-center justify-between text-xs">
-                  <div>
-                    <span className="font-semibold text-brand-400">- {r.author}</span>
-                    {/* Wave 476: replaceAll — 자현이 미래 day 추가 시 (YYYY.MM.DD) 정확 ISO 변환 (replace는 first only) */}
-                    <time dateTime={r.date.replaceAll('.', '-')} className="text-ink-muted text-[11px] mt-0.5 block">{r.date}</time>
+                <div aria-hidden="true" className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-800 via-brand-500 to-[#E63946]" />
+                {r.image ? (
+                  <div className="relative aspect-[16/9] overflow-hidden bg-slate-100">
+                    <img
+                      src={r.image}
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                      className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/35 to-transparent" />
                   </div>
-                  <div className="flex items-center gap-2">
-                    <span className="bg-brand-50 text-brand-600 px-2 py-0.5 font-medium" style={{ borderRadius: '2px' }}>
-                      {r.tag}
-                    </span>
-                    <span aria-label={`별점 ${r.rating}점 만점에 ${r.rating}점`} className="text-[#F5A623]">
-                      {'★'.repeat(r.rating)}
-                    </span>
+                ) : null}
+                <div className="p-7">
+                  <Quote size={34} aria-hidden="true" className="mb-4 text-brand-600 opacity-80" />
+                  <blockquote className="text-ink-secondary leading-relaxed mb-5 text-[15px]">{r.text}</blockquote>
+                  <div className="flex items-end justify-between gap-3 text-xs">
+                    <div>
+                      <span className="font-semibold text-ink-primary">{r.author}</span>
+                      <time dateTime={r.date.replaceAll('.', '-')} className="text-ink-muted text-[11px] mt-1 block">{r.date}</time>
+                    </div>
+                    <div className="flex flex-col items-end gap-2">
+                      <span className="bg-brand-50 text-brand-700 px-2 py-0.5 font-semibold" style={{ borderRadius: '2px' }}>
+                        {r.tag}
+                      </span>
+                      <span aria-label={`평점 5점 만점에 ${r.rating}점`} className="flex text-[#C88719]">
+                        {Array.from({ length: 5 }).map((_, starIndex) => (
+                          <Star
+                            key={starIndex}
+                            size={13}
+                            fill={starIndex < r.rating ? 'currentColor' : 'none'}
+                            strokeWidth={starIndex < r.rating ? 0 : 1.8}
+                          />
+                        ))}
+                      </span>
+                    </div>
                   </div>
                 </div>
               </Reveal>
@@ -302,16 +354,34 @@ export default function Home() {
             </h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {BLOGS.map((b, i) => (
-              <Reveal key={b.id} delay={i * 0.06}>
+            {blogs.map((b, i) => (
+              <Reveal key={String(b.id)} delay={i * 0.06}>
                 <a
-                  href={`/story/${b.id}`}
-                  className="group block bg-gray-50 hover:bg-brand-50 transition-colors overflow-hidden"
+                  href={getStoryUrl(b)}
+                  className="group block bg-white border border-slate-200 hover:border-brand-300 transition-all duration-500 overflow-hidden hover:-translate-y-1 hover:shadow-xl"
                 >
-                  {/* Wave 376: gradient placeholder는 decorative — aria-hidden으로 screen reader 노이즈 회피 */}
-                  <div aria-hidden="true" className="aspect-[4/3] bg-gradient-to-br from-brand-200 to-brand-400" />
+                  <div className="aspect-[4/3] relative overflow-hidden bg-slate-100">
+                    {b.thumbnail ? (
+                      <img
+                        src={b.thumbnail}
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                        className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                      />
+                    ) : (
+                      <div
+                        aria-hidden="true"
+                        className="absolute inset-0 bg-[linear-gradient(135deg,#F8FAFC_0%,#EAF2FF_50%,#D7E4F5_100%)]"
+                      >
+                        <div className="absolute left-4 right-4 top-5 h-px bg-slate-300/70" />
+                        <div className="absolute bottom-5 left-4 h-10 w-20 border-l-2 border-t-2 border-brand-500/70" />
+                        <div className="absolute right-5 top-5 h-16 w-16 rounded-full border border-brand-300/70" />
+                      </div>
+                    )}
+                  </div>
                   <div className="p-4">
-                    <p className="text-xs text-brand-400 font-medium mb-1.5">{b.tag}</p>
+                    <p className="text-xs text-brand-600 font-semibold mb-1.5">{b.cat}</p>
                     <p className="text-sm font-semibold text-ink-primary leading-snug group-hover:text-brand-400 transition-colors line-clamp-2">
                       {b.title}
                     </p>

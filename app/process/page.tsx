@@ -81,16 +81,13 @@ export default function ProcessPage() {
           <ol className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 list-none p-0 m-0">
             {STEPS.map((s, i) => (
               <Reveal as="li" key={s.num} delay={i * 0.1}>
-                <div className="bg-[#f8f8f8] p-7 hover:bg-brand-50 transition-colors group h-full relative">
-                  {/* 연결 선 (다음 카드로) */}
-                  {i < STEPS.length - 1 && i % 3 !== 2 && (
-                    <span aria-hidden="true" className="hidden lg:block absolute top-12 -right-3 text-brand-400 font-bold text-xl opacity-50">→</span>
-                  )}
+                <div className="nextgen-card group h-full border border-slate-200 bg-white p-7 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-brand-300 hover:shadow-xl">
+                  <div aria-hidden="true" className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-800 via-brand-500 to-[#E63946]" />
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 bg-brand-600 group-hover:bg-brand-700 grid place-items-center text-white font-bold transition-colors" style={{ borderRadius: '2px' }}>
+                    <div className="process-node w-12 h-12 bg-brand-700 grid place-items-center text-white font-extrabold transition-colors" data-delay={String(i)} style={{ borderRadius: '4px' }}>
                       {s.num}
                     </div>
-                    <p lang="en" className="text-xs text-brand-600 font-semibold tracking-[0.15em]">STEP</p>
+                    <p lang="en" className="text-xs text-brand-700 font-bold tracking-[0.15em]">STEP</p>
                   </div>
                   <h3 className="text-lg font-bold text-ink-primary mb-2 leading-snug">{s.title}</h3>
                   <p className="text-sm text-ink-secondary leading-relaxed">{s.desc}</p>
@@ -118,9 +115,9 @@ export default function ProcessPage() {
           />
           {/* Wave 355: <ol>+<li> 4-step verification process semantic */}
           <ol className="grid grid-cols-2 lg:grid-cols-4 gap-4 list-none p-0 m-0">
-            {VERIFICATION.map((v) => (
-              <li key={v.num} className="bg-white p-6 text-center border border-gray-100 hover:border-brand-400 transition-colors">
-                <p className="text-3xl font-bold text-brand-400 mb-2">{v.num}</p>
+            {VERIFICATION.map((v, i) => (
+              <li key={v.num} className="nextgen-card bg-white p-6 text-center border border-slate-200 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-brand-300 hover:shadow-xl">
+                <p className="mx-auto mb-3 grid h-12 w-12 place-items-center bg-slate-950 text-sm font-extrabold text-white" data-delay={String(i)} style={{ borderRadius: '4px' }}>{v.num}</p>
                 <h3 className="font-bold text-ink-primary mb-2">{v.title}</h3>
                 <p className="text-sm text-ink-muted">{v.desc}</p>
               </li>

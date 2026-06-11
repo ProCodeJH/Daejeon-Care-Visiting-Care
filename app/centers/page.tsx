@@ -5,7 +5,7 @@ import { Reveal } from '@/components/Reveal';
 import { StatsCounter } from '@/components/StatsCounter';
 import { CONTACT } from '@/lib/contact';
 import { CENTERS } from '@/content/centers';
-import { MapPin, Users, Phone, ChevronRight } from 'lucide-react';
+import { MapPin, Users, Phone, ChevronRight, Info } from 'lucide-react';
 
 export const metadata = {
   title: '본점 안내',
@@ -112,7 +112,8 @@ export default function CentersPage() {
               어르신 댁 인근 매니저를 우선 매칭해 짧은 이동·정확한 약속 시간·어르신 부담 감소를 만들어 드립니다.
             </p>
             <p className="text-sm text-ink-muted">
-              <span aria-hidden="true">💡</span> 5구 외 지역(세종·청주·옥천 등) 거주 어르신도 먼저 상담해 드립니다. {CONTACT.phone}으로 편하게 연락 주세요.
+              <Info size={15} aria-hidden="true" className="mr-1 inline text-brand-600" />
+              5구 외 지역(세종·청주·옥천 등) 거주 어르신도 먼저 상담해 드립니다. {CONTACT.phone}으로 편하게 연락 주세요.
             </p>
           </div>
         </div>

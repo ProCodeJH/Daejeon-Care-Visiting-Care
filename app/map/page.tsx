@@ -2,7 +2,7 @@
 import { PageHero } from '@/components/PageHero';
 import { SectionBlock } from '@/components/SectionBlock';
 import { CTASection } from '@/components/CTASection';
-import { MapPin, Phone, Clock, Mail } from 'lucide-react';
+import { Bus, Car, Clock, Mail, MapPin, Phone, Train } from 'lucide-react';
 import { CONTACT } from '@/lib/contact';
 
 export const metadata: Metadata = {
@@ -88,15 +88,24 @@ export default function MapPage() {
               <h3 className="text-xl font-bold text-ink-primary mb-5">교통편 안내</h3>
               <div className="space-y-4 text-ink-secondary">
                 <div>
-                  <p className="font-semibold text-ink-primary mb-1"><span aria-hidden="true">🚇</span> 지하철</p>
+                  <p className="font-semibold text-ink-primary mb-1 flex items-center gap-2">
+                    <Train size={17} aria-hidden="true" className="text-brand-600" />
+                    지하철
+                  </p>
                   <p className="text-sm">대전 1호선 [역명] [번호] 출구 도보 [분]</p>
                 </div>
                 <div>
-                  <p className="font-semibold text-ink-primary mb-1"><span aria-hidden="true">🚌</span> 버스</p>
+                  <p className="font-semibold text-ink-primary mb-1 flex items-center gap-2">
+                    <Bus size={17} aria-hidden="true" className="text-brand-600" />
+                    버스
+                  </p>
                   <p className="text-sm">[정류장명] 하차 도보 [분] · [버스번호] 노선</p>
                 </div>
                 <div>
-                  <p className="font-semibold text-ink-primary mb-1"><span aria-hidden="true">🚗</span> 자차</p>
+                  <p className="font-semibold text-ink-primary mb-1 flex items-center gap-2">
+                    <Car size={17} aria-hidden="true" className="text-brand-600" />
+                    자차
+                  </p>
                   <p className="text-sm">건물 부설 주차장 이용 가능 (방문 시 무료)</p>
                 </div>
               </div>

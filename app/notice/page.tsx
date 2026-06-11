@@ -1,10 +1,18 @@
 'use client';
 
-import { useState, useEffect, type ReactNode } from 'react';
+import { useState, useEffect, useMemo, type ReactNode } from 'react';
 import Link from 'next/link';
 import { PageHero } from '@/components/PageHero';
 import { CTASection } from '@/components/CTASection';
 import { NOTICES } from '@/content/notices';
+import {
+  ADMIN_CONTENT_EVENT,
+  fetchAdminContent,
+  getNoticeUrl,
+  sortByDateDesc,
+  type AdminNotice,
+  type ManagedNotice,
+} from '@/lib/admin-content';
 
 /**
  * Wave 359: 검색어 매치 부분에 <mark> semantic + 시각 highlight.
@@ -28,6 +36,7 @@ function highlightMatch(text: string, query: string): ReactNode {
 
 export default function NoticePage() {
   const [search, setSearch] = useState('');
+  const [adminNotices, setAdminNotices] = useState<AdminNotice[]>([]);
 
   // Wave 370: URL deep-link — 검색어 공유 시 받는 사람도 동일 필터 즉시 적용.
   // 500ms debounce: keystroke마다 history API 호출 회피.
@@ -51,7 +60,26 @@ export default function NoticePage() {
     return () => clearTimeout(timer);
   }, [search]);
 
-  const filtered = NOTICES.filter((n) =>
+  useEffect(() => {
+    const loadAdminContent = async () => {
+      const snapshot = await fetchAdminContent();
+      setAdminNotices(snapshot.notices);
+    };
+    void loadAdminContent();
+    window.addEventListener(ADMIN_CONTENT_EVENT, loadAdminContent);
+    window.addEventListener('storage', loadAdminContent);
+    return () => {
+      window.removeEventListener(ADMIN_CONTENT_EVENT, loadAdminContent);
+      window.removeEventListener('storage', loadAdminContent);
+    };
+  }, []);
+
+  const notices = useMemo(
+    () => sortByDateDesc<ManagedNotice>([...adminNotices, ...NOTICES]),
+    [adminNotices],
+  );
+
+  const filtered = notices.filter((n) =>
     search ? n.title.toLowerCase().includes(search.toLowerCase()) : true,
   );
 
@@ -104,11 +132,11 @@ export default function NoticePage() {
         <div className="max-w-[1000px] mx-auto px-5">
           {/* Wave 367: WCAG 4.1.3 Status Messages — 검색 필터 결과 변화를 screen reader에 announce */}
           <div aria-live="polite" aria-atomic="true" className="sr-only">
-            {search ? `검색 결과 ${filtered.length}건` : `전체 ${NOTICES.length}건`}
+            {search ? `검색 결과 ${filtered.length}건` : `전체 ${notices.length}건`}
           </div>
           <table className="w-full">
             {/* Wave 461: <caption> + scope="col" — SR table navigation a11y */}
-            <caption className="sr-only">공지사항 게시판 — {NOTICES.length}건</caption>
+            <caption className="sr-only">공지사항 게시판 — {notices.length}건</caption>
             <thead>
               <tr className="border-y-2 border-brand-400">
                 <th scope="col" className="py-3 text-sm font-bold text-ink-primary w-16">No</th>
@@ -130,12 +158,12 @@ export default function NoticePage() {
                         공지
                       </span>
                     ) : (
-                      n.id
+                      String(n.id)
                     )}
                   </td>
                   <td className="py-4 text-ink-primary">
                     {/* Wave 461: <a> → <Link> — Wave 455 saturation 누락 catch (template literal grep miss) */}
-                    <Link href={`/notice/${n.id}`} className="hover:text-brand-400 font-medium">
+                    <Link href={getNoticeUrl(n)} className="hover:text-brand-400 font-medium">
                       {highlightMatch(n.title, search)}
                     </Link>
                   </td>

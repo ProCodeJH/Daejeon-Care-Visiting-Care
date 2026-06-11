@@ -116,7 +116,7 @@ export default function GlobalError({
                 display: 'inline-block',
               }}
             >
-              <span aria-hidden="true">☎</span> {CONTACT.phone}
+              전화 상담 {CONTACT.phone}
             </a>
           </div>
           {error?.digest && (

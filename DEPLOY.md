@@ -63,6 +63,51 @@ npx vercel deploy --prod
 
 ---
 
+## Step 2.5 — 관리자 콘텐츠 저장소 연결
+
+`/admin`에서 작성한 고객 후기, 이야기, 공지사항을 운영 사이트 방문자 모두에게 보이게 하려면 Supabase 저장소를 연결한다.
+
+### Supabase SQL 1회 실행
+
+Supabase SQL Editor에서 아래 파일 내용을 실행:
+
+```text
+supabase/admin-content-schema.sql
+```
+
+실행 전 파일 안의 `CHANGE_ME_ADMIN_CONTENT_SECRET_SHA256`를 운영 관리자 비밀번호의 SHA-256 hex 값으로 바꾼다.
+원문 비밀번호는 SQL에 넣지 않는다.
+새 테이블은 RLS가 켜져 있고, 공개 방문자는 읽기만 가능하며 쓰기는 관리자 비밀 헤더가 맞을 때만 허용된다.
+
+### Vercel 환경변수
+
+Vercel Project Settings → Environment Variables에 추가:
+
+```env
+ADMIN_PASSWORD=<센터장 관리자 비밀번호>
+SUPABASE_URL=https://<project-ref>.supabase.co
+SUPABASE_ANON_KEY=<Supabase anon 또는 publishable key>
+```
+
+SQL의 `CHANGE_ME_ADMIN_CONTENT_SECRET`를 `ADMIN_PASSWORD`와 다른 값으로 설정했다면 아래도 추가:
+
+```env
+SUPABASE_ADMIN_CONTENT_SECRET=<SQL에 넣은 별도 저장용 비밀값>
+```
+
+`SUPABASE_SERVICE_ROLE_KEY`가 있다면 서버가 우선 사용하지만 필수는 아니다. 브라우저에는 service role key를 절대 노출하지 않는다.
+
+반영 후 production redeploy:
+
+```bash
+npx vercel deploy --prod
+```
+
+연결 전에도 `/admin`은 브라우저 fallback으로 동작하지만, 운영 도메인에서 모든 방문자에게 공유되는 콘텐츠는 Supabase 연결 후 안정화된다.
+`ADMIN_PASSWORD`는 운영에서 필수다. production에서 설정하지 않으면 쓰기 API가 401로 닫힌다.
+
+---
+
 ## 🔄 운영 (이후)
 
 ### 콘텐츠 수정 후 배포

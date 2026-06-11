@@ -4,7 +4,7 @@ import { SectionBlock } from '@/components/SectionBlock';
 import { CTASection } from '@/components/CTASection';
 import { Reveal } from '@/components/Reveal';
 
-import { Brain, ShieldCheck, UtensilsCrossed, Pill, Palette, ClipboardList, type LucideIcon } from 'lucide-react';
+import { Brain, ShieldCheck, UtensilsCrossed, Pill, Palette, ClipboardList, Phone, type LucideIcon } from 'lucide-react';
 import { CONTACT } from '@/lib/contact';
 
 export const metadata: Metadata = {
@@ -36,8 +36,8 @@ const RESOURCES = [
   { title: '대전광역시청', sub: '대전시 어르신 복지', href: 'https://www.daejeon.go.kr' },
   { title: '복지로', sub: '국가 복지 서비스 통합', href: 'https://www.bokjiro.go.kr' },
   { title: '보건복지부', sub: '노인 정책 + 복지 정보', href: 'https://www.mohw.go.kr' },
-  { title: '치매상담콜센터', sub: '☎ 1899-9988 (24시간 무료)', href: 'https://www.ansim.or.kr' },
-  { title: '노인보호전문기관', sub: '☎ 1577-1389 (학대 신고)', href: 'https://www.noinboho.or.kr' },
+  { title: '치매상담콜센터', sub: '1899-9988 (24시간 무료)', href: 'https://www.ansim.or.kr' },
+  { title: '노인보호전문기관', sub: '1577-1389 (학대 신고)', href: 'https://www.noinboho.or.kr' },
 ];
 
 export default function InfoPage() {
@@ -70,7 +70,8 @@ export default function InfoPage() {
                   <p className="text-sm text-ink-secondary leading-relaxed mb-3">{t.desc}</p>
                   {/* Wave 486: emoji aria-hidden (paradigm 16 saturation) */}
                   <p className="text-xs text-ink-muted">
-                    <span aria-hidden="true">📞</span> 자세한 안내는 <a href={CONTACT.phoneTel} className="font-bold text-brand-600 hover:underline">상담 {CONTACT.phone}</a>
+                    <Phone size={14} aria-hidden="true" className="mr-1 inline text-brand-600" />
+                    자세한 안내는 <a href={CONTACT.phoneTel} className="font-bold text-brand-600 hover:underline">상담 {CONTACT.phone}</a>
                   </p>
                 </article>
               </Reveal>

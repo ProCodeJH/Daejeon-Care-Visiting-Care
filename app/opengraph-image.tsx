@@ -53,7 +53,7 @@ export default function OGImage() {
               fontSize: 16,
             }}
           >
-            ♥
+            24
           </div>
           24시간 상담 가능
         </div>
@@ -119,7 +119,7 @@ export default function OGImage() {
             borderRadius: 4,
           }}
         >
-          ☎ {CONTACT.phone}
+          TEL {CONTACT.phone}
         </div>
 
         {/* 좌하단 도메인 */}

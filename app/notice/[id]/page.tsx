@@ -1,17 +1,9 @@
-import { notFound } from 'next/navigation';
-import Link from 'next/link';
 import type { Metadata } from 'next';
-import { ChevronLeft, ChevronRight, ArrowLeft } from 'lucide-react';
 import { NOTICES } from '@/content/notices';
-import { PageHero } from '@/components/PageHero';
-import { CTASection } from '@/components/CTASection';
-import { ShareButton } from '@/components/ShareButton';
-import { SpeakButton } from '@/components/SpeakButton';
-import { ArticleJsonLd } from '@/components/ArticleJsonLd';
-import { CONTACT } from '@/lib/contact';
+import { NoticeDetailClient } from './NoticeDetailClient';
 
 export function generateStaticParams() {
-  return NOTICES.map((n) => ({ id: String(n.id) }));
+  return NOTICES.map((notice) => ({ id: String(notice.id) }));
 }
 
 export async function generateMetadata({
@@ -20,27 +12,26 @@ export async function generateMetadata({
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
   const { id } = await params;
-  const n = NOTICES.find((n) => n.id === Number(id));
-  if (!n) return { title: '공지사항' };
-  const description = n.body.slice(0, 140).replace(/\s+/g, ' ').trim();
-  // Wave 427: authors metadata + openGraph article authors
-  // Wave 428: twitter card + openGraph article section (cross-platform share quality)
+  const notice = NOTICES.find((item) => String(item.id) === id);
+  if (!notice) return { title: '공지사항' };
+  const description = notice.body.slice(0, 140).replace(/\s+/g, ' ').trim();
+
   return {
-    title: n.title,
+    title: notice.title,
     description,
-    authors: [{ name: n.author }],
-    alternates: { canonical: `/notice/${n.id}` },
+    authors: [{ name: notice.author }],
+    alternates: { canonical: `/notice/${notice.id}` },
     openGraph: {
-      title: n.title,
+      title: notice.title,
       description,
       type: 'article',
-      publishedTime: n.date,
-      authors: [n.author],
+      publishedTime: notice.date,
+      authors: [notice.author],
       section: '공지사항',
     },
     twitter: {
       card: 'summary',
-      title: n.title,
+      title: notice.title,
       description,
     },
   };
@@ -52,105 +43,7 @@ export default async function NoticeDetailPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const idNum = Number(id);
-  const n = NOTICES.find((n) => n.id === idNum);
-  if (!n) notFound();
+  const notice = NOTICES.find((item) => String(item.id) === id) ?? null;
 
-  const sorted = [...NOTICES].sort((a, b) => b.id - a.id);
-  const currentIdx = sorted.findIndex((x) => x.id === idNum);
-  const prev = sorted[currentIdx + 1];
-  const next = sorted[currentIdx - 1];
-
-  return (
-    <>
-      <ArticleJsonLd
-        type="NewsArticle"
-        headline={n.title}
-        description={n.body.slice(0, 200).replace(/\s+/g, ' ').trim()}
-        datePublished={n.date}
-        author={n.author}
-        url={`/notice/${n.id}`}
-      />
-      <PageHero
-        title={n.title}
-        sub={n.body.slice(0, 100).replace(/\s+/g, ' ').trim()}
-        crumbs={[
-          { label: '고객센터' },
-          { label: '공지사항', href: '/notice' },
-        ]}
-      />
-
-      <article className="bg-white py-16">
-        <div className="max-w-[800px] mx-auto px-5">
-          {/* 메타 + Wave 388 읽기 시간 예상 */}
-          <div className="border-b border-gray-200 pb-6 mb-8 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
-            {n.pinned && (
-              <span className="inline-block bg-[#E63946] text-white text-xs font-bold px-2.5 py-1" style={{ borderRadius: '2px' }}>
-                공지
-              </span>
-            )}
-            <span className="text-ink-muted">{n.author}</span>
-            <span aria-hidden="true" className="text-ink-muted">·</span>
-            <time dateTime={n.date} className="text-ink-muted">{n.date}</time>
-            <span aria-hidden="true" className="text-ink-muted">·</span>
-            <span className="text-ink-muted">조회 {n.views}</span>
-            <span aria-hidden="true" className="text-ink-muted">·</span>
-            <span className="text-ink-muted text-xs">
-              <span aria-hidden="true">📖</span> {Math.max(1, Math.ceil(n.body.length / 300))}분 읽기
-            </span>
-          </div>
-
-          {/* 본문 */}
-          <div
-            className="prose prose-lg max-w-none text-ink-secondary leading-loose whitespace-pre-line"
-            style={{ wordBreak: 'keep-all' }}
-          >
-            {n.body}
-          </div>
-
-          {/* Wave 379: 음성 듣기 + 공유 (Wave 378 패턴 saturation pass) */}
-          <div className="mt-10 pt-6 border-t border-gray-100 flex flex-wrap items-center gap-3">
-            <span lang="en" className="text-xs text-ink-muted font-semibold tracking-[0.15em]"><span aria-hidden="true">|</span> LISTEN & SHARE</span>
-            <SpeakButton text={`${n.title}. ${n.body}`} />
-            <ShareButton
-              title={n.title}
-              text={`${n.body.slice(0, 140).replace(/\s+/g, ' ').trim()}\n— ${CONTACT.name} ${CONTACT.phone}`}
-            />
-          </div>
-
-          {/* 이전/다음 */}
-          <nav className="border-t border-gray-200 mt-12 pt-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <Link
-              href="/notice"
-              className="inline-flex items-center gap-2 text-sm text-ink-secondary hover:text-brand-600 transition-colors font-semibold"
-            >
-              <ArrowLeft size={16} />목록으로
-            </Link>
-            <div className="flex gap-2">
-              {prev && (
-                <Link
-                  href={`/notice/${prev.id}`}
-                  className="flex items-center gap-1.5 bg-gray-50 hover:bg-brand-50 text-ink-secondary px-4 py-2 text-sm transition-colors"
-                  style={{ borderRadius: '2px' }}
-                >
-                  <ChevronLeft size={14} />이전
-                </Link>
-              )}
-              {next && (
-                <Link
-                  href={`/notice/${next.id}`}
-                  className="flex items-center gap-1.5 bg-gray-50 hover:bg-brand-50 text-ink-secondary px-4 py-2 text-sm transition-colors"
-                  style={{ borderRadius: '2px' }}
-                >
-                  다음<ChevronRight size={14} />
-                </Link>
-              )}
-            </div>
-          </nav>
-        </div>
-      </article>
-
-      <CTASection />
-    </>
-  );
+  return <NoticeDetailClient id={id} initialNotice={notice} />;
 }
