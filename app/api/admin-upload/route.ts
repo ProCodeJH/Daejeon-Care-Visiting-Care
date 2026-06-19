@@ -118,26 +118,16 @@ export async function DELETE(request: NextRequest) {
     ...(config.adminSecret ? { 'x-admin-secret': config.adminSecret } : {}),
   };
 
-  const singleResponse = await fetch(`${config.url}/storage/v1/object/${BUCKET}/${encodePath(safeObjectPath)}`, {
-    method: 'DELETE',
-    headers,
-    cache: 'no-store',
-  });
-
-  if (singleResponse.ok || singleResponse.status === 404) {
-    return NextResponse.json({ ok: true, path: safeObjectPath }, { headers: { 'Cache-Control': 'no-store' } });
-  }
-
-  const bulkResponse = await fetch(`${config.url}/storage/v1/object/${BUCKET}`, {
+  const response = await fetch(`${config.url}/storage/v1/object/${BUCKET}`, {
     method: 'DELETE',
     headers,
     body: JSON.stringify({ prefixes: [safeObjectPath] }),
     cache: 'no-store',
   });
 
-  if (!bulkResponse.ok && bulkResponse.status !== 404) {
-    const detail = await bulkResponse.text().catch(() => '');
-    return jsonError(`Supabase storage delete failed: ${bulkResponse.status}${detail ? ` ${detail}` : ''}`, 502);
+  if (!response.ok) {
+    const detail = await response.text().catch(() => '');
+    return jsonError(`Supabase storage delete failed: ${response.status}${detail ? ` ${detail}` : ''}`, 502);
   }
 
   return NextResponse.json({ ok: true, path: safeObjectPath }, { headers: { 'Cache-Control': 'no-store' } });
