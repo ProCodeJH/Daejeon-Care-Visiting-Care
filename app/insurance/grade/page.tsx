@@ -16,31 +16,37 @@ const GRADES = [
     grade: '1등급',
     score: '95점 이상',
     desc: '일상생활에서 전적으로 다른 사람의 도움이 필요한 상태',
+    weight: 100,
   },
   {
     grade: '2등급',
     score: '75 ~ 94점',
     desc: '일상생활에서 상당 부분 다른 사람의 도움이 필요한 상태',
+    weight: 84,
   },
   {
     grade: '3등급',
     score: '60 ~ 74점',
     desc: '일상생활에서 부분적으로 다른 사람의 도움이 필요한 상태',
+    weight: 68,
   },
   {
     grade: '4등급',
     score: '51 ~ 59점',
     desc: '일상생활에서 일정 부분 다른 사람의 도움이 필요한 상태',
+    weight: 56,
   },
   {
     grade: '5등급',
     score: '45 ~ 50점 + 치매',
     desc: '치매 환자 (노인성 치매로 일정 점수 미만이지만 치매 진단 받은 자)',
+    weight: 48,
   },
   {
     grade: '인지지원등급',
     score: '45점 미만 + 치매',
     desc: '치매 환자 중 신체 기능은 양호하나 인지 활동 지원이 필요한 자',
+    weight: 36,
   },
 ];
 
@@ -72,7 +78,7 @@ export default function GradePage() {
       />
 
       {/* 등급 6단계 */}
-      <section className="bg-white py-20">
+      <section className="bg-[#F6F8FB] py-20 md:py-24">
         <div className="max-w-[1200px] mx-auto px-5">
           <SectionBlock
             eyebrow="GRADES"
@@ -80,26 +86,50 @@ export default function GradePage() {
             sub="신체 기능 / 인지 기능 / 행동 변화 등을 평가한 점수에 따라 등급이 결정됩니다"
             className="mb-12"
           />
+          <div className="mb-8 grid gap-4 border border-slate-200 bg-white p-5 shadow-sm md:grid-cols-3 md:p-6">
+            {[
+              { label: '평가 기준', value: '52개 항목' },
+              { label: '결과 통보', value: '약 30일' },
+              { label: '센터 지원', value: '신청 동행' },
+            ].map((item) => (
+              <div key={item.label} className="border-l-2 border-brand-700 pl-4">
+                <p className="text-xs font-bold tracking-[0.14em] text-slate-500">{item.label}</p>
+                <p className="mt-1 text-xl font-extrabold text-ink-primary">{item.value}</p>
+              </div>
+            ))}
+          </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {GRADES.map((g, i) => (
               <Reveal
                 key={g.grade}
                 delay={i * 0.06}
-                className="nextgen-card group border border-slate-200 bg-white p-6 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-brand-300 hover:shadow-xl"
+                className="care-grade-card group flex min-h-[230px] flex-col border border-slate-200 bg-white p-6 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-brand-300 hover:shadow-xl"
               >
-                <div aria-hidden="true" className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-800 via-brand-500 to-[#E63946]" />
                 <div className="mb-5 flex items-start justify-between gap-4">
-                  <div className="flex items-center gap-3">
-                    <span className="grid h-11 w-11 place-items-center bg-slate-950 text-sm font-extrabold text-white transition group-hover:bg-brand-700" style={{ borderRadius: '4px' }}>
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
-                    <h3 className="text-xl font-extrabold text-ink-primary">{g.grade}</h3>
+                  <div>
+                    <p lang="en" className="text-[11px] font-extrabold tracking-[0.18em] text-brand-700">
+                      GRADE {String(i + 1).padStart(2, '0')}
+                    </p>
+                    <h3 className="mt-2 text-2xl font-extrabold text-ink-primary">{g.grade}</h3>
                   </div>
-                  <p className="shrink-0 border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold text-slate-600" style={{ borderRadius: '999px' }}>
+                  <p className="shrink-0 border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-bold text-slate-700" style={{ borderRadius: '999px' }}>
                     {g.score}
                   </p>
                 </div>
                 <p className="text-sm leading-relaxed text-ink-secondary">{g.desc}</p>
+                <div className="mt-auto pt-6">
+                  <div className="mb-2 flex items-center justify-between text-[11px] font-bold text-slate-500">
+                    <span>심사 강도</span>
+                    <span>{g.score}</span>
+                  </div>
+                  <div className="h-2 overflow-hidden bg-slate-100">
+                    <span
+                      aria-hidden="true"
+                      className="block h-full bg-gradient-to-r from-brand-800 via-brand-600 to-[#E63946] transition-all duration-700 group-hover:brightness-110"
+                      style={{ width: `${g.weight}%` }}
+                    />
+                  </div>
+                </div>
               </Reveal>
             ))}
           </div>
@@ -111,7 +141,7 @@ export default function GradePage() {
       </section>
 
       {/* 신청 절차 5단계 */}
-      <section className="bg-[#f8f8f8] py-20">
+      <section className="bg-white py-20 md:py-24">
         <div className="max-w-[1200px] mx-auto px-5">
           <SectionBlock
             eyebrow="PROCESS"
@@ -120,11 +150,11 @@ export default function GradePage() {
             className="mb-12"
           />
           {/* Wave 355: <ol>+<li> WCAG 1.3.1 (sequential process semantic). list-none = decimal marker 숨김 (visual badge로 대체) */}
-          <ol className="process-track grid md:grid-cols-5 gap-3 list-none p-0 m-0">
+          <ol className="care-process-track grid gap-4 list-none p-0 m-0 md:grid-cols-5">
             {STEPS.map((s, i) => (
               <Reveal as="li" key={s.num} delay={i * 0.08} className="relative z-10">
-                <div className="nextgen-card h-full border border-slate-200 bg-white p-5 text-center shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-brand-300 hover:shadow-xl">
-                  <div className="process-node mx-auto mb-5 grid h-12 w-12 place-items-center bg-brand-700 text-white font-extrabold" data-delay={String(i)} style={{ borderRadius: '4px' }}>
+                <div className="care-process-card h-full border border-slate-200 bg-[#F8FAFC] p-5 text-center shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-brand-300 hover:bg-white hover:shadow-xl">
+                  <div className="care-process-node mx-auto mb-5 grid h-12 w-12 place-items-center bg-slate-950 text-white font-extrabold" data-delay={String(i)} style={{ borderRadius: '4px' }}>
                     {s.num}
                   </div>
                   <h3 className="font-bold text-ink-primary mb-2 text-sm">{s.title}</h3>

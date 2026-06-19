@@ -9,6 +9,7 @@ import { WebVitals } from '@/components/WebVitals';
 import { StructuredData } from '@/components/StructuredData';
 import { FloatingCallButton } from '@/components/FloatingCallButton';
 import { ScrollToTop } from '@/components/ScrollToTop';
+import { MotionProvider } from '@/components/MotionProvider';
 import { CONTACT } from '@/lib/contact';
 import { SITE } from '@/lib/site';
 
@@ -163,14 +164,16 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           본문으로 건너뛰기
         </a>
         <StructuredData />
-        <SmoothScroll />
-        <ScrollProgress />
-        <WebVitals />
-        <Header />
-        <main id="main-content">{children}</main>
-        <ScrollToTop />
-        <FloatingCallButton />
-        <Footer />
+        <MotionProvider>
+          <SmoothScroll />
+          <ScrollProgress />
+          <WebVitals />
+          <Header />
+          <main id="main-content">{children}</main>
+          <ScrollToTop />
+          <FloatingCallButton />
+          <Footer />
+        </MotionProvider>
       </body>
     </html>
   );

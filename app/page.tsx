@@ -93,6 +93,10 @@ export default function Home() {
     () => sortByDateDesc<ManagedStory>([...adminStories, ...STORIES]).slice(0, 4),
     [adminStories],
   );
+  const featuredReview = reviews[0];
+  const secondaryReviews = reviews.slice(1);
+  const featuredBlog = blogs[0];
+  const secondaryBlogs = blogs.slice(1);
 
   return (
     <>
@@ -280,58 +284,86 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. Reviews — "대전케어를 찾아주신 고객의 목소리" (496px, #fefffd).
-          Wave 365: cv-auto = off-screen 시 render skip (initial paint cost ↓). */}
-      <section className="bg-[#fefffd] py-20 cv-auto">
+      {/* 6. Reviews — admin-managed voice, editorial trust layout. */}
+      <section className="relative overflow-hidden bg-[#F6F8FB] py-20 md:py-24 cv-auto">
+        <div aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-200 to-transparent" />
         <div className="max-w-[1200px] mx-auto px-5">
-          <div className="text-center mb-12">
-            <p lang="en" className="text-brand-400 font-semibold tracking-[0.2em] text-sm mb-3"><span aria-hidden="true">|</span> REVIEWS</p>
-            <h2 className="text-2xl md:text-4xl font-bold text-ink-primary leading-snug">
-              대전케어를 찾아주신
-              <br />
-              고객의 목소리
-            </h2>
+          <div className="mb-12 grid gap-6 md:grid-cols-[minmax(0,1fr)_360px] md:items-end">
+            <div>
+              <p lang="en" className="text-brand-600 font-semibold tracking-[0.2em] text-sm mb-3"><span aria-hidden="true">|</span> REVIEWS</p>
+              <h2 className="text-2xl md:text-4xl font-bold text-ink-primary leading-snug">
+                대전케어를 찾아주신
+                <br />
+                고객의 목소리
+              </h2>
+              <p className="mt-4 max-w-2xl text-sm md:text-base leading-relaxed text-ink-secondary">
+                센터장이 직접 확인한 보호자 후기와 현장 사진을 바탕으로, 상담 전 가족이 궁금해하는 경험을 먼저 보여드립니다.
+              </p>
+            </div>
+            <div className="grid grid-cols-3 gap-2 text-center">
+              {[
+                { value: '24h', label: '상담 대응' },
+                { value: '5구', label: '대전 전역' },
+                { value: '1:1', label: '맞춤 매칭' },
+              ].map((item) => (
+                <div key={item.label} className="border border-slate-200 bg-white px-3 py-4 shadow-sm">
+                  <p className="text-xl font-extrabold text-brand-800">{item.value}</p>
+                  <p className="mt-1 text-[11px] font-semibold text-slate-500">{item.label}</p>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="grid md:grid-cols-3 gap-5">
-            {reviews.map((r, i) => (
+
+          {featuredReview && (
+            <div className="grid gap-5 lg:grid-cols-[minmax(0,1.18fr)_minmax(320px,0.82fr)]">
               <Reveal
                 as="article"
-                key={r.id}
-                delay={i * 0.08}
-                className="group relative overflow-hidden bg-white border border-slate-200 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-brand-300 hover:shadow-xl"
+                className="nextgen-card group grid min-h-[420px] overflow-hidden border border-slate-200 bg-white shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-brand-300 hover:shadow-xl md:grid-cols-[0.92fr_1.08fr]"
               >
-                <div aria-hidden="true" className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-800 via-brand-500 to-[#E63946]" />
-                {r.image ? (
-                  <div className="relative aspect-[16/9] overflow-hidden bg-slate-100">
+                <div className="relative min-h-[260px] overflow-hidden bg-slate-900">
+                  {featuredReview.image ? (
                     <img
-                      src={r.image}
+                      src={featuredReview.image}
                       alt=""
                       loading="lazy"
                       decoding="async"
-                      className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                      className="absolute inset-0 h-full w-full object-cover opacity-95 transition duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/35 to-transparent" />
+                  ) : (
+                    <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(135deg,#0F172A_0%,#1E40AF_52%,#93C5FD_100%)]" />
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
+                  <div className="absolute bottom-5 left-5 right-5">
+                    <span className="inline-flex bg-white/95 px-3 py-1 text-xs font-extrabold text-brand-800" style={{ borderRadius: '2px' }}>
+                      센터장 확인 후기
+                    </span>
                   </div>
-                ) : null}
-                <div className="p-7">
-                  <Quote size={34} aria-hidden="true" className="mb-4 text-brand-600 opacity-80" />
-                  <blockquote className="text-ink-secondary leading-relaxed mb-5 text-[15px]">{r.text}</blockquote>
-                  <div className="flex items-end justify-between gap-3 text-xs">
+                </div>
+                <div className="flex flex-col justify-between p-7 md:p-9">
+                  <div>
+                    <Quote size={40} aria-hidden="true" className="mb-5 text-brand-700 opacity-90" />
+                    <blockquote className="text-lg leading-loose text-ink-primary md:text-xl">
+                      {featuredReview.text}
+                    </blockquote>
+                  </div>
+                  <div className="mt-8 flex flex-wrap items-end justify-between gap-4 border-t border-slate-100 pt-5 text-xs">
                     <div>
-                      <span className="font-semibold text-ink-primary">{r.author}</span>
-                      <time dateTime={r.date.replaceAll('.', '-')} className="text-ink-muted text-[11px] mt-1 block">{r.date}</time>
+                      <span className="font-semibold text-ink-primary">{featuredReview.author}</span>
+                      <time dateTime={featuredReview.date.replaceAll('.', '-')} className="text-ink-muted text-[11px] mt-1 block">
+                        {featuredReview.date}
+                      </time>
                     </div>
                     <div className="flex flex-col items-end gap-2">
                       <span className="bg-brand-50 text-brand-700 px-2 py-0.5 font-semibold" style={{ borderRadius: '2px' }}>
-                        {r.tag}
+                        {featuredReview.tag}
                       </span>
-                      <span aria-label={`평점 5점 만점에 ${r.rating}점`} className="flex text-[#C88719]">
+                      <span aria-label={`평점 5점 만점에 ${featuredReview.rating}점`} className="flex text-[#C88719]">
                         {Array.from({ length: 5 }).map((_, starIndex) => (
                           <Star
                             key={starIndex}
                             size={13}
-                            fill={starIndex < r.rating ? 'currentColor' : 'none'}
-                            strokeWidth={starIndex < r.rating ? 0 : 1.8}
+                            fill={starIndex < featuredReview.rating ? 'currentColor' : 'none'}
+                            strokeWidth={starIndex < featuredReview.rating ? 0 : 1.8}
                           />
                         ))}
                       </span>
@@ -339,31 +371,80 @@ export default function Home() {
                   </div>
                 </div>
               </Reveal>
-            ))}
-          </div>
+
+              <div className="grid gap-4">
+                {secondaryReviews.map((r, i) => (
+                  <Reveal
+                    as="article"
+                    key={r.id}
+                    delay={(i + 1) * 0.08}
+                    className="group relative overflow-hidden border border-slate-200 bg-white p-6 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-brand-300 hover:shadow-xl"
+                  >
+                    <div aria-hidden="true" className="absolute inset-y-5 left-0 w-1 bg-gradient-to-b from-brand-800 via-brand-500 to-[#E63946]" />
+                    <div className="flex gap-4">
+                      {r.image ? (
+                        <div className="relative h-20 w-24 shrink-0 overflow-hidden bg-slate-100">
+                          <img src={r.image} alt="" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+                        </div>
+                      ) : null}
+                      <div className="min-w-0 flex-1">
+                        <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+                          <span className="bg-slate-100 px-2 py-0.5 text-[11px] font-bold text-slate-600" style={{ borderRadius: '2px' }}>{r.tag}</span>
+                          <span aria-label={`평점 5점 만점에 ${r.rating}점`} className="flex text-[#C88719]">
+                            {Array.from({ length: 5 }).map((_, starIndex) => (
+                              <Star key={starIndex} size={12} fill={starIndex < r.rating ? 'currentColor' : 'none'} strokeWidth={starIndex < r.rating ? 0 : 1.8} />
+                            ))}
+                          </span>
+                        </div>
+                        <blockquote className="line-clamp-3 text-sm leading-relaxed text-ink-secondary">{r.text}</blockquote>
+                        <div className="mt-4 flex items-center justify-between gap-3 text-xs">
+                          <span className="font-semibold text-ink-primary">{r.author}</span>
+                          <time dateTime={r.date.replaceAll('.', '-')} className="text-[11px] text-ink-muted">{r.date}</time>
+                        </div>
+                      </div>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
-      {/* 7. Blog — "대전케어 이야기" 4 cards (588px, white). Wave 365: cv-auto. */}
+      {/* 7. Blog — admin-managed field notes. */}
       <section className="bg-white py-20 cv-auto">
         <div className="max-w-[1200px] mx-auto px-5">
-          <div className="text-center mb-10">
-            <p lang="en" className="text-brand-400 font-semibold tracking-[0.2em] text-sm mb-3"><span aria-hidden="true">|</span> BLOG</p>
-            <h2 className="text-2xl md:text-3xl font-bold text-ink-primary">
-              대전케어 이야기
-            </h2>
+          <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p lang="en" className="text-brand-600 font-semibold tracking-[0.2em] text-sm mb-3"><span aria-hidden="true">|</span> BLOG</p>
+              <h2 className="text-2xl md:text-3xl font-bold text-ink-primary">
+                대전케어 이야기
+              </h2>
+              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-muted">
+                등급 신청, 돌봄 현장, 센터 소식을 보호자 눈높이에 맞춰 정리합니다.
+              </p>
+            </div>
+            <a
+              href="/story"
+              className="inline-flex items-center gap-1.5 self-start border border-slate-200 px-5 py-2.5 text-sm font-bold text-ink-secondary transition-colors hover:border-brand-500 hover:text-brand-700 md:self-auto"
+              style={{ borderRadius: '2px' }}
+            >
+              이야기 전체 보기
+              <ArrowRight size={15} aria-hidden="true" />
+            </a>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {blogs.map((b, i) => (
-              <Reveal key={String(b.id)} delay={i * 0.06}>
+
+          {featuredBlog && (
+            <div className="grid gap-5 lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)]">
+              <Reveal>
                 <a
-                  href={getStoryUrl(b)}
-                  className="group block bg-white border border-slate-200 hover:border-brand-300 transition-all duration-500 overflow-hidden hover:-translate-y-1 hover:shadow-xl"
+                  href={getStoryUrl(featuredBlog)}
+                  className="group block h-full overflow-hidden border border-slate-200 bg-white transition-all duration-500 hover:-translate-y-1 hover:border-brand-300 hover:shadow-xl"
                 >
-                  <div className="aspect-[4/3] relative overflow-hidden bg-slate-100">
-                    {b.thumbnail ? (
+                  <div className="relative aspect-[16/9] overflow-hidden bg-slate-100">
+                    {featuredBlog.thumbnail ? (
                       <img
-                        src={b.thumbnail}
+                        src={featuredBlog.thumbnail}
                         alt=""
                         loading="lazy"
                         decoding="async"
@@ -380,16 +461,50 @@ export default function Home() {
                       </div>
                     )}
                   </div>
-                  <div className="p-4">
-                    <p className="text-xs text-brand-600 font-semibold mb-1.5">{b.cat}</p>
-                    <p className="text-sm font-semibold text-ink-primary leading-snug group-hover:text-brand-400 transition-colors line-clamp-2">
-                      {b.title}
-                    </p>
+                  <div className="p-6 md:p-7">
+                    <p className="text-xs font-bold tracking-[0.14em] text-brand-700">{featuredBlog.cat}</p>
+                    <h3 className="mt-3 text-xl font-extrabold leading-snug text-ink-primary transition-colors group-hover:text-brand-700 md:text-2xl">
+                      {featuredBlog.title}
+                    </h3>
+                    <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-ink-secondary">{featuredBlog.excerpt}</p>
+                    <time dateTime={featuredBlog.date} className="mt-5 block text-xs font-semibold text-ink-muted">{featuredBlog.date}</time>
                   </div>
                 </a>
               </Reveal>
-            ))}
-          </div>
+
+              <div className="grid gap-4">
+                {secondaryBlogs.map((b, i) => (
+                  <Reveal key={String(b.id)} delay={(i + 1) * 0.06}>
+                    <a
+                      href={getStoryUrl(b)}
+                      className="group grid grid-cols-[116px_minmax(0,1fr)] overflow-hidden border border-slate-200 bg-white transition-all duration-500 hover:-translate-y-1 hover:border-brand-300 hover:shadow-xl"
+                    >
+                      <div className="relative min-h-[132px] overflow-hidden bg-slate-100">
+                        {b.thumbnail ? (
+                          <img
+                            src={b.thumbnail}
+                            alt=""
+                            loading="lazy"
+                            decoding="async"
+                            className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                          />
+                        ) : (
+                          <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(135deg,#F8FAFC_0%,#EAF2FF_52%,#D7E4F5_100%)]" />
+                        )}
+                      </div>
+                      <div className="min-w-0 p-4">
+                        <p className="text-[11px] font-bold text-brand-700">{b.cat}</p>
+                        <p className="mt-2 line-clamp-2 text-sm font-bold leading-snug text-ink-primary transition-colors group-hover:text-brand-700">
+                          {b.title}
+                        </p>
+                        <p className="mt-2 line-clamp-2 text-xs leading-relaxed text-ink-muted">{b.excerpt}</p>
+                      </div>
+                    </a>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </section>
 

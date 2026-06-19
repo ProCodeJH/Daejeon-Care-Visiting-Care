@@ -69,7 +69,7 @@ export default function ProcessPage() {
       />
 
       {/* 6 STEP */}
-      <section className="bg-white py-20">
+      <section className="bg-[#F6F8FB] py-20 md:py-24">
         <div className="max-w-[1200px] mx-auto px-5">
           <SectionBlock
             eyebrow="PROCESS"
@@ -78,19 +78,21 @@ export default function ProcessPage() {
             className="mb-12"
           />
           {/* Wave 355: <ol>+<li> WCAG 1.3.1 (6-step process). list-none = decimal marker 숨김 */}
-          <ol className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 list-none p-0 m-0">
+          <ol className="care-service-flow grid gap-5 list-none p-0 m-0 md:grid-cols-2 lg:grid-cols-3">
             {STEPS.map((s, i) => (
               <Reveal as="li" key={s.num} delay={i * 0.1}>
-                <div className="nextgen-card group h-full border border-slate-200 bg-white p-7 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-brand-300 hover:shadow-xl">
-                  <div aria-hidden="true" className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-800 via-brand-500 to-[#E63946]" />
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="process-node w-12 h-12 bg-brand-700 grid place-items-center text-white font-extrabold transition-colors" data-delay={String(i)} style={{ borderRadius: '4px' }}>
+                <div className="care-service-card group h-full border border-slate-200 bg-white p-7 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-brand-300 hover:shadow-xl">
+                  <div className="mb-5 flex items-center justify-between gap-3">
+                    <div className="care-process-node grid h-12 w-12 place-items-center bg-slate-950 text-white font-extrabold transition-colors group-hover:bg-brand-800" data-delay={String(i)} style={{ borderRadius: '4px' }}>
                       {s.num}
                     </div>
-                    <p lang="en" className="text-xs text-brand-700 font-bold tracking-[0.15em]">STEP</p>
+                    <p lang="en" className="text-xs font-extrabold tracking-[0.18em] text-brand-700">STEP</p>
                   </div>
                   <h3 className="text-lg font-bold text-ink-primary mb-2 leading-snug">{s.title}</h3>
                   <p className="text-sm text-ink-secondary leading-relaxed">{s.desc}</p>
+                  <div aria-hidden="true" className="mt-6 h-1 overflow-hidden bg-slate-100">
+                    <span className="block h-full w-0 bg-gradient-to-r from-brand-800 to-[#E63946] transition-all duration-700 group-hover:w-full" />
+                  </div>
                 </div>
               </Reveal>
             ))}
@@ -99,7 +101,7 @@ export default function ProcessPage() {
       </section>
 
       {/* 요양보호사 검증절차 */}
-      <section className="bg-[#fefffd] py-20">
+      <section className="bg-white py-20 md:py-24">
         <div className="max-w-[1200px] mx-auto px-5">
           <SectionBlock
             eyebrow="VERIFICATION"
@@ -114,10 +116,10 @@ export default function ProcessPage() {
             className="mb-12"
           />
           {/* Wave 355: <ol>+<li> 4-step verification process semantic */}
-          <ol className="grid grid-cols-2 lg:grid-cols-4 gap-4 list-none p-0 m-0">
+          <ol className="care-process-track grid grid-cols-2 gap-4 list-none p-0 m-0 lg:grid-cols-4">
             {VERIFICATION.map((v, i) => (
-              <li key={v.num} className="nextgen-card bg-white p-6 text-center border border-slate-200 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-brand-300 hover:shadow-xl">
-                <p className="mx-auto mb-3 grid h-12 w-12 place-items-center bg-slate-950 text-sm font-extrabold text-white" data-delay={String(i)} style={{ borderRadius: '4px' }}>{v.num}</p>
+              <li key={v.num} className="care-process-card bg-[#F8FAFC] p-6 text-center border border-slate-200 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-brand-300 hover:bg-white hover:shadow-xl">
+                <p className="care-process-node mx-auto mb-3 grid h-12 w-12 place-items-center bg-slate-950 text-sm font-extrabold text-white" data-delay={String(i)} style={{ borderRadius: '4px' }}>{v.num}</p>
                 <h3 className="font-bold text-ink-primary mb-2">{v.title}</h3>
                 <p className="text-sm text-ink-muted">{v.desc}</p>
               </li>
