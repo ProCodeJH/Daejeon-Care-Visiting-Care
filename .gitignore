@@ -64,5 +64,6 @@ playwright-report/
 !public/**/*.png
 !components/**/*.png
 /data/admin-content.json
+/supabase/.temp/
 
 .vercel

@@ -32,6 +32,7 @@ import { CONTACT } from '@/lib/contact';
 type Tab = 'review' | 'story' | 'notice';
 
 const STORY_FORM_CATEGORIES = STORY_CATEGORIES.filter((category) => category !== '전체');
+const LOCAL_IMAGE_LIMIT = 2_500_000;
 
 const emptyReview = () => ({
   author: '보호자 OOO 님',
@@ -59,8 +60,8 @@ const emptyNotice = () => ({
   pinned: true,
 });
 
-async function readImage(file: File) {
-  if (file.size > 2_500_000) {
+async function readImageAsDataUrl(file: File) {
+  if (file.size > LOCAL_IMAGE_LIMIT) {
     throw new Error('2.5MB 이하 이미지만 업로드할 수 있습니다.');
   }
 
@@ -70,6 +71,32 @@ async function readImage(file: File) {
     reader.onerror = () => reject(new Error('이미지를 읽지 못했습니다.'));
     reader.readAsDataURL(file);
   });
+}
+
+async function uploadAdminImage(file: File, kind: 'reviews' | 'stories', adminToken: string) {
+  const formData = new FormData();
+  formData.set('kind', kind);
+  formData.set('file', file);
+
+  const response = await fetch('/api/admin-upload', {
+    method: 'POST',
+    headers: { 'x-admin-token': adminToken },
+    body: formData,
+  });
+
+  if (response.status === 501) {
+    return await readImageAsDataUrl(file);
+  }
+  if (response.status === 401) {
+    throw new Error('관리자 인증이 만료되었습니다. 다시 로그인하세요.');
+  }
+  if (!response.ok) {
+    throw new Error('이미지 업로드에 실패했습니다.');
+  }
+
+  const result = (await response.json()) as { url?: string };
+  if (!result.url) throw new Error('이미지 업로드 응답이 올바르지 않습니다.');
+  return result.url;
 }
 
 function FieldLabel({ htmlFor, children }: { htmlFor: string; children: ReactNode }) {
@@ -209,7 +236,8 @@ export default function AdminPage() {
     const file = event.target.files?.[0];
     if (!file) return;
     try {
-      const image = await readImage(file);
+      setStatus('이미지를 업로드하는 중입니다.');
+      const image = await uploadAdminImage(file, field === 'review' ? 'reviews' : 'stories', adminToken);
       if (field === 'review') setReview((value) => ({ ...value, image }));
       if (field === 'story') setStory((value) => ({ ...value, thumbnail: image }));
       setStatus('이미지가 업로드되었습니다.');
