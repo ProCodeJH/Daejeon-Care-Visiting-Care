@@ -44,6 +44,15 @@ function encodePath(path: string) {
   return path.split('/').map(encodeURIComponent).join('/');
 }
 
+function isAllowedPath(path: unknown): path is string {
+  if (typeof path !== 'string') return false;
+  const [folder, filename] = path.split('/');
+  if (!ALLOWED_KINDS.has(folder)) return false;
+  if (!filename || path.includes('..')) return false;
+  const extension = filename.split('.').pop()?.toLowerCase();
+  return extension ? [...ALLOWED_TYPES.values()].includes(extension) || extension === 'jpeg' : false;
+}
+
 export async function POST(request: NextRequest) {
   if (!verifyAdmin(request)) return jsonError('Unauthorized admin request', 401);
 
@@ -89,4 +98,47 @@ export async function POST(request: NextRequest) {
     },
     { headers: { 'Cache-Control': 'no-store' } },
   );
+}
+
+export async function DELETE(request: NextRequest) {
+  if (!verifyAdmin(request)) return jsonError('Unauthorized admin request', 401);
+
+  const config = supabaseConfig();
+  if (!config) return jsonError('Supabase storage is not configured', 501);
+
+  const body = (await request.json().catch(() => null)) as { path?: unknown } | null;
+  const objectPath = body?.path;
+  if (!isAllowedPath(objectPath)) return jsonError('Invalid object path', 400);
+  const safeObjectPath = objectPath;
+
+  const headers = {
+    apikey: config.key,
+    Authorization: `Bearer ${config.key}`,
+    'Content-Type': 'application/json',
+    ...(config.adminSecret ? { 'x-admin-secret': config.adminSecret } : {}),
+  };
+
+  const singleResponse = await fetch(`${config.url}/storage/v1/object/${BUCKET}/${encodePath(safeObjectPath)}`, {
+    method: 'DELETE',
+    headers,
+    cache: 'no-store',
+  });
+
+  if (singleResponse.ok || singleResponse.status === 404) {
+    return NextResponse.json({ ok: true, path: safeObjectPath }, { headers: { 'Cache-Control': 'no-store' } });
+  }
+
+  const bulkResponse = await fetch(`${config.url}/storage/v1/object/${BUCKET}`, {
+    method: 'DELETE',
+    headers,
+    body: JSON.stringify({ prefixes: [safeObjectPath] }),
+    cache: 'no-store',
+  });
+
+  if (!bulkResponse.ok && bulkResponse.status !== 404) {
+    const detail = await bulkResponse.text().catch(() => '');
+    return jsonError(`Supabase storage delete failed: ${bulkResponse.status}${detail ? ` ${detail}` : ''}`, 502);
+  }
+
+  return NextResponse.json({ ok: true, path: safeObjectPath }, { headers: { 'Cache-Control': 'no-store' } });
 }
