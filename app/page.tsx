@@ -285,7 +285,7 @@ export default function Home() {
       </section>
 
       {/* 6. Reviews — admin-managed voice, editorial trust layout. */}
-      <section className="relative overflow-hidden bg-[#F6F8FB] py-20 md:py-24 cv-auto">
+      <section className="relative overflow-hidden bg-[#F6F8FB] py-20 md:py-24">
         <div aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-200 to-transparent" />
         <div className="max-w-[1200px] mx-auto px-5">
           <div className="mb-12 grid gap-6 md:grid-cols-[minmax(0,1fr)_360px] md:items-end">
@@ -412,7 +412,7 @@ export default function Home() {
       </section>
 
       {/* 7. Blog — admin-managed field notes. */}
-      <section className="bg-white py-20 cv-auto">
+      <section className="bg-white py-20">
         <div className="max-w-[1200px] mx-auto px-5">
           <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
@@ -509,7 +509,7 @@ export default function Home() {
       </section>
 
       {/* 8. FAQ — 4 cards (491px, #f8f8f8). Wave 365: cv-auto. */}
-      <section className="bg-[#f8f8f8] py-20 cv-auto">
+      <section className="bg-[#f8f8f8] py-20">
         <div className="max-w-[1200px] mx-auto px-5">
           <div className="text-center mb-10">
             <p lang="en" className="text-brand-400 font-semibold tracking-[0.2em] text-sm mb-3"><span aria-hidden="true">|</span> FAQ</p>
